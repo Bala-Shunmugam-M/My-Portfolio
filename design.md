@@ -6,9 +6,18 @@ before emitting code. Do not regenerate per page — extend or amend it.
 > **Amendment 2026-06-10 (v2 — "Daybook"):** theme changed from Foundry (bone
 > paper / graphite / ember, dark control-room bands) to Daybook (butter-cream
 > paper / graphite-blue ink / ultramarine accent, one ultramarine band) at the
-> owner's request: lighter, warmer, more distinctive. Typography moved from
-> Fraunces / Inter Tight to Instrument Serif / Instrument Sans. Positioning
-> reframed MBA-first. Wordmark is now **"Bala Shunmugam. M"**.
+> owner's request: lighter, warmer, more distinctive. Positioning reframed
+> MBA-first. Wordmark is now **"Bala Shunmugam. M"**.
+>
+> **Amendment 2026-06-10 (v3 — "Daybook colorful"):** at the owner's direction
+> (reference screenshot + motionsites.ai + Pinterest aesthetic-portfolio moodboard):
+> display type back to **Fraunces** (the pointed-at reference style; colors stay light),
+> body Inter Tight; an **art-hue palette** (coral / teal / violet / gold) scoped strictly
+> to illustration panels, tags and journey markers — never body text; the "— LABEL"
+> mono eyebrow above section heads is an owner-approved house style; motion set expanded:
+> competency ticker marquee (hover-pause, off under reduced-motion), rise+blur reveals,
+> bar-grow charts, hover art-zoom. Section order restored from the v1 overlay layout
+> (hero+featured card → ticker → about+journey → projects → analytics → tools → field → insights → contact band).
 
 ## Positioning
 MBA Operations & Business Analytics portfolio. The site must communicate:
@@ -35,10 +44,11 @@ band only. Accent ≤ 5% of any viewport.
 Canonical values live in `tokens.css` (see Exports below).
 
 ## Typography
-- Display: Instrument Serif — 400 only; italic for emphasis and accent words; tracking −0.02em at display sizes.
-- Body:    Instrument Sans — 400 / 500 / 600.
-- Mono:    JetBrains Mono — 400 / 500, uppercase labels & data, letter-spacing 0.08em.
+- Display: Fraunces — 400/500; italic for emphasis and accent words; tracking −0.02em at display sizes.
+- Body:    Inter Tight — 400 / 500 / 600.
+- Mono:    JetBrains Mono — 400 / 500 / 600, uppercase labels & data, letter-spacing 0.08em.
 - Scale anchor: `--text-display` = clamp(3rem, 8.5vw, 8rem).
+- Eyebrows: "— LABEL" mono caps above section heads (owner house style), always stacked vertical.
 
 ## Spacing
 4-point named scale in tokens.css. Pages reference `var(--space-*)`, never raw values.
@@ -47,9 +57,11 @@ Canonical values live in `tokens.css` (see Exports below).
 - Easings: `--ease-out` cubic-bezier(0.16,1,0.3,1); `--ease-in` cubic-bezier(0.7,0,0.84,0); `--ease-in-out` cubic-bezier(0.65,0,0.35,1).
 - Reveal: one orchestrated hero entrance (staggered rise + ink-draw underline on the accent word); reveal-once fade + 10px rise elsewhere.
 - Signature: scroll-synced sticky project rail; in-view count-up on real metrics only.
-- Hard cap: ≤ 3 motion primitives per page (hero entrance incl. ink-draw · reveal-once · count-up).
-  No ambient infinite loops — no pulsing dots, no nudging arrows, no marquees.
-- Reduced motion: opacity-only, ≤ 150ms; the ink-draw renders complete.
+- v3 set (owner-directed, motionsites.ai reference): hero stagger + ink-draw ·
+  reveal-once (rise + soft blur) · count-up on real metrics · bar-grow on chart reveal ·
+  one competency ticker marquee (36s linear, pauses on hover) · hover art-zoom + card lift.
+- Still banned: parallax, custom cursors, bounce easings, autoplaying media, pulsing dots.
+- Reduced motion: everything renders complete and static; the ticker becomes a scrollable strip.
 
 ## Microinteractions stance
 Silent success. Hover delay 800ms / focus delay 0ms. Accent underline draw on link hover.

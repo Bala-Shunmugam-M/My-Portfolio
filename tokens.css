@@ -1,7 +1,9 @@
-/* Hallmark · tokens · theme: Daybook (custom)
+/* Hallmark · tokens · theme: Daybook v3 (custom)
  * MBA Operations & Business Analytics — Bala Shunmugam. M
  * paper: butter-cream (light) · ink: graphite-blue · accent: ultramarine (≤5%)
- * band: deep ultramarine, gold counterpart accent · amended 2026-06-10 (was: Foundry)
+ * band: deep ultramarine, gold counterpart · art hues: coral/teal/violet/gold (panels & tags only)
+ * type: Fraunces display (owner-pointed reference) · Inter Tight body · JetBrains Mono data
+ * amended 2026-06-10 v3 (was: Daybook v2 Instrument; was: Foundry)
  */
 :root {
   /* ── Colour ─────────────────────────────────────────── */
@@ -29,9 +31,27 @@
   --color-accent-ink:   oklch(98% 0.01 100);     /* text on ultramarine fill */
   --color-focus:        oklch(46% 0.19 264);
 
+  --color-card:         oklch(98.8% 0.01 100);   /* raised card surface */
+  --shadow-card:        0 14px 36px oklch(30% 0.04 264 / 0.10), 0 2px 8px oklch(30% 0.04 264 / 0.05);
+  --shadow-card-lift:   0 22px 48px oklch(30% 0.04 264 / 0.14), 0 4px 12px oklch(30% 0.04 264 / 0.06);
+
+  /* ── Art hues — panels, tags & journey only, never body text ── */
+  --art-coral:       oklch(70% 0.16 35);
+  --art-coral-ink:   oklch(42% 0.14 35);
+  --art-coral-soft:  oklch(93% 0.05 35);
+  --art-teal:        oklch(72% 0.12 175);
+  --art-teal-ink:    oklch(38% 0.09 175);
+  --art-teal-soft:   oklch(93.5% 0.05 175);
+  --art-violet:      oklch(72% 0.12 295);
+  --art-violet-ink:  oklch(40% 0.12 295);
+  --art-violet-soft: oklch(93.5% 0.045 295);
+  --art-gold:        oklch(80% 0.13 90);
+  --art-gold-ink:    oklch(45% 0.11 90);
+  --art-gold-soft:   oklch(94% 0.06 95);
+
   /* ── Type ───────────────────────────────────────────── */
-  --font-display: "Instrument Serif", Georgia, serif;
-  --font-body:    "Instrument Sans", "Inter Tight", system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body:    "Inter Tight", system-ui, sans-serif;
   --font-mono:    "JetBrains Mono", "DM Mono", ui-monospace, monospace;
 
   --text-display: clamp(3rem, 8.5vw, 8rem);
