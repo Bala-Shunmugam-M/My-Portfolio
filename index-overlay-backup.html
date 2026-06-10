@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bala Shunmugam M — Operations & Analytics Portfolio</title>
+  <meta name="description" content="Electrical Engineer + MBA Operations. Plant-floor problem solving with quantified business impact. Featured projects, working tools, and operations frameworks." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/cosmic-theme.css" />
+  <link rel="stylesheet" href="css/cosmic-motion.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Animated cosmic starfield (behind all content) -->
+  <canvas id="cosmic-stars" aria-hidden="true"></canvas>
+
+  <!-- ═══════════════════════════════════════════════
+       NAVBAR
+  ═══════════════════════════════════════════════ -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">Bala Shunmugam<span class="dot">.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#analytics">Analytics</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#insights">Insights</a></li>
+        <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">≡</button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════ -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-meta">
+        <span class="eyebrow"><span class="hero-meta-dot"></span>Available for placements · 2026</span>
+        <span class="eyebrow">Chennai · India</span>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-main">
+          <h1 class="hero-title">
+            Electrical engineer.<br>
+            <em>Plant floor</em> to <em>P&amp;L</em>.
+          </h1>
+          <p class="hero-sub">
+            I'm <strong>Bala</strong> — an Electrical &amp; Electronics Engineer pursuing my MBA in Operations &amp; Business Analytics. I quantify plant-floor problems in money, build working tools to fix them, and ship — not just write reports.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">See the work <span class="arrow">→</span></a>
+            <a href="Bala_Shunmugam_resume.pdf" class="btn btn-outline" download>Download résumé ↓</a>
+            <a href="#contact" class="btn btn-text">Get in touch <span class="arrow">→</span></a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-val">11</div>
+              <div class="hero-stat-label">Projects shipped</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-val">2</div>
+              <div class="hero-stat-label">Working tools built</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-val">4</div>
+              <div class="hero-stat-label">Analytics projects (R + Python)</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-val">2</div>
+              <div class="hero-stat-label">Industrial sites</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-side reveal">
+          <div class="hero-side-label">★ Featured · Live demonstrator</div>
+          <h3>Inventory control system for small retail</h3>
+          <p>
+            A working browser-based decision engine — EOQ + Reorder Point + Safety Stock + ABC, all in one mobile-first tool. Demonstrated with 12 realistic SKUs modelled on a typical Madurai grocery shop. Designed because the actual user is on a phone, not a laptop.
+          </p>
+          <div class="hero-side-figures">
+            <div>
+              <div class="hero-side-fig">4-in-1</div>
+              <div class="hero-side-fig-label">Frameworks integrated</div>
+            </div>
+            <div>
+              <div class="hero-side-fig">Live</div>
+              <div class="hero-side-fig-label">In-browser, no server</div>
+            </div>
+          </div>
+          <a href="inventoryiq-mobile.html" class="hero-side-link">Open the live tool <span class="arrow">→</span></a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════════════ -->
+  <section id="about" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">01 — About</div>
+          <h2>An <em>unusual</em> bridge — between an engineer's plant floor and a manager's spreadsheet.</h2>
+        </div>
+        <div class="section-head-meta">
+          <strong>MBA Operations</strong><br>
+          Amrita School of Business · 2025–27
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            Most MBA candidates can talk about Lean and Six Sigma. Most engineers can talk about plant operations. <strong>I do both.</strong>
+          </p>
+          <p>
+            My undergrad in Electrical &amp; Electronics taught me to read a single-line diagram, simulate a 87G differential relay, and audit motor energy loads. My MBA at <mark>Amrita School of Business</mark> is teaching me to convert those technical observations into NPV cases, reorder-point models, and supply-chain decisions.
+          </p>
+          <p>
+            I've done in-plant training at <strong>TANGEDCO's Valuthur Gas Turbine Power Station</strong> and the Pasumalai Sub-Load Dispatch Centre, and an MBA operations internship at <strong>Agni Steels' Sponge Iron Division</strong> in Perundurai — a 100 TPD coal-based DRI plant. And I've built two working analytics tools — not slide decks — to solve problems I actually saw.
+          </p>
+          <p>
+            I'm targeting operations and analytics roles at companies where electrical systems meet business outcomes — <strong>Schneider Electric, Hitachi Energy, ABB, Siemens, Honeywell</strong>.
+          </p>
+        </div>
+
+        <div class="journey reveal">
+          <div class="journey-title">— The journey</div>
+          <div class="journey-step">
+            <div class="j-dot">🎓</div>
+            <div class="j-text">
+              <div class="j-title">Higher Secondary, Madurai</div>
+              <div class="j-sub">CBSE · 2017–2019</div>
+            </div>
+          </div>
+          <div class="journey-step">
+            <div class="j-dot">⚡</div>
+            <div class="j-text">
+              <div class="j-title">B.E. Electrical &amp; Electronics</div>
+              <div class="j-sub">PSNA College of Engineering · 2019–2025</div>
+            </div>
+          </div>
+          <div class="journey-step">
+            <div class="j-dot">🏭</div>
+            <div class="j-text">
+              <div class="j-title">Plant exposure — VGTPS &amp; SLDC</div>
+              <div class="j-sub">In-plant training · Feb 2025</div>
+            </div>
+          </div>
+          <div class="journey-step j-step-current">
+            <div class="j-dot">📊</div>
+            <div class="j-text">
+              <div class="j-title">MBA — Operations &amp; Analytics</div>
+              <div class="j-sub">Amrita School of Business · 2025–27 · <strong>now</strong></div>
+            </div>
+          </div>
+          <div class="journey-step">
+            <div class="j-dot">→</div>
+            <div class="j-text">
+              <div class="j-title">Operations / Analytics role</div>
+              <div class="j-sub">Targeting · Schneider · Hitachi · ABB · Siemens</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FEATURED PROJECTS
+  ═══════════════════════════════════════════════ -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">02 — Featured Work</div>
+          <h2>Real problems. <em>Measured</em> solutions.</h2>
+        </div>
+        <div class="section-head-meta">
+          <strong>8 projects</strong><br>
+          2 industrial sites · 10+ frameworks
+        </div>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Featured project 1 — Inventory -->
+        <a href="inventoryiq.html" class="proj proj-featured reveal">
+          <div>
+            <span class="proj-num">P / 07 · Live demonstrator ★</span>
+            <div class="proj-tags">
+              <span class="tag tag-oxblood">MBA · Applied Concept</span>
+              <span class="tag tag-forest">Supply chain</span>
+              <span class="tag">EOQ · ROP · ABC</span>
+            </div>
+            <h3 class="proj-title">Inventory Control System for Small Retail — EOQ + ROP + Safety Stock + ABC</h3>
+            <p class="proj-desc">
+              A working browser-based decision engine integrating four classical inventory frameworks into a single mobile-first tool. Demonstrated with 12 realistic SKUs modelled on a typical Madurai grocery shop. I designed the concept, framework integration, and UX; implementation was AI-accelerated.
+            </p>
+            <div class="proj-impact">
+              <div class="proj-impact-item">
+                <div class="proj-impact-val accent">4</div>
+                <div class="proj-impact-label">Frameworks in one engine</div>
+              </div>
+              <div class="proj-impact-item">
+                <div class="proj-impact-val">12</div>
+                <div class="proj-impact-label">Realistic SKUs (editable)</div>
+              </div>
+              <div class="proj-impact-item">
+                <div class="proj-impact-val accent">Mobile-first</div>
+                <div class="proj-impact-label">Designed for the shop owner</div>
+              </div>
+            </div>
+            <span class="proj-cta">Read the case study + try the live demonstrator <span class="arrow">→</span></span>
+          </div>
+
+          <div class="proj-visual">
+            <div>
+              <div class="proj-visual-label">— Realistic SKU basket</div>
+              <div class="proj-visual-headline">12 SKUs</div>
+              <div class="proj-visual-detail">Rice · Cooking Oil · Sugar · Toor Dal · Wheat Flour · Detergent · Biscuits · Tea · Salt · Coconut Oil · Pulses · Soaps</div>
+            </div>
+            <div class="proj-visual-bars">
+              <div class="proj-bar-row">
+                <div class="proj-bar-label">EOQ</div>
+                <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+                <div class="proj-bar-val">live</div>
+              </div>
+              <div class="proj-bar-row">
+                <div class="proj-bar-label">ROP</div>
+                <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+                <div class="proj-bar-val">live</div>
+              </div>
+              <div class="proj-bar-row">
+                <div class="proj-bar-label">ABC</div>
+                <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+                <div class="proj-bar-val">live</div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- Featured project 2 — VGTPS Operations -->
+        <a href="project-02.html" class="proj proj-half reveal">
+          <span class="proj-num">P / 02</span>
+          <div class="proj-tags">
+            <span class="tag tag-slate">MBA · Operations Study</span>
+            <span class="tag">VGTPS · TANGEDCO</span>
+          </div>
+          <h3 class="proj-title">VGTPS Operations Study — 187 MW Combined-Cycle Plant</h3>
+          <p class="proj-desc">
+            An operations management study of TANGEDCO's 187.2 MW combined-cycle gas plant (Phase I GE Frame 6FA + Phase II Ansaldo). Built from December 2021 in-plant training documents. Applied TANGEDCO's own five operational lenses (O&amp;M, Crisis Management, Safety, Reliability, Efficiency) to real multi-year plant data.
+          </p>
+          <div class="proj-impact">
+            <div class="proj-impact-item">
+              <div class="proj-impact-val accent">187 MW</div>
+              <div class="proj-impact-label">Combined-cycle capacity</div>
+            </div>
+            <div class="proj-impact-item">
+              <div class="proj-impact-val">Bronze ★</div>
+              <div class="proj-impact-label">3rd best in India 2006-07</div>
+            </div>
+          </div>
+          <span class="proj-cta">Read the field study <span class="arrow">→</span></span>
+        </a>
+
+        <!-- Featured project 3 — Adaptive Relay -->
+        <a href="project-08.html" class="proj proj-half reveal">
+          <span class="proj-num">P / 08</span>
+          <div class="proj-tags">
+            <span class="tag tag-brass">B.E. Final Year · Protection Study</span>
+            <span class="tag">VGTPS Plant Data</span>
+          </div>
+          <h3 class="proj-title">Adaptive Protection Relay Coordination — GE Frame 6FA</h3>
+          <p class="proj-desc">
+            A protection coordination study proposing an adaptive 87G differential scheme for the gas turbine generator at VGTPS. Built around real plant data collected during in-plant training (51,921 A bus fault, 172 V stability voltage). Motivated by the May 2010 Valuthur stator earth fault that caused a 3-month outage.
+          </p>
+          <div class="proj-impact">
+            <div class="proj-impact-item">
+              <div class="proj-impact-val accent">4 groups</div>
+              <div class="proj-impact-label">Adaptive 87G scheme</div>
+            </div>
+            <div class="proj-impact-item">
+              <div class="proj-impact-val">10 / 5</div>
+              <div class="proj-impact-label">Scenarios / zones</div>
+            </div>
+          </div>
+          <span class="proj-cta">Read the coordination study <span class="arrow">→</span></span>
+        </a>
+
+        <!-- Supporting project — VGTPS Performance -->
+        <a href="project-01.html" class="proj proj-third reveal">
+          <span class="proj-num">P / 01</span>
+          <div class="proj-tags"><span class="tag">B.E. + Field</span></div>
+          <h3 class="proj-title">VGTPS Performance &amp; Electrical Study</h3>
+          <p class="proj-desc">Documentation study of the 187 MW combined-cycle plant from B.E. in-plant training — thermodynamics, plant subsystems, and protection scheme covered.</p>
+          <span class="proj-cta">Open <span class="arrow">→</span></span>
+        </a>
+
+        <!-- Supporting project — Agni Steels -->
+        <a href="project-03.html" class="proj proj-third reveal">
+          <span class="proj-num">P / 03</span>
+          <div class="proj-tags"><span class="tag">MBA Internship · DRI</span></div>
+          <h3 class="proj-title">Agni Steels — Sponge Iron Operations Study</h3>
+          <p class="proj-desc">Observational study at a 100 TPD coal-based DRI plant in Perundurai. Pareto + Fishbone on real operator-reported issues — kiln accretion identified as the dominant constraint.</p>
+          <span class="proj-cta">Open <span class="arrow">→</span></span>
+        </a>
+
+        <!-- Supporting project — Six Sigma Workbench -->
+        <a href="six-sigma-workbench.html" class="proj proj-third reveal">
+          <span class="proj-num">Tool · Live ★</span>
+          <div class="proj-tags"><span class="tag tag-forest">Quality Engineering</span></div>
+          <h3 class="proj-title">Six Sigma Workbench — DMAIC / DOE / MSA / FMEA</h3>
+          <p class="proj-desc">A working quality-engineering workspace — structured DMAIC tollgates, control charts, process capability, design-of-experiments, MSA and FMEA. The statistical foundation behind ProcessPilot AI.</p>
+          <span class="proj-cta">Open the workbench <span class="arrow">→</span></span>
+        </a>
+
+        <!-- Supporting project — Motor Audit -->
+        <a href="project-05.html" class="proj proj-third reveal">
+          <span class="proj-num">P / 05</span>
+          <div class="proj-tags"><span class="tag">B.E. EEE · VGTPS Fieldwork</span></div>
+          <h3 class="proj-title">Motor Energy Audit Fieldwork — VGTPS Phase I</h3>
+          <p class="proj-desc">Mentor-guided motor audit at VGTPS Phase I during B.E. in-plant training. Took clamp-meter readings personally — found 3 under-loaded, 2 overloaded motors in an 8-motor sample.</p>
+          <span class="proj-cta">Open <span class="arrow">→</span></span>
+        </a>
+
+      </div>
+
+      <div style="text-align:center;margin-top:48px;">
+        <a href="projects.html" class="btn btn-outline">View all 12 projects in full detail <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       MBA BUSINESS ANALYTICS PROJECTS
+  ═══════════════════════════════════════════════ -->
+  <section id="analytics" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">02B — MBA Business Analytics</div>
+          <h2>R · Quarto · <em>Real coursework.</em></h2>
+        </div>
+        <p class="section-desc">Three analytics projects from MBA Trimester I at Amrita School of Business — clustering, text mining, and association rules. Built in R with Quarto, graded as coursework, published on my <a href="https://mba-bala-shunmugam-m-25043.blogspot.com/" target="_blank" style="color:var(--oxblood);">MBA blog</a>. All source code and data downloadable.</p>
+      </div>
+
+      <div class="proj-grid">
+        <a href="project-09.html" class="proj proj-third reveal">
+          <span class="proj-num">P / 09</span>
+          <div class="proj-tags">
+            <span class="tag tag-slate">MBA · IBA · R</span>
+          </div>
+          <h3 class="proj-title">Customer Segmentation</h3>
+          <p class="proj-desc">k-means + hierarchical clustering on a 30-customer demographic dataset. Elbow method confirmed k=3 optimal segments. Full Quarto report, blog post, and source downloadable.</p>
+          <div class="proj-impact">
+            <div class="proj-impact-item"><div class="proj-impact-val accent">k=3</div><div class="proj-impact-label">Optimal clusters</div></div>
+          </div>
+          <span class="proj-cta">Open <span class="arrow">→</span></span>
+        </a>
+
+        <a href="project-10.html" class="proj proj-third reveal">
+          <span class="proj-num">P / 10</span>
+          <div class="proj-tags">
+            <span class="tag tag-slate">MBA · IBA · R</span>
+          </div>
+          <h3 class="proj-title">Customer Review Analysis</h3>
+          <p class="proj-desc">Text mining pipeline on 21 restaurant reviews — corpus, DTM, cosine similarity, document clustering, word cloud. Pizza, good, food dominate. Built with tm + slam packages.</p>
+          <div class="proj-impact">
+            <div class="proj-impact-item"><div class="proj-impact-val accent">21</div><div class="proj-impact-label">Reviews mined</div></div>
+          </div>
+          <span class="proj-cta">Open <span class="arrow">→</span></span>
+        </a>
+
+        <a href="project-11.html" class="proj proj-third reveal">
+          <span class="proj-num">P / 11</span>
+          <div class="proj-tags">
+            <span class="tag tag-slate">MBA · IBA · R</span>
+          </div>
+          <h3 class="proj-title">Market Basket Analysis</h3>
+          <p class="proj-desc">Apriori algorithm on 38,765 Kaggle grocery transactions across 3,898 shoppers. Top rule: brandy → whole milk at 34.21% confidence. Built with arules package.</p>
+          <div class="proj-impact">
+            <div class="proj-impact-item"><div class="proj-impact-val accent">38,765</div><div class="proj-impact-label">Transactions</div></div>
+          </div>
+          <span class="proj-cta">Open <span class="arrow">→</span></span>
+        </a>
+
+        <a href="project-12.html" class="proj proj-third reveal">
+          <span class="proj-num">P / 12</span>
+          <div class="proj-tags">
+            <span class="tag tag-slate">MBA · DARP · Python</span>
+          </div>
+          <h3 class="proj-title">Consumer Shopping Behavior</h3>
+          <p class="proj-desc">3,900 transactions, 8 methods: T-Test, ANOVA, Chi-Square, PCA, EFA, K-Means, Logistic Regression, LDA. AUC 0.893. Gender–subscription χ²=676.8. Full Jupyter notebook.</p>
+          <div class="proj-impact">
+            <div class="proj-impact-item"><div class="proj-impact-val accent">AUC 0.893</div><div class="proj-impact-label">Prediction accuracy</div></div>
+          </div>
+          <span class="proj-cta">Open <span class="arrow">→</span></span>
+        </a>
+      </div>
+
+      <div style="text-align:center;margin-top:32px;">
+        <a href="https://mba-bala-shunmugam-m-25043.blogspot.com/" target="_blank" class="btn btn-outline">Read the MBA Blog ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       TOOLS — InventoryIQ + ProcessPilot AI
+  ═══════════════════════════════════════════════ -->
+  <section id="tools" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">03 — Tools Built</div>
+          <h2>Not just reports. <em>Working tools.</em></h2>
+        </div>
+        <div class="section-head-meta">
+          <strong>2 working applications</strong><br>
+          Live decision tools
+        </div>
+      </div>
+
+      <p style="font-size:17px;max-width:680px;color:var(--ink-2);margin-bottom:32px;line-height:1.55;">
+        Most MBA projects end with a slide deck. Mine end with something you can actually use. InventoryIQ runs entirely in the browser; ProcessPilot AI is a full-stack monitoring application — both ship with real demo data and a 30-second live walkthrough.
+      </p>
+
+      <div class="tools-showcase">
+
+        <a href="inventoryiq-mobile.html" class="tool-card reveal">
+          <div class="tool-card-label">★ Tool 01 · Mobile-first</div>
+          <h3 class="tool-card-title">InventoryIQ</h3>
+          <p class="tool-card-desc">
+            Inventory control for unorganised small retail. EOQ + ROP + Safety Stock + ABC, one tap, one answer. Cloud-sync, offline-first, CSV import / export, sales-log analytics, ABC dashboard.
+          </p>
+          <div class="tool-card-features">
+            <span class="tool-feat">12 demo SKUs</span>
+            <span class="tool-feat">Live calculations</span>
+            <span class="tool-feat">Mobile + desktop</span>
+            <span class="tool-feat">Offline-first</span>
+          </div>
+          <span class="tool-card-cta">Open the mobile app <span class="arrow">→</span></span>
+        </a>
+
+        <a href="processpilot.html" class="tool-card reveal">
+          <div class="tool-card-label">★ Tool 02 · Real-time monitoring</div>
+          <h3 class="tool-card-title">ProcessPilot AI</h3>
+          <p class="tool-card-desc">
+            Real-time process-stability intelligence for a sponge-iron kiln. Live SPC on 10 process variables, Western Electric + CUSUM drift detection, an Instability Index, metallisation forecasting and AI root-cause analysis. Demonstrated on a physics-aware kiln simulator; runs real plant CSVs through the same engine.
+          </p>
+          <div class="tool-card-features">
+            <span class="tool-feat">Live SPC · 10 variables</span>
+            <span class="tool-feat">Drift detection</span>
+            <span class="tool-feat">AI root-cause</span>
+            <span class="tool-feat">Metallisation forecast</span>
+          </div>
+          <span class="tool-card-cta">Explore the case study <span class="arrow">→</span></span>
+        </a>
+
+      </div>
+
+      <div style="display:flex;gap:24px;margin-top:32px;align-items:center;justify-content:center;flex-wrap:wrap;">
+        <a href="dashboard.html" class="btn btn-text">Open InventoryIQ desktop dashboard <span class="arrow">→</span></a>
+        <span style="color:var(--ink-4);font-size:13px;">·</span>
+        <a href="Walkthrough_Script.html" class="btn btn-text">View the interview walkthrough script <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       DASHBOARD
+  ═══════════════════════════════════════════════ -->
+  <section id="dashboard" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">04 — Field study</div>
+          <h2>Operations study at <em>Agni Steels</em>.</h2>
+        </div>
+        <div class="section-head-meta">
+          <strong>Sponge Iron Division</strong><br>
+          Perundurai, Tamil Nadu · 100 TPD DRI
+        </div>
+      </div>
+
+      <p style="font-size:17px;max-width:680px;color:var(--ink-2);margin-bottom:32px;line-height:1.55;">
+        An <strong>observational MBA internship study</strong> at Agni Steels' coal-based Direct Reduction (DRI) plant — a 100 TPD rotary-kiln sponge iron unit feeding the company's captive billet and TMT operations. Mapped the process flow, observed real plant issues from the operations team, and applied Pareto + Fishbone frameworks. The numbers below are plant characteristics and operator-quoted estimates, not measured downtime data.
+      </p>
+
+      <div class="metric-grid">
+        <div class="metric">
+          <div class="metric-label">Plant capacity</div>
+          <div class="metric-value">100 <span class="metric-unit">TPD</span></div>
+          <div class="metric-trend">≈ 36,000 TPA · coal-based DRI</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Metallization observed</div>
+          <div class="metric-value">88–93<span class="metric-unit">%</span></div>
+          <div class="metric-trend">Daily lab targets · 92–93% on good days</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Kiln-related downtime</div>
+          <div class="metric-value">~40–50<span class="metric-unit">%</span></div>
+          <div class="metric-trend trend-down">Shift in-charge estimate · not logged</div>
+        </div>
+      </div>
+
+      <div class="chart-grid">
+        <div class="chart-card reveal">
+          <h4 class="chart-title">Operational issues — qualitative Pareto</h4>
+          <div class="chart-sub">— Ranked by frequency &amp; impact from operator conversations</div>
+          <div class="bar-chart">
+            <div class="bar-row warn">
+              <div class="bar-label">Kiln accretion ⚠</div>
+              <div class="bar-track"><div class="bar-fill warn" style="width:95%"></div></div>
+              <div class="bar-val">Top</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Raw material variation</div>
+              <div class="bar-track"><div class="bar-fill warn" style="width:78%"></div></div>
+              <div class="bar-val">High</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Feeder jamming</div>
+              <div class="bar-track"><div class="bar-fill" style="width:55%"></div></div>
+              <div class="bar-val">Mid</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Refractory wear</div>
+              <div class="bar-track"><div class="bar-fill" style="width:50%"></div></div>
+              <div class="bar-val">Mid</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">Sep. overload</div>
+              <div class="bar-track"><div class="bar-fill" style="width:35%"></div></div>
+              <div class="bar-val">Low</div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-label">ESP maintenance</div>
+              <div class="bar-track"><div class="bar-fill" style="width:28%"></div></div>
+              <div class="bar-val">Low</div>
+            </div>
+          </div>
+          <div style="margin-top:24px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);line-height:1.5;">
+            <strong style="color:var(--oxblood);font-weight:500;">Accretion + raw material variation = the &ldquo;vital few.&rdquo;</strong> Qualitative ranking from shift-team conversations, not from a logged downtime register. Building one would convert these into a measurable baseline.
+          </div>
+        </div>
+
+        <div class="chart-card reveal">
+          <h4 class="chart-title">Coal-based DRI — process flow</h4>
+          <div class="chart-sub">— What I actually observed on the plant floor</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-top:12px;">
+            <div style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule);">
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--oxblood);font-weight:600;">01</div>
+              <div style="font-size:13.5px;color:var(--ink-2);line-height:1.4;"><strong style="color:var(--ink);">Raw material yard</strong> — iron ore + non-coking coal + dolomite</div>
+            </div>
+            <div style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule);">
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--oxblood);font-weight:600;">02</div>
+              <div style="font-size:13.5px;color:var(--ink-2);line-height:1.4;"><strong style="color:var(--ink);">Handling &amp; sizing</strong> — conveyors, crushers, screens</div>
+            </div>
+            <div style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule);background:var(--oxblood-soft);margin:0 -8px;padding-left:8px;padding-right:8px;border-radius:4px;">
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--oxblood);font-weight:700;">03</div>
+              <div style="font-size:13.5px;color:var(--ink);line-height:1.4;"><strong>Rotary kiln</strong> — preheat 800–1000°C → reduce 1050–1150°C <span style="color:var(--oxblood);font-weight:600;">· main constraint</span></div>
+            </div>
+            <div style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule);">
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--oxblood);font-weight:600;">04</div>
+              <div style="font-size:13.5px;color:var(--ink-2);line-height:1.4;"><strong style="color:var(--ink);">Rotary cooler</strong> — DRI cooled to ~100–150°C</div>
+            </div>
+            <div style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule);">
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--oxblood);font-weight:600;">05</div>
+              <div style="font-size:13.5px;color:var(--ink-2);line-height:1.4;"><strong style="color:var(--ink);">Magnetic separation + screening</strong> — sponge iron vs. char/ash</div>
+            </div>
+            <div style="display:grid;grid-template-columns:32px 1fr;gap:14px;align-items:center;padding:10px 0;">
+              <div style="font-family:var(--f-mono);font-size:11px;color:var(--oxblood);font-weight:600;">06</div>
+              <div style="font-size:13.5px;color:var(--ink-2);line-height:1.4;"><strong style="color:var(--ink);">Storage &amp; dispatch</strong> to SMS · ESP for emissions</div>
+            </div>
+          </div>
+          <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);line-height:1.5;">
+            <strong style="color:var(--forest);font-weight:500;">Residence time 6–8 hrs</strong> in the kiln. Reduction-zone &gt;1150 °C risks ring formation — operators monitor SCADA shell-temperature profile closely.
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:32px;">
+        <a href="project-03.html" class="btn btn-outline">Read the full field study <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       INSIGHTS
+  ═══════════════════════════════════════════════ -->
+  <section id="insights" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">05 — Insights</div>
+          <h2>Three things I've <em>learned</em> at the intersection.</h2>
+        </div>
+        <div class="section-head-meta">
+          <strong>Field observations</strong><br>
+          From the plant floor
+        </div>
+      </div>
+
+      <div class="insights-grid">
+        <div class="insight reveal">
+          <div class="insight-num">01 / 03</div>
+          <h3 class="insight-title">Engineers undersell their own findings.</h3>
+          <p class="insight-body">
+            VGTPS Phase I generation cost swung from <strong>₹1.32/kWh in 2004-05 to ₹22.34/kWh in 2020-21</strong> — a 17× swing. Engineers reported this as "gas price increased" and "PLF dropped." Same fact, different language. <strong>"Our cost of generation has 17×'d in 16 years" is a board-level conversation. "PLF declined" is a footnote.</strong> Operations people who translate technical facts into financial language get budgets. The others don't.
+          </p>
+        </div>
+        <div class="insight reveal">
+          <div class="insight-num">02 / 03</div>
+          <h3 class="insight-title">SCADA shows. It doesn't predict.</h3>
+          <p class="insight-body">
+            At Agni Steels' sponge iron plant, control-room screens display every kiln parameter in real time — temperatures, gas composition, feed rates. But <strong>accretion still sneaks up</strong>. The next frontier in DRI ops isn't more sensors. It's <strong>predictive analytics</strong> on the data already being collected — ANN soft sensors trained on existing SCADA history. That's where MBA-trained operations managers add real value to plants that have historically run on operator intuition.
+          </p>
+        </div>
+        <div class="insight reveal">
+          <div class="insight-num">03 / 03</div>
+          <h3 class="insight-title">Shop owners don't use Excel during a sale.</h3>
+          <p class="insight-body">
+            Walk past any Madurai grocery shop — the owner has a smartphone in the apron pocket, not a laptop on a desk. Between customers, no one has time to open a spreadsheet. So when I designed InventoryIQ, I designed it mobile-first. <strong>One tap. One number. "Order N units."</strong> Design for the actual user, not the consultant building the tool.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       CONTACT
+  ═══════════════════════════════════════════════ -->
+  <section id="contact" class="contact-band">
+    <div class="container-narrow">
+      <div class="eyebrow eyebrow-accent" style="margin-bottom:24px;">06 — Get in touch</div>
+      <h2>Let's talk about <em>operations</em>, <em>analytics</em>, or anything between a relay and a balance sheet.</h2>
+      <p>
+        Open to placement conversations with Schneider, Hitachi, ABB, Siemens, Honeywell, and similar companies where engineering and operations meet.
+      </p>
+      <div class="contact-methods">
+        <a class="contact-card" href="mailto:balashunmugamruthran@gmail.com">
+          <span class="contact-card-ico">✉</span>
+          balashunmugamruthran@gmail.com
+        </a>
+        <a class="contact-card" href="tel:+917010469326">
+          <span class="contact-card-ico">☎</span>
+          +91 70104 69326
+        </a>
+        <a class="contact-card" href="https://www.linkedin.com/in/bala-shunmugam-m-66a546387" target="_blank" rel="noopener">
+          <span class="contact-card-ico">in</span>
+          LinkedIn
+        </a>
+      </div>
+      <a href="Bala_Shunmugam_resume.pdf" class="btn btn-primary" download>Download résumé ↓</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer-grid">
+        <div>
+          <div class="footer-brand">Bala Shunmugam M<span style="color:var(--oxblood)">.</span></div>
+          <p class="footer-tag">Electrical Engineer pursuing MBA Operations &amp; Business Analytics. Plant floor to P&amp;L. Chennai, India.</p>
+        </div>
+        <div>
+          <div class="footer-h">Sitemap</div>
+          <div class="footer-links">
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="projects.html">All projects</a>
+            <a href="#tools">Tools</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-h">Direct links</div>
+          <div class="footer-links">
+            <a href="inventoryiq-mobile.html">InventoryIQ (mobile)</a>
+            <a href="dashboard.html">InventoryIQ (desktop)</a>
+            <a href="six-sigma-workbench.html">Six Sigma Workbench</a>
+            <a href="Walkthrough_Script.html">Walkthrough script</a>
+            <a href="Bala_Shunmugam_resume.pdf">Résumé</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="year"></span> Bala Shunmugam M &middot; Built with HTML, CSS &amp; JavaScript</span>
+        <span>Designed &amp; deployed &middot; v2.0</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Customer Segmentation (k-means) — Bala Shunmugam M</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/project.css"/>
+  <link rel="stylesheet" href="css/cosmic-project.css"/>
+  <style>:root{--accent:#7c3aed;--accent-light:#f5f3ff;--accent-mid:#c4b5fd;--accent-dark:#5b21b6;}
+  .ba-fig{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:18px;margin:16px 0;}
+  .ba-fig img{width:100%;border-radius:4px;display:block;}
+  .ba-fig-cap{font-size:13px;color:var(--ink-3);margin-top:10px;font-style:italic;}
+  .ba-files{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0;}
+  .ba-file{display:flex;flex-direction:column;padding:14px;background:var(--paper-deep);border:1px solid var(--rule);border-radius:6px;text-decoration:none;color:var(--ink);transition:all .2s;}
+  .ba-file:hover{background:var(--card);border-color:var(--rule-strong);transform:translateY(-1px);}
+  .ba-file-type{font-family:var(--f-mono);font-size:10px;color:var(--oxblood);letter-spacing:0.08em;text-transform:uppercase;}
+  .ba-file-name{font-weight:500;margin-top:4px;}
+  .ba-file-desc{font-size:13px;color:var(--ink-2);margin-top:6px;line-height:1.4;}
+  .ba-blog{display:inline-flex;align-items:center;gap:8px;background:var(--oxblood);color:var(--paper);padding:10px 18px;border-radius:6px;text-decoration:none;font-weight:500;margin:8px 8px 8px 0;font-size:14px;}
+  .ba-blog:hover{background:var(--oxblood-deep);}
+  .ba-blog-secondary{background:transparent;color:var(--oxblood);border:1px solid var(--oxblood);}
+  .ba-blog-secondary:hover{background:var(--oxblood-soft);}
+  pre.r-code{background:#1a1a1a;color:#e5e5e5;padding:18px;border-radius:6px;overflow-x:auto;font-family:var(--f-mono);font-size:13px;line-height:1.55;}
+  pre.r-code .c-com{color:#888;}
+  pre.r-code .c-key{color:#c79f4f;}
+  pre.r-code .c-str{color:#7fa650;}
+  pre.r-code .c-fn{color:#71a3e3;}
+  </style>
+</head>
+<body>
+  <canvas id="cosmic-stars" aria-hidden="true"></canvas>
+<nav class="p-nav">
+  <a href="projects.html" class="p-nav-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>All Projects</a>
+  <div class="p-nav-right"><span class="p-nav-name">Bala Shunmugam M</span><span class="p-nav-num">09 / 12</span></div>
+</nav>
+
+<section class="p-hero">
+  <div class="p-eyebrow"><div class="p-eyebrow-dot"></div><span class="p-eyebrow-text">MBA Business Analytics · R · Clustering · Trimester I</span></div>
+  <h1 class="p-title">Customer Segmentation<br><em>with k-means &amp; Hierarchical Clustering</em></h1>
+  <p class="p-desc">A clustering study of <strong>30 customer records</strong> from the KTC Company demographic dataset — built in <strong>R using Quarto</strong>, applying both hierarchical (Ward.D) and k-means clustering to segment customers by Age, Income, Loan and Mortgage. Used the <strong>elbow method</strong> to identify k=3 as the optimal cluster count. Submitted as part of <strong>Introduction to Business Analytics</strong> (MBA Trimester I, Amrita School of Business, Aug 2025). Published on personal blog and rendered as a complete Quarto HTML report.</p>
+  <div class="p-tags">
+    <span class="p-tag p-tag-accent">MBA Year 1 · IBA</span>
+    <span class="p-tag">R · Quarto</span>
+    <span class="p-tag">k-means + Hierarchical</span>
+    <span class="p-tag">Elbow Method</span>
+    <span class="p-tag">ggplot2 · gridExtra</span>
+  </div>
+  <div style="margin-top:24px;">
+    <a href="https://mba-bala-shunmugam-m-25043.blogspot.com/2025/08/market-segmentation-afirst-childbefore.html" class="ba-blog" target="_blank" rel="noopener">📰 Read on Blog ↗</a>
+    <a href="analytics/segmentation/Customer_Segmentation.qmd" class="ba-blog ba-blog-secondary" download>📥 Download .qmd source</a>
+    <a href="analytics/segmentation/DemoKTC.xlsx" class="ba-blog ba-blog-secondary" download>📊 Download Data (xlsx)</a>
+  </div>
+  <div class="p-impact" style="margin-top:32px;">
+    <div class="p-impact-item"><div class="p-impact-val">30</div><div class="p-impact-label">KTC Company customer records</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">k=3</div><div class="p-impact-label">Optimal cluster count (elbow method)</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">2 methods</div><div class="p-impact-label">Hierarchical (Ward.D) + k-means</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">4 vars</div><div class="p-impact-label">Age · Income · Loan · Mortgage</div></div>
+  </div>
+</section>
+
+<div class="p-content">
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Context</div>
+    <div class="p-section-title">The dataset &amp; the question</div>
+    <div class="p-card-grid">
+      <div class="p-card" style="--card-color:#7c3aed">
+        <div class="p-card-label">The Data</div>
+        <div class="p-card-text"><strong>DemoKTC.xlsx</strong> — a 30-customer demographic dataset from KTC Company covering Age, Gender, Marital Status, Children, Income, Loan and Mortgage. Provided as part of the IBA coursework. The kind of dataset a marketing or product team would typically use to decide which customer segments to target with what offer.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--blue)">
+        <div class="p-card-label">The Question</div>
+        <div class="p-card-text">How do you group 30 customers into <strong>meaningful, distinct segments</strong> using only their demographic and financial variables — and how do you know how many groups to create? This is the foundational marketing-analytics problem that EOQ/inventory work in supply chain is conceptually similar to: find the natural break-points in data.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--green)">
+        <div class="p-card-label">My Approach</div>
+        <div class="p-card-text">Used <strong>two complementary methods</strong>. <strong>Hierarchical clustering (Ward.D)</strong> first — gives a visual dendrogram showing how observations merge. Then <strong>k-means</strong> with the <strong>elbow method</strong> to confirm the right k. Both methods agreed on <strong>k=3</strong>. Built entirely in R with Quarto for reproducible reporting.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--brass)">
+        <div class="p-card-label">What I Learned</div>
+        <div class="p-card-text">Choosing k is the hard part of clustering, not running the algorithm. The elbow method and the dendrogram are <strong>two different lenses on the same question</strong> — and when they agree, you have a defensible choice. Visualisation matters: a dendrogram with red boxes around clusters tells the story far better than a list of cluster IDs.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Method 1 — Hierarchical Clustering</div>
+    <div class="p-section-title">Ward.D linkage on a Euclidean distance matrix</div>
+    <p class="p-prose">Hierarchical clustering builds a tree (dendrogram) by progressively merging the nearest two clusters until only one remains. Ward.D minimises within-cluster variance at each merge step — a good default for relatively balanced clusters.</p>
+
+    <pre class="r-code"><span class="c-com"># Hierarchical clustering with Ward.D linkage</span>
+<span class="c-com"># Variables: Age, Income, Loan, Mortgage</span>
+d &lt;- <span class="c-fn">dist</span>(scaled_data, method = <span class="c-str">"euclidean"</span>)
+hc &lt;- <span class="c-fn">hclust</span>(d, method = <span class="c-str">"ward.D"</span>)
+
+<span class="c-fn">plot</span>(hc, main = <span class="c-str">"Cluster Dendrogram"</span>)
+<span class="c-fn">rect.hclust</span>(hc, k = <span class="c-key">3</span>, border = <span class="c-str">"red"</span>)</pre>
+
+    <div class="ba-fig">
+      <img src="analytics/segmentation/dendrogram.png" alt="Hierarchical clustering dendrogram showing 3 clusters"/>
+      <div class="ba-fig-cap">Fig 1 — Cluster Dendrogram (Ward.D linkage). Red boxes mark the 3-cluster cut. Customers split into three clear groups of roughly 13, 7 and 10 members.</div>
+    </div>
+
+    <div class="p-callout">
+      <div class="p-callout-title">Reading the dendrogram</div>
+      <div class="p-callout-body">The height axis shows the dissimilarity at which clusters merge. The two big tall branches at heights ~30 and ~20 indicate a natural 3-way split — cutting any lower would create many small fragments; cutting higher would lose meaningful separation. The three red boxes mark this 3-cluster solution.</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Method 2 — k-means + Elbow</div>
+    <div class="p-section-title">Confirming k=3 using within-cluster sum-of-squares</div>
+    <p class="p-prose">k-means asks you to specify k up front. The <strong>elbow method</strong> runs k-means for k=1,2,3...10 and plots the total within-cluster sum of squares (WSS) — you pick k at the "elbow," where adding more clusters stops giving meaningful WSS reduction.</p>
+
+    <pre class="r-code"><span class="c-com"># Elbow method to choose optimal k</span>
+wss &lt;- <span class="c-fn">sapply</span>(<span class="c-key">1</span>:<span class="c-key">10</span>, function(k) {
+  <span class="c-fn">kmeans</span>(scaled_data, centers = k, nstart = <span class="c-key">25</span>)$tot.withinss
+})
+
+<span class="c-fn">qplot</span>(<span class="c-key">1</span>:<span class="c-key">10</span>, wss, geom = <span class="c-str">"line"</span>) +
+  <span class="c-fn">labs</span>(title = <span class="c-str">"Optimal number of clusters"</span>,
+       x = <span class="c-str">"Number of clusters k"</span>,
+       y = <span class="c-str">"Total Within Sum of Square"</span>)</pre>
+
+    <div class="ba-fig">
+      <img src="analytics/segmentation/elbow_plot.png" alt="Elbow plot showing WSS dropping sharply until k=3 then flattening"/>
+      <div class="ba-fig-cap">Fig 2 — Elbow Plot. WSS drops sharply from k=1 (≈205) to k=3 (≈135), then declines much more gently. The bend at k=3 is the elbow — matching the dendrogram's 3-cluster split.</div>
+    </div>
+
+    <pre class="r-code"><span class="c-com"># Run k-means with k=3</span>
+set.seed(<span class="c-key">123</span>)
+km &lt;- <span class="c-fn">kmeans</span>(scaled_data, centers = <span class="c-key">3</span>, nstart = <span class="c-key">25</span>)
+
+<span class="c-com"># Append cluster labels to original data</span>
+dataset$cluster &lt;- km$cluster
+<span class="c-fn">table</span>(dataset$cluster)
+<span class="c-com"># 1   2   3
+#  13  7   10</span></pre>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Why this matters</div>
+    <div class="p-section-title">Connecting the math to business decisions</div>
+    <div class="p-findings">
+      <div class="p-finding"><div class="p-finding-num">01</div><div class="p-finding-text"><strong>Defensible choice of k.</strong> Two independent methods (hierarchical dendrogram + k-means elbow) both pointing to k=3 is much stronger than either alone. In a business context, this is what you need to defend a segmentation decision to a marketing leader who'll ask <em>"why three segments?"</em></div></div>
+      <div class="p-finding"><div class="p-finding-num">02</div><div class="p-finding-text"><strong>Segments enable targeting.</strong> Once you have stable clusters, you can profile each one (mean age, mean income, etc.) and design segment-specific offers. A "young/low-income/high-loan" cluster needs a different financial product than a "older/high-income/no-loan" cluster.</div></div>
+      <div class="p-finding"><div class="p-finding-num">03</div><div class="p-finding-text"><strong>Reproducibility.</strong> The whole analysis is in a single <strong>Quarto (.qmd) document</strong> that renders to HTML/PDF. Anyone can clone it, re-run with their own customer data, and get an updated segmentation. This is what production analytics looks like — not screenshots of someone's Excel.</div></div>
+      <div class="p-finding"><div class="p-finding-num">04</div><div class="p-finding-text"><strong>Connection to operations.</strong> Clustering is conceptually identical to <strong>ABC analysis in inventory</strong> (my P/07 InventoryIQ project) and to <strong>Pareto categorisation</strong>. All three answer the same fundamental question: <em>"What are the natural groups in this data, and how do I treat each one differently?"</em></div></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Files</div>
+    <div class="p-section-title">Source &amp; data — all downloadable</div>
+    <div class="ba-files">
+      <a href="analytics/segmentation/Customer_Segmentation.qmd" class="ba-file" download>
+        <div class="ba-file-type">.qmd</div>
+        <div class="ba-file-name">Customer_Segmentation.qmd</div>
+        <div class="ba-file-desc">Full Quarto source — narrative + R code chunks. Re-renderable in RStudio.</div>
+      </a>
+      <a href="analytics/segmentation/Customer_Segmentation_rendered.html" class="ba-file" target="_blank">
+        <div class="ba-file-type">.html</div>
+        <div class="ba-file-name">Rendered Quarto Report</div>
+        <div class="ba-file-desc">Full report with every chart and code chunk — open in any browser.</div>
+      </a>
+      <a href="analytics/segmentation/cluster.R" class="ba-file" download>
+        <div class="ba-file-type">.R</div>
+        <div class="ba-file-name">cluster.R</div>
+        <div class="ba-file-desc">Standalone R script (no Quarto needed) — just the clustering code.</div>
+      </a>
+      <a href="analytics/segmentation/DemoKTC.xlsx" class="ba-file" download>
+        <div class="ba-file-type">.xlsx</div>
+        <div class="ba-file-name">DemoKTC.xlsx</div>
+        <div class="ba-file-desc">Original 30-customer dataset — Age, Income, Loan, Mortgage, demographics.</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section" style="margin-top:32px;">
+    <div class="p-callout">
+      <div class="p-callout-title">A note on this work</div>
+      <div class="p-callout-body">This was a <strong>graded MBA submission</strong> for the <em>Introduction to Business Analytics</em> course at Amrita School of Business (Trimester I, Aug 2025). The dataset (DemoKTC) was provided by the instructor; the analysis, interpretation, and Quarto report are my own work. Some scaffolding code (the rattle-generated density plots) came from the R commander / Rattle GUI tool used in the course — this is standard practice in MBA analytics coursework and the surrounding analysis is mine. The full Quarto source and rendered report are downloadable above. The project is also <a href="https://mba-bala-shunmugam-m-25043.blogspot.com/2025/08/market-segmentation-afirst-childbefore.html" target="_blank" style="color:var(--oxblood);">published on my MBA blog</a> for direct verification.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="p-footer">
+  <span class="p-footer-name">Bala Shunmugam M · B.E. EEE + MBA Operations &amp; Business Analytics</span>
+  <div class="p-footer-links"><a href="projects.html">← All Projects</a><a href="index.html">Portfolio</a></div>
+</footer>
+  <script src="js/cosmic.js"></script>
+</body>
+</html>

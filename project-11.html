@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Market Basket Analysis (Apriori) — Bala Shunmugam M</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/project.css"/>
+  <link rel="stylesheet" href="css/cosmic-project.css"/>
+  <style>:root{--accent:#d97706;--accent-light:#fffbeb;--accent-mid:#fcd34d;--accent-dark:#92400e;}
+  .ba-fig{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:18px;margin:16px 0;}
+  .ba-fig img{width:100%;border-radius:4px;display:block;}
+  .ba-fig-cap{font-size:13px;color:var(--ink-3);margin-top:10px;font-style:italic;}
+  .ba-files{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0;}
+  .ba-file{display:flex;flex-direction:column;padding:14px;background:var(--paper-deep);border:1px solid var(--rule);border-radius:6px;text-decoration:none;color:var(--ink);transition:all .2s;}
+  .ba-file:hover{background:var(--card);border-color:var(--rule-strong);transform:translateY(-1px);}
+  .ba-file-type{font-family:var(--f-mono);font-size:10px;color:var(--oxblood);letter-spacing:0.08em;text-transform:uppercase;}
+  .ba-file-name{font-weight:500;margin-top:4px;}
+  .ba-file-desc{font-size:13px;color:var(--ink-2);margin-top:6px;line-height:1.4;}
+  .ba-blog{display:inline-flex;align-items:center;gap:8px;background:var(--oxblood);color:var(--paper);padding:10px 18px;border-radius:6px;text-decoration:none;font-weight:500;margin:8px 8px 8px 0;font-size:14px;}
+  .ba-blog:hover{background:var(--oxblood-deep);}
+  .ba-blog-secondary{background:transparent;color:var(--oxblood);border:1px solid var(--oxblood);}
+  .ba-blog-secondary:hover{background:var(--oxblood-soft);}
+  pre.r-code{background:#1a1a1a;color:#e5e5e5;padding:18px;border-radius:6px;overflow-x:auto;font-family:var(--f-mono);font-size:13px;line-height:1.55;}
+  pre.r-code .c-com{color:#888;}
+  pre.r-code .c-key{color:#c79f4f;}
+  pre.r-code .c-str{color:#7fa650;}
+  pre.r-code .c-fn{color:#71a3e3;}
+  .metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0;}
+  .metric-box{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:16px;}
+  .metric-box-label{font-family:var(--f-mono);font-size:10px;letter-spacing:0.08em;color:var(--ink-3);text-transform:uppercase;}
+  .metric-box-val{font-family:var(--f-display);font-size:32px;color:var(--accent-dark);margin-top:6px;font-weight:500;}
+  .metric-box-desc{font-size:13px;color:var(--ink-2);margin-top:6px;}
+  </style>
+</head>
+<body>
+  <canvas id="cosmic-stars" aria-hidden="true"></canvas>
+<nav class="p-nav">
+  <a href="projects.html" class="p-nav-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>All Projects</a>
+  <div class="p-nav-right"><span class="p-nav-name">Bala Shunmugam M</span><span class="p-nav-num">11 / 12</span></div>
+</nav>
+
+<section class="p-hero">
+  <div class="p-eyebrow"><div class="p-eyebrow-dot"></div><span class="p-eyebrow-text">MBA Business Analytics · R · Association Rules · Trimester I</span></div>
+  <h1 class="p-title">Market Basket Analysis<br><em>using Apriori on Real Grocery Transactions</em></h1>
+  <p class="p-desc">An association-rules study of the <strong>Groceries dataset from Kaggle</strong> — 38,765 transactions across 3,898 grocery shoppers, mined with the <strong>Apriori algorithm</strong> (R's <code>arules</code> package) to discover product-pair associations. Submitted as part of <strong>Introduction to Business Analytics</strong> (MBA Trimester I, Amrita School of Business, Aug 2025). Published on personal blog and rendered as a complete Quarto HTML + PDF report.</p>
+  <div class="p-tags">
+    <span class="p-tag p-tag-accent">MBA Year 1 · IBA</span>
+    <span class="p-tag">R · arules</span>
+    <span class="p-tag">Apriori Algorithm</span>
+    <span class="p-tag">Support · Confidence · Lift</span>
+    <span class="p-tag">Kaggle Groceries Dataset</span>
+  </div>
+  <div style="margin-top:24px;">
+    <a href="https://mba-bala-shunmugam-m-25043.blogspot.com/2025/08/market-basket-analysis.html" class="ba-blog" target="_blank" rel="noopener">📰 Read on Blog ↗</a>
+    <a href="analytics/basket/Market_Basket_Analysis.pdf" class="ba-blog ba-blog-secondary" download>📄 Download PDF Report</a>
+    <a href="analytics/basket/Market_Basket_Analysis.qmd" class="ba-blog ba-blog-secondary" download>📥 Download .qmd source</a>
+  </div>
+  <div class="p-impact" style="margin-top:32px;">
+    <div class="p-impact-item"><div class="p-impact-val">38,765</div><div class="p-impact-label">Transaction observations analysed</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">3,898</div><div class="p-impact-label">Unique grocery shoppers</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">34.21%</div><div class="p-impact-label">Confidence: brandy → whole milk</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">supp=0.0005</div><div class="p-impact-label">Apriori support threshold</div></div>
+  </div>
+</section>
+
+<div class="p-content">
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Context</div>
+    <div class="p-section-title">The "diapers and beer" question, properly answered</div>
+    <div class="p-card-grid">
+      <div class="p-card" style="--card-color:#d97706">
+        <div class="p-card-label">The Data</div>
+        <div class="p-card-text"><strong>Groceries_dataset.csv</strong> from <strong>Kaggle</strong> — 38,765 observations of grocery purchases by 3,898 members over time. Three columns: <code>Member_number</code>, <code>Date</code>, <code>itemDescription</code>. Each row is one item bought; transactions are reconstructed by grouping items purchased by the same member on the same date.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--blue)">
+        <div class="p-card-label">The Question</div>
+        <div class="p-card-text">When a customer buys product A, <strong>what other products are they likely to buy in the same trip</strong>? This is the classic "diapers and beer" retail question — find product associations strong enough to inform store layout, bundle pricing, or recommendation engines.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--green)">
+        <div class="p-card-label">My Approach</div>
+        <div class="p-card-text">Used R's <strong><code>arules</code> package</strong> with the <strong>Apriori algorithm</strong>. Reshaped the long-format CSV into a transaction list (each transaction = items bought together). Ran Apriori with thresholds (support 0.0005, confidence 0.2, minlen 2) tuned to surface niche-but-meaningful associations rather than only the obvious ones.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--brass)">
+        <div class="p-card-label">What I Took Away</div>
+        <div class="p-card-text"><strong>Choosing thresholds is the analyst's judgement call.</strong> Higher support gives you common-sense pairs (bread + butter); much lower support reveals niche patterns that are operationally interesting but easy to over-claim. Reporting both support <em>and</em> confidence is mandatory — high confidence on low support means "rare but reliable when it happens."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Key concepts</div>
+    <div class="p-section-title">Support, Confidence, and why both matter</div>
+    <div class="metric-row">
+      <div class="metric-box">
+        <div class="metric-box-label">Support</div>
+        <div class="metric-box-val">P(A ∩ B)</div>
+        <div class="metric-box-desc">Fraction of transactions containing both items. Tells you <em>how common</em> the pattern is overall.</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-box-label">Confidence</div>
+        <div class="metric-box-val">P(B | A)</div>
+        <div class="metric-box-desc">Given that A was bought, the probability B was also bought. Tells you <em>how reliable</em> the rule is.</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-box-label">Lift</div>
+        <div class="metric-box-val">P(B|A) / P(B)</div>
+        <div class="metric-box-desc">How much more likely B is given A vs. the baseline. Lift &gt; 1 = positive association.</div>
+      </div>
+    </div>
+    <div class="p-callout">
+      <div class="p-callout-title">Why support alone isn't enough</div>
+      <div class="p-callout-body">A rule like <em>"whole milk → bread"</em> might have high support (lots of people buy both) but low confidence (because milk buyers don't necessarily also buy bread — many buy just milk). High support + low confidence = pattern is common but the rule is weak. Conversely, low support + high confidence = the pattern is rare, but when it happens, it's nearly certain. The latter is often more useful for targeted retail action.</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Step 1 — Reshape</div>
+    <div class="p-section-title">From long-format CSV to a transaction list</div>
+    <p class="p-prose">The raw CSV has one row per item purchased — but Apriori needs <strong>transactions</strong> (sets of items bought together). The grouping key is (Member_number + Date): all items a member bought on a given date form one transaction.</p>
+
+    <pre class="r-code"><span class="c-key">library</span>(tidyverse)
+<span class="c-key">library</span>(dplyr)
+<span class="c-key">library</span>(arules)
+
+<span class="c-com"># Load raw transactions</span>
+Groceries_dataset &lt;- <span class="c-fn">read.csv</span>(<span class="c-str">"Groceries_dataset.csv"</span>)
+
+<span class="c-fn">head</span>(Groceries_dataset)
+<span class="c-com">#   Member_number       Date     itemDescription
+# 1          1808 21-07-2015      tropical fruit
+# 2          2552 05-01-2015          whole milk
+# 3          2300 19-09-2015           pip fruit
+# ...</span>
+
+<span class="c-fn">length</span>(<span class="c-fn">unique</span>(Groceries_dataset$Member_number))
+<span class="c-com"># [1] 3898  (unique customers)</span>
+
+<span class="c-com"># Reshape: group items by (Member, Date) into baskets</span>
+transaction_data &lt;- Groceries_dataset %&gt;%
+  <span class="c-fn">group_by</span>(Member_number, Date) %&gt;%
+  <span class="c-fn">summarise</span>(items = <span class="c-fn">list</span>(itemDescription), .groups = <span class="c-str">"drop"</span>)
+
+<span class="c-com"># Cast to arules transactions object</span>
+transaction_list &lt;- <span class="c-fn">as</span>(transaction_data$items, <span class="c-str">"transactions"</span>)</pre>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Step 2 — Apriori</div>
+    <div class="p-section-title">Running the algorithm with carefully chosen thresholds</div>
+    <p class="p-prose">The <strong>Apriori algorithm</strong> works in two phases: first finds all <em>frequent itemsets</em> (item combinations meeting the support threshold), then generates <em>association rules</em> from them that meet the confidence threshold. The clever bit is the "apriori property" — if an itemset is infrequent, all its supersets are too, so the search space prunes drastically.</p>
+
+    <pre class="r-code"><span class="c-com"># Run Apriori with tuned thresholds:</span>
+<span class="c-com">#   supp = 0.0005  →  rule must appear in at least ~10 baskets</span>
+<span class="c-com">#   conf = 0.20    →  rule must hold &gt;= 20% of the time when antecedent occurs</span>
+<span class="c-com">#   minlen = 2     →  rules must have at least 2 items (1 antecedent + 1 consequent)</span>
+
+rules &lt;- <span class="c-fn">apriori</span>(
+  transaction_list,
+  parameter = <span class="c-fn">list</span>(supp = <span class="c-key">0.0005</span>, conf = <span class="c-key">0.2</span>, minlen = <span class="c-key">2</span>)
+)
+
+<span class="c-com"># Inspect the first two rules</span>
+<span class="c-fn">inspect</span>(<span class="c-fn">head</span>(rules, <span class="c-key">2</span>))</pre>
+
+    <p class="p-prose">Two of the rules surfaced by the algorithm:</p>
+
+    <div class="metric-row" style="grid-template-columns:repeat(2,1fr);">
+      <div class="metric-box" style="border-left:3px solid var(--accent-dark);">
+        <div class="metric-box-label">Rule 1</div>
+        <div class="metric-box-val" style="font-size:18px;line-height:1.4;">{artificial sweetener} → {whole milk}</div>
+        <div class="metric-box-desc"><strong>Support:</strong> 0.00053 · <strong>Confidence:</strong> <strong>27.58%</strong></div>
+        <div class="metric-box-desc" style="margin-top:8px;">If a customer buys artificial sweetener, there's a 27.58% chance they also buy whole milk in the same trip.</div>
+      </div>
+      <div class="metric-box" style="border-left:3px solid var(--accent-dark);">
+        <div class="metric-box-label">Rule 2</div>
+        <div class="metric-box-val" style="font-size:18px;line-height:1.4;">{brandy} → {whole milk}</div>
+        <div class="metric-box-desc"><strong>Support:</strong> 0.00086 · <strong>Confidence:</strong> <strong>34.21%</strong></div>
+        <div class="metric-box-desc" style="margin-top:8px;">If a customer buys brandy, there's a 34.21% chance they also buy whole milk in the same trip.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Interpretation</div>
+    <div class="p-section-title">What the rules mean — and what they don't</div>
+    <div class="p-findings">
+      <div class="p-finding"><div class="p-finding-num">01</div><div class="p-finding-text"><strong>Niche, not dominant.</strong> Both rules have very low support (under 0.001), meaning these baskets are <em>rare</em> across the 14,963 reconstructed transactions. The 27-34% confidence is high, but only conditional on the antecedent occurring. <em>Niche patterns, not dominant trends</em> — exactly the language the conclusion uses.</div></div>
+      <div class="p-finding"><div class="p-finding-num">02</div><div class="p-finding-text"><strong>Whole milk dominates the consequent side.</strong> Whole milk is the most-purchased item in this dataset, so it appears as the consequent of many rules. This is partly the algorithm telling you the truth about the data: <em>almost any niche product, when bought, is bought alongside whole milk</em>.</div></div>
+      <div class="p-finding"><div class="p-finding-num">03</div><div class="p-finding-text"><strong>Practical use.</strong> A retailer could use these rules for <strong>targeted bundling</strong> (artificial-sweetener buyers get a milk coupon) or <strong>shelf placement</strong> (place niche items near whole milk to capture the cross-purchase). The honest framing is that this is a <em>tactical</em> insight for a small share of trips — not a strategic shift.</div></div>
+      <div class="p-finding"><div class="p-finding-num">04</div><div class="p-finding-text"><strong>Lift is the missing metric to report.</strong> A natural next step would be to filter rules by lift &gt; 1.5 to surface the strongest associations regardless of consequent frequency. The current Quarto report stops at support + confidence; lift filtering is the obvious extension.</div></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Why this matters</div>
+    <div class="p-section-title">Connecting Apriori to operations &amp; analytics</div>
+    <div class="p-findings">
+      <div class="p-finding"><div class="p-finding-num">→</div><div class="p-finding-text"><strong>InventoryIQ connection.</strong> The same association-rule technique used here drives <strong>cross-sell recommendations</strong> in retail systems — a natural extension to my <a href="project-07.html" style="color:var(--oxblood);">P/07 InventoryIQ tool</a>. Apriori on a retailer's transaction history would suggest which SKUs to bundle.</div></div>
+      <div class="p-finding"><div class="p-finding-num">→</div><div class="p-finding-text"><strong>Plant operations transfer.</strong> Replace "customer baskets" with "alarm groups" — Apriori finds <strong>which plant alarms co-occur</strong> in the same window. Same algorithm, very different domain. Used in real industrial control systems for root-cause clustering.</div></div>
+      <div class="p-finding"><div class="p-finding-num">→</div><div class="p-finding-text"><strong>Honest scale.</strong> 38,765 observations sounds large, but <strong>14,963 transactions / 3,898 customers = ~3.8 baskets/customer on average</strong>. That's modest data. Real retail mining runs against tens of millions of transactions — and the same R code would scale, with appropriate machine resources.</div></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Files</div>
+    <div class="p-section-title">Source &amp; data — all downloadable</div>
+    <div class="ba-files">
+      <a href="analytics/basket/Market_Basket_Analysis.qmd" class="ba-file" download>
+        <div class="ba-file-type">.qmd</div>
+        <div class="ba-file-name">Market_Basket_Analysis.qmd</div>
+        <div class="ba-file-desc">Full Quarto source — narrative + R code chunks.</div>
+      </a>
+      <a href="analytics/basket/Market_Basket_Analysis_rendered.html" class="ba-file" target="_blank">
+        <div class="ba-file-type">.html</div>
+        <div class="ba-file-name">Rendered Quarto Report</div>
+        <div class="ba-file-desc">Full report with output — open in any browser.</div>
+      </a>
+      <a href="analytics/basket/Market_Basket_Analysis.pdf" class="ba-file" download>
+        <div class="ba-file-type">.pdf</div>
+        <div class="ba-file-name">Market_Basket_Analysis.pdf</div>
+        <div class="ba-file-desc">PDF version — for offline reading and submission.</div>
+      </a>
+      <a href="analytics/basket/Groceries_dataset.csv" class="ba-file" download>
+        <div class="ba-file-type">.csv</div>
+        <div class="ba-file-name">Groceries_dataset.csv</div>
+        <div class="ba-file-desc">Original Kaggle dataset — 38,765 grocery transaction records.</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section" style="margin-top:32px;">
+    <div class="p-callout">
+      <div class="p-callout-title">A note on this work</div>
+      <div class="p-callout-body">This was a <strong>graded MBA submission</strong> for the <em>Introduction to Business Analytics</em> course at Amrita School of Business (Trimester I, Aug 2025). The Groceries dataset is publicly available from Kaggle; the data reshape, Apriori parameter tuning, rule interpretation and conclusion are my own work. Full Quarto source and rendered report are downloadable above. The project is also <a href="https://mba-bala-shunmugam-m-25043.blogspot.com/2025/08/market-basket-analysis.html" target="_blank" style="color:var(--oxblood);">published on my MBA blog</a> for direct verification.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="p-footer">
+  <span class="p-footer-name">Bala Shunmugam M · B.E. EEE + MBA Operations &amp; Business Analytics</span>
+  <div class="p-footer-links"><a href="projects.html">← All Projects</a><a href="index.html">Portfolio</a></div>
+</footer>
+  <script src="js/cosmic.js"></script>
+</body>
+</html>

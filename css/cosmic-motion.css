@@ -1,0 +1,89 @@
+/* ════════════════════════════════════════════════════════════
+   PORTFOLIO COSMIC — targeted motion layer
+   Loads after cosmic-theme.css. Focuses motion on Hero, Projects
+   and Tools; keeps Analytics / Insights / Dashboard subtle.
+   Works with the existing .reveal / .in observer (js/script.js).
+   ════════════════════════════════════════════════════════════ */
+
+:root {
+  --transition-fast:   220ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-medium: 320ms cubic-bezier(0.4, 0, 0.2, 1);
+  --accent-glow: 0 0 28px rgba(34, 211, 238, 0.30);
+}
+
+/* ── Premium easing for the targeted reveal targets ──────────── */
+body.js-reveal #projects .reveal,
+body.js-reveal #tools .reveal,
+body.js-reveal #analytics .reveal,
+body.js-reveal #insights .reveal {
+  transition: opacity var(--transition-medium), transform var(--transition-medium) !important;
+}
+
+/* ── Projects + Tools: stronger fade-up + slight scale ───────── */
+body.js-reveal #projects .reveal:not(.in),
+body.js-reveal #tools .reveal:not(.in) {
+  opacity: 0;
+  transform: translateY(40px) scale(0.985);
+}
+body.js-reveal #projects .reveal.in,
+body.js-reveal #tools .reveal.in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* ── Analytics + Insights: subtle fade-up only ───────────────── */
+body.js-reveal #analytics .reveal:not(.in),
+body.js-reveal #insights .reveal:not(.in) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+body.js-reveal #analytics .reveal.in,
+body.js-reveal #insights .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Stagger: Tools (2 cards) + Analytics grid (4 cards) ─────── */
+body.js-reveal .tools-showcase > .reveal.in:nth-child(1) { transition-delay: 0ms; }
+body.js-reveal .tools-showcase > .reveal.in:nth-child(2) { transition-delay: 90ms; }
+body.js-reveal #analytics .proj-grid > .reveal.in:nth-child(1) { transition-delay: 0ms; }
+body.js-reveal #analytics .proj-grid > .reveal.in:nth-child(2) { transition-delay: 80ms; }
+body.js-reveal #analytics .proj-grid > .reveal.in:nth-child(3) { transition-delay: 160ms; }
+body.js-reveal #analytics .proj-grid > .reveal.in:nth-child(4) { transition-delay: 240ms; }
+body.js-reveal .insights-grid > .reveal.in:nth-child(1) { transition-delay: 0ms; }
+body.js-reveal .insights-grid > .reveal.in:nth-child(2) { transition-delay: 80ms; }
+body.js-reveal .insights-grid > .reveal.in:nth-child(3) { transition-delay: 160ms; }
+
+/* ── Hover: lift + soft cyan glow (Projects + Tools only) ─────── */
+.proj, .tool-card {
+  transition: transform var(--transition-medium), border-color var(--transition-medium), box-shadow var(--transition-medium) !important;
+}
+.proj:hover, .tool-card:hover {
+  transform: translateY(-10px) scale(1.015) !important;
+  border-color: #22d3ee !important;
+  box-shadow: var(--accent-glow), 0 24px 60px rgba(0, 0, 0, 0.5) !important;
+}
+.proj-visual, .tool-card-features { transition: transform var(--transition-fast); }
+.proj:hover .proj-visual,
+.tool-card:hover .tool-card-features { transform: scale(1.02); }
+
+/* ── Hero: light, one-time entrance on load ──────────────────── */
+@keyframes heroRise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-title   { animation: heroRise 600ms cubic-bezier(0.25, 0.1, 0.25, 1) both; }
+  .hero-sub     { animation: heroRise 600ms cubic-bezier(0.25, 0.1, 0.25, 1) 120ms both; }
+  .hero-actions { animation: heroRise 600ms cubic-bezier(0.25, 0.1, 0.25, 1) 240ms both; }
+  .hero-stats   { animation: heroRise 600ms cubic-bezier(0.25, 0.1, 0.25, 1) 360ms both; }
+}
+
+/* ── Respect reduced motion ──────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .proj, .tool-card, .proj-visual, .tool-card-features,
+  body.js-reveal #projects .reveal, body.js-reveal #tools .reveal,
+  body.js-reveal #analytics .reveal, body.js-reveal #insights .reveal {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .hero-title, .hero-sub, .hero-actions, .hero-stats { animation: none !important; }
+}

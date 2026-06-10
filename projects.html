@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Projects — Bala Shunmugam M</title>
+  <meta name="description" content="The complete archive — 8 projects across power generation, manufacturing, and applied operations research." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/cosmic-theme.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <canvas id="cosmic-stars" aria-hidden="true"></canvas>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Bala Shunmugam<span class="dot">.</span></a>
+      <ul class="nav-links">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><a href="index.html#dashboard">Dashboard</a></li>
+        <li><a href="index.html#insights">Insights</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Get in touch</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">≡</button>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="hero" style="padding:64px 0 32px;">
+    <div class="container">
+      <div class="hero-meta">
+        <span class="eyebrow">— Project archive · 2024–2026</span>
+        <span class="eyebrow"><a href="index.html" style="color:var(--oxblood);">← Back to portfolio</a></span>
+      </div>
+      <h1 class="hero-title" style="font-size:clamp(40px,5.5vw,72px);margin-bottom:24px;">
+        Real problems.<br><em>Measured</em> solutions.
+      </h1>
+      <p class="hero-sub" style="max-width:680px;margin-bottom:40px;">
+        Nine projects across power generation, manufacturing, and applied operations research — grounded in field exposure at <strong>Valuthur Gas Turbine Power Station</strong> and <strong>Agni Steels' Sponge Iron Division</strong>. Each follows a Problem → Analysis → Solution → Impact framework, mixing measured studies with observational fieldwork.
+      </p>
+
+      <div class="hero-stats" style="margin-bottom:24px;">
+        <div class="hero-stat">
+          <div class="hero-stat-val">13</div>
+          <div class="hero-stat-label">Total projects</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">3</div>
+          <div class="hero-stat-label">Working tools</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">2</div>
+          <div class="hero-stat-label">Industrial sites</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">10<span class="unit">+</span></div>
+          <div class="hero-stat-label">OM frameworks</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS GRID -->
+  <section class="section section-alt" style="padding-top:64px;">
+    <div class="container">
+
+      <!-- Filter bar (visual only — all projects shown) -->
+      <div class="section-head" style="margin-bottom:32px;padding-bottom:18px;">
+        <div>
+          <div class="eyebrow eyebrow-accent">— The archive</div>
+          <h2 style="font-size:clamp(28px,3.5vw,42px);">All <em>nine</em> projects.</h2>
+        </div>
+        <div class="section-head-meta">
+          <strong>Sorted by impact</strong><br>
+          Featured · Field study · B.E. work
+        </div>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- P/13 — WattsWorth — FLAGSHIP -->
+        <a href="project-13.html" class="proj proj-featured">
+          <div>
+            <span class="proj-num">P / 13 · Flagship ★ · Live + open source</span>
+            <div class="proj-tags">
+              <span class="tag tag-oxblood">Industrial Energy Analytics</span>
+              <span class="tag tag-forest">ISO 50001 · IPMVP Option C</span>
+              <span class="tag">Python · 151 tests · CI</span>
+              <span class="tag">Validated on real data</span>
+            </div>
+            <h3 class="proj-title">WattsWorth — Industrial Energy Performance &amp; Decarbonization Engine</h3>
+            <p class="proj-desc">
+              A working energy-analytics engine that turns plant data into auditor-grade savings in <strong>₹ and CO₂</strong> — ISO 50001 baselining and IPMVP Option C measurement &amp; verification, with the statistical honesty most tools skip. Validated on a <strong>real steel-plant dataset</strong> — where it correctly refused to certify a baseline it couldn't stand behind. 151 automated tests, CI/CD, and deployed live.
+            </p>
+            <div class="proj-impact">
+              <div class="proj-impact-item"><div class="proj-impact-val accent">151</div><div class="proj-impact-label">Automated tests · CI</div></div>
+              <div class="proj-impact-item"><div class="proj-impact-val">Real data</div><div class="proj-impact-label">Validated · DAEWOO Steel</div></div>
+              <div class="proj-impact-item"><div class="proj-impact-val accent">Live</div><div class="proj-impact-label">Deployed &amp; open-source</div></div>
+            </div>
+            <span class="proj-cta">Read the case study + try the live demo <span class="arrow">→</span></span>
+          </div>
+          <div class="proj-visual">
+            <div>
+              <div class="proj-visual-label">— The result that matters</div>
+              <div class="proj-visual-headline">It said “no”</div>
+              <div class="proj-visual-detail">On real steel-plant data the engine reported the baseline as <em>not certifiable</em> — the honest answer most tools skip.</div>
+            </div>
+            <div class="proj-visual-bars">
+              <div class="proj-bar-row"><div class="proj-bar-label">Baseline</div><div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div><div class="proj-bar-val">ISO 50001</div></div>
+              <div class="proj-bar-row"><div class="proj-bar-label">M&amp;V</div><div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div><div class="proj-bar-val">IPMVP</div></div>
+              <div class="proj-bar-row"><div class="proj-bar-label">Tests</div><div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div><div class="proj-bar-val">151 · CI</div></div>
+            </div>
+          </div>
+        </a>
+
+        <!-- P/07 — InventoryIQ — FEATURED -->
+        <a href="project-07.html" class="proj proj-featured">
+          <div>
+            <span class="proj-num">P / 07 · Live demonstrator ★ · Featured</span>
+            <div class="proj-tags">
+              <span class="tag tag-oxblood">MBA · Applied Concept</span>
+              <span class="tag tag-forest">Supply chain</span>
+              <span class="tag">EOQ · ROP · ABC</span>
+              <span class="tag">Mobile-first</span>
+            </div>
+            <h3 class="proj-title">Inventory Control System for Small Retail — EOQ + ROP + Safety Stock + ABC</h3>
+            <p class="proj-desc">
+              A working browser-based decision engine integrating four classical inventory frameworks into a single mobile-first tool. Demonstrated with 12 realistic SKUs modelled on a typical Madurai grocery shop. I designed the concept, framework integration and UX; implementation was AI-accelerated.
+            </p>
+            <div class="proj-impact">
+              <div class="proj-impact-item">
+                <div class="proj-impact-val accent">4</div>
+                <div class="proj-impact-label">Frameworks integrated</div>
+              </div>
+              <div class="proj-impact-item">
+                <div class="proj-impact-val">12 SKUs</div>
+                <div class="proj-impact-label">Realistic basket (editable)</div>
+              </div>
+              <div class="proj-impact-item">
+                <div class="proj-impact-val accent">Live</div>
+                <div class="proj-impact-label">In-browser, no server</div>
+              </div>
+            </div>
+            <span class="proj-cta">Read the case study + try the live demonstrator <span class="arrow">→</span></span>
+          </div>
+          <div class="proj-visual">
+            <div>
+              <div class="proj-visual-label">— Realistic SKU basket</div>
+              <div class="proj-visual-headline">12 SKUs</div>
+              <div class="proj-visual-detail">Rice · Cooking Oil · Sugar · Toor Dal · Wheat Flour · Detergent · Biscuits · Tea · Salt · Coconut Oil · Pulses · Soaps</div>
+            </div>
+            <div class="proj-visual-bars">
+              <div class="proj-bar-row">
+                <div class="proj-bar-label">EOQ</div>
+                <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+                <div class="proj-bar-val">live</div>
+              </div>
+              <div class="proj-bar-row">
+                <div class="proj-bar-label">ROP</div>
+                <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+                <div class="proj-bar-val">live</div>
+              </div>
+              <div class="proj-bar-row">
+                <div class="proj-bar-label">ABC</div>
+                <div class="proj-bar-track"><div class="proj-bar-fill" style="width:100%"></div></div>
+                <div class="proj-bar-val">live</div>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <!-- P/02 — VGTPS Operations Study -->
+        <a href="project-02.html" class="proj proj-half">
+          <span class="proj-num">P / 02</span>
+          <div class="proj-tags">
+            <span class="tag tag-slate">MBA · Operations Study</span>
+            <span class="tag">VGTPS · TANGEDCO</span>
+            <span class="tag">187 MW Combined-Cycle</span>
+          </div>
+          <h3 class="proj-title">VGTPS Operations Study — 187 MW Combined-Cycle Gas Plant</h3>
+          <p class="proj-desc">
+            An operations management study of TANGEDCO's 187.2 MW combined-cycle gas plant in Ramanathapuram (Phase I GE Frame 6FA + Phase II Ansaldo). Built from December 2021 in-plant training documents. Applied TANGEDCO's own five operational lenses — O&amp;M, Crisis Management, Safety, Reliability, Efficiency — to real multi-year performance data.
+          </p>
+          <div class="proj-impact">
+            <div class="proj-impact-item">
+              <div class="proj-impact-val accent">187 MW</div>
+              <div class="proj-impact-label">Combined-cycle capacity</div>
+            </div>
+            <div class="proj-impact-item">
+              <div class="proj-impact-val">Bronze ★</div>
+              <div class="proj-impact-label">3rd best in India 2006-07</div>
+            </div>
+          </div>
+          <span class="proj-cta">Read the field study <span class="arrow">→</span></span>
+        </a>
+
+        <!-- P/08 — Adaptive Relay -->
+        <a href="project-08.html" class="proj proj-half">
+          <span class="proj-num">P / 08</span>
+          <div class="proj-tags">
+            <span class="tag tag-brass">B.E. Final Year · Protection Study</span>
+            <span class="tag">VGTPS Plant Data</span>
+            <span class="tag">87G Differential</span>
+          </div>
+          <h3 class="proj-title">Adaptive Protection Relay Coordination — GE Frame 6FA</h3>
+          <p class="proj-desc">
+            A protection coordination study proposing an adaptive 87G differential scheme for the gas turbine generator at VGTPS. Built around real plant data collected during in-plant training (51,921 A bus fault, 172 V stability voltage). Motivated by the May 2010 Valuthur stator earth fault that caused a 3-month outage.
+          </p>
+          <div class="proj-impact">
+            <div class="proj-impact-item">
+              <div class="proj-impact-val accent">4 groups</div>
+              <div class="proj-impact-label">Adaptive 87G scheme</div>
+            </div>
+            <div class="proj-impact-item">
+              <div class="proj-impact-val">10 / 5</div>
+              <div class="proj-impact-label">Scenarios / zones</div>
+            </div>
+          </div>
+          <span class="proj-cta">Read the coordination study <span class="arrow">→</span></span>
+        </a>
+
+        <!-- P/01 — VGTPS Performance & Electrical Study -->
+        <a href="project-01.html" class="proj proj-half">
+          <span class="proj-num">P / 01</span>
+          <div class="proj-tags">
+            <span class="tag">B.E. In-Plant Training</span>
+            <span class="tag">VGTPS · TANGEDCO</span>
+            <span class="tag">Combined Cycle</span>
+          </div>
+          <h3 class="proj-title">VGTPS Performance &amp; Electrical Study — Combined-Cycle Plant Documentation</h3>
+          <p class="proj-desc">
+            A structured documentation study from B.E. in-plant training at TANGEDCO's 187 MW VGTPS combined-cycle plant. Covered the Brayton + Rankine combined cycle, all six plant subsystems (air, gas, flue gas, steam, water, electrical), and the standard protection-relay layout that Project 08 later built on.
+          </p>
+          <div class="proj-impact">
+            <div class="proj-impact-item">
+              <div class="proj-impact-val accent">187.2 MW</div>
+              <div class="proj-impact-label">Combined-cycle plant studied</div>
+            </div>
+            <div class="proj-impact-item">
+              <div class="proj-impact-val">5</div>
+              <div class="proj-impact-label">Protection zones documented</div>
+            </div>
+          </div>
+          <span class="proj-cta">Read the documentation study <span class="arrow">→</span></span>
+        </a>
+
+        <!-- P/03 — Agni Steels Sponge Iron Study -->
+        <a href="project-03.html" class="proj proj-half">
+          <span class="proj-num">P / 03</span>
+          <div class="proj-tags">
+            <span class="tag tag-brass">MBA Internship · DRI</span>
+            <span class="tag">Pareto + Fishbone</span>
+            <span class="tag">Agni Steels · Perundurai</span>
+          </div>
+          <h3 class="proj-title">Sponge Iron Operations Study — Agni Steels 100 TPD DRI Plant</h3>
+          <p class="proj-desc">
+            Observational MBA internship study at Agni Steels' coal-based rotary-kiln sponge iron unit in Perundurai, Tamil Nadu. Mapped the DRI process flow, observed real operational issues from the shift team, and applied Pareto + Fishbone analysis. <strong>Kiln accretion identified as the dominant operational constraint.</strong>
+          </p>
+          <div class="proj-impact">
+            <div class="proj-impact-item">
+              <div class="proj-impact-val accent">100 TPD</div>
+              <div class="proj-impact-label">Plant capacity</div>
+            </div>
+            <div class="proj-impact-item">
+              <div class="proj-impact-val">88–93%</div>
+              <div class="proj-impact-label">Metallization observed</div>
+            </div>
+          </div>
+          <span class="proj-cta">Read the field study <span class="arrow">→</span></span>
+        </a>
+
+        <!-- P/05 — Motor Energy Audit Fieldwork -->
+        <a href="project-05.html" class="proj proj-third">
+          <span class="proj-num">P / 05</span>
+          <div class="proj-tags">
+            <span class="tag">B.E. EEE · In-Plant Training</span>
+            <span class="tag">VGTPS Phase I</span>
+          </div>
+          <h3 class="proj-title">Motor Energy Audit Fieldwork — VGTPS Phase I</h3>
+          <p class="proj-desc">Mentor-guided energy-audit fieldwork at TANGEDCO's VGTPS Phase I during B.E. in-plant training. Personally took clamp-meter and power-analyser readings across an 8-motor sample — found 3 under-loaded, 2 overloaded, 3 well-matched. Connects to P02's aux-consumption recovery case.</p>
+          <div class="proj-impact">
+            <div class="proj-impact-item">
+              <div class="proj-impact-val accent">8 motors</div>
+              <div class="proj-impact-label">Sample personally measured</div>
+            </div>
+          </div>
+          <span class="proj-cta">Open <span class="arrow">→</span></span>
+        </a>
+
+        <!-- P/06 — Lean Waste Framework -->
+        <a href="project-06.html" class="proj proj-third">
+          <span class="proj-num">P / 06</span>
+          <div class="proj-tags">
+            <span class="tag">MBA · Lean Framework</span>
+            <span class="tag">7 Wastes (TIMWOOD)</span>
+          </div>
+          <h3 class="proj-title">Lean 7-Wastes &amp; VSM — Framework Application</h3>
+          <p class="proj-desc">Conceptual MBA application of the Lean 7-wastes (TIMWOOD) framework and Value Stream Mapping, illustrated with a typical push-scheduled 5-station manufacturing flow. Walks through diagnosis, countermeasures (Kanban, inline quality, WIP caps) and why sequencing matters.</p>
+          <div class="proj-impact">
+            <div class="proj-impact-item">
+              <div class="proj-impact-val accent">7 wastes</div>
+              <div class="proj-impact-label">TIMWOOD framework applied</div>
+            </div>
+          </div>
+          <span class="proj-cta">Open <span class="arrow">→</span></span>
+        </a>
+
+        <!-- P/04 — EOQ Model -->
+        <a href="project-04.html" class="proj proj-third">
+          <span class="proj-num">P / 04</span>
+          <div class="proj-tags">
+            <span class="tag">MBA · Operations Framework</span>
+            <span class="tag">EOQ</span>
+          </div>
+          <h3 class="proj-title">EOQ Inventory Optimisation Model</h3>
+          <p class="proj-desc">Conceptual MBA application of the Economic Order Quantity framework with first-principles derivation, worked example, and live in-browser calculator. The framework foundation behind the full inventory control system in P/07.</p>
+          <div class="proj-impact">
+            <div class="proj-impact-item">
+              <div class="proj-impact-val accent">Q*</div>
+              <div class="proj-impact-label">Optimal order quantity</div>
+            </div>
+          </div>
+          <span class="proj-cta">Open <span class="arrow">→</span></span>
+        </a>
+
+      </div>
+
+      <!-- ═══ MBA BUSINESS ANALYTICS ═══ -->
+      <div style="margin-top:64px;padding-top:48px;border-top:2px solid var(--rule);">
+        <div style="margin-bottom:32px;">
+          <p style="font-family:var(--f-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--oxblood);margin-bottom:8px;">— MBA Year 1 · Amrita School of Business · 2025</p>
+          <h2 style="font-family:var(--f-display);font-size:clamp(28px,3.5vw,44px);font-weight:400;margin:0 0 12px;">Business Analytics Projects</h2>
+          <p style="color:var(--ink-2);max-width:600px;line-height:1.6;">Four analytics projects from MBA Trimester I — real R / Quarto work, graded coursework, published on my <a href="https://mba-bala-shunmugam-m-25043.blogspot.com/" target="_blank" style="color:var(--oxblood);">MBA blog</a>. Source code and data downloadable on each project page.</p>
+        </div>
+
+        <div class="proj-grid">
+          <!-- P/09 — Customer Segmentation -->
+          <a href="project-09.html" class="proj proj-third">
+            <span class="proj-num">P / 09</span>
+            <div class="proj-tags">
+              <span class="tag tag-slate">MBA · IBA</span>
+              <span class="tag">R · Quarto</span>
+              <span class="tag">k-means + Ward.D</span>
+            </div>
+            <h3 class="proj-title">Customer Segmentation — k-means &amp; Hierarchical Clustering</h3>
+            <p class="proj-desc">30-customer demographic dataset (KTC Company). Applied Ward.D hierarchical clustering and k-means with elbow method — both methods agreed on k=3 optimal segments. Built in R with Quarto for reproducible reporting.</p>
+            <div class="proj-impact">
+              <div class="proj-impact-item">
+                <div class="proj-impact-val accent">k=3</div>
+                <div class="proj-impact-label">Optimal segments</div>
+              </div>
+              <div class="proj-impact-item">
+                <div class="proj-impact-val">2 methods</div>
+                <div class="proj-impact-label">Hierarchical + k-means</div>
+              </div>
+            </div>
+            <span class="proj-cta">Read the analysis <span class="arrow">→</span></span>
+          </a>
+
+          <!-- P/10 — Text Mining -->
+          <a href="project-10.html" class="proj proj-third">
+            <span class="proj-num">P / 10</span>
+            <div class="proj-tags">
+              <span class="tag tag-slate">MBA · IBA</span>
+              <span class="tag">R · tm package</span>
+              <span class="tag">Text Mining</span>
+            </div>
+            <h3 class="proj-title">Customer Review Analysis — Text Mining in R</h3>
+            <p class="proj-desc">21 customer reviews processed through the full NLP pipeline — corpus construction, DTM, cosine-similarity matrix, hierarchical document clustering, and word-cloud. Dominant terms: pizza, good, food, great. Built with R's tm + slam packages.</p>
+            <div class="proj-impact">
+              <div class="proj-impact-item">
+                <div class="proj-impact-val accent">21</div>
+                <div class="proj-impact-label">Reviews mined</div>
+              </div>
+              <div class="proj-impact-item">
+                <div class="proj-impact-val">185 terms</div>
+                <div class="proj-impact-label">Post-cleaning vocabulary</div>
+              </div>
+            </div>
+            <span class="proj-cta">Read the analysis <span class="arrow">→</span></span>
+          </a>
+
+          <!-- P/11 — Market Basket -->
+          <a href="project-11.html" class="proj proj-third">
+            <span class="proj-num">P / 11</span>
+            <div class="proj-tags">
+              <span class="tag tag-slate">MBA · IBA</span>
+              <span class="tag">R · arules</span>
+              <span class="tag">Apriori</span>
+            </div>
+            <h3 class="proj-title">Market Basket Analysis — Apriori on 38k Grocery Transactions</h3>
+            <p class="proj-desc">Kaggle Groceries dataset (38,765 observations, 3,898 members). Reshaped long-format CSV into transaction list, ran Apriori (support=0.0005, confidence=0.2). Found: brandy → whole milk at 34.21% confidence.</p>
+            <div class="proj-impact">
+              <div class="proj-impact-item">
+                <div class="proj-impact-val accent">38,765</div>
+                <div class="proj-impact-label">Transactions</div>
+              </div>
+              <div class="proj-impact-item">
+                <div class="proj-impact-val">34.21%</div>
+                <div class="proj-impact-label">Top rule confidence</div>
+              </div>
+            </div>
+            <span class="proj-cta">Read the analysis <span class="arrow">→</span></span>
+          </a>
+
+          <!-- P/12 — Shopping Behavior Python -->
+          <a href="project-12.html" class="proj proj-third">
+            <span class="proj-num">P / 12</span>
+            <div class="proj-tags">
+              <span class="tag tag-slate">MBA · DARP</span>
+              <span class="tag">Python</span>
+              <span class="tag">8 Methods</span>
+            </div>
+            <h3 class="proj-title">Consumer Shopping Behavior — 8-Method Multivariate Analysis</h3>
+            <p class="proj-desc">3,900 retail transactions analysed with T-Test, ANOVA, Chi-Square, PCA, EFA, K-Means, Logistic Regression and LDA in Python. AUC 0.893. Key finding: gender–subscription association χ²=676.8. Jupyter notebook downloadable.</p>
+            <div class="proj-impact">
+              <div class="proj-impact-item">
+                <div class="proj-impact-val accent">AUC 0.893</div>
+                <div class="proj-impact-label">Logistic regression</div>
+              </div>
+              <div class="proj-impact-item">
+                <div class="proj-impact-val">8 methods</div>
+                <div class="proj-impact-label">Full ML pipeline</div>
+              </div>
+            </div>
+            <span class="proj-cta">Read the analysis <span class="arrow">→</span></span>
+          </a>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:48px;padding-top:32px;border-top:1px solid var(--rule);">
+        <p style="font-family:var(--f-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:20px;">— End of archive · 13 of 13 projects</p>
+        <a href="index.html#contact" class="btn btn-primary">Get in touch <span class="arrow">→</span></a>
+        <a href="index.html" class="btn btn-text">← Back to portfolio</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer-grid">
+        <div>
+          <div class="footer-brand">Bala Shunmugam M<span style="color:var(--oxblood)">.</span></div>
+          <p class="footer-tag">Electrical Engineer pursuing MBA Operations &amp; Business Analytics. Plant floor to P&amp;L. Chennai, India.</p>
+        </div>
+        <div>
+          <div class="footer-h">Sitemap</div>
+          <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="index.html#projects">Featured projects</a>
+            <a href="projects.html">All projects</a>
+            <a href="index.html#tools">Tools</a>
+            <a href="index.html#contact">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-h">Direct links</div>
+          <div class="footer-links">
+            <a href="inventoryiq-mobile.html">InventoryIQ (mobile)</a>
+            <a href="dashboard.html">InventoryIQ (desktop)</a>
+            <a href="six-sigma-workbench.html">Six Sigma Workbench</a>
+            <a href="Walkthrough_Script.html">Walkthrough script</a>
+            <a href="Bala_Shunmugam_resume.pdf">Résumé (PDF)</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Bala Shunmugam M · Built with HTML, CSS &amp; JavaScript</span>
+        <span>Designed &amp; deployed · v2.0</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/cosmic.js"></script>
+</body>
+</html>

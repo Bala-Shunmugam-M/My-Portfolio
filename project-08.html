@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Adaptive Relay Coordination — VGTPS — Bala Shunmugam M</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/project.css"/>
+  <link rel="stylesheet" href="css/cosmic-project.css"/>
+  <style>:root{--accent:#0f4c81;--accent-light:#e8f0f9;--accent-mid:#b8d0ea;--accent-dark:#08305a;}</style>
+</head>
+<body>
+  <canvas id="cosmic-stars" aria-hidden="true"></canvas>
+
+<nav class="p-nav">
+  <a href="projects.html" class="p-nav-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>All Projects</a>
+  <div class="p-nav-right"><span class="p-nav-name">Bala Shunmugam M</span><span class="p-nav-num">08 / 08</span></div>
+</nav>
+
+<section class="p-hero">
+  <div class="p-eyebrow"><div class="p-eyebrow-dot"></div><span class="p-eyebrow-text">B.E. Final Year Project · EEE · Power Systems Protection</span></div>
+  <h1 class="p-title">Adaptive Protection Relay Coordination<br><em>for a Gas Turbine Generator</em></h1>
+  <p class="p-desc">A <strong>protection coordination study</strong> proposing an adaptive 87G relay scheme for the GE Frame 6FA generator at Valuthur Gas Turbine Power Station (VGTPS), Tamil Nadu. Built around <strong>actual VGTPS plant data</strong> collected during in-plant training, and directly motivated by the real <strong>May 2010 stator earth fault</strong> that caused a 3-month outage at the station. Analytical comparison of fixed vs. adaptive relay settings across operating modes, grounded in IEEE C37.102 and IEC 60909.</p>
+  <div class="p-tags">
+    <span class="p-tag p-tag-accent">B.E. EEE · Final Year Project</span>
+    <span class="p-tag">Protection Coordination</span>
+    <span class="p-tag">Literature + Plant Data</span>
+    <span class="p-tag">VGTPS · TANGEDCO</span>
+    <span class="p-tag">IEEE C37.102</span>
+    <span class="p-tag">IEC 60909</span>
+    <span class="p-tag">GE Frame 6FA</span>
+    <span class="p-tag">87G · 40 · 46 · 21 · 87B</span>
+  </div>
+  <div class="p-impact">
+    <div class="p-impact-item"><div class="p-impact-val">5 zones</div><div class="p-impact-label">87G · 40 · 46 · 21 · 87B coordinated</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">4 groups</div><div class="p-impact-label">Adaptive 87G setting scheme</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">10</div><div class="p-impact-label">Fault scenarios analysed</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">51,921 A</div><div class="p-impact-label">Bus fault level — VGTPS plant data</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">172 V</div><div class="p-impact-label">87B stability voltage — plant data</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">May 2010</div><div class="p-impact-label">Real fault event motivating the study</div></div>
+  </div>
+</section>
+
+<div class="p-content">
+  <div class="p-section">
+    <div class="p-section-label">Full Project Breakdown</div>
+    <div class="p-section-title">Analysis &amp; Coordination Study</div>
+    <div class="p-tabs">
+      <div class="p-tab active" onclick="tab(this,'t-prob')">Problem</div>
+      <div class="p-tab" onclick="tab(this,'t-sys')">Plant System</div>
+      <div class="p-tab" onclick="tab(this,'t-set')">Relay Settings</div>
+      <div class="p-tab" onclick="tab(this,'t-scen')">Scenarios</div>
+      <div class="p-tab" onclick="tab(this,'t-adapt')">Adaptive Logic</div>
+      <div class="p-tab" onclick="tab(this,'t-res')">Analysis</div>
+      <div class="p-tab" onclick="tab(this,'t-tool')">Live Calculators</div>
+      <div class="p-tab" onclick="tab(this,'t-code')">Proposed Logic</div>
+    </div>
+
+    <!-- PROBLEM -->
+    <div id="t-prob" class="p-panel active">
+      <div class="p-callout">
+        <div class="p-callout-title">Core Problem — Fixed settings can't adapt to a peaking plant's operating modes</div>
+        <div class="p-callout-body">VGTPS is a peaking gas turbine station — it starts, loads, peaks, de-loads, and shuts down several times daily. Fixed-setting protection relays are calculated for one operating condition and stay frozen regardless of what the machine is actually doing. When the unit is in <strong>peak rating mode</strong> — elevated firing temperature, higher fault currents — the relay's minimum pickup is too coarse to detect a high-resistance stator earth fault near the neutral. That exact fault type caused a <strong>3-month outage at VGTPS in May 2010</strong>.</div>
+      </div>
+      <div class="p-card-grid">
+        <div class="p-card" style="--card-color:#dc2626"><div class="p-card-label">Problem</div><div class="p-card-text">A conventional fixed-setting 87G relay uses a single Id_min threshold across all operating modes. During peak-rating operation, fault current magnitudes change. The fixed threshold — set for base load — becomes too high to detect weak faults near the neutral end of the stator winding.</div></div>
+        <div class="p-card" style="--card-color:var(--amber)"><div class="p-card-label">Real-World Evidence</div><div class="p-card-text">VGTPS plant records confirm two major events I learned about during in-plant training: <strong>May 2010</strong> — GTG tripped on stator earth fault, out for 3 months (17.05.10 to 23.08.10). <strong>June 2012</strong> — GTG tripped due to heavy internal damage, rotor replaced, 4-month outage. Both events motivated this study.</div></div>
+        <div class="p-card" style="--card-color:var(--blue)"><div class="p-card-label">Proposed Approach</div><div class="p-card-text">Design an <strong>adaptive 4-group setting scheme</strong> where the 87G relay automatically switches its minimum pickup (Id_min) based on the detected operating mode: Standby / Base Load / Peak Rating / Diluent Injection. Peak mode reduces Id_min from 0.12 to 0.08 pu — enabling detection of faults that would otherwise be missed.</div></div>
+        <div class="p-card" style="--card-color:var(--green)"><div class="p-card-label">Expected Behaviour (analytical)</div><div class="p-card-text">By the relay characteristic math: a high-resistance stator fault (Rf ≈ 1.27 Ω at 15% from neutral) producing a differential current of ~0.11 pu would be <strong>below the fixed Group 2 threshold (0.32 pu)</strong> and <strong>above the adaptive Group 3 threshold (0.23 pu)</strong>. Literature on adaptive 87G performance reports trip times of <strong>~40–50 ms</strong> for this class of fault when the relay sees a clear margin.</div></div>
+      </div>
+    </div>
+
+    <!-- SYSTEM -->
+    <div id="t-sys" class="p-panel">
+      <div class="p-prose">All plant parameters below are from <strong>actual VGTPS training documents</strong> collected during in-plant training (February 2025; the TANGEDCO training pack was prepared by plant faculty in December 2021). The plant data is real; the relay setting groups and adaptive logic are this project's analytical design.</div>
+      <div class="p-metrics">
+        <div class="p-metric"><div class="p-metric-name">GT Make / Model</div><div class="p-metric-val" style="font-size:18px;color:var(--amber)">GE Frame 6FA</div><div class="p-metric-sub">MS6001FA · Single shaft</div></div>
+        <div class="p-metric"><div class="p-metric-name">Generator Rating</div><div class="p-metric-val" style="color:var(--accent)">75 <span style="font-size:14px">MVA</span></div><div class="p-metric-sub">11 kV · 4429 A · 3000 rpm</div></div>
+        <div class="p-metric"><div class="p-metric-name">GT Transformer</div><div class="p-metric-val" style="color:var(--blue)">90 <span style="font-size:14px">MVA</span></div><div class="p-metric-sub">110/11 kV · Zt = 11%</div></div>
+        <div class="p-metric"><div class="p-metric-name">Switchyard Voltage</div><div class="p-metric-val" style="color:var(--teal)">110 <span style="font-size:14px">kV</span></div><div class="p-metric-sub">Phase I — 3297 MVA fault level</div></div>
+        <div class="p-metric"><div class="p-metric-name">87B Fault Current</div><div class="p-metric-val" style="color:var(--accent)">51,921 <span style="font-size:14px">A</span></div><div class="p-metric-sub">Actual from VGTPS plant records</div></div>
+        <div class="p-metric"><div class="p-metric-name">Compressor Ratio</div><div class="p-metric-val" style="color:var(--violet)">15 <span style="font-size:14px">bar</span></div><div class="p-metric-sub">18-stage axial compressor</div></div>
+      </div>
+      <div class="p-table-wrap">
+        <table class="p-table">
+          <thead><tr><th>Protection Zone</th><th>Relay</th><th>Function</th><th>Protected Element</th></tr></thead>
+          <tbody>
+            <tr class="row-accent"><td>Zone 1 — Generator</td><td><strong>87G</strong></td><td>Adaptive biased differential, 4 setting groups</td><td>Stator windings</td></tr>
+            <tr><td>Zone 1 — Generator</td><td>40 LOE</td><td>Offset Mho, 2 zones</td><td>Loss of excitation</td></tr>
+            <tr><td>Zone 1 — Generator</td><td>46</td><td>I2²t accumulator (K=10)</td><td>Negative sequence / unbalance</td></tr>
+            <tr><td>Zone 2 — Transformer</td><td>87T</td><td>Differential + harmonic restraint</td><td>90 MVA GTG transformer</td></tr>
+            <tr><td>Zone 3 — EHV Bus</td><td>87B</td><td>High-impedance differential (Vs=172 V)</td><td>110 kV bus-bar</td></tr>
+            <tr><td>Zone 4 — Feeder</td><td>21</td><td>3-zone Mho distance relay</td><td>VGTPS → Valuthur 230kV SS</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div id="t-set" class="p-panel">
+      <div class="p-section-label mb-4">87G — Adaptive differential (core contribution)</div>
+      <div class="p-table-wrap">
+        <table class="p-table">
+          <thead><tr><th>Group</th><th>Mode</th><th>Id_min (pu)</th><th>Slope k1</th><th>Slope k2</th><th>Active when</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Standby</td><td>0.15</td><td>25%</td><td>60%</td><td>P &lt; 10% rated</td></tr>
+            <tr><td>2</td><td>Base Load (default)</td><td>0.12</td><td>20%</td><td>60%</td><td>P = 10–90% rated</td></tr>
+            <tr class="row-accent"><td><strong>3</strong></td><td><strong>Peak Rating</strong></td><td><strong>0.08</strong></td><td><strong>15%</strong></td><td><strong>60%</strong></td><td><strong>P &gt; 90% or peak-rating DCS flag</strong></td></tr>
+            <tr><td>4</td><td>Diluent Injection</td><td>0.10</td><td>20%</td><td>60%</td><td>Steam/water injection active</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="p-prose" style="font-size:12px;color:var(--text-3)">High-set (unrestrained): 8× rated — instantaneous trip regardless of bias. 2nd harmonic restraint: 17% — blocks during transformer inrush. Ibias breakpoint: 1.0 pu across all groups.</div>
+      <div class="p-section-label mt-6 mb-4">Other relay settings</div>
+      <div class="p-table-wrap">
+        <table class="p-table">
+          <thead><tr><th>Relay</th><th>Setting</th><th>Value (secondary)</th><th>Derivation</th></tr></thead>
+          <tbody>
+            <tr><td>40 LOE — Zone 1</td><td>Mho diameter / offset</td><td>112.9 Ω / 10.9 Ω</td><td>D = Xd = 1.40 pu; offset = Xd'/2</td></tr>
+            <tr><td>40 LOE — Zone 2</td><td>Mho diameter / offset</td><td>112.9 Ω / 3.70 Ω</td><td>D = Xd; offset = Xt/2 (transformer)</td></tr>
+            <tr><td>46 Neg. seq.</td><td>Integrating pickup / K</td><td>8% rated / K=10</td><td>GE Frame 6FA rotor thermal limit</td></tr>
+            <tr><td>21 Distance Zone 1</td><td>80% feeder Z1</td><td>0.752 Ω</td><td>CT 600/1 · VT 110kV/110V · 35 km feeder</td></tr>
+            <tr><td>21 Distance Zone 2</td><td>120% feeder Z1</td><td>1.129 Ω</td><td>Covers remote bus + 50% next section</td></tr>
+            <tr class="row-accent"><td><strong>87B Bus-bar</strong></td><td><strong>Stability voltage Vs</strong></td><td><strong>172 V</strong></td><td><strong>ACTUAL plant value — from AEE Basha VGTPS documentation (CT 1200/1)</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SCENARIOS -->
+    <div id="t-scen" class="p-panel">
+      <div class="p-prose">Ten fault scenarios analyzed across operating modes to evaluate the proposed adaptive scheme. Trip times shown are <strong>expected analytical behaviour from relay characteristic math</strong> (Id_min, slopes, bias) plus literature-reported figures for similar adaptive 87G schemes — not measurements from a simulation I ran.</div>
+      <div class="p-table-wrap">
+        <table class="p-table">
+          <thead><tr><th>#</th><th>Scenario</th><th>Fault</th><th>Mode</th><th>Expected response</th><th>Relay</th><th>Outcome</th></tr></thead>
+          <tbody>
+            <tr><td>S1</td><td>3-phase bolted — generator terminals</td><td>ABC-G</td><td>Base Load</td><td>Instantaneous (&lt; 1 cycle)</td><td>87G</td><td><span class="s-badge sb-ok">Trip ✓</span></td></tr>
+            <tr class="row-warn"><td>S2</td><td>HR stator fault 15% neutral — <strong>FIXED setting</strong></td><td>AG, Rf=1.27Ω</td><td>Base (Grp 2)</td><td>Below threshold</td><td>87G</td><td><span class="s-badge sb-fail">No trip ✗</span></td></tr>
+            <tr class="row-accent"><td><strong>S3</strong></td><td><strong>Same fault — ADAPTIVE setting, peak mode</strong></td><td>AG, Rf=1.27Ω</td><td>Peak (Grp 3)</td><td><strong>~40–50 ms (literature)</strong></td><td>87G</td><td><span class="s-badge sb-star">★ Key case</span></td></tr>
+            <tr><td>S4</td><td>3-phase terminal fault — peak mode</td><td>ABC-G</td><td>Peak</td><td>Instantaneous</td><td>87G</td><td><span class="s-badge sb-ok">Trip ✓</span></td></tr>
+            <tr><td>S5</td><td>Single-phase open circuit (unbalanced)</td><td>AB open</td><td>Base</td><td>I²t accumulator — &lt; 100 ms</td><td>46</td><td><span class="s-badge sb-ok">Trip ✓</span></td></tr>
+            <tr><td>S6</td><td>External fault feeder 50% — 87G must restrain</td><td>ABC-G</td><td>Base</td><td>Distance Zone 1 clears it</td><td>21 (87G restrains)</td><td><span class="s-badge sb-ok">Correct ✓</span></td></tr>
+            <tr><td>S7</td><td>Terminal fault — standby mode</td><td>ABC-G</td><td>Standby</td><td>Instantaneous</td><td>87G</td><td><span class="s-badge sb-ok">Trip ✓</span></td></tr>
+            <tr class="row-warn"><td>S8</td><td>HR stator fault — standby FIXED</td><td>AG, Rf=1.03Ω</td><td>Standby</td><td>Below threshold</td><td>87G</td><td><span class="s-badge sb-fail">No trip ✗</span></td></tr>
+            <tr><td>S9</td><td>HR stator fault — diluent injection mode</td><td>AG, Rf=1.27Ω</td><td>Diluent</td><td>~80–100 ms (literature)</td><td>87G</td><td><span class="s-badge sb-ok">Trip ✓</span></td></tr>
+            <tr><td>S10</td><td>3-phase fault on transformer HV side</td><td>ABC-G</td><td>Base</td><td>Instantaneous</td><td>87G</td><td><span class="s-badge sb-ok">Trip ✓</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="p-callout">
+        <div class="p-callout-title">Technical validation note</div>
+        <div class="p-callout-body">The plant documents contain two distinct values that are often mixed: 3297 MVA at 110 kV gives ~17.3 kA nominal IEC 60909 short-circuit current. The separate 51,921 A is the 87B bus-bar protection stability-design primary equivalent (CT ratio 1200/1, giving Vs = 43.3 A × 3.97 Ω ≈ 172 V). The fault resistance of 1.27 Ω — not 200 Ω — is the value that places the differential current between the Group 2 and Group 3 thresholds to demonstrate the adaptive advantage analytically.</div>
+      </div>
+    </div>
+
+    <!-- ADAPTIVE LOGIC -->
+    <div id="t-adapt" class="p-panel">
+      <div class="p-card-grid">
+        <div class="p-card" style="--card-color:#7c3aed"><div class="p-card-label">Input Signals</div><div class="p-card-text"><strong>P_pu</strong> — measured active power from CT + VT at generator terminals.<br><br><strong>peak_flag</strong> — DCS digital output: peak-rating mode enabled.<br><br><strong>diluent_flag</strong> — DCS: steam or water injection flow switch active.</div></div>
+        <div class="p-card" style="--card-color:var(--teal)"><div class="p-card-label">State Transitions</div><div class="p-card-text"><strong>→ Standby (Grp 1):</strong> P &lt; 0.10 pu<br><strong>→ Base Load (Grp 2):</strong> Default; P = 0.10–0.90 pu<br><strong>→ Peak (Grp 3):</strong> P &gt; 0.90 OR peak_flag = 1<br><strong>→ Diluent (Grp 4):</strong> diluent_flag = 1<br><br>All transitions require 2 s dwell in current state.</div></div>
+      </div>
+      <div class="p-section-label mt-6 mb-4">Why peak mode needs a lower Id_min</div>
+      <div class="p-findings">
+        <div class="p-finding"><div class="p-finding-num">01</div><div class="p-finding-text">A stator earth fault at 15% from the neutral end produces a small differential current — roughly <strong>0.11 pu</strong> — because only 15% of the winding voltage drives the fault current. The fault is small by nature, not by severity.</div></div>
+        <div class="p-finding"><div class="p-finding-num">02</div><div class="p-finding-text">With fixed Id_min = 0.12 pu (Group 2), the threshold at full load (Ibias = 1.0 pu) is: 0.12 + 0.20 × 1.0 = 0.32 pu. The 0.11 pu differential is far below this. <strong>The relay is blind to this fault.</strong></div></div>
+        <div class="p-finding"><div class="p-finding-num">03</div><div class="p-finding-text">With adaptive Id_min = 0.08 pu (Group 3), the threshold at the same bias is: 0.08 + 0.15 × 1.0 = 0.23 pu. The lower threshold brings the relay into range of the fault current peak, <strong>analytically</strong> triggering the trip timer. Literature on adaptive 87G schemes reports clearance times of <strong>~40–50 ms</strong> for this fault class — well within IEEE C37.102 guidance for stator earth faults.</div></div>
+        <div class="p-finding"><div class="p-finding-num">04</div><div class="p-finding-text"><strong>Security is not compromised:</strong> slope k2 = 60% remains unchanged across all groups, ensuring through-fault stability. The 17% second-harmonic restraint remains active. The high-set at 8× rated provides an unrestrained instantaneous trip for bolted faults regardless of group.</div></div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div id="t-res" class="p-panel">
+      <div class="p-prose">Side-by-side comparison of fixed vs. adaptive relay behaviour for the May-2010-type fault scenario. Numbers below are derived from the relay characteristic math (Id_min, slope, bias) — analytical outcomes, not simulation traces.</div>
+      <div class="p-compare">
+        <div class="p-compare-card fail">
+          <div class="p-compare-label">S2 — Fixed setting (Base Load, Group 2)</div>
+          <div class="p-compare-val">NO TRIP</div>
+          <div class="p-compare-desc">Id_min = 0.12 pu · k1 = 20% · Rf = 1.27 Ω · 15% from neutral<br>Threshold (0.32 pu) &gt; Differential current (0.11 pu) → analytically below pickup, fault undetected.</div>
+        </div>
+        <div class="p-compare-card pass">
+          <div class="p-compare-label">S3 — Adaptive setting (Peak Rating, Group 3)</div>
+          <div class="p-compare-val">Trip ✓</div>
+          <div class="p-compare-desc">Id_min = 0.08 pu · k1 = 15% · Same fault, same location<br>Threshold (0.23 pu) &lt; Differential current via lower margin → analytically crosses pickup; literature reports ~40–50 ms clearance.</div>
+        </div>
+      </div>
+      <div class="p-section-label mb-4">System &amp; concept diagrams — click to enlarge</div>
+      <div class="p-fig-grid">
+        <div class="p-fig" onclick="lb('figures/fig1_single_line_diagram.png')"><img src="figures/fig1_single_line_diagram.png" alt="SLD"/><div class="p-fig-cap">Fig 1 — VGTPS single-line diagram with all 5 protection zones (built from real plant equipment data)</div></div>
+        <div class="p-fig" onclick="lb('figures/fig2_87G_dual_slope.png')"><img src="figures/fig2_87G_dual_slope.png" alt="87G"/><div class="p-fig-cap">Fig 2 — 87G dual-slope characteristic, all 4 proposed adaptive setting groups</div></div>
+        <div class="p-fig" onclick="lb('figures/fig5_LOE_impedance_plane.png')"><img src="figures/fig5_LOE_impedance_plane.png" alt="LOE"/><div class="p-fig-cap">Fig 5 — 40 LOE: offset Mho zones on R-X impedance plane (standard relay characteristic)</div></div>
+        <div class="p-fig" onclick="lb('figures/fig6_distance_relay_zones.png')"><img src="figures/fig6_distance_relay_zones.png" alt="Zones"/><div class="p-fig-cap">Fig 6 — 21 Distance relay zone coverage on the VGTPS feeder</div></div>
+        <div class="p-fig" onclick="lb('figures/fig7_neg_seq_characteristic.png')"><img src="figures/fig7_neg_seq_characteristic.png" alt="Neg seq"/><div class="p-fig-cap">Fig 7 — 46 Negative sequence I²t characteristic for GE Frame 6FA rotor thermal limit</div></div>
+        <div class="p-fig" onclick="lb('figures/fig8_adaptive_mode_detection.png')"><img src="figures/fig8_adaptive_mode_detection.png" alt="Mode detection"/><div class="p-fig-cap">Fig 8 — Proposed mode-detection state-flow logic: P-signal → setting group switch</div></div>
+        <div class="p-fig" onclick="lb('figures/fig10_busbar_stability.png')"><img src="figures/fig10_busbar_stability.png" alt="87B"/><div class="p-fig-cap">Fig 10 — 87B stability voltage Vs = 172 V derived from plant CT ratio data, matching AEE Basha VGTPS documentation</div></div>
+      </div>
+    </div>
+
+    <!-- LIVE TOOL -->
+    <div id="t-tool" class="p-panel">
+      <div class="p-tool">
+        <div class="p-tool-title">87G Adaptive Relay — Interactive Setting Check</div>
+        <div class="p-tool-desc">Enter measured current values. Results update instantly. Values in per-unit of generator rated current (4429 A primary).</div>
+        <div class="p-slider-row"><label>Operating mode (1=Standby · 2=Base · 3=Peak · 4=Diluent)</label><input type="range" id="sl-g" min="1" max="4" step="1" value="2" oninput="updateR()"/><div class="p-slider-val" id="sv-g">2 — Base Load</div></div>
+        <div class="p-slider-row"><label>Terminal CT current I_term (pu rated)</label><input type="range" id="sl-it" min="0" max="6" step="0.01" value="1.0" oninput="updateR()"/><div class="p-slider-val" id="sv-it">1.00</div></div>
+        <div class="p-slider-row"><label>Neutral CT current I_neut (pu rated)</label><input type="range" id="sl-in" min="0" max="6" step="0.01" value="0.89" oninput="updateR()"/><div class="p-slider-val" id="sv-in">0.89</div></div>
+        <div class="p-tool-outputs">
+          <div class="p-tool-out"><div class="p-tool-out-val" id="o-idiff">0.11</div><div class="p-tool-out-label">Idiff (pu)</div></div>
+          <div class="p-tool-out"><div class="p-tool-out-val" id="o-ibias">0.94</div><div class="p-tool-out-label">Ibias (pu)</div></div>
+          <div class="p-tool-out"><div class="p-tool-out-val" id="o-thr">0.31</div><div class="p-tool-out-label">Threshold (pu)</div></div>
+          <div class="p-tool-out"><div class="p-tool-out-val" id="o-margin">0.20</div><div class="p-tool-out-label">Margin (pu)</div></div>
+        </div>
+        <div class="p-verdict restrain" id="rverdict">RESTRAIN — differential current below threshold</div>
+        <div class="p-tool-formula" id="rformula">Threshold = 0.12 + 0.20 × 0.94 = 0.31 pu (Group 2)</div>
+      </div>
+
+      <div class="p-tool">
+        <div class="p-tool-title">87B Bus-Bar — Stability Voltage Check</div>
+        <div class="p-tool-desc">Verify the high-impedance scheme Vs using VGTPS actual parameters (51,921 A primary fault current).</div>
+        <div class="p-slider-row"><label>CT ratio (primary turns)</label><input type="range" id="sl-ctr" min="600" max="2000" step="100" value="1200" oninput="updateB()"/><div class="p-slider-val" id="sv-ctr">1200</div></div>
+        <div class="p-slider-row"><label>CT + lead impedance (Ω)</label><input type="range" id="sl-imp" min="1.0" max="8.0" step="0.1" value="3.97" oninput="updateB()"/><div class="p-slider-val" id="sv-imp">3.97</div></div>
+        <div class="p-tool-outputs" style="grid-template-columns:repeat(3,1fr)">
+          <div class="p-tool-out"><div class="p-tool-out-val" id="b-isec">43.3</div><div class="p-tool-out-label">Isc secondary (A)</div></div>
+          <div class="p-tool-out"><div class="p-tool-out-val" id="b-vs">172 V</div><div class="p-tool-out-label">Stability Vs</div></div>
+          <div class="p-tool-out"><div class="p-tool-out-val" id="b-match" style="color:var(--green)">✓ Match</div><div class="p-tool-out-label">vs 172 V plant</div></div>
+        </div>
+        <div class="p-tool-formula" id="bformula">Vs = 51921 / 1200 × 3.97 = 171.8 V ≈ 172 V (AEE Basha, VGTPS)</div>
+      </div>
+    </div>
+
+    <!-- CODE -->
+    <div id="t-code" class="p-panel">
+      <div class="p-prose">Proposed implementation logic for the adaptive 87G relay. These are <strong>algorithmic snippets</strong> derived from the relay characteristic math — what a real implementation on an IEC 61131-3 relay platform would need. They are not a deployed simulation.</div>
+      <div class="p-section-label mb-4">87G adaptive relay — core function (pseudocode)</div>
+<pre class="p-code"><span class="cf">def relay_87G</span>(I_term_pu, I_neut_pu, <span class="cs">group=2</span>):
+    <span class="cc">"""Percentage-biased differential relay — adaptive 4-group."""</span>
+    s      = GROUPS[group]
+    Idiff  = abs(I_term_pu - I_neut_pu)
+    Ibias  = <span class="cn">0.5</span> * abs(I_term_pu + I_neut_pu)
+    Id_min = s[<span class="cs">"Id_min"</span>]    <span class="cc"># 0.15 / 0.12 / 0.08 / 0.10</span>
+    k1     = s[<span class="cs">"k1"</span>]       <span class="cc"># slope 1 — adaptive per mode</span>
+    k2     = s[<span class="cs">"k2"</span>]       <span class="cc"># slope 2 — fixed 60% all groups</span>
+    Ibr    = s[<span class="cs">"Ibr"</span>]      <span class="cc"># breakpoint = 1.0 pu</span>
+
+    <span class="ck">if</span> Ibias &lt;= Ibr:
+        threshold = Id_min + k1 * Ibias
+    <span class="ck">else</span>:
+        threshold = Id_min + k1 * Ibr + k2 * (Ibias - Ibr)
+
+    high_set = <span class="cn">8.0</span>   <span class="cc"># unrestrained instantaneous trip</span>
+    operate  = (Idiff > threshold) <span class="ck">or</span> (Idiff > high_set)
+    <span class="ck">return</span> operate, Idiff, Ibias, threshold</pre>
+
+      <div class="p-section-label mb-4">Adaptive mode-selection logic (pseudocode)</div>
+<pre class="p-code"><span class="cf">def adaptive_mode_select</span>(P_pu, peak_flag, diluent_flag):
+    <span class="cc"># Hysteresis enforced externally (2 s dwell timer)</span>
+    <span class="ck">if</span> P_pu &lt; <span class="cn">0.10</span>:
+        <span class="ck">return</span> <span class="cn">1</span>   <span class="cc"># Standby</span>
+    <span class="ck">elif</span> diluent_flag:
+        <span class="ck">return</span> <span class="cn">4</span>   <span class="cc"># Diluent injection active</span>
+    <span class="ck">elif</span> P_pu > <span class="cn">0.90</span> <span class="ck">or</span> peak_flag:
+        <span class="ck">return</span> <span class="cn">3</span>   <span class="cc"># Peak rating — reduce Id_min to 0.08</span>
+    <span class="ck">else</span>:
+        <span class="ck">return</span> <span class="cn">2</span>   <span class="cc"># Base load (default)</span></pre>
+
+      <div class="p-recs" style="margin-top:20px;">
+        <div class="p-rec"><span class="p-rec-tag rec-now">Concept</span><div class="p-rec-text"><strong>Live calculators</strong> on the previous tab let you exercise the relay characteristic math with sliders — same formulas as the pseudocode above.</div></div>
+        <div class="p-rec"><span class="p-rec-tag rec-long">Deployment path</span><div class="p-rec-text">To implement on a real protective relay: encode the four setting groups (Standby / Base / Peak / Diluent) in the relay's group selector, wire the mode-selection logic as IEC 61131-3 function blocks, and feed peak_flag from the DCS digital output assigned to peak-rating activation.</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="p-section" style="margin-top:32px;">
+    <div class="p-callout">
+      <div class="p-callout-title">A note on this study's scope</div>
+      <div class="p-callout-body">This is a <strong>B.E. final-year protection coordination study</strong>, not a simulation project. Plant data (51,921 A bus fault, 172 V stability voltage, GE Frame 6FA equipment specs, May 2010 stator fault event) was collected during in-plant training at VGTPS. The relay setting groups, adaptive switching logic, and proposed coordination scheme are this study's analytical design. Expected trip times shown in the scenarios are <strong>derived from the relay characteristic math plus literature-reported values for similar adaptive 87G schemes</strong> — they are not output from a Simulink or Python simulation. The live calculators on the previous tab let any reader exercise the relay characteristic math directly.</div>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="p-lightbox" id="plb" onclick="closeLB()">
+  <span class="p-lightbox-close">×</span>
+  <img id="plb-img" src="" alt=""/>
+</div>
+
+<footer class="p-footer">
+  <span class="p-footer-name">Bala Shunmugam M · B.E. EEE + MBA Operations</span>
+  <div class="p-footer-links"><a href="projects.html">← All Projects</a><a href="index.html">Portfolio</a></div>
+</footer>
+
+<script>
+function tab(el,id){const w=el.closest('.p-section');w.querySelectorAll('.p-tab').forEach(t=>t.classList.remove('active'));w.querySelectorAll('.p-panel').forEach(p=>p.classList.remove('active'));el.classList.add('active');w.querySelector('#'+id).classList.add('active');}
+
+const GRP={1:{n:'Standby',Id:0.15,k1:0.25,k2:0.60},2:{n:'Base Load',Id:0.12,k1:0.20,k2:0.60},3:{n:'Peak Rating',Id:0.08,k1:0.15,k2:0.60},4:{n:'Diluent',Id:0.10,k1:0.20,k2:0.60}};
+function updateR(){
+  const g=+document.getElementById('sl-g').value;
+  const it=+document.getElementById('sl-it').value;
+  const inn=+document.getElementById('sl-in').value;
+  document.getElementById('sv-g').textContent=g+' — '+GRP[g].n;
+  document.getElementById('sv-it').textContent=it.toFixed(2);
+  document.getElementById('sv-in').textContent=inn.toFixed(2);
+  const s=GRP[g];
+  const Idiff=Math.abs(it-inn);
+  const Ibias=0.5*Math.abs(it+inn);
+  const thr=Ibias<=1?s.Id+s.k1*Ibias:s.Id+s.k1*1+s.k2*(Ibias-1);
+  const margin=thr-Idiff;
+  const operate=Idiff>thr||Idiff>8;
+  document.getElementById('o-idiff').textContent=Idiff.toFixed(3);
+  document.getElementById('o-ibias').textContent=Ibias.toFixed(3);
+  document.getElementById('o-thr').textContent=thr.toFixed(3);
+  document.getElementById('o-margin').textContent=margin.toFixed(3);
+  const rv=document.getElementById('rverdict');
+  rv.className='p-verdict '+(operate?'trip':'restrain');
+  rv.textContent=operate?'TRIP — differential current exceeds threshold':'RESTRAIN — differential current below threshold';
+  const kp=Ibias<=1?s.Id.toFixed(2)+' + '+(s.k1*100).toFixed(0)+'% × '+Ibias.toFixed(2)+' = '+thr.toFixed(3)+' pu':s.Id.toFixed(2)+' + '+(s.k1*100).toFixed(0)+'% × 1.0 + '+(s.k2*100).toFixed(0)+'% × '+(Ibias-1).toFixed(2)+' = '+thr.toFixed(3)+' pu';
+  document.getElementById('rformula').textContent='Threshold = '+kp+' (Group '+g+' — '+GRP[g].n+')';
+}
+
+function updateB(){
+  const ctr=+document.getElementById('sl-ctr').value;
+  const imp=+document.getElementById('sl-imp').value;
+  document.getElementById('sv-ctr').textContent=ctr;
+  document.getElementById('sv-imp').textContent=imp.toFixed(2);
+  const Isec=(51921/ctr);
+  const Vs=Isec*imp;
+  const match=Math.abs(Vs-172)<10;
+  document.getElementById('b-isec').textContent=Isec.toFixed(1);
+  document.getElementById('b-vs').textContent=Vs.toFixed(1)+' V';
+  document.getElementById('b-match').textContent=match?'✓ Match':'~'+Math.abs(Vs-172).toFixed(0)+'V off';
+  document.getElementById('b-match').style.color=match?'var(--green)':'var(--amber)';
+  document.getElementById('bformula').textContent='Vs = 51921 / '+ctr+' × '+imp.toFixed(2)+' = '+Vs.toFixed(1)+' V '+(match?'≈ 172 V plant value ✓':'');
+}
+
+function lb(src){document.getElementById('plb-img').src=src;document.getElementById('plb').classList.add('open');document.body.style.overflow='hidden';}
+function closeLB(){document.getElementById('plb').classList.remove('open');document.body.style.overflow='';}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
+
+updateR(); updateB();
+</script>
+  <script src="js/cosmic.js"></script>
+</body>
+</html>

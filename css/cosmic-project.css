@@ -1,0 +1,115 @@
+/* ════════════════════════════════════════════════════════════
+   PORTFOLIO COSMIC — project-page re-skin
+   Loads AFTER css/project.css. Overrides design tokens only,
+   so every project detail page matches the cosmic homepage.
+   ════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Deep space surfaces */
+  --paper:        #05070e;
+  --paper-deep:   #090d1a;
+  --paper-mute:   #0c1226;
+  --card:         #0d1426;
+  --card-deep:    #131d36;
+
+  /* Light ink */
+  --ink:          #eef2fb;
+  --ink-2:        #c3cce0;
+  --ink-3:        #8d99b6;
+  --ink-4:        #5e6a86;
+
+  /* Hairlines */
+  --rule:         rgba(120, 160, 240, 0.14);
+  --rule-strong:  rgba(120, 160, 240, 0.28);
+
+  /* Electric cyan / purple / teal accents */
+  --oxblood:      #22d3ee;
+  --oxblood-deep: #00f5ff;
+  --oxblood-soft: rgba(34, 211, 238, 0.12);
+  --brass:        #a855f7;
+  --brass-soft:   rgba(168, 85, 247, 0.12);
+  --forest:       #14b8a6;
+  --forest-soft:  rgba(20, 184, 166, 0.12);
+  --slate:        #38bdf8;
+  --slate-soft:   rgba(56, 189, 248, 0.12);
+
+  --accent:       var(--oxblood);
+  --accent-light: var(--oxblood-soft);
+  --accent-dark:  var(--oxblood-deep);
+  --blue:         var(--slate);
+  --green:        var(--forest);
+  --amber:        var(--brass);
+  --red:          var(--oxblood);
+
+  --shadow-sm:  0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md:  0 6px 20px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-lg:  0 18px 50px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Cosmic background + starfield layering */
+html {
+  background:
+    radial-gradient(1100px 700px at 80% -8%, rgba(0, 245, 255, 0.16), transparent 60%),
+    radial-gradient(1000px 800px at 8% 10%, rgba(168, 85, 247, 0.14), transparent 55%),
+    radial-gradient(1200px 900px at 55% 115%, rgba(20, 184, 166, 0.12), transparent 60%),
+    #05050f;
+  background-attachment: fixed;
+}
+body { background: transparent; color: var(--ink); }
+
+/* Replace warm paper-grain (multiply → invisible on dark) */
+body::before {
+  opacity: 0.5;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='7'/><feColorMatrix values='0 0 0 0 0.30 0 0 0 0 0.45 0 0 0 0 0.75 0 0 0 0.025 0'/></filter><rect width='220' height='220' filter='url(%23n)'/></svg>");
+}
+
+#cosmic-stars { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+/* keep content above stars */
+header, main, section, footer, nav, article, .container, .wrap { position: relative; z-index: 1; }
+
+/* Glassy sticky page header / back-bar (generic + project .p-nav) */
+header, .topbar, .page-nav, .back-bar, .p-nav {
+  background: rgba(7, 11, 22, 0.7) !important;
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid var(--rule) !important;
+}
+.p-nav-back { background: var(--card); color: var(--ink-2); }
+.p-nav-back:hover { border-color: var(--oxblood); color: var(--ink); }
+.p-nav-name { color: var(--ink); }
+
+/* Accent glow on display italics / emphasised headings */
+h1 em, h2 em, h3 em { color: var(--oxblood); font-style: italic; text-shadow: 0 0 26px rgba(34, 211, 238, 0.35); }
+
+/* Highlighted / underlined title spans that used warm soft accents */
+mark { background: var(--oxblood-soft); color: var(--oxblood); padding: 0 4px; border-radius: 3px; }
+
+/* Pills / tags glow up a touch on dark */
+.tag, .pill, .chip { border-color: var(--rule) !important; }
+
+/* ── Fix pale inline callouts / result pills (beat inline styles) ──── */
+.result-tag, .tag-reject, .tag-fail, .tag-pass {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--rule) !important;
+  color: var(--ink) !important;
+}
+/* Pale inline background boxes → dark translucent */
+[style*="#fef2f2"], [style*="#f0fdf4"], [style*="#eff6ff"], [style*="#faf5ff"],
+[style*="#fde8e8"], [style*="#fffbeb"], [style*="#f0f9ff"], [style*="#f5f3ff"] {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: var(--rule) !important;
+}
+/* Brighten dark saturated inline text so it reads on dark */
+[style*="color:#1d4ed8"], [style*="color:#1e40af"] { color: #7da8ff !important; }
+[style*="color:#dc2626"], [style*="color:#b91c1c"] { color: #ff9a9a !important; }
+[style*="color:#16a34a"], [style*="color:#15803d"] { color: #5fe0b0 !important; }
+[style*="color:#7c3aed"], [style*="color:#6d28d9"] { color: #c9a3ff !important; }
+
+/* Links + accents */
+a { color: inherit; }
+::selection { background: rgba(34, 211, 238, 0.35); color: #fff; }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #05050f; }
+::-webkit-scrollbar-thumb { background: rgba(34, 211, 238, 0.25); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(34, 211, 238, 0.45); }

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Consumer Shopping Behavior Analysis — Bala Shunmugam M</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/project.css"/>
+  <link rel="stylesheet" href="css/cosmic-project.css"/>
+  <style>
+    :root{--accent:#16a34a;--accent-light:#f0fdf4;--accent-mid:#86efac;--accent-dark:#15803d;}
+    .ba-fig{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:18px;margin:16px 0;}
+    .ba-fig img{width:100%;border-radius:4px;display:block;}
+    .ba-fig-cap{font-size:13px;color:var(--ink-3);margin-top:10px;font-style:italic;}
+    .ba-files{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0;}
+    .ba-file{display:flex;flex-direction:column;padding:14px;background:var(--paper-deep);border:1px solid var(--rule);border-radius:6px;text-decoration:none;color:var(--ink);transition:all .2s;}
+    .ba-file:hover{background:var(--card);border-color:var(--rule-strong);transform:translateY(-1px);}
+    .ba-file-type{font-family:var(--f-mono);font-size:10px;color:var(--oxblood);letter-spacing:0.08em;text-transform:uppercase;}
+    .ba-file-name{font-weight:500;margin-top:4px;}
+    .ba-file-desc{font-size:13px;color:var(--ink-2);margin-top:6px;line-height:1.4;}
+    .ba-blog{display:inline-flex;align-items:center;gap:8px;background:var(--oxblood);color:var(--paper);padding:10px 18px;border-radius:6px;text-decoration:none;font-weight:500;margin:8px 8px 8px 0;font-size:14px;}
+    .ba-blog:hover{background:var(--oxblood-deep);}
+    .ba-blog-secondary{background:transparent;color:var(--oxblood);border:1px solid var(--oxblood);}
+    .ba-blog-secondary:hover{background:var(--oxblood-soft);}
+    pre.r-code{background:#1a1a1a;color:#e5e5e5;padding:18px;border-radius:6px;overflow-x:auto;font-family:var(--f-mono);font-size:13px;line-height:1.55;}
+    pre.r-code .c-com{color:#888;}
+    pre.r-code .c-key{color:#c79f4f;}
+    pre.r-code .c-str{color:#7fa650;}
+    pre.r-code .c-fn{color:#71a3e3;}
+    .method-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin:16px 0;}
+    .method-card{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:16px;}
+    .method-label{font-family:var(--f-mono);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-3);}
+    .method-title{font-weight:600;margin:6px 0 4px;color:var(--ink);}
+    .method-result{font-size:13px;color:var(--ink-2);line-height:1.5;}
+    .method-stat{font-family:var(--f-mono);font-size:13px;color:var(--accent-dark);font-weight:600;margin-top:6px;}
+    .result-tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;font-family:var(--f-mono);margin-top:8px;}
+    .tag-reject{background:#fef2f2;color:#dc2626;border:1px solid #fecaca;}
+    .tag-fail{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;}
+  </style>
+</head>
+<body>
+  <canvas id="cosmic-stars" aria-hidden="true"></canvas>
+<nav class="p-nav">
+  <a href="projects.html" class="p-nav-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>All Projects</a>
+  <div class="p-nav-right"><span class="p-nav-name">Bala Shunmugam M</span><span class="p-nav-num">12 / 12</span></div>
+</nav>
+
+<section class="p-hero">
+  <div class="p-eyebrow"><div class="p-eyebrow-dot"></div><span class="p-eyebrow-text">MBA Business Analytics · Python · DARP Coursework · 2025</span></div>
+  <h1 class="p-title">Consumer Shopping Behavior<br><em>A Multivariate Statistical Investigation</em></h1>
+  <p class="p-desc">A comprehensive statistical study of <strong>3,900 retail transactions across 16 variables</strong>, applying <strong>8 analytical methods</strong> in Python to extract insights about consumer purchasing patterns, subscription behavior, and customer segmentation. Methods: T-Test, ANOVA, Chi-Square, PCA, EFA, K-Means Clustering, Logistic Regression, and Linear Discriminant Analysis. Submitted as part of the <strong>Data Analytics using R &amp; Python</strong> course (MBA, Amrita School of Business, 2025).</p>
+  <div class="p-tags">
+    <span class="p-tag p-tag-accent">MBA · DARP · Python</span>
+    <span class="p-tag">pandas · scipy · sklearn</span>
+    <span class="p-tag">T-Test · ANOVA · Chi-Square</span>
+    <span class="p-tag">PCA · EFA · K-Means</span>
+    <span class="p-tag">Logistic Regression · LDA</span>
+  </div>
+  <div style="margin-top:24px;">
+    <a href="analytics/shopping/Shopping_Behavior_Analysis.pdf" class="ba-blog" download>📄 Download Full Report (PDF)</a>
+    <a href="analytics/shopping/Shopping_Behavior_Analysis.ipynb" class="ba-blog ba-blog-secondary" download>📥 Download Jupyter Notebook</a>
+  </div>
+  <div class="p-impact" style="margin-top:32px;">
+    <div class="p-impact-item"><div class="p-impact-val">3,900</div><div class="p-impact-label">Retail transaction records</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">16 vars</div><div class="p-impact-label">Demographics + purchase + behavioral</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">8</div><div class="p-impact-label">Statistical methods applied</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">AUC 0.893</div><div class="p-impact-label">Logistic regression model performance</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">χ²=676.8</div><div class="p-impact-label">Gender–subscription association</div></div>
+  </div>
+</section>
+
+<div class="p-content">
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Context</div>
+    <div class="p-section-title">The data, the questions, the methods</div>
+    <div class="p-card-grid">
+      <div class="p-card" style="--card-color:#16a34a">
+        <div class="p-card-label">The Dataset</div>
+        <div class="p-card-text"><code>shopping_behavior_updated.csv</code> — a publicly available Kaggle retail dataset of 3,900 customer records. Variables span: <strong>demographics</strong> (Age, Gender), <strong>transaction</strong> (Purchase Amount, Category, Item, Season, Location), <strong>behavioral</strong> (Subscription Status, Discount Applied, Frequency of Purchases, Previous Purchases, Review Rating, Payment Method). Zero missing values.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--blue)">
+        <div class="p-card-label">The Research Questions</div>
+        <div class="p-card-text">Six testable questions: Do men and women spend differently? Does season affect spending? Is gender linked to subscription? What latent factors drive behavior? How do customers cluster? Can we predict who will subscribe? Each answered with a different statistical method and a formal hypothesis test.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--amber)">
+        <div class="p-card-label">Why Python</div>
+        <div class="p-card-text">The R analytics projects (P09-P11) used Quarto for reproducible reporting. This project uses <strong>Python's scientific stack</strong> — pandas, scipy, sklearn, seaborn, matplotlib — which is the industry-standard environment for ML-adjacent analytics. Both matter for a business analytics role. The Jupyter notebook is fully reproducible.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--oxblood)">
+        <div class="p-card-label">What I Took Away</div>
+        <div class="p-card-text">The most striking result: <strong>zero female customers subscribed</strong> in the dataset — only males subscribed (39.7% subscription rate). This drove a Chi-Square statistic of 676.8 (p &lt; 0.001) — the largest test statistic in the study by far. The logistic regression then confirmed discount usage as the biggest predictor of subscription (coefficient 3.37).</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">All 8 Methods — Results Summary</div>
+    <div class="p-section-title">What each test found</div>
+
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-label">Section 5.1 · Inferential</div>
+        <div class="method-title">Independent T-Test</div>
+        <div class="method-result">Does mean purchase amount differ between male and female shoppers?</div>
+        <div class="method-stat">t = −0.877, p = 0.381<br>Male: $59.54 · Female: $60.25</div>
+        <div class="result-tag tag-fail">FAIL TO REJECT H₀</div>
+        <div class="method-result" style="margin-top:8px;">Gender does not drive spending differences. Gender-neutral pricing is appropriate for this retailer.</div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-label">Section 5.2 · Inferential</div>
+        <div class="method-title">One-Way ANOVA</div>
+        <div class="method-result">Does mean purchase amount vary significantly across Spring, Summer, Fall, Winter?</div>
+        <div class="method-stat">F = 3.746, p = 0.011<br>Fall: $61.56 · Spring: $58.74</div>
+        <div class="result-tag tag-reject">REJECT H₀</div>
+        <div class="method-result" style="margin-top:8px;">Seasonal variation is statistically significant. Fall &amp; Winter spend more than Spring &amp; Summer — justifies seasonal pricing models.</div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-label">Section 5.3 · Association</div>
+        <div class="method-title">Chi-Square Test</div>
+        <div class="method-result">Is there a significant association between Gender and Subscription Status?</div>
+        <div class="method-stat">χ² = 676.79, df = 1, p &lt; 0.0001<br>Female subscription rate: 0% · Male: 39.7%</div>
+        <div class="result-tag tag-reject">REJECT H₀ (strongly)</div>
+        <div class="method-result" style="margin-top:8px;">The most striking finding. Zero female subscribers. Subscription acquisition efforts should be gender-targeted based on this data.</div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-label">Section 5.3B · Dimensionality</div>
+        <div class="method-title">PCA</div>
+        <div class="method-result">Can four numeric shopping variables be reduced to fewer dimensions?</div>
+        <div class="method-stat">2 components retained<br>Eigenvalues: 1.049, 1.029 (&gt; 1.0)</div>
+        <div class="result-tag tag-fail" style="background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe;">2 PCs RETAINED</div>
+        <div class="method-result" style="margin-top:8px;">Near-equal eigenvalues (all close to 1.0) indicate the four variables are weakly correlated — no dominant single factor drives shopping behavior.</div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-label">Section 5.4 · Factor Analysis</div>
+        <div class="method-title">Exploratory Factor Analysis (EFA)</div>
+        <div class="method-result">What latent constructs underlie the numeric shopping variables?</div>
+        <div class="method-stat">2 factors, Varimax rotation<br>Factor 1: Age + Prev. Purchases · Factor 2: Amount + Rating</div>
+        <div class="result-tag tag-fail" style="background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe;">2 FACTORS</div>
+        <div class="method-result" style="margin-top:8px;"><strong>Factor 1 (Customer Engagement)</strong>: purchase frequency and history. <strong>Factor 2 (Transaction Quality)</strong>: purchase amount and satisfaction. Shopping behavior is multidimensional.</div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-label">Section 5.5 · Segmentation</div>
+        <div class="method-title">K-Means Clustering</div>
+        <div class="method-result">How do 3,900 customers naturally segment by behavior?</div>
+        <div class="method-stat">k=3 (elbow method)<br>Cluster 0: 1,438 (36.9%) · Cluster 1: 1,200 (30.8%) · Cluster 2: 1,262 (32.4%)</div>
+        <div class="result-tag tag-fail" style="background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe;">3 CLUSTERS</div>
+        <div class="method-result" style="margin-top:8px;"><strong>Cluster 0</strong>: Young (age 28), avg spend, low purchase history — new shoppers. <strong>Cluster 1</strong>: Older (age 53), high spend $81.38 — high-value veterans. <strong>Cluster 2</strong>: Older (age 53), low spend $38.59 — budget-conscious.</div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-label">Section 5.6 · Prediction</div>
+        <div class="method-title">Logistic Regression</div>
+        <div class="method-result">Can we predict which customers will subscribe?</div>
+        <div class="method-stat">AUC-ROC = 0.893<br>Accuracy = 85% · Top predictor: Discount_binary (coef 3.37)</div>
+        <div class="result-tag tag-reject" style="background:#faf5ff;color:#7c3aed;border-color:#ddd6fe;">EXCELLENT DISCRIMINATOR</div>
+        <div class="method-result" style="margin-top:8px;">Discount usage is by far the strongest predictor (coef 3.37) — customers who use discounts are far more likely to subscribe. Gender binary is second (coef 0.75). Age and rating are near-zero.</div>
+      </div>
+
+      <div class="method-card">
+        <div class="method-label">Section 5.7 · Classification</div>
+        <div class="method-title">Linear Discriminant Analysis (LDA)</div>
+        <div class="method-result">Can we classify which product category a customer will purchase?</div>
+        <div class="method-stat">4 product classes<br>LD1 vs LD2 scatter shows partial class separation</div>
+        <div class="result-tag tag-fail" style="background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe;">PARTIAL SEPARATION</div>
+        <div class="method-result" style="margin-top:8px;">LDA successfully separates product categories in discriminant space. Clothing and Accessories are the most distinct; Footwear and Outerwear overlap more. Useful for product recommendation targeting.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Python Setup</div>
+    <div class="p-section-title">The full scientific stack</div>
+    <p class="p-prose">Unlike the R projects (P09–P11) which use Quarto, this analysis is built in a <strong>Jupyter notebook</strong> using Python's complete data-science stack:</p>
+
+    <pre class="r-code"><span class="c-com"># ── Core Libraries ──────────────────────────────────</span>
+<span class="c-key">import</span> pandas <span class="c-key">as</span> pd
+<span class="c-key">import</span> numpy <span class="c-key">as</span> np
+<span class="c-key">import</span> scipy.stats <span class="c-key">as</span> stats
+
+<span class="c-com"># Statistical / ML</span>
+<span class="c-key">from</span> sklearn.preprocessing <span class="c-key">import</span> StandardScaler, LabelEncoder
+<span class="c-key">from</span> sklearn.decomposition <span class="c-key">import</span> PCA, FactorAnalysis
+<span class="c-key">from</span> sklearn.cluster <span class="c-key">import</span> KMeans
+<span class="c-key">from</span> sklearn.linear_model <span class="c-key">import</span> LogisticRegression
+<span class="c-key">from</span> sklearn.discriminant_analysis <span class="c-key">import</span> LinearDiscriminantAnalysis
+<span class="c-key">from</span> sklearn.metrics <span class="c-key">import</span> (
+    confusion_matrix, classification_report,
+    roc_curve, roc_auc_score
+)
+
+<span class="c-com"># Visualisation</span>
+<span class="c-key">import</span> matplotlib.pyplot <span class="c-key">as</span> plt
+<span class="c-key">import</span> seaborn <span class="c-key">as</span> sns</pre>
+
+    <div class="p-callout">
+      <div class="p-callout-title">Dataset profile at a glance</div>
+      <div class="p-callout-body">3,900 records · 15 analytical variables (Customer ID dropped) · Zero missing values. Numeric variables: Age (mean 44, SD 15), Purchase Amount in USD (mean $59.76, SD $23.69), Review Rating (mean 3.75/5.0), Previous Purchases (mean 25.4). Categorical: Gender (2652 Male / 1248 Female), Category (Clothing dominant at 1737), Season (roughly equal ~975 each), Subscription Status (2847 No / 1053 Yes).</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Highlight — Logistic Regression</div>
+    <div class="p-section-title">AUC 0.893 — predicting subscription from behavioral features</div>
+    <p class="p-prose">The logistic regression is the most practically valuable output of this analysis — it turns the dataset into a <strong>customer scoring tool</strong>. Given six features about any customer, the model can predict their subscription probability with 89.3% discriminative ability.</p>
+
+    <pre class="r-code"><span class="c-com"># Features used to predict subscription (0/1)</span>
+feature_cols = [<span class="c-str">'Age'</span>, <span class="c-str">'Purchase Amount (USD)'</span>, <span class="c-str">'Review Rating'</span>,
+                <span class="c-str">'Previous Purchases'</span>, <span class="c-str">'Discount_binary'</span>, <span class="c-str">'Gender_binary'</span>]
+
+<span class="c-com"># Train-test split (75/25, stratified)</span>
+X_train, X_test, y_train, y_test = <span class="c-fn">train_test_split</span>(
+    X_lr, y_lr, test_size=<span class="c-key">0.25</span>, random_state=<span class="c-key">42</span>, stratify=y_lr
+)
+
+<span class="c-com"># Results</span>
+<span class="c-com"># AUC-ROC Score: 0.8926</span>
+<span class="c-com"># Accuracy: 85%</span>
+<span class="c-com">#</span>
+<span class="c-com"># Feature Coefficients (standardised):</span>
+<span class="c-com">#   Discount_binary     →  3.3682  ← by far the strongest</span>
+<span class="c-com">#   Gender_binary       →  0.7541</span>
+<span class="c-com">#   Previous Purchases  →  0.1094</span>
+<span class="c-com">#   Purchase Amount     →  0.0550</span>
+<span class="c-com">#   Review Rating       →  0.0058</span>
+<span class="c-com">#   Age                 →  0.0052</span></pre>
+
+    <div class="p-card-grid">
+      <div class="p-card" style="--card-color:var(--forest)">
+        <div class="p-card-label">Discount is the key lever</div>
+        <div class="p-card-text">Discount_binary has a coefficient of 3.37 — exponentially larger than any other predictor. A customer who has used discounts is <strong>dramatically more likely to subscribe</strong> than one who hasn't. This is actionable: target discount users with subscription conversion campaigns first.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--slate)">
+        <div class="p-card-label">Age and rating barely matter</div>
+        <div class="p-card-text">Age (0.0052) and Review Rating (0.0058) are essentially zero in subscription prediction. A 30-year-old and a 60-year-old with the same discount behavior are equally likely to subscribe. Demographic-only targeting would miss this — behavioral data is what matters.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Highlight — K-Means Clusters</div>
+    <div class="p-section-title">Three distinct customer types</div>
+
+    <div class="p-table-wrap">
+      <table class="p-table">
+        <thead><tr><th>Cluster</th><th>Size</th><th>Avg Age</th><th>Avg Spend</th><th>Prev. Purchases</th><th>Profile</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Cluster 0</strong></td><td>1,438 (36.9%)</td><td>28.4</td><td>$60.30</td><td>21.6</td><td>Young, average spender, newer customer — <em>Growth Segment</em></td></tr>
+          <tr class="row-accent"><td><strong>Cluster 1</strong></td><td>1,200 (30.8%)</td><td>53.3</td><td><strong>$81.38</strong></td><td>27.9</td><td>Older, high spender, established — <em>High-Value Veteran</em></td></tr>
+          <tr><td><strong>Cluster 2</strong></td><td>1,262 (32.4%)</td><td>53.2</td><td>$38.59</td><td>27.3</td><td>Older, budget spender, established — <em>Value-Conscious Loyal</em></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="p-callout">
+      <div class="p-callout-title">The interesting contrast: Clusters 1 and 2</div>
+      <div class="p-callout-body">Clusters 1 and 2 are nearly identical in age and purchase history — but spend is $81.38 vs $38.59. These aren't different types of customers in terms of loyalty; they're the <strong>same loyalty profile but at different price points</strong>. Cluster 2 is not budget-constrained — they're buying lower-value items or using discounts. This is a different intervention than assuming they can't afford more. The high-value veterans (Cluster 1) are the retention priority; Cluster 2 could be migrated upward with targeted product exposure.</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Why this matters</div>
+    <div class="p-section-title">Connecting multivariate analytics to business decisions</div>
+    <div class="p-findings">
+      <div class="p-finding"><div class="p-finding-num">01</div><div class="p-finding-text"><strong>8 methods in one project.</strong> Each method answers a different question type — description (EDA), inference (T-test, ANOVA, Chi-Square), reduction (PCA, EFA), segmentation (k-means), prediction (logistic regression), classification (LDA). This is what a <strong>complete analytics workflow</strong> looks like, not just one technique.</div></div>
+      <div class="p-finding"><div class="p-finding-num">02</div><div class="p-finding-text"><strong>Python vs R comparison.</strong> Running both the R projects (P09–P11) and this Python project gives a direct view of how the two ecosystems handle the same analytical tasks — <code>hclust</code> vs <code>sklearn.cluster.KMeans</code>, <code>arules</code> Apriori vs pure pandas groupby, Quarto markdown vs Jupyter notebooks.</div></div>
+      <div class="p-finding"><div class="p-finding-num">03</div><div class="p-finding-text"><strong>The AUC 0.893 is a real, operational model.</strong> The logistic regression is trained, validated on a held-out 25% test set, and evaluated with a proper ROC curve. It's not a "fit-the-training-data" result — it's genuinely predictive. A retailer could deploy this as a subscription propensity score.</div></div>
+      <div class="p-finding"><div class="p-finding-num">04</div><div class="p-finding-text"><strong>Operations connection.</strong> The same workflow — EDA → hypothesis testing → dimensionality reduction → segmentation → prediction — applies directly to <strong>industrial operations data</strong>. Replace "customer purchase records" with "machine sensor readings" and the methods are identical. This is the bridge between MBA analytics and Schneider/Hitachi/ABB operational intelligence.</div></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Files</div>
+    <div class="p-section-title">Full analysis — downloadable</div>
+    <div class="ba-files">
+      <a href="analytics/shopping/Shopping_Behavior_Analysis.ipynb" class="ba-file" download>
+        <div class="ba-file-type">.ipynb</div>
+        <div class="ba-file-name">Shopping_Behavior_Analysis.ipynb</div>
+        <div class="ba-file-desc">Complete Jupyter notebook — all 8 methods with Python code, outputs, and charts. Open in JupyterLab or Google Colab.</div>
+      </a>
+      <a href="analytics/shopping/Shopping_Behavior_Analysis.pdf" class="ba-file" download>
+        <div class="ba-file-type">.pdf</div>
+        <div class="ba-file-name">Shopping_Behavior_Analysis.pdf</div>
+        <div class="ba-file-desc">Full report (27 pages) with all analyses, charts, interpretations and management recommendations.</div>
+      </a>
+    </div>
+    <div class="p-callout" style="margin-top:12px;">
+      <div class="p-callout-title">To run this notebook</div>
+      <div class="p-callout-body">Download the .ipynb file. Open in JupyterLab, VS Code, or upload to Google Colab. Requires: <code>pandas numpy scipy scikit-learn matplotlib seaborn</code> — all installable via <code>pip install pandas numpy scipy scikit-learn matplotlib seaborn</code>. The dataset <code>shopping_behavior_updated.csv</code> is publicly available on Kaggle — search "Consumer Behavior and Shopping Habits Dataset".</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section" style="margin-top:32px;">
+    <div class="p-callout">
+      <div class="p-callout-title">A note on this work</div>
+      <div class="p-callout-body">This was a <strong>graded MBA submission</strong> for the <em>Data Analytics using R &amp; Python</em> course at Amrita School of Business (2025). The dataset is publicly available from Kaggle; the analytical design (method selection, hypothesis formulation, interpretation, and management recommendations) is my own work. The Jupyter notebook is fully reproducible — download it and the dataset to verify all outputs. This is my most technically comprehensive analytics project and demonstrates the complete multivariate statistics toolkit from MBA Year 1.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="p-footer">
+  <span class="p-footer-name">Bala Shunmugam M · B.E. EEE + MBA Operations &amp; Business Analytics</span>
+  <div class="p-footer-links"><a href="projects.html">← All Projects</a><a href="index.html">Portfolio</a></div>
+</footer>
+  <script src="js/cosmic.js"></script>
+</body>
+</html>

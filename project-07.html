@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Inventory Control System — Full Tool — Bala Shunmugam M</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/project.css"/>
+  <link rel="stylesheet" href="css/cosmic-project.css"/>
+  <style>
+    :root{--accent:#4c1d95;--accent-light:#f5f3ff;--accent-mid:#c4b5fd;--accent-dark:#3b1578;}
+    .sku-table{width:100%;border-collapse:collapse;font-size:12px;}
+    .sku-table th{background:var(--bg-subtle);color:var(--tx-3);font-family:var(--f-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding:10px 14px;text-align:left;border-bottom:1px solid var(--bd);font-weight:700;}
+    .sku-table td{padding:9px 14px;border-bottom:1px solid var(--bd);color:var(--tx-2);vertical-align:middle;}
+    .sku-table tr:last-child td{border-bottom:none;}
+    .sku-table tbody tr:hover td{background:var(--bg-subtle);}
+    .sku-table input[type=number]{width:76px;padding:5px 8px;font-size:12px;border:1px solid var(--bd-strong);border-radius:var(--r-sm);background:var(--bg);color:var(--tx);font-family:var(--f-mono);text-align:right;}
+    .sku-table input[type=number]:focus{outline:none;border-color:var(--accent);}
+    .sku-table input[type=text]{padding:5px 8px;font-size:12px;border:1px solid var(--bd-strong);border-radius:var(--r-sm);background:var(--bg);color:var(--tx);font-family:var(--f-body);}
+    .sku-table input[type=text]:focus{outline:none;border-color:var(--accent);}
+    .sku-result{font-family:var(--f-mono);font-size:12px;color:var(--accent);font-weight:700;}
+    .abc-a{display:inline-block;background:var(--s-red-bg);color:var(--s-red);font-family:var(--f-mono);font-size:10px;padding:3px 8px;border-radius:var(--r-xs);font-weight:700;border:1px solid var(--s-red-bd);}
+    .abc-b{display:inline-block;background:var(--s-amber-bg);color:var(--s-amber);font-family:var(--f-mono);font-size:10px;padding:3px 8px;border-radius:var(--r-xs);font-weight:700;border:1px solid var(--s-amber-bd);}
+    .abc-c{display:inline-block;background:var(--s-green-bg);color:var(--s-green);font-family:var(--f-mono);font-size:10px;padding:3px 8px;border-radius:var(--r-xs);font-weight:700;border:1px solid var(--s-green-bd);}
+    .summary-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px;}
+    .sum-box{background:var(--bg-subtle);border:1px solid var(--bd);border-radius:var(--r-lg);padding:16px;text-align:center;box-shadow:var(--sh-1);}
+    .sum-val{font-family:var(--f-mono);font-size:22px;font-weight:600;color:var(--accent);margin-bottom:4px;letter-spacing:-0.01em;}
+    .sum-label{font-size:10px;color:var(--tx-3);text-transform:uppercase;letter-spacing:.08em;font-weight:600;}
+    .add-btn,.del-btn{font-size:11px;font-family:var(--f-mono);padding:5px 12px;border-radius:var(--r-sm);cursor:pointer;transition:all .15s;font-weight:600;}
+    .add-btn{background:var(--accent-light);color:var(--accent);border:1px solid var(--accent-mid);}
+    .add-btn:hover{background:#ede9fe;border-color:var(--accent);}
+    .del-btn{background:var(--s-red-bg);color:var(--s-red);border:1px solid var(--s-red-bd);}
+    .del-btn:hover{background:#fde8e8;}
+  </style>
+</head>
+<body>
+  <canvas id="cosmic-stars" aria-hidden="true"></canvas>
+<nav class="p-nav">
+  <a href="projects.html" class="p-nav-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>All Projects</a>
+  <div class="p-nav-right"><span class="p-nav-name">Bala Shunmugam M</span><span class="p-nav-num">07 / 08</span></div>
+</nav>
+
+<section class="p-hero">
+  <div class="p-eyebrow"><div class="p-eyebrow-dot"></div><span class="p-eyebrow-text">MBA · Supply Chain · Applied Concept · Live Demonstrator</span></div>
+  <h1 class="p-title">Inventory Control System<br><em>for Small Retail</em></h1>
+  <p class="p-desc">A working browser-based decision engine that integrates four classical inventory frameworks — <strong>EOQ, Reorder Point, Safety Stock, and ABC</strong> — into a single mobile-first tool designed for unorganised small retail. Demonstrated with 12 realistic SKUs modelled on a typical Madurai grocery shop. Edit any cell to see all four models update live.</p>
+  <div class="p-tags">
+    <span class="p-tag p-tag-accent">MBA · Supply Chain</span>
+    <span class="p-tag">EOQ + ROP + Safety Stock</span>
+    <span class="p-tag">ABC Analysis</span>
+    <span class="p-tag">Mobile-first UX</span>
+    <span class="p-tag">Live Tool</span>
+  </div>
+  <div class="p-impact">
+    <div class="p-impact-item"><div class="p-impact-val">4</div><div class="p-impact-label">Frameworks integrated into one engine</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">12 SKUs</div><div class="p-impact-label">Realistic Madurai grocery basket</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">In-browser</div><div class="p-impact-label">All formulas run client-side, no server</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">Mobile-first</div><div class="p-impact-label">Designed for a phone in an apron pocket</div></div>
+  </div>
+</section>
+
+<div class="p-content">
+  <div class="p-section">
+    <div class="p-section-label">The Story</div>
+    <div class="p-section-title">From an Observation to a Working Demonstrator</div>
+    <div class="p-card-grid" style="margin-bottom:32px;">
+      <div class="p-card" style="--card-color:#dc2626"><div class="p-card-label">The Problem</div><div class="p-card-text">Small retail shops in unorganised markets manage inventory <strong>purely on intuition</strong> — ordering when shelves look low. The result, observed across multiple Madurai grocery outlets: <strong>simultaneous overstock of slow-moving items and stockouts of fast-moving ones.</strong> Working capital tied up in the wrong SKUs, lost sales on the right ones.</div></div>
+      <div class="p-card" style="--card-color:var(--blue)"><div class="p-card-label">My Approach</div><div class="p-card-text">Built a 12-SKU example basket reflecting a typical Madurai grocery shop (rice, oil, sugar, pulses, soaps&hellip;). Integrated four classical inventory frameworks — <strong>EOQ, Reorder Point, Safety Stock, and ABC analysis</strong> — into a single decision engine that gives the shop owner one answer: <em>"Order N units now."</em></div></div>
+      <div class="p-card" style="--card-color:#7c3aed"><div class="p-card-label">What I Built</div><div class="p-card-text">Not a report. A <strong>working demonstrator tool</strong> with desktop dashboard + mobile UI. I designed the spec, the framework integration, and the UX. Implementation used AI as a code accelerator — a 2026 reality I'm comfortable being transparent about. All formulas run in-browser, no server required.</div></div>
+      <div class="p-card" style="--card-color:var(--green)"><div class="p-card-label">Expected Outcomes</div><div class="p-card-text">Inventory literature on EOQ/ROP vs. ad-hoc reordering in small retail consistently reports <strong>30–45% inventory value reduction</strong> and <strong>large stockout-frequency drops</strong>. The tool's value isn't in proving those numbers — it's in <strong>making the textbook math one-tap accessible</strong> to a shop owner who has never opened Excel.</div></div>
+    </div>
+
+    <div class="p-section-label">Try the Live Demonstrator</div>
+    <div class="p-section-title">Inventory Control Calculator</div>
+    <div class="p-prose">Edit any cell — EOQ, ROP, Safety Stock, and ABC classification update automatically. Add or remove SKUs as needed. All formulas visible in the column headers. The 12 default SKUs are <strong>realistic examples</strong> reflecting a typical Madurai grocery basket — not collected from a single specific shop.</div>
+
+    <div class="summary-strip" id="summary-strip">
+      <div class="sum-box"><div class="sum-val" id="s-skus">12</div><div class="sum-label">Total SKUs</div></div>
+      <div class="sum-box"><div class="sum-val" id="s-inv">₹0</div><div class="sum-label">Optimal inventory value</div></div>
+      <div class="sum-box"><div class="sum-val" id="s-orders">0</div><div class="sum-label">Total orders/year</div></div>
+      <div class="sum-box"><div class="sum-val" id="s-cost">₹0</div><div class="sum-label">Min annual total cost</div></div>
+    </div>
+
+    <div style="overflow-x:auto;margin-bottom:12px;border:1px solid var(--border);border-radius:var(--r-md);">
+      <table class="sku-table" id="sku-tbl">
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Demand/yr (D)</th>
+            <th>Order cost ₹ (S)</th>
+            <th>Hold cost ₹/yr (H)</th>
+            <th>Unit price ₹</th>
+            <th>Lead time (days)</th>
+            <th>EOQ Q*</th>
+            <th>ROP (LTD + SS)</th>
+            <th>Safety Stock</th>
+            <th>ABC</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="sku-body"></tbody>
+      </table>
+    </div>
+    <button class="add-btn" onclick="addSKU()">+ Add SKU</button>
+  </div>
+
+  <div class="p-section">
+    <div class="p-section-label">A Note on Scope</div>
+    <div class="p-callout">
+      <div class="p-callout-title">What this is — and what it isn't</div>
+      <div class="p-callout-body"><strong>This is a working concept demonstrator, not a deployed shop-floor study.</strong> The 12 default SKUs are realistic examples reflecting a typical Madurai grocery basket — assembled from observation of local outlets, not collected as 30 days of measured sales from one specific shop. The "expected outcomes" cited (30–45% inventory reduction, large stockout drops) come from <strong>established inventory-management literature</strong> on EOQ/ROP versus ad-hoc reordering — not from a measured before/after study I conducted. The tool's value is in <strong>making the textbook math accessible</strong> through a mobile-first UX. Implementation was AI-accelerated; the concept, framework integration, and UX decisions are mine.</div>
+    </div>
+  </div>
+</div>
+
+<footer class="p-footer">
+  <span class="p-footer-name">Bala Shunmugam M · B.E. EEE + MBA Operations</span>
+  <div class="p-footer-links"><a href="projects.html">← All Projects</a><a href="index.html">Portfolio</a></div>
+</footer>
+
+<script>
+const DEFAULTS = [
+  {name:'Rice (25kg bag)',    D:520,  S:80,  H:12,  P:1200, LT:3},
+  {name:'Cooking Oil (5L)',   D:780,  S:60,  H:8,   P:650,  LT:2},
+  {name:'Sugar (50kg)',       D:390,  S:80,  H:10,  P:1800, LT:3},
+  {name:'Toor Dal (5kg)',     D:650,  S:55,  H:7,   P:450,  LT:2},
+  {name:'Wheat Flour (10kg)', D:480,  S:65,  H:9,   P:380,  LT:2},
+  {name:'Detergent Powder',   D:960,  S:45,  H:5,   P:120,  LT:1},
+  {name:'Biscuits (bulk)',    D:1200, S:40,  H:4,   P:85,   LT:1},
+  {name:'Tea (500g)',         D:840,  S:50,  H:6,   P:210,  LT:2},
+  {name:'Salt (1kg)',         D:1560, S:30,  H:2,   P:18,   LT:1},
+  {name:'Coconut Oil (1L)',   D:720,  S:60,  H:9,   P:180,  LT:2},
+  {name:'Pulses (misc 1kg)',  D:1080, S:50,  H:6,   P:95,   LT:2},
+  {name:'Soaps (bar pack)',   D:1440, S:35,  H:3,   P:40,   LT:1},
+];
+
+let skus = DEFAULTS.map(d=>({...d}));
+
+function eoq(D,S,H){return Math.round(Math.sqrt(2*D*S/Math.max(H,0.01)));}
+function ss(D,LT){return Math.round(1.65*Math.sqrt(LT)*(D/365)*0.2);}
+function rop(D,LT){return Math.round(D/365*LT) + ss(D,LT);}   // ROP = Lead-time demand + Safety Stock
+function totalCost(D,S,H,Q){return Math.round((D/Q)*S+(Q/2)*H);}
+function abcClass(annualValue, sorted){
+  const rank=sorted.indexOf(annualValue)/sorted.length;
+  return rank<0.2?'A':rank<0.5?'B':'C';
+}
+
+function render(){
+  const tbody=document.getElementById('sku-body');
+  const annVals=skus.map(s=>s.D*s.P).sort((a,b)=>b-a);
+  tbody.innerHTML='';
+  let totalInv=0, totalOrders=0, totalC=0;
+  skus.forEach((s,i)=>{
+    const Q=eoq(s.D,s.S,s.H);
+    const r=rop(s.D,s.LT);
+    const ss_v=ss(s.D,s.LT);
+    const av=s.D*s.P;
+    const abc=abcClass(av,annVals);
+    const tc=totalCost(s.D,s.S,s.H,Q);
+    totalInv+=(Q/2+ss_v)*s.P;
+    totalOrders+=Math.round(s.D/Q);
+    totalC+=tc;
+    const tr=document.createElement('tr');
+    tr.innerHTML=`
+      <td><input type="text" style="width:130px;padding:4px 7px;font-size:12px;border:1px solid var(--border-strong);border-radius:var(--r-sm);font-family:var(--font-body);" value="${s.name}" oninput="skus[${i}].name=this.value"/></td>
+      <td><input type="number" value="${s.D}" oninput="skus[${i}].D=+this.value;render()"/></td>
+      <td><input type="number" value="${s.S}" oninput="skus[${i}].S=+this.value;render()"/></td>
+      <td><input type="number" value="${s.H}" oninput="skus[${i}].H=+this.value;render()"/></td>
+      <td><input type="number" value="${s.P}" oninput="skus[${i}].P=+this.value;render()"/></td>
+      <td><input type="number" value="${s.LT}" oninput="skus[${i}].LT=+this.value;render()"/></td>
+      <td class="sku-result">${Q}</td>
+      <td class="sku-result">${r}</td>
+      <td class="sku-result">${ss_v}</td>
+      <td><span class="abc-${abc.toLowerCase()}">${abc}</span></td>
+      <td><button class="del-btn" onclick="skus.splice(${i},1);render()">✕</button></td>`;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('s-skus').textContent=skus.length;
+  document.getElementById('s-inv').textContent='₹'+Math.round(totalInv/1000)+'K';
+  document.getElementById('s-orders').textContent=totalOrders;
+  document.getElementById('s-cost').textContent='₹'+Math.round(totalC/1000)+'K';
+}
+function addSKU(){skus.push({name:'New SKU',D:500,S:50,H:5,P:100,LT:2});render();}
+render();
+</script>
+  <script src="js/cosmic.js"></script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>ProcessPilot AI — Process-Stability Intelligence — Bala Shunmugam M</title>
+  <meta name="description" content="ProcessPilot AI — real-time process-stability intelligence for the sponge-iron rotary kiln. SPC, drift detection, root-cause analysis and metallisation forecasting."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/project.css"/>
+  <link rel="stylesheet" href="css/cosmic-project.css"/>
+  <style>
+    /* screenshot placeholders — drop real captures in to replace .p-shot-frame */
+    .p-shot{margin:26px 0 6px;border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;background:var(--card);box-shadow:var(--shadow-sm);}
+    .p-shot-frame{aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;padding:24px;background:repeating-linear-gradient(135deg,var(--card) 0 14px,var(--card-deep) 14px 28px);}
+    .p-shot-tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--oxblood);font-weight:600;}
+    .p-shot-name{font-family:var(--f-display);font-size:19px;color:var(--ink);}
+    .p-shot-note{font-family:var(--f-mono);font-size:11px;color:var(--ink-3);}
+    .p-shot img{display:block;width:100%;height:auto;}
+    .p-shot-cap{font-size:13px;color:var(--ink-3);padding:11px 18px;font-style:italic;border-top:1px solid var(--rule);}
+    .p-steptime{font-family:var(--f-mono);font-size:11px;color:var(--oxblood);letter-spacing:.06em;}
+    /* walkthrough video */
+    .p-video{margin:8px 0 22px;}
+    .p-video-frame{position:relative;aspect-ratio:16/9;border:1px solid var(--rule);border-radius:var(--r-lg);overflow:hidden;background:var(--card);box-shadow:var(--shadow-sm);}
+    .p-video-frame iframe,.p-video-frame video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;}
+    .p-video-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;background:repeating-linear-gradient(135deg,var(--card) 0 14px,var(--card-deep) 14px 28px);}
+    .p-video-play{width:64px;height:64px;border-radius:50%;background:var(--oxblood);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;padding-left:5px;box-shadow:var(--shadow-md);}
+    .p-video-ph-t{font-family:var(--f-display);font-size:21px;color:var(--ink);}
+    .p-video-ph-n{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);}
+  </style>
+</head>
+<body>
+  <canvas id="cosmic-stars" aria-hidden="true"></canvas>
+<nav class="p-nav">
+  <a href="index.html" class="p-nav-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Portfolio</a>
+  <div class="p-nav-right"><span class="p-nav-name">Bala Shunmugam M</span><span class="p-nav-num">Flagship ★</span></div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="p-hero">
+  <div class="p-eyebrow"><div class="p-eyebrow-dot"></div><span class="p-eyebrow-text">Flagship · Industrial Process-Stability Intelligence</span></div>
+  <h1 class="p-title">ProcessPilot AI<br><em>real-time stability intelligence for the rotary kiln</em></h1>
+  <p class="p-desc">A control-room platform that watches a sponge-iron kiln in real time, applies textbook <strong>statistical process control</strong> to detect instability the moment it begins, forecasts product quality, and hands the operator a diagnosed root cause with a corrective action — <strong>minutes before a bad heat is made</strong>. Demonstrated on a physics-aware DRI kiln simulator; runs real plant data through the identical engine via CSV upload.</p>
+  <div class="p-tags">
+    <span class="p-tag p-tag-accent">Manufacturing Operations</span>
+    <span class="p-tag">SPC</span>
+    <span class="p-tag">Drift Detection</span>
+    <span class="p-tag">Root-Cause Analysis</span>
+    <span class="p-tag">Metallisation Forecasting</span>
+    <span class="p-tag">Industrial Analytics</span>
+  </div>
+  <div class="p-impact">
+    <div class="p-impact-item"><div class="p-impact-val">10</div><div class="p-impact-label">Live process variables</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">4 + CUSUM</div><div class="p-impact-label">Western Electric rules</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">0–100</div><div class="p-impact-label">Instability Index</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">90%</div><div class="p-impact-label">Metallisation target</div></div>
+  </div>
+</section>
+
+<div class="p-content">
+
+  <!-- ═══ 1. EXECUTIVE SUMMARY ═══ -->
+  <div class="p-section">
+    <div class="p-section-label">Overview</div>
+    <div class="p-section-title">Executive summary</div>
+    <p class="p-prose">ProcessPilot AI monitors ten live kiln variables, runs Western Electric rules, CUSUM and control-limit analysis every cycle, and rolls the signals into a single <strong>Instability Index</strong> with a four-tier status. When it sees drift, it projects metallisation forward to estimate time-to-target-breach and generates an AI root-cause analysis with recommended actions. It is the full operational loop — <strong>observe, detect, forecast, diagnose</strong> — built on standard SPC and grounded in a real DRI plant study.</p>
+    <div class="p-card-grid">
+      <div class="p-card" style="--card-color:var(--oxblood)"><div class="p-card-label">My Role</div><div class="p-card-text">Concept, DRI process model, the SPC / stability engine, and the decision-support UX. I designed the statistics and the product; AI accelerated the application scaffolding.</div></div>
+      <div class="p-card" style="--card-color:var(--slate)"><div class="p-card-label">Domain</div><div class="p-card-text">Sponge-iron / DRI rotary-kiln operations — the same process I studied on the floor at Agni Steels.</div></div>
+      <div class="p-card" style="--card-color:var(--brass)"><div class="p-card-label">Stack</div><div class="p-card-text">React + shadcn/ui front end · FastAPI service · MongoDB · pandas / numpy stability engine · LLM root-cause layer.</div></div>
+      <div class="p-card" style="--card-color:var(--forest)"><div class="p-card-label">Status</div><div class="p-card-text">Working application. Demonstrated on a physics-aware kiln simulator; ingests real plant CSVs through the same engine.</div></div>
+    </div>
+  </div>
+
+  <!-- ═══ 2+3. THE PROBLEM ═══ -->
+  <div class="p-section">
+    <div class="p-section-label">The Problem</div>
+    <div class="p-section-title">Instability is found in the downtime log, not on the chart</div>
+    <div class="p-card-grid">
+      <div class="p-card" style="--card-color:var(--oxblood)">
+        <div class="p-card-label">Business problem</div>
+        <div class="p-card-text">In coal-based DRI, degree of metallisation <em>is</em> the product. When it slips below target, sponge iron is downgraded or rejected, energy is spent on off-spec material, and accretion can take a kiln offline for weeks. <strong>The cost of poor quality is large — and mostly discovered after the fact.</strong></div>
+      </div>
+      <div class="p-card" style="--card-color:var(--slate)">
+        <div class="p-card-label">Operational problem</div>
+        <div class="p-card-text">The control room already shows every parameter live — but relies on operator intuition to notice <strong>trends</strong>. There is no statistical early-warning layer; drift builds slowly; root cause is reconstructed afterward from memory. <strong>The data needed to act early is already collected — it just isn't read statistically.</strong></div>
+      </div>
+    </div>
+    <div class="p-callout">
+      <div class="p-callout-title">This problem is not theoretical</div>
+      <div class="p-callout-body">The framing comes directly from my MBA operations study on the floor of a 100 TPD coal-based DRI plant, where <strong>kiln accretion was identified as the dominant constraint</strong> on metallisation and uptime. ProcessPilot AI is the system built to catch exactly that, early.</div>
+    </div>
+  </div>
+
+  <!-- ═══ 6. SYSTEM ARCHITECTURE ═══ -->
+  <div class="p-section">
+    <div class="p-section-label">Architecture</div>
+    <div class="p-section-title">A four-layer monitoring stack</div>
+    <p class="p-prose">A React control-room front end talks to a FastAPI service; a statistical engine and an AI layer turn raw ticks into decisions; MongoDB persists the stream. A physics-aware simulator feeds the live demo, and the same engine ingests real plant CSVs.</p>
+    <div class="p-findings">
+      <div class="p-finding"><div class="p-finding-num">01</div><div class="p-finding-text"><strong>Presentation — React + shadcn/ui.</strong> Seven control-room views: live monitoring, dashboard, SPC charts, intelligence, shifts, simulation, CSV upload.</div></div>
+      <div class="p-finding"><div class="p-finding-num">02</div><div class="p-finding-text"><strong>API — FastAPI.</strong> REST endpoints for process snapshots, alerts, intelligence, shift comparison, the simulator and CSV analysis.</div></div>
+      <div class="p-finding"><div class="p-finding-num">03</div><div class="p-finding-text"><strong>Intelligence — pandas / numpy + LLM.</strong> The stability engine (control limits, Western Electric rules, CUSUM, Instability Index, metallisation forecast) plus an AI root-cause layer with a strict structured-output contract.</div></div>
+      <div class="p-finding"><div class="p-finding-num">04</div><div class="p-finding-text"><strong>Data &amp; source — MongoDB.</strong> Persists ticks, alerts and analysis runs. Fed by a physics-aware kiln simulator for the demo, or by real plant CSVs.</div></div>
+    </div>
+    <figure class="p-shot">
+      <img src="assets/shots/pp-dashboard.png" alt="ProcessPilot AI — Production Overview dashboard" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="p-shot-frame" style="display:none"><span class="p-shot-tag">Screenshot</span><span class="p-shot-name">Production Overview</span><span class="p-shot-note">assets/shots/pp-dashboard.png</span></div>
+      <figcaption class="p-shot-cap">The Production Overview — plant stability, the 0–100 Instability Index, the metallisation forecast and every process variable on one screen, with active alerts at right.</figcaption>
+    </figure>
+  </div>
+
+  <!-- ═══ 7. KEY FEATURES ═══ -->
+  <div class="p-section">
+    <div class="p-section-label">Capabilities</div>
+    <div class="p-section-title">What the system actually does</div>
+    <div class="p-findings">
+      <div class="p-finding"><div class="p-finding-num">01</div><div class="p-finding-text"><strong>Live SPC monitoring.</strong> Ten kiln variables — reduction &amp; pre-heat zone temps, primary/secondary airflow, excess O₂, ore &amp; coal feed, kiln RPM, inlet moisture, retention time — each with 3σ control limits from a 30-sample baseline.</div></div>
+      <div class="p-finding"><div class="p-finding-num">02</div><div class="p-finding-text"><strong>Drift detection.</strong> Four Western Electric rules (beyond 3σ; 2-of-3 beyond 2σ; 4-of-5 beyond 1σ; 8-in-a-row), a CUSUM test, and rolling variance-inflation — catching sustained drift before any single point breaches a limit.</div></div>
+      <div class="p-finding"><div class="p-finding-num">03</div><div class="p-finding-text"><strong>Instability Index.</strong> One weighted 0–100 score aggregating every signal, mapped to a four-tier status: Stable → Warning → Drift → High-Risk.</div></div>
+      <div class="p-finding"><div class="p-finding-num">04</div><div class="p-finding-text"><strong>Metallisation forecast.</strong> A linear projection of recent metallisation that estimates the ETA to fall below the 90% target — turning a lagging quality metric into a leading one.</div></div>
+      <div class="p-finding"><div class="p-finding-num">05</div><div class="p-finding-text"><strong>AI root-cause analysis.</strong> An LLM converts the SPC signals into structured, DRI-specific output: ranked causes with confidence, prioritised recommendations (action · expected effect · risk), a narrative and next checks.</div></div>
+      <div class="p-finding"><div class="p-finding-num">06</div><div class="p-finding-text"><strong>Shift consistency analytics.</strong> A/B/C comparison — metallisation mean/min/max, percent below target, variance ratio and a consistency score — making process discipline measurable across crews.</div></div>
+      <div class="p-finding"><div class="p-finding-num">07</div><div class="p-finding-text"><strong>Anomaly simulation.</strong> Five injectable, physics-aware disturbances — airflow drop, temperature spike, moisture surge, RPM fluctuation, feed/coal imbalance — each ramped over a chosen duration.</div></div>
+      <div class="p-finding"><div class="p-finding-num">08</div><div class="p-finding-text"><strong>Historical CSV analysis.</strong> Upload real plant data and the same engine returns drift periods, a variable-variability ranking, a metallisation summary and an instability timeline.</div></div>
+    </div>
+    <figure class="p-shot">
+      <img src="assets/shots/pp-spc.png" alt="ProcessPilot AI — Live Process SPC control charts" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="p-shot-frame" style="display:none"><span class="p-shot-tag">Screenshot</span><span class="p-shot-name">Live Process — SPC charts</span><span class="p-shot-note">assets/shots/pp-spc.png</span></div>
+      <figcaption class="p-shot-cap">Live Process — full SPC control charts (UCL · CL · LCL) for each variable, drawn from the first 30 minutes of baseline data.</figcaption>
+    </figure>
+  </div>
+
+  <!-- ═══ 8. OPERATIONAL SCENARIOS ═══ -->
+  <div class="p-section">
+    <div class="p-section-label">Operational Scenarios</div>
+    <div class="p-section-title">Five disturbances, five detections</div>
+    <p class="p-prose">Each scenario is a real, injectable anomaly — a button in the app. The SPC engine reacts live; this is what the operator sees.</p>
+    <div class="p-findings">
+      <div class="p-finding"><div class="p-finding-num">01</div><div class="p-finding-text"><strong>Reducing-atmosphere loss.</strong> <em>Trigger — airflow drop.</em> <b>Situation:</b> primary &amp; secondary airflow fall, O₂ drops with them. <b>Response:</b> airflow &amp; O₂ pierce the lower control limit; CUSUM-low confirms sustained drift. <b>Analysis:</b> Instability Index climbs to Drift; RCA cites combustion-air loss; forecast turns down. <b>Outcome:</b> early warning + airflow correction before metallisation breaches 90%.</div></div>
+      <div class="p-finding"><div class="p-finding-num">02</div><div class="p-finding-text"><strong>Over-temperature / accretion risk.</strong> <em>Trigger — temperature spike.</em> <b>Situation:</b> reduction zone overshoots ~70 °C. <b>Response:</b> Western Electric R1 (beyond 3σ) fires; status escalates to High-Risk. <b>Analysis:</b> RCA flags ring-formation / accretion risk. <b>Outcome:</b> control room warned to pull temperature back before accretion forces a stoppage.</div></div>
+      <div class="p-finding"><div class="p-finding-num">03</div><div class="p-finding-text"><strong>Stoichiometry drift.</strong> <em>Trigger — feed/coal imbalance.</em> <b>Situation:</b> ore feed rises while coal slips; carbon-to-ore ratio moves off optimum. <b>Response:</b> variance inflation trips on the feed variables; forecast bends down. <b>Analysis:</b> RCA identifies an unbalanced reductant ratio. <b>Outcome:</b> coal feed restored to ratio, protecting metallisation proactively.</div></div>
+      <div class="p-finding"><div class="p-finding-num">04</div><div class="p-finding-text"><strong>Feed-moisture surge.</strong> <em>Trigger — moisture surge.</em> <b>Situation:</b> inlet moisture spikes; reduction temperature dips as energy goes to drying. <b>Response:</b> moisture breaches its limit; reduction temp drifts low; status → Warning. <b>Analysis:</b> RCA links the sag to a wet charge and a reduction-zone energy penalty. <b>Outcome:</b> raw-material handling checked before throughput and quality suffer.</div></div>
+      <div class="p-finding"><div class="p-finding-num">05</div><div class="p-finding-text"><strong>Kiln-rotation instability.</strong> <em>Trigger — RPM fluctuation.</em> <b>Situation:</b> kiln RPM oscillates; retention time falls below baseline. <b>Response:</b> rolling variance-inflation triggers on RPM; retention trends down. <b>Analysis:</b> RCA connects shortened residence time to under-reduction risk. <b>Outcome:</b> drive / mechanical check flagged early, before quality degrades.</div></div>
+    </div>
+    <figure class="p-shot">
+      <img src="assets/shots/pp-simulation.png" alt="ProcessPilot AI — Simulation panel, Airflow Drop injected" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="p-shot-frame" style="display:none"><span class="p-shot-tag">Screenshot</span><span class="p-shot-name">Simulation — Airflow Drop injected</span><span class="p-shot-note">save to assets/shots/pp-simulation.png</span></div>
+      <figcaption class="p-shot-cap">Injecting an Airflow Drop — process stability flips to Warning (Instability Index 21.6, three signals active) and the primary-airflow control chart reacts live against its limits.</figcaption>
+    </figure>
+  </div>
+
+  <!-- ═══ 10. DEMO WALKTHROUGH ═══ -->
+  <div class="p-section" id="demo">
+    <div class="p-section-label">Demo</div>
+    <div class="p-section-title">Stable → disturbed → detected → prevented</div>
+    <p class="p-prose">The ~90-second arc that demonstrates the entire value proposition in one breath.</p>
+
+    <figure class="p-video">
+      <div class="p-video-frame">
+        <!-- ▶ DROP YOUR WALKTHROUGH HERE — replace the .p-video-ph block below with ONE of:
+             YouTube (unlisted):  <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="ProcessPilot AI walkthrough" allowfullscreen></iframe>
+             Loom:                <iframe src="https://www.loom.com/embed/VIDEO_ID" title="ProcessPilot AI walkthrough" allowfullscreen></iframe>
+             Self-hosted MP4:     <video controls preload="metadata" poster="assets/shots/pp-dashboard.png"><source src="assets/processpilot-walkthrough.mp4" type="video/mp4"></video> -->
+        <div class="p-video-ph">
+          <div class="p-video-play">▶</div>
+          <div class="p-video-ph-t">90-second walkthrough</div>
+          <div class="p-video-ph-n">paste your YouTube / Loom embed here</div>
+        </div>
+      </div>
+      <figcaption class="p-shot-cap">Stable → disturbed → detected → diagnosed → prevented, in ninety seconds.</figcaption>
+    </figure>
+
+    <div class="p-findings">
+      <div class="p-finding"><div class="p-finding-num">01</div><div class="p-finding-text"><span class="p-steptime">0:00–0:10</span> &nbsp;<strong>Open on Live Monitoring.</strong> Ten variables, all in statistical control. Status: Stable.</div></div>
+      <div class="p-finding"><div class="p-finding-num">02</div><div class="p-finding-text"><span class="p-steptime">0:10–0:30</span> &nbsp;<strong>Inject a temperature spike.</strong> Watch the reduction zone breach its limit; the Instability Index climbs; status flips to Drift → High-Risk.</div></div>
+      <div class="p-finding"><div class="p-finding-num">03</div><div class="p-finding-text"><span class="p-steptime">0:30–0:45</span> &nbsp;<strong>Show the SPC chart.</strong> "A Western Electric rule just fired — beyond three sigma. Caught on the chart, not in tomorrow's downtime log."</div></div>
+      <div class="p-finding"><div class="p-finding-num">04</div><div class="p-finding-text"><span class="p-steptime">0:45–1:10</span> &nbsp;<strong>Open AI Root-Cause.</strong> It names the likely cause with a confidence score, predicts the impact, and gives a ranked corrective action.</div></div>
+      <div class="p-finding"><div class="p-finding-num">05</div><div class="p-finding-text"><span class="p-steptime">1:10–1:30</span> &nbsp;<strong>Forecast &amp; close.</strong> Metallisation projected to cross 90% in N minutes — so the operator acts before the heat goes off-spec.</div></div>
+    </div>
+    <figure class="p-shot">
+      <img src="assets/shots/pp-intelligence.png" alt="ProcessPilot AI — Intelligence Center, AI root-cause analysis" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="p-shot-frame" style="display:none"><span class="p-shot-tag">Screenshot</span><span class="p-shot-name">Intelligence — AI root cause</span><span class="p-shot-note">assets/shots/pp-intelligence.png</span></div>
+      <figcaption class="p-shot-cap">AI Root-Cause Analysis — ranked probable causes with confidence scores and prioritised recommended actions, citing the exact SPC rules that fired.</figcaption>
+    </figure>
+  </div>
+
+  <!-- ═══ 11. TECHNICAL IMPLEMENTATION ═══ -->
+  <div class="p-section">
+    <div class="p-section-label">Build</div>
+    <div class="p-section-title">How it's built</div>
+    <div class="p-card-grid">
+      <div class="p-card" style="--card-color:var(--slate)"><div class="p-card-label">Frontend</div><div class="p-card-text">React + Tailwind + Recharts (shadcn/ui). Seven control-room views polling the API every 3 s and rendering control charts, gauges, forecast and the alert feed.</div></div>
+      <div class="p-card" style="--card-color:var(--brass)"><div class="p-card-label">API</div><div class="p-card-text">FastAPI (async) exposing REST endpoints for process, alerts, intelligence, shifts, simulator and CSV analysis.</div></div>
+      <div class="p-card" style="--card-color:var(--oxblood)"><div class="p-card-label">Stability engine</div><div class="p-card-text">pandas / numpy module: control limits, Western Electric rules, CUSUM, the Instability Index weighting and the metallisation forecast.</div></div>
+      <div class="p-card" style="--card-color:var(--forest)"><div class="p-card-label">AI layer</div><div class="p-card-text">An LLM returning strict structured JSON for root cause + recommendations — I designed the input it receives and the exact output contract it must follow.</div></div>
+      <div class="p-card" style="--card-color:var(--slate)"><div class="p-card-label">Data</div><div class="p-card-text">MongoDB (async) persists ticks, alerts and analysis runs; fed by the kiln simulator or by uploaded CSVs.</div></div>
+      <div class="p-card" style="--card-color:var(--oxblood-deep)"><div class="p-card-label">Data flow</div><div class="p-card-text">Tick → persist → SPC analysis on a rolling 60-minute window → Instability Index &amp; status → alerts → on-demand AI root cause → rendered in the control room.</div></div>
+    </div>
+    <div class="p-callout">
+      <div class="p-callout-title">What's mine, and how AI was used</div>
+      <div class="p-callout-body">The operational concept, the DRI process model, the SPC / stability engine design and the decision-support UX are mine — including the choice to use Western Electric rules <em>and</em> CUSUM, the control-limit window, the Instability weighting, the status thresholds, and the AI output contract. AI coding assistance accelerated the application scaffolding so my effort went into the operations logic. <strong>The statistics and the product decisions are mine; AI did not choose the thresholds — I did.</strong></div>
+    </div>
+  </div>
+
+  <!-- ═══ 12. OPERATIONAL IMPACT ═══ -->
+  <div class="p-section">
+    <div class="p-section-label">Impact</div>
+    <div class="p-section-title">From explaining a bad shift to preventing one</div>
+    <div class="p-findings">
+      <div class="p-finding"><div class="p-finding-num">01</div><div class="p-finding-text"><strong>Earlier detection.</strong> Drift is caught on the control chart as it develops, not in the next morning's downtime review — fewer off-spec heats.</div></div>
+      <div class="p-finding"><div class="p-finding-num">02</div><div class="p-finding-text"><strong>Lead time.</strong> The metallisation forecast converts a lagging quality measure into a leading one, giving the operator minutes to act.</div></div>
+      <div class="p-finding"><div class="p-finding-num">03</div><div class="p-finding-text"><strong>Faster root cause.</strong> The AI layer compresses the gap between "something's wrong" and "here's what to do."</div></div>
+      <div class="p-finding"><div class="p-finding-num">04</div><div class="p-finding-text"><strong>Accountability.</strong> Shift analytics make process consistency measurable across crews.</div></div>
+      <div class="p-finding"><div class="p-finding-num">05</div><div class="p-finding-text"><strong>Institutional memory.</strong> Historical CSV analysis turns past operations into a searchable record of drift periods and unstable variables.</div></div>
+    </div>
+    <figure class="p-shot">
+      <img src="assets/shots/pp-shifts.png" alt="ProcessPilot AI — Shift Analytics" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="p-shot-frame" style="display:none"><span class="p-shot-tag">Screenshot</span><span class="p-shot-name">Shift Analytics</span><span class="p-shot-note">assets/shots/pp-shifts.png</span></div>
+      <figcaption class="p-shot-cap">Shift Analytics — consistency score, metallisation mean and variance by shift (A / B / C), making process discipline measurable across crews.</figcaption>
+    </figure>
+    <figure class="p-shot">
+      <img src="assets/shots/pp-csv.png" alt="ProcessPilot AI — CSV Historical Analysis" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="p-shot-frame" style="display:none"><span class="p-shot-tag">Screenshot</span><span class="p-shot-name">CSV Historical Analysis</span><span class="p-shot-note">assets/shots/pp-csv.png</span></div>
+      <figcaption class="p-shot-cap">Upload real kiln logs to detect drift periods and rank variability — building the after-action report from data, not opinion.</figcaption>
+    </figure>
+  </div>
+
+  <!-- ═══ 13. LESSONS LEARNED ═══ -->
+  <div class="p-section">
+    <div class="p-section-label">Reflection</div>
+    <div class="p-section-title">Lessons learned</div>
+    <div class="p-card-grid">
+      <div class="p-card" style="--card-color:var(--slate)"><div class="p-card-label">Speak the operator's language</div><div class="p-card-text">SPC is only useful if it's readable on a busy floor — a single Instability Index beats six raw charts.</div></div>
+      <div class="p-card" style="--card-color:var(--brass)"><div class="p-card-label">Forecasting earns the open</div><div class="p-card-text">Monitoring tells you <em>now</em>; forecasting tells you <em>soon</em>. The forecast is what makes the tool worth opening.</div></div>
+      <div class="p-card" style="--card-color:var(--forest)"><div class="p-card-label">AI needs a contract</div><div class="p-card-text">A trustworthy AI layer needs a strict output schema — bounded fields — or it can't be wired into a control room.</div></div>
+      <div class="p-card" style="--card-color:var(--oxblood)"><div class="p-card-label">Ground it in real failure modes</div><div class="p-card-text">Building the disturbance catalogue around real DRI failure modes is what makes the demo credible to plant people.</div></div>
+    </div>
+  </div>
+
+  <!-- ═══ 14. LIMITATIONS (honest scope) ═══ -->
+  <div class="p-callout" style="margin-top:8px;">
+    <div class="p-callout-title">Limitations — honest scope</div>
+    <div class="p-callout-body">Demonstrated on a physics-aware <strong>simulator</strong>; not yet wired to a live plant SCADA / historian. Control limits and the Instability weighting are tuned to a representative DRI baseline, not a specific plant. The AI layer requires an API key and is only as good as the snapshot it is given. Validated qualitatively on uploaded CSVs — not yet against a labelled, ground-truth plant dataset. <strong>Stating the scope is part of the work.</strong></div>
+  </div>
+
+  <!-- ═══ 15. FUTURE ROADMAP ═══ -->
+  <div class="p-section">
+    <div class="p-section-label">Roadmap</div>
+    <div class="p-section-title">Where it goes next</div>
+    <div class="p-recs">
+      <div class="p-rec"><span class="p-rec-tag">Next</span><div class="p-rec-text"><strong>Live SCADA / OPC-UA integration</strong> — replace the simulator feed with a real historian tag stream.</div></div>
+      <div class="p-rec"><span class="p-rec-tag">Short-term</span><div class="p-rec-text"><strong>Auto-tuned control limits</strong> per plant, with recipe-aware baselines for different ore / coal grades.</div></div>
+      <div class="p-rec"><span class="p-rec-tag">Medium-term</span><div class="p-rec-text"><strong>Soft-sensor model</strong> — train a predictor on SCADA history to forecast metallisation before lab results land.</div></div>
+      <div class="p-rec"><span class="p-rec-tag">Long-term</span><div class="p-rec-text"><strong>Multi-kiln &amp; mobile alerts</strong> — plant-wide view and push alerts to the shift in-charge's phone.</div></div>
+      <div class="p-rec"><span class="p-rec-tag">Validation</span><div class="p-rec-text"><strong>Benchmark detection lead-time</strong> against a labelled real-plant dataset.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="p-footer">
+  <span class="p-footer-name">Bala Shunmugam M · B.E. EEE + MBA Operations</span>
+  <div class="p-footer-links"><a href="index.html">← Portfolio</a><a href="projects.html">All Projects</a></div>
+</footer>
+  <script src="js/cosmic.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+/* Hallmark · tokens · theme: Foundry (custom)
+ * Operations & Industrial Intelligence — Bala Shunmugam M
+ * paper: cool bone (light) · ink: graphite · accent: industrial ember (≤5%)
+ */
+:root {
+  /* ── Colour ─────────────────────────────────────────── */
+  --color-paper:        oklch(96.5% 0.004 75);   /* body — cool bone */
+  --color-paper-2:      oklch(93.5% 0.005 75);   /* alt section band */
+  --color-paper-3:      oklch(90.5% 0.006 72);   /* card lift / hover */
+
+  --color-ink:          oklch(24% 0.010 55);     /* near-black graphite */
+  --color-ink-2:        oklch(42% 0.010 55);     /* secondary text */
+  --color-ink-3:        oklch(58% 0.008 55);     /* muted / labels */
+  --color-ink-4:        oklch(70% 0.006 60);     /* faint */
+
+  --color-band:         oklch(20% 0.012 60);     /* dark control-room band */
+  --color-band-2:       oklch(25% 0.012 60);     /* lifted surface on band */
+  --color-on-band:      oklch(95% 0.004 75);     /* text on band */
+  --color-on-band-2:    oklch(72% 0.008 60);     /* secondary on band */
+
+  --color-rule:         oklch(87% 0.006 70);     /* hairline (light) */
+  --color-rule-2:       oklch(80% 0.008 68);     /* stronger hairline */
+  --color-rule-band:    oklch(34% 0.012 60);     /* hairline on band */
+
+  --color-accent:       oklch(57% 0.15 45);      /* industrial ember */
+  --color-accent-band:  oklch(66% 0.14 50);      /* ember on dark */
+  --color-accent-soft:  oklch(93% 0.04 50);      /* ember wash */
+  --color-accent-ink:   oklch(98% 0.010 80);     /* text on ember */
+  --color-focus:        oklch(57% 0.15 45);
+
+  /* ── Type ───────────────────────────────────────────── */
+  --font-display: "Fraunces", "DM Serif Display", Georgia, serif;
+  --font-body:    "Inter Tight", "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", "DM Mono", ui-monospace, monospace;
+
+  --text-display: clamp(3rem, 9vw, 8.5rem);
+  --text-4xl:     clamp(2.4rem, 5.2vw, 4.25rem);
+  --text-3xl:     clamp(1.9rem, 3.4vw, 2.85rem);
+  --text-2xl:     clamp(1.5rem, 2.4vw, 2rem);
+  --text-xl:      1.375rem;
+  --text-lg:      1.125rem;
+  --text-md:      1rem;
+  --text-sm:      0.875rem;
+  --text-xs:      0.75rem;
+
+  /* ── Space (4pt) ────────────────────────────────────── */
+  --space-3xs: 0.25rem; --space-2xs: 0.5rem; --space-xs: 0.75rem;
+  --space-sm:  1rem;    --space-md:  1.5rem; --space-lg: 2rem;
+  --space-xl:  3rem;    --space-2xl: 4.5rem; --space-3xl: 7rem;
+  --space-4xl: 10rem;
+
+  /* ── Spatial ────────────────────────────────────────── */
+  --max-w:      1240px;
+  --max-w-text: 680px;
+  --nav-h:      68px;
+  --gutter:     clamp(20px, 5vw, 56px);
+  --radius:     2px;
+
+  /* ── Motion ─────────────────────────────────────────── */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+}

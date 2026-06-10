@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Motor Energy Audit Fieldwork — VGTPS — Bala Shunmugam M</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/project.css"/>
+  <link rel="stylesheet" href="css/cosmic-project.css"/>
+  <style>:root{--accent:#064e3b;--accent-light:#ecfdf5;--accent-mid:#86d5b3;--accent-dark:#033326;}</style>
+</head>
+<body>
+  <canvas id="cosmic-stars" aria-hidden="true"></canvas>
+<nav class="p-nav">
+  <a href="projects.html" class="p-nav-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>All Projects</a>
+  <div class="p-nav-right"><span class="p-nav-name">Bala Shunmugam M</span><span class="p-nav-num">05 / 08</span></div>
+</nav>
+
+<section class="p-hero">
+  <div class="p-eyebrow"><div class="p-eyebrow-dot"></div><span class="p-eyebrow-text">B.E. In-Plant Training · VGTPS Phase I · Mentor-Guided Fieldwork</span></div>
+  <h1 class="p-title">Motor Energy Audit Fieldwork<br><em>at VGTPS Phase I</em></h1>
+  <p class="p-desc">Hands-on energy-audit fieldwork at TANGEDCO's <strong>Valuthur Gas Turbine Power Station Phase I</strong> during my B.E. in-plant training (February 2025). Under a plant mentor's guidance, walked through the full auxiliary-motor population — cooling water pumps, fans, compressors, lube and feed pumps — and <strong>personally took load measurements with clamp meter and power analyser</strong>. Documented the load-factor pattern that drives the VFD-retrofit case in any GTPS aux-power optimisation.</p>
+  <div class="p-tags">
+    <span class="p-tag p-tag-accent">B.E. EEE · In-Plant Training</span>
+    <span class="p-tag">VGTPS Phase I · TANGEDCO</span>
+    <span class="p-tag">Mentor-Guided Audit</span>
+    <span class="p-tag">Clamp Meter + Power Analyser</span>
+    <span class="p-tag">VFD Retrofit Case</span>
+    <span class="p-tag">Affinity Laws</span>
+  </div>
+  <div class="p-impact">
+    <div class="p-impact-item"><div class="p-impact-val">8 motors</div><div class="p-impact-label">Representative aux-motor sample measured</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">3 under</div><div class="p-impact-label">Below 40% load (efficiency sweet-spot is 75–100%)</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">2 over</div><div class="p-impact-label">Above rated load — thermal/insulation risk</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">5.55–6.60%</div><div class="p-impact-label">Phase I aux consumption range (plant 5-yr data)</div></div>
+  </div>
+</section>
+
+<div class="p-content">
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Context</div>
+    <div class="p-section-title">The training, the mentor, the audit</div>
+    <div class="p-card-grid">
+      <div class="p-card" style="--card-color:#dc2626">
+        <div class="p-card-label">The Setting</div>
+        <div class="p-card-text">VGTPS Phase I — TANGEDCO's 95 MW combined-cycle plant (GE Frame 6FA gas turbine + BHEL steam turbine). Like any combined-cycle plant, it has a large auxiliary-motor population: cooling water pumps, ID fans, FD fans, lube oil pumps, instrument air compressors, fuel-handling drives. Phase I auxiliary consumption ran <strong>5.55–6.60% of total generation</strong> across FY2016-17 to FY2020-21 (plant documentation) — that's the pool VFD retrofits target.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--blue)">
+        <div class="p-card-label">My Role</div>
+        <div class="p-card-text">I walked through Phase I with a plant mentor who showed me each major motor system, explained its role in the plant, and let me <strong>personally take readings with clamp meter and power analyser</strong>. Same trip as my P01 documentation study and the data collection for my P08 protection-coordination project — this is the EEE hands-on portion of that broader visit.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--amber)">
+        <div class="p-card-label">Why the EEE Background Matters</div>
+        <div class="p-card-text">Reading a clamp meter is easy; <em>interpreting</em> the measurements is the EEE part. A 40%-loaded induction motor doesn't just consume 40% of rated power — its <strong>power factor collapses</strong>, magnetising current dominates, and effective efficiency drops well below nameplate. Knowing the motor equivalent circuit lets you turn a single load-factor measurement into a real efficiency assessment.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--green)">
+        <div class="p-card-label">What I Took Away</div>
+        <div class="p-card-text">Auxiliary motors in utility plants are <strong>systematically oversized</strong> for plant-design worst cases that rarely happen in steady operation. The opportunity is consistent across the fleet — VGTPS isn't unusual. The harder problem isn't finding the savings, it's <strong>justifying capex when O&amp;M budgets are constrained</strong> — which is where the MBA layer comes in.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Methodology</div>
+    <div class="p-section-title">How the readings were taken</div>
+    <div class="p-findings">
+      <div class="p-finding"><div class="p-finding-num">01</div><div class="p-finding-text"><strong>Sample selection.</strong> With the mentor, identified a representative sample of 8 auxiliary motors spanning the major drive categories in Phase I — pumps (cooling water, lube oil, feed water), fans (cooling, exhaust), compressors, and a handling drive. Mix of motor ratings from ~11 kW up to ~45 kW.</div></div>
+      <div class="p-finding"><div class="p-finding-num">02</div><div class="p-finding-text"><strong>Measurement protocol.</strong> During normal operating hours, clamped on each motor's supply cable. Measured line current (A), voltage (V), power factor (cos φ), and computed input kW. Compared against nameplate rated kW to derive load factor. Recorded measurements in a notebook, photographed nameplates where permitted.</div></div>
+      <div class="p-finding"><div class="p-finding-num">03</div><div class="p-finding-text"><strong>Interpretation.</strong> Applied the standard induction-motor performance curve — efficiency stays high (typically &gt;90%) between 75% and 100% load, degrades sharply below 50% load due to fixed magnetising losses, and recovery occurs only by reducing the motor size, not by accepting the inefficiency.</div></div>
+      <div class="p-finding"><div class="p-finding-num">04</div><div class="p-finding-text"><strong>What was beyond my scope.</strong> The full energy-savings projection and VFD-investment ROI were calculated by the plant's own energy-audit work — I was not present for that calculation. I contributed the measurements; the plant team converted them into financial figures using their own electricity tariff and capex assumptions.</div></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Findings</div>
+    <div class="p-section-title">The load-factor pattern across the motor sample</div>
+    <p class="p-prose">Across the 8-motor sample, three distinct patterns emerged. The exact motor identifiers and per-machine values are in my training notebook — what's defensible to share publicly is the pattern.</p>
+
+    <div class="p-card-grid">
+      <div class="p-card" style="--card-color:var(--oxblood)">
+        <div class="p-card-label">Pattern A — Severely under-loaded (3 motors)</div>
+        <div class="p-card-text">Three motors ran at <strong>33–42% load factor</strong>. Power factor dropped to <strong>0.55–0.61</strong> — well below acceptable. The motors are doing the work asked of them, but at substantial wasted reactive current and poor real-power efficiency. <strong>Right-sizing + VFD candidates.</strong></div>
+      </div>
+      <div class="p-card" style="--card-color:#dc2626">
+        <div class="p-card-label">Pattern B — Overloaded (2 motors)</div>
+        <div class="p-card-text">Two motors measured at <strong>110–112% of rated kW</strong>. Power factor was reasonable (~0.82–0.83) because the motor is in its design region, but <strong>continuous over-rating risks insulation life and triggers thermal protection trips</strong>. Either replace with higher-rated motors or reduce process demand.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--green)">
+        <div class="p-card-label">Pattern C — Well-matched (3 motors)</div>
+        <div class="p-card-text">Three motors operated at <strong>76–86% load factor</strong> with power factor 0.85–0.88. These are correctly sized for the duty — no intervention needed beyond normal preventive maintenance. The lesson: <strong>most VFD-retrofit candidates are not "any motor" — they're the ones you identify by measurement.</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Engineering Background</div>
+    <div class="p-section-title">Why VFDs work — the Affinity Laws</div>
+    <div class="p-callout">
+      <div class="p-callout-title">The cube law that makes VFDs powerful</div>
+      <div class="p-callout-body">For centrifugal machines (pumps, fans) — which is most of a power-plant aux fleet — the Affinity Laws give: <strong>Flow ∝ Speed · Pressure ∝ Speed² · Power ∝ Speed³</strong>. A 20% reduction in speed = a <strong>49% reduction in power consumed</strong>. This is why VFDs return such large savings — even modest speed reductions yield outsized power savings.</div>
+    </div>
+    <div class="p-findings">
+      <div class="p-finding"><div class="p-finding-num">01</div><div class="p-finding-text"><strong>Throttling vs VFD.</strong> Many plants control flow by partially closing valves — the motor still runs at full speed, consuming full power, and the valve dissipates excess energy as heat. A VFD slows the motor instead, drawing only the power actually needed. The savings come from avoiding the wasted work, not from improving the motor itself.</div></div>
+      <div class="p-finding"><div class="p-finding-num">02</div><div class="p-finding-text"><strong>Soft-start benefit.</strong> Direct-on-line starts pull 6–8× rated current as inrush. A VFD ramps voltage gradually, eliminating the spike. This protects motor windings, cables and switchgear, and reduces utility demand-charge exposure.</div></div>
+      <div class="p-finding"><div class="p-finding-num">03</div><div class="p-finding-text"><strong>Power factor.</strong> Active front-end VFDs can maintain near-unity power factor at the supply point — reducing reactive power demand and the chance of triggering tariff PF penalties.</div></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Recommendations</div>
+    <div class="p-section-title">What the plant team did with the findings</div>
+    <div class="p-recs">
+      <div class="p-rec"><span class="p-rec-tag rec-now">Priority 1</span><div class="p-rec-text"><strong>Address the overloaded motors first.</strong> The two motors at &gt;110% rated load are the immediate-risk items — winding insulation degradation, unplanned trips. A planned replacement is much cheaper than a forced outage.</div></div>
+      <div class="p-rec"><span class="p-rec-tag rec-now">Priority 2</span><div class="p-rec-text"><strong>Right-size + VFD on the under-loaded motors.</strong> The three motors at &lt;42% load are candidates for replacement with smaller motors plus VFDs. The combination addresses both the over-sizing and the throttle losses.</div></div>
+      <div class="p-rec"><span class="p-rec-tag rec-mid">Priority 3</span><div class="p-rec-text"><strong>Build it into the wider aux-consumption programme.</strong> Phase I aux consumption is 5.55–6.60% of total generation. Even a modest reduction across the full motor population — through this kind of systematic audit-then-retrofit work — recovers direct net plant output. The methodology is repeatable.</div></div>
+      <div class="p-rec"><span class="p-rec-tag rec-long">Plant economics</span><div class="p-rec-text">The plant's own analysis of these measurements projected approximately <strong>20% reduction in aux electricity consumption</strong> on the audited motors with a <strong>~14-month VFD investment payback</strong> at then-current tariff. These financial figures came from the plant team's analysis using my measurements — I was not present for the ROI calculation itself.</div></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Connection</div>
+    <div class="p-section-title">How this fits with the rest of the portfolio</div>
+    <div class="p-card-grid">
+      <div class="p-card" style="--card-color:var(--slate)">
+        <div class="p-card-label">→ Project 01</div>
+        <div class="p-card-text">P01 documents what the plant <em>is</em> — the thermodynamic cycle and electrical layout. The motor audit here is the <strong>hands-on, measurement-side</strong> of the same in-plant training trip.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--brass)">
+        <div class="p-card-label">→ Project 02</div>
+        <div class="p-card-text">P02 (operations study) recommends VFD retrofits as a recovery lever against the 5.55–6.60% aux consumption. The audit here is the <strong>concrete evidence</strong> that the lever exists at VGTPS specifically.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--forest)">
+        <div class="p-card-label">→ Project 08</div>
+        <div class="p-card-text">Same in-plant training trip. P08 picked up the <strong>protection-coordination</strong> thread; this project picked up the <strong>energy-audit</strong> thread. Both grounded in real plant data from the same visit.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section" style="margin-top:32px;">
+    <div class="p-callout">
+      <div class="p-callout-title">A note on this study's scope</div>
+      <div class="p-callout-body">This is <strong>hands-on energy-audit fieldwork conducted during B.E. in-plant training</strong>, under direct guidance of a VGTPS plant mentor. <strong>I personally took the clamp-meter and power-analyser readings on each sampled motor.</strong> The load-factor pattern (3 under, 3 well-matched, 2 over) reflects real measurements. The <strong>VFD energy-savings projection and 14-month ROI figures are from the plant's own subsequent analysis</strong> of those measurements using their own electricity tariff and capex assumptions — I was not present for that calculation. Specific motor identifiers and per-machine kW values are in my training notebook; the patterns shared here are what's defensible to publish without risking plant-data confidentiality.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="p-footer">
+  <span class="p-footer-name">Bala Shunmugam M · B.E. EEE + MBA Operations</span>
+  <div class="p-footer-links"><a href="projects.html">← All Projects</a><a href="index.html">Portfolio</a></div>
+</footer>
+<script>function tab(el,id){const w=el.closest('.p-section');w.querySelectorAll('.p-tab').forEach(t=>t.classList.remove('active'));w.querySelectorAll('.p-panel').forEach(p=>p.classList.remove('active'));el.classList.add('active');w.querySelector('#'+id).classList.add('active');}</script>
+  <script src="js/cosmic.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+---
+title: "Market Basket Analysis"
+author: "Bala Shunmugam M"
+format: html
+editor: visual
+---
+
+# Market Basket Analysis
+
+## 1. Introduction
+
+Market Basket Analysis is used primarily to understand the association between products which is been found out through the frequency of the purchases and also with the joint purchase. The customer basket would reveal all necessary information relating the relationship between different products ie., the antecedent the first product that the customer is choosing then the Consequent the associated product that he demands jointly which is represented with a Confidence ratio to affirm the association.
+
+## 2. Market Basket Analaysis using Groceries_data from Kaggle.
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+Groceries_dataset<-read.csv("D:/IBA Files/Market Basket Analysis/Groceries_dataset.csv")
+head(Groceries_dataset)
+tail(Groceries_dataset)
+length(unique(Groceries_dataset$Member_number))
+```
+
+## 2.1 Data Exploration
+
+The groceries_data set has 38765 observations and 3 features including transaction id(member number), date and Item description. There are 3898 members in this transaction data
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+#Group items by Member_number and Date
+library(dplyr)
+transaction_data <- Groceries_dataset %>%
+  group_by(Member_number, Date) %>%
+  summarise(items = list(itemDescription), .groups = "drop")
+```
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(arules)
+transaction_list <- as(transaction_data$items, "transactions") # Creating transaction list
+```
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+# Creating association rules 
+rules<- apriori(transaction_list, parameter = list(supp =0.0005, conf =0.2, minlen =2))
+#Inspecting the first 2 rules
+inspect(head(rules, 2))
+```
+
+We created the rules based on the support ( = 0.005), confidence ( = 0.2), and minimum length ( = 2) using the Apriori algorithm available in the "arules" library. According to the rules created by these specific conditions, if a customer buys "artificial sweetener", there is a 27.58% chance (confidence = 0.2758) for them to buy "Whole milk" also. Similarly, if a customer buys "brandy", there is a 34.21% chance (confidence = 0.3421) for them to buy "Whole milk" as well. However, the support levels for these combinations are extremely low (0.00053 and 0.00086 respectively), indicating that these associations occur very rarely across the entire dataset.
+
+# Conclusion
+
+Market Basket Analysis of the Groceries dataset revealed meaningful—though infrequent—associations between certain products. Using the Apriori algorithm with a support threshold of 0.0005 and confidence threshold of 0.2, we identified rules that highlight customer purchasing behavior:
+
+-   **Product Associations**: Items like *artificial sweetener* and *brandy* showed moderate confidence levels (27.58% and 34.21%, respectively) in being purchased alongside *whole milk*. This suggests that when these niche items are bought, *whole milk* is a common complementary product.
+
+-   **Support vs. Confidence**: While the confidence values indicate a reasonable likelihood of joint purchase, the **low support values** (below 0.001) imply that these combinations are **not widespread** across the entire customer base. These are **niche patterns**, not dominant trends.
+
+-   **Strategic Implications**:
+
+    -   Retailers could use such insights for **targeted promotions** (e.g., bundling whole milk with artificial sweeteners or brandy).
+
+    -   These rules can also inform **store layout decisions**, placing associated items closer together to encourage impulse buys.
+
+#### About the Author
+
+I’m a student in the MBA Program (2025–2027), currently navigating Trimester I at Amrita School of Business, Amrita Vishwa Vidyapeetham, Coimbatore. This **assignment/blog** was written as part of our coursework for **Introduction to Business Analytics.**
+
+Blog link: <https://iba-bala-shunmugam-m-25043.blogspot.com/2025/08/market-basket-analysis.html>

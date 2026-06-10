@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Interview Walkthrough Script — Bala Shunmugam M</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f4f1ea;
+    --paper:    #fdfaf3;
+    --ink:      #1a1d1f;
+    --ink-soft: #4a4e51;
+    --ink-mute: #797d80;
+    --rule:     #d8d2c4;
+    --accent:   #b9542b;
+    --accent-soft: #e8c5b0;
+    --warn:     #8a6a1e;
+    --good:     #4a6b3a;
+    --shadow:   0 1px 0 rgba(0,0,0,.04), 0 4px 16px rgba(0,0,0,.04);
+  }
+  *,*::before,*::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 64px 32px 96px;
+  }
+
+  /* Header */
+  header.masthead { margin-bottom: 56px; }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(36px, 6vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .deck {
+    font-size: 19px;
+    color: var(--ink-soft);
+    max-width: 640px;
+    line-height: 1.55;
+  }
+  .meta-bar {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    letter-spacing: 0.04em;
+  }
+  .meta-bar span strong { color: var(--ink); font-weight: 500; }
+
+  /* Section */
+  section { margin-top: 56px; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 28px;
+    letter-spacing: -0.01em;
+    margin: 0;
+    flex: 1;
+  }
+  .section-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    background: var(--paper);
+    padding: 4px 10px;
+    border-radius: 12px;
+    border: 1px solid var(--rule);
+  }
+
+  /* Cards */
+  .card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+
+  /* Script lines — visually distinct */
+  .say {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 14px;
+    padding-left: 16px;
+    border-left: 3px solid var(--accent);
+  }
+  .say + .say { margin-top: 0; }
+  .say strong { color: var(--accent); font-weight: 600; }
+  .say em { font-style: italic; color: var(--ink-soft); }
+  .pause {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    background: var(--bg);
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin: 0 2px;
+    vertical-align: middle;
+    border: 1px solid var(--rule);
+  }
+
+  /* Tip blocks */
+  .tip {
+    margin-top: 16px;
+    padding: 14px 18px;
+    background: var(--bg);
+    border-left: 3px solid var(--good);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    border-radius: 0 4px 4px 0;
+  }
+  .tip strong { color: var(--ink); }
+  .warn-tip { border-left-color: var(--warn); }
+
+  /* Q&A grid */
+  .qa-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .qa {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 18px 22px;
+    box-shadow: var(--shadow);
+  }
+  .qa .q {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+  }
+  .qa .q::before { content: "Q: "; color: var(--accent); font-style: normal; font-weight: 500; }
+  .qa .a {
+    font-size: 15px;
+    line-height: 1.55;
+    margin: 0;
+    color: var(--ink);
+  }
+  .qa .a::before { content: "→ "; color: var(--accent); font-weight: 600; }
+
+  /* Numbers cheat sheet */
+  .numbers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .num-card {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 4px;
+  }
+  .num-card .figure {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--ink);
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .num-card .label {
+    font-size: 12px;
+    color: var(--ink-mute);
+    line-height: 1.4;
+  }
+
+  /* Rules list */
+  .rules {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: rule;
+  }
+  .rules li {
+    counter-increment: rule;
+    padding: 12px 0 12px 44px;
+    position: relative;
+    border-bottom: 1px solid var(--rule);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .rules li:last-child { border-bottom: none; }
+  .rules li::before {
+    content: counter(rule, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .rules li strong { color: var(--ink); display: block; margin-bottom: 2px; font-weight: 600; }
+  .rules li span { color: var(--ink-soft); }
+
+  /* TOC */
+  .toc {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 20px 28px;
+    margin-bottom: 32px;
+  }
+  .toc-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 12px;
+  }
+  .toc ol { margin: 0; padding-left: 0; list-style: none; counter-reset: toc; }
+  .toc li {
+    counter-increment: toc;
+    padding: 6px 0;
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    min-width: 24px;
+  }
+  .toc a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 15px;
+    flex: 1;
+    border-bottom: 1px dotted transparent;
+    transition: border-color 0.2s;
+  }
+  .toc a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+  .toc .time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+  }
+
+  /* Timeline visual for interview structure */
+  .timeline {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin: 24px 0 16px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .tl-block {
+    padding: 16px 12px;
+    background: var(--paper);
+    border-top: 3px solid var(--rule);
+    text-align: center;
+  }
+  .tl-block.hot { border-top-color: var(--accent); background: #fdf4ee; }
+  .tl-time {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    margin-bottom: 4px;
+  }
+  .tl-label {
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .tl-block.hot .tl-label { color: var(--accent); font-weight: 600; }
+
+  /* Footer */
+  footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-mute);
+    text-align: center;
+  }
+
+  /* Print */
+  @media print {
+    body { background: white; }
+    .container { padding: 24px; }
+    .card, .qa, .num-card { box-shadow: none; }
+    a { color: var(--ink); }
+  }
+
+  @media (max-width: 600px) {
+    .container { padding: 32px 20px 64px; }
+    h1 { font-size: 32px; }
+    .say { font-size: 17px; }
+    .card { padding: 20px 22px; }
+    .timeline { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="masthead">
+    <div class="eyebrow">Campus placement · 15–20 min · 1:1 or 1:2</div>
+    <h1>The Walkthrough <em>Script</em></h1>
+    <p class="deck">A complete interview script designed for short campus interviews — built around short sentences, memorisable numbers, and recoverable pauses.</p>
+    <div class="meta-bar">
+      <span><strong>Audience:</strong> Schneider · Hitachi · ABB · Siemens · Honeywell</span>
+      <span><strong>Mode:</strong> Live website walkthrough</span>
+      <span><strong>Speaker:</strong> Bala Shunmugam M</span>
+    </div>
+  </header>
+
+  <div class="toc">
+    <div class="toc-title">In this document</div>
+    <ol>
+      <li><a href="#timeline">Realistic interview timeline</a><span class="time">~ 18 min</span></li>
+      <li><a href="#rules">Five rules for speaking under pressure</a><span class="time">read first</span></li>
+      <li><a href="#opener">The 30-second opener</a><span class="time">memorise</span></li>
+      <li><a href="#hero">Hero project — InventoryIQ + Project 07</a><span class="time">4 min</span></li>
+      <li><a href="#backup1">Backup A — VGTPS Operations (Project 02)</a><span class="time">2 min</span></li>
+      <li><a href="#backup2">Backup B — Adaptive Relay (Project 08)</a><span class="time">2 min</span></li>
+      <li><a href="#closing">The closing pitch</a><span class="time">30 sec</span></li>
+      <li><a href="#numbers">Numbers cheat sheet</a><span class="time">memorise</span></li>
+      <li><a href="#qa">Likely questions &amp; short answers</a><span class="time">prep</span></li>
+    </ol>
+  </div>
+
+  <!-- ============================================ -->
+  <section id="timeline">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2>Realistic interview timeline</h2>
+      <span class="section-time">~ 18 min</span>
+    </div>
+
+    <p style="margin-top:0; color:var(--ink-soft); font-size:15px;">A typical 15–20 min campus placement breaks down like this. The orange band is your project airtime — plan accordingly.</p>
+
+    <div class="timeline">
+      <div class="tl-block">
+        <div class="tl-time">0 – 3 min</div>
+        <div class="tl-label">Intro &amp; HR<br>"Tell me about yourself"</div>
+      </div>
+      <div class="tl-block hot">
+        <div class="tl-time">3 – 9 min</div>
+        <div class="tl-label">Hero project<br>Live walkthrough</div>
+      </div>
+      <div class="tl-block hot">
+        <div class="tl-time">9 – 12 min</div>
+        <div class="tl-label">Backup project<br>(if asked for more)</div>
+      </div>
+      <div class="tl-block">
+        <div class="tl-time">12 – 16 min</div>
+        <div class="tl-label">Their questions<br>Technical / situational</div>
+      </div>
+      <div class="tl-block">
+        <div class="tl-time">16 – 18 min</div>
+        <div class="tl-label">Your questions<br>+ closing</div>
+      </div>
+    </div>
+
+    <div class="tip">
+      <strong>The key insight:</strong> you get 6–9 minutes of project airtime, not 20. Lead with ONE project deeply. Have ONE backup. Use the rest as ammunition only if they ask.
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section id="rules">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2>Five rules for speaking under pressure</h2>
+    </div>
+
+    <div class="card">
+      <ol class="rules">
+        <li>
+          <strong>Short sentences win.</strong>
+          <span>Every line in this script is 8–15 words. Long sentences are where grammar breaks and panic starts. Pause between sentences instead.</span>
+        </li>
+        <li>
+          <strong>Numbers never lie.</strong>
+          <span>"Four classical frameworks integrated into one mobile tool" never fails. "A significantly impactful improvement" can collapse. Memorise the numbers, not the adjectives.</span>
+        </li>
+        <li>
+          <strong>Pauses sound confident.</strong>
+          <span>A 2-second pause sounds thoughtful. Filling silence with "um, basically, actually" sounds nervous. Pause, breathe, continue.</span>
+        </li>
+        <li>
+          <strong>Show, don't describe.</strong>
+          <span>You're doing a live demo. When the words fail, click the next page. The visual carries 60% of the message.</span>
+        </li>
+        <li>
+          <strong>Recover with structure.</strong>
+          <span>If you lose your place, say "Let me show you the result first" and click to the metrics. The numbers reset your flow.</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section id="opener">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2>The 30-second opener</h2>
+      <span class="section-time">memorise word-for-word</span>
+    </div>
+
+    <p style="margin-top:0; color:var(--ink-soft); font-size:15px;">When they say <em>"Tell me about yourself"</em>, this is your answer. Practise until you can say it in your sleep. <span class="pause">pause</span> markers show where to breathe.</p>
+
+    <div class="card">
+      <p class="say">Good morning. I am Bala Shunmugam. <span class="pause">pause</span></p>
+      <p class="say">I am an Electrical Engineer pursuing my MBA in Operations and Business Analytics at <strong>Amrita School of Business</strong>. <span class="pause">pause</span></p>
+      <p class="say">My background is unusual. <span class="pause">pause</span> I have done in-plant training at a gas turbine power station, and I am now learning operations frameworks.</p>
+      <p class="say">So I can read a single-line diagram, and I can also run an EOQ calculation.</p>
+      <p class="say">I have built two working tools — an inventory control system and a Six Sigma project manager. <span class="pause">pause</span></p>
+      <p class="say">I would like to show you the inventory tool first, if that's okay?</p>
+
+      <div class="tip">
+        <strong>Why this works:</strong> It states your unique angle (EEE + MBA bridge) in two simple sentences, gives one concrete example each side (single-line diagram + EOQ), shows you ship things (two tools), and ends by giving the interviewer control ("if that's okay?"). Total: ~28 seconds.
+      </div>
+      <div class="tip warn-tip">
+        <strong>If your nerves spike</strong>, the safest fallback is to just say the first three sentences and stop. Then ask: <em>"Shall I tell you about my projects?"</em> Giving them a yes/no question buys you time to breathe.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section id="hero">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2>Hero — InventoryIQ + Project 07</h2>
+      <span class="section-time">4 min · always lead with this</span>
+    </div>
+
+    <p style="margin-top:0; color:var(--ink-soft); font-size:15px;">This is the only project you are <strong>guaranteed</strong> to present. Open the InventoryIQ tool on your laptop before the interview starts. Have it pre-loaded with demo data.</p>
+
+    <div class="card">
+      <h3 style="font-family:'Fraunces',serif; font-size:18px; font-weight:600; margin:0 0 16px; color:var(--accent);">Step 1 — Open the tool, then say:</h3>
+
+      <p class="say">This is <strong>InventoryIQ</strong>. I designed it for unorganised small retail shops in India. <span class="pause">pause</span></p>
+      <p class="say">The problem I'm solving: small shop owners run out of fast-selling items, but their money is stuck in slow-moving stock. They order on intuition — when shelves look low.</p>
+      <p class="say">I built this around a <strong>realistic 12-SKU basket</strong> modelled on a typical Madurai grocery shop. Rice, oil, sugar, pulses, soaps — the actual items I'd see if I walked into one. <span class="pause">pause</span></p>
+
+      <h3 style="font-family:'Fraunces',serif; font-size:18px; font-weight:600; margin:24px 0 16px; color:var(--accent);">Step 2 — Click on a product, then say:</h3>
+
+      <p class="say">For each SKU, the tool calculates four things automatically.</p>
+      <p class="say"><strong>EOQ</strong> — how much to order. <span class="pause">pause</span> <strong>ROP</strong> — when to reorder.</p>
+      <p class="say"><strong>Safety stock</strong> — buffer for uncertainty. <span class="pause">pause</span> <strong>ABC class</strong> — is this an A, B, or C priority item?</p>
+      <p class="say">All four formulas are integrated. The shop owner sees one answer: "Order N units now." <span class="pause">pause</span></p>
+      <p class="say">Edit any cell — demand, lead time, cost — and watch all four update live. That's the value: <strong>four classical frameworks, one tap, one answer.</strong></p>
+
+      <h3 style="font-family:'Fraunces',serif; font-size:18px; font-weight:600; margin:24px 0 16px; color:var(--accent);">Step 3 — Show the dashboard, then say:</h3>
+
+      <p class="say">This is the manager dashboard view — same data, more detail. ABC pie chart, stockout alerts, reorder priorities. <span class="pause">pause</span></p>
+      <p class="say">What the textbook tells us: small retailers running ad-hoc reordering typically have <strong>30–45% excess inventory and frequent stockouts of their best sellers</strong>. EOQ-plus-ROP closes most of that gap.</p>
+      <p class="say">The tool's value isn't in proving those specific numbers — I haven't deployed it in a real shop yet. The value is in <strong>making the textbook math one-tap accessible</strong> to someone who has never opened Excel.</p>
+
+      <h3 style="font-family:'Fraunces',serif; font-size:18px; font-weight:600; margin:24px 0 16px; color:var(--accent);">Step 4 — Show the mobile view, then close with:</h3>
+
+      <p class="say">I also designed a mobile version. <span class="pause">pause</span> Because the actual shop owner is on a phone in his apron pocket, not a laptop on a desk.</p>
+      <p class="say">This was my MBA applied research project. <span class="pause">pause</span> The concept, the framework integration, the UX — that's mine. The code? I used AI tools to accelerate implementation. <strong>I'm comfortable being transparent about that — it's a 2026 reality.</strong> What matters is I owned the spec and the design.</p>
+
+      <div class="tip">
+        <strong>Total time:</strong> 3.5–4 minutes if you breathe between sentences. <strong>Most likely follow-up:</strong> <em>"Did you deploy it in a real shop?"</em> Answer honestly: "Not yet — it's a working demonstrator. The next step is piloting with a real outlet." That's defensible. Inventing a deployment is not.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section id="backup1">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2>Backup A — VGTPS Operations (Project 02)</h2>
+      <span class="section-time">2 min · use if asked "what else?"</span>
+    </div>
+
+    <p style="margin-top:0; color:var(--ink-soft); font-size:15px;">If the interviewer asks <em>"what other projects?"</em>, use this. It shows you can think in OM frameworks.</p>
+
+    <div class="card">
+      <p class="say">My next project is a field study at <strong>Valuthur Gas Turbine Power Station</strong>. <span class="pause">pause</span></p>
+      <p class="say">I did my in-plant training there in February 2025.</p>
+      <p class="say">It's a <strong>187 megawatt combined-cycle plant</strong> — Phase I with a GE Frame 6FA, Phase II with an Ansaldo unit.</p>
+      <p class="say">For my MBA operations project, I applied <strong>TANGEDCO's own five operational lenses</strong> — Operation &amp; Maintenance, Crisis Management, Safety, Reliability, Efficiency. <span class="pause">pause</span></p>
+      <p class="say">Using the actual multi-year plant performance documents from my training pack.</p>
+      <p class="say">The most striking finding: <strong>cost of generation went from ₹1.32 per kWh in 2004 to ₹22 per kWh in 2020.</strong> <span class="pause">pause</span> A 17-times swing.</p>
+      <p class="say">Almost entirely driven by gas price and reduced dispatch. <span class="pause">pause</span></p>
+      <p class="say">The other pattern I found: <strong>every recorded inspection ran 30 to 50 percent beyond OEM-recommended fired hours.</strong> The May 2010 stator fault and June 2012 rotor replacement both came out of that pattern.</p>
+      <p class="say">So my recommendation: tighten the maintenance-deferral discipline first, then add vibration analytics on rotating equipment — because most major outages have been rotating-equipment failures.</p>
+
+      <div class="tip">
+        <strong>Why this works:</strong> Real plant data, real failure events, framework from the plant's own training material. <strong>If asked "did you do full NPV calculations?" — say honestly: "I framed the recommendations around NPV concepts but didn't do full cash-flow modelling. The capital-ROI examples in my study are the plant's own actual capex-versus-revenue figures."</strong> That answer is defensible. Inventing NPV numbers is not.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section id="backup2">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2>Backup B — Adaptive Relay (Project 08)</h2>
+      <span class="section-time">2 min · use if technical interviewer</span>
+    </div>
+
+    <p style="margin-top:0; color:var(--ink-soft); font-size:15px;">Use this <strong>only if</strong> the interviewer is technical (an engineer, not a HR person), OR if they ask about your B.E. final-year project, OR if you sense the conversation needs more engineering credibility.</p>
+
+    <div class="card">
+      <p class="say">My final-year B.E. project was on <strong>adaptive protection relay coordination</strong>. <span class="pause">pause</span></p>
+      <p class="say">In May 2010, a stator earth fault at Valuthur caused a three-month outage. I learned about it during my in-plant training.</p>
+      <p class="say">The relay missed the fault because it was high-resistance — small differential current.</p>
+      <p class="say">Fixed-setting relays can't detect that during peak operating mode. <span class="pause">pause</span></p>
+      <p class="say">I designed an adaptive <strong>four-group 87G differential scheme</strong>. <span class="pause">pause</span></p>
+      <p class="say">It uses real plant data — <strong>51,921 amperes bus fault level, 172 volts stability voltage</strong> — from VGTPS documentation.</p>
+      <p class="say">By the relay characteristic math, the adaptive setting brings the threshold below the fault current. <span class="pause">pause</span></p>
+      <p class="say">Literature on similar adaptive 87G schemes reports clearance in <strong>forty to fifty milliseconds</strong> — within IEEE C37.102 guidance.</p>
+      <p class="say">This was a <strong>coordination study</strong>, not a Simulink simulation. The analytical case is solid.</p>
+      <p class="say">I analysed ten fault scenarios across five protection zones.</p>
+
+      <div class="tip">
+        <strong>Why this matters for Schneider / Hitachi / ABB:</strong> these companies <em>sell</em> protection relays. When you talk 87G differential, adaptive setting groups, and IEEE C37.102 coordination, you are speaking their product language. <strong>If the interviewer asks "did you actually simulate this in Simulink?" — say honestly: "No, it's a coordination study using plant data and the relay characteristic math. I cite literature trip-time figures, not my own simulation."</strong> That answer earns respect. Claiming a simulation you didn't run does not.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section id="closing">
+    <div class="section-head">
+      <span class="section-num">07</span>
+      <h2>The closing pitch</h2>
+      <span class="section-time">30 sec · when they ask "anything else?"</span>
+    </div>
+
+    <p style="margin-top:0; color:var(--ink-soft); font-size:15px;">Most candidates stumble when asked <em>"Why should we hire you?"</em> or <em>"Anything else to add?"</em> at the end. Have this ready.</p>
+
+    <div class="card">
+      <p class="say">Most MBA candidates can talk about Lean and Six Sigma.</p>
+      <p class="say">Most engineers can talk about plant operations. <span class="pause">pause</span></p>
+      <p class="say">I can do both. <span class="pause">pause</span></p>
+      <p class="say">And I ship working tools, not just reports.</p>
+      <p class="say">That's what I bring.</p>
+
+      <div class="tip">
+        <strong>Why this is short:</strong> at the end of a 15-min interview, energy is low. A 6-line closing lands harder than a 30-line one. <strong>The "I ship working tools, not just reports" line is your differentiator</strong> — say it slowly.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section id="numbers">
+    <div class="section-head">
+      <span class="section-num">08</span>
+      <h2>Numbers cheat sheet</h2>
+      <span class="section-time">memorise all of these</span>
+    </div>
+
+    <p style="margin-top:0; color:var(--ink-soft); font-size:15px;">These are the only numbers you need. When in doubt, say a number — it always lands.</p>
+
+    <h3 style="font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin:24px 0 8px; color:var(--ink-soft);">InventoryIQ / Project 07</h3>
+    <div class="numbers">
+      <div class="num-card">
+        <div class="figure">4</div>
+        <div class="label">frameworks integrated (EOQ + ROP + Safety Stock + ABC)</div>
+      </div>
+      <div class="num-card">
+        <div class="figure">12 SKUs</div>
+        <div class="label">realistic Madurai grocery basket</div>
+      </div>
+      <div class="num-card">
+        <div class="figure">30–45%</div>
+        <div class="label">inventory cut typical in literature (not measured)</div>
+      </div>
+      <div class="num-card">
+        <div class="figure">Mobile-first</div>
+        <div class="label">designed for the shop owner's phone</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin:32px 0 8px; color:var(--ink-soft);">VGTPS Operations / Project 02</h3>
+    <div class="numbers">
+      <div class="num-card">
+        <div class="figure">187.2 MW</div>
+        <div class="label">combined-cycle capacity (Ph I 95 + Ph II 92.2)</div>
+      </div>
+      <div class="num-card">
+        <div class="figure">Bronze ★</div>
+        <div class="label">3rd best station in India 2006-07</div>
+      </div>
+      <div class="num-card">
+        <div class="figure">17×</div>
+        <div class="label">cost-of-generation swing (₹1.32 → ₹22.34/kWh)</div>
+      </div>
+      <div class="num-card">
+        <div class="figure">5 lenses</div>
+        <div class="label">TANGEDCO's own GTPS optimisation framework</div>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin:32px 0 8px; color:var(--ink-soft);">Adaptive Relay / Project 08</h3>
+    <div class="numbers">
+      <div class="num-card">
+        <div class="figure">4 groups</div>
+        <div class="label">adaptive 87G setting scheme</div>
+      </div>
+      <div class="num-card">
+        <div class="figure">51,921 A</div>
+        <div class="label">bus fault level — real VGTPS data</div>
+      </div>
+      <div class="num-card">
+        <div class="figure">172 V</div>
+        <div class="label">87B stability voltage — real plant data</div>
+      </div>
+      <div class="num-card">
+        <div class="figure">10 / 5</div>
+        <div class="label">scenarios analysed / zones coordinated</div>
+      </div>
+      <div class="num-card">
+        <div class="figure">May 2010</div>
+        <div class="label">real fault event motivating the study</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <section id="qa">
+    <div class="section-head">
+      <span class="section-num">09</span>
+      <h2>Likely questions &amp; short answers</h2>
+      <span class="section-time">prep all of these</span>
+    </div>
+
+    <p style="margin-top:0; color:var(--ink-soft); font-size:15px;">The most common follow-ups. Practise saying each answer in <strong>under 20 seconds</strong>.</p>
+
+    <h3 style="font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin:24px 0 8px; color:var(--ink-soft);">About InventoryIQ</h3>
+    <div class="qa-grid">
+      <div class="qa">
+        <p class="q">Where did the data come from?</p>
+        <p class="a">The 12 SKUs are <strong>realistic examples</strong> modelled on a typical Madurai grocery shop — assembled from observation of local outlets, not collected as 30 days of measured sales from one specific shop. The defaults are editable so it works for any small retailer.</p>
+      </div>
+      <div class="qa">
+        <p class="q">Have you deployed it in a real shop?</p>
+        <p class="a">Not yet. It's a <strong>working demonstrator</strong>. The next step would be piloting with a real outlet and measuring before-vs-after performance over a quarter.</p>
+      </div>
+      <div class="qa">
+        <p class="q">How did you build the tool?</p>
+        <p class="a">I designed the spec, the framework integration, and the mobile-first UX. For the implementation I used <strong>AI as a code accelerator</strong> — HTML, CSS, and JavaScript. The four formulas (EOQ, ROP, Safety Stock, ABC) run in the browser. I'm comfortable being transparent about the AI assistance — what matters is I own the design decisions.</p>
+      </div>
+      <div class="qa">
+        <p class="q">Why integrate four frameworks instead of just EOQ?</p>
+        <p class="a">EOQ tells you <em>how much</em> to order. ROP tells you <em>when</em>. Safety stock handles uncertainty. ABC tells you <em>which products</em> deserve your attention. A shop owner needs all four — separated, they're a textbook chapter. Integrated, they're a tool.</p>
+      </div>
+      <div class="qa">
+        <p class="q">What improvement could a shop expect?</p>
+        <p class="a">Inventory literature on EOQ-plus-ROP versus ad-hoc reordering in small retail consistently reports <strong>30–45% inventory value reduction</strong> and substantial stockout drops. I haven't measured those numbers myself — that's the next phase. The tool's value today is making the math accessible.</p>
+      </div>
+      <div class="qa">
+        <p class="q">Why not just use Excel?</p>
+        <p class="a">A shop owner cannot use Excel on a phone between customers. I designed this for the actual user — <strong>one tap, one number</strong>: "Order N units." That's the UX insight.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin:32px 0 8px; color:var(--ink-soft);">About VGTPS</h3>
+    <div class="qa-grid">
+      <div class="qa">
+        <p class="q">What is VGTPS exactly?</p>
+        <p class="a">It's a <strong>187.2 MW combined-cycle gas plant</strong> in Ramanathapuram, run by TANGEDCO. Two phases: Phase I (commissioned 2002-03) is 95 MW with GE Frame 6FA + BHEL steam turbine. Phase II (commissioned 2008-09) is 92.2 MW with an Ansaldo unit.</p>
+      </div>
+      <div class="qa">
+        <p class="q">What's combined-cycle?</p>
+        <p class="a">A gas turbine generates power and exhausts hot gas. That hot gas heats water to drive a second turbine — the steam turbine. You get more power from the same fuel. Brayton cycle + Rankine cycle in one plant.</p>
+      </div>
+      <div class="qa">
+        <p class="q">What is evaporative cooling?</p>
+        <p class="a">It cools the air going into the gas turbine. Cooler air is denser, so the turbine produces more power. It mainly helps in summer when output drops due to ambient heat.</p>
+      </div>
+      <div class="qa">
+        <p class="q">Why does summer reduce output?</p>
+        <p class="a">Gas turbine output drops by roughly 0.5-0.7 percent for every degree Celsius above ISO conditions (15°C). In Tamil Nadu summer at 35-40°C ambient, that's a major loss compared to nameplate.</p>
+      </div>
+      <div class="qa">
+        <p class="q">Why does Phase I outperform Phase II?</p>
+        <p class="a">Phase I won the Bronze Shield in 2006-07 at 87.42% PLF. Phase II (Ansaldo) has had multiple long forced outages — 16 months from Jan 2010, 20 months from Jan 2015 — mostly vibration-related rotating-equipment failures. Equipment specification choices at procurement matter for the plant's whole life.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin:32px 0 8px; color:var(--ink-soft);">About the Relay project</h3>
+    <div class="qa-grid">
+      <div class="qa">
+        <p class="q">What is 87G?</p>
+        <p class="a">87G is the differential protection relay for a generator. It compares the current entering and leaving the generator. Any difference means a fault inside.</p>
+      </div>
+      <div class="qa">
+        <p class="q">Why does the fixed-setting relay miss high-resistance faults?</p>
+        <p class="a">High resistance limits the fault current. The fixed setting is calibrated for full-current faults, so a small current looks like normal operation to the relay.</p>
+      </div>
+      <div class="qa">
+        <p class="q">What does "adaptive" mean here?</p>
+        <p class="a">The relay setting changes based on the operating condition. Fixed setting is one number for all situations. Adaptive recalculates the threshold dynamically.</p>
+      </div>
+    </div>
+
+    <h3 style="font-family:'Fraunces',serif; font-size:17px; font-weight:600; margin:32px 0 8px; color:var(--ink-soft);">HR / behavioural</h3>
+    <div class="qa-grid">
+      <div class="qa">
+        <p class="q">Why operations after EEE?</p>
+        <p class="a">During my plant visits, I saw that the biggest losses were not technical. They were in scheduling, maintenance planning, and inventory. Engineering teaches you the system. Operations teaches you how to run it.</p>
+      </div>
+      <div class="qa">
+        <p class="q">Why Schneider Electric / Hitachi?</p>
+        <p class="a">Your products are exactly what I studied — protection relays, energy management, motor controls. I want to work where my electrical knowledge becomes a business asset, not a side note.</p>
+      </div>
+      <div class="qa">
+        <p class="q">What is your weakness?</p>
+        <p class="a">I get nervous in formal interviews. I am working on it by practising aloud and focusing on numbers and short sentences. In one-on-one technical discussions, I am comfortable.</p>
+      </div>
+      <div class="qa">
+        <p class="q">Do you have any questions for us?</p>
+        <p class="a">Yes — two. First, what does a typical first six months look like for a graduate hire in this role? Second, which projects in your team most use the engineering-plus-operations combination?</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Practice script · v1.0 · for personal placement preparation · Bala Shunmugam M
+  </footer>
+</div>
+</body>
+</html>

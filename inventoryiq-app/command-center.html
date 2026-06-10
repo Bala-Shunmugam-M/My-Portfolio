@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>InventoryIQ v2 — Command Center</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0A0E1A;--panel:#111726;--panel2:#0E1422;--card:#141B2E;--line:#212A40;--line2:#2A3550;
+  --ink:#F1F5FF;--ink2:#C3CBDF;--muted:#7E89A6;--faint:#5A6680;
+  --accent:#7C5CFC;--accent2:#4A3FD4;--blue:#3B82F6;--cyan:#22D3EE;
+  --green:#34D399;--amber:#FBBF24;--orange:#FB923C;--red:#F87171;--teal:#2DD4BF;
+  --font:'Plus Jakarta Sans',sans-serif;--r:14px;--r2:10px;
+}
+html,body{height:100%;background:var(--bg);font-family:var(--font);color:var(--ink);-webkit-font-smoothing:antialiased}
+body{display:flex;min-height:100vh}
+a{color:inherit}
+/* sidebar */
+.sb{width:226px;flex-shrink:0;background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;padding:16px 12px;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 8px 18px}
+.brand-logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+.brand-name{font-size:15px;font-weight:800}.brand-name span{color:var(--accent)}
+.nav-i{display:flex;align-items:center;gap:11px;padding:10px 11px;border-radius:9px;font-size:13px;font-weight:600;color:var(--ink2);cursor:pointer;margin-bottom:2px}
+.nav-i:hover{background:var(--card)}
+.nav-i.on{background:linear-gradient(135deg,rgba(124,92,252,.22),rgba(74,63,212,.12));color:#fff;font-weight:700}
+.nav-i .ic{width:18px;text-align:center;font-size:14px}
+.nav-badge{margin-left:auto;background:var(--red);color:#fff;font-size:9px;font-weight:800;padding:1px 7px;border-radius:8px}
+.nav-foot{margin-top:auto;display:flex;align-items:center;gap:10px;padding:10px 8px;border-top:1px solid var(--line)}
+.av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#3B82F6,#1D4ED8);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800}
+/* main */
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;justify-content:space-between;padding:18px 26px;border-bottom:1px solid var(--line)}
+.top h1{font-size:21px;font-weight:800}
+.top .sub{font-size:12px;color:var(--muted);font-weight:600;margin-top:2px}
+.top-r{display:flex;align-items:center;gap:12px}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:8px 12px;font-size:12px;font-weight:600;color:var(--ink2);cursor:pointer}
+.btn-ai{background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;border-radius:9px;padding:9px 15px;color:#fff;font-weight:700;font-size:12px;cursor:pointer}
+.wrap{padding:20px 26px 60px;flex:1}
+.view{display:none}.view.on{display:block}
+/* kpi */
+.kgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:16px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:15px 16px;position:relative;overflow:hidden}
+.kpi .l{font-size:12px;font-weight:700;color:var(--muted)}
+.kpi .v{font-size:27px;font-weight:800;margin-top:6px}
+.kpi .v small{font-size:13px;color:var(--muted);font-weight:700}
+.kpi .d{font-size:11px;font-weight:700;margin-top:5px}
+.up{color:var(--green)}.down{color:var(--red)}.flat{color:var(--muted)}
+.spark{position:absolute;right:12px;top:14px;width:60px;height:26px;opacity:.8}
+/* layout rows */
+.row{display:grid;gap:14px;margin-bottom:16px}
+.row.c3{grid-template-columns:1.3fr 1fr 1fr}
+.row.c2{grid-template-columns:1.4fr 1fr}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.card-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.card-t{font-size:13px;font-weight:800}
+.tag{font-size:9px;font-weight:800;padding:2px 8px;border-radius:7px;letter-spacing:.4px}
+.tag.new{background:rgba(124,92,252,.2);color:#b9a7ff}
+.tag.hi{background:rgba(248,113,113,.16);color:var(--red)}
+.tag.med{background:rgba(251,191,36,.16);color:var(--amber)}
+.tag.ok{background:rgba(52,211,153,.16);color:var(--green)}
+.brief-li{display:flex;gap:8px;font-size:12px;color:var(--ink2);line-height:18px;margin-bottom:6px}
+.brief-li .dt{color:var(--accent);font-weight:800}
+.act{display:flex;align-items:center;gap:9px;font-size:12px;color:var(--ink);font-weight:600;padding:7px 0;border-top:1px dashed var(--line2)}
+.act .ck{color:var(--green)}
+.lst .li{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line)}
+.lst .li:last-child{border-bottom:none}
+.li-nm{font-size:12px;font-weight:700}.li-sub{font-size:10px;color:var(--muted);font-weight:600;margin-top:1px}
+/* gauge */
+.gauge-wrap{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.bd-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.bd-ic{width:26px;height:26px;border-radius:8px;background:var(--panel2);display:flex;align-items:center;justify-content:center;font-size:13px}
+.bd-nm{font-size:12px;font-weight:700;flex:1}
+.bd-w{font-size:10px;color:var(--muted);font-weight:700;width:36px}
+.bd-track{flex:2;height:7px;background:var(--panel2);border-radius:4px;overflow:hidden}
+.bd-fill{height:100%;border-radius:4px}
+.bd-sc{font-size:12px;font-weight:800;width:54px;text-align:right}
+.chart-box{position:relative;height:230px}
+.chart-sm{position:relative;height:200px}
+/* legend */
+.lg{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink2);font-weight:600}
+.dot{width:9px;height:9px;border-radius:50%}
+/* mobile bottom nav */
+.mnav{display:none}
+@media(max-width:920px){
+  body{display:block;padding-bottom:64px}
+  .sb{display:none}
+  .top{padding:14px 16px}.top h1{font-size:18px}
+  .wrap{padding:14px 14px 30px}
+  .kgrid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .row.c3,.row.c2{grid-template-columns:1fr}
+  .mnav{display:flex;position:fixed;bottom:0;left:0;right:0;height:60px;background:var(--panel);border-top:1px solid var(--line);align-items:center;justify-content:space-around;z-index:50}
+  .mnav .mi{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9px;font-weight:700;color:var(--muted);cursor:pointer}
+  .mnav .mi.on{color:var(--accent)}
+  .mnav .mi .ic{font-size:17px}
+}
+</style>
+</head>
+<body>
+<aside class="sb">
+  <div class="brand"><div class="brand-logo">IQ</div><div><div class="brand-name">InventoryIQ <span>v2</span></div></div></div>
+  <div class="nav-i on" data-v="cmd" onclick="go('cmd')"><span class="ic">▦</span>Command Center</div>
+  <div class="nav-i" data-v="health" onclick="go('health')"><span class="ic">❤</span>Inventory Health</div>
+  <div class="nav-i" data-v="ai" onclick="go('ai')"><span class="ic">✦</span>AI Insights</div>
+  <div class="nav-i" onclick="location.href='index.html'"><span class="ic">▤</span>Inventory</div>
+  <div class="nav-i" onclick="location.href='dashboard.html'"><span class="ic">▥</span>Manager View</div>
+  <div class="nav-foot"><div class="av" id="avI">·</div><div><div style="font-size:12px;font-weight:700" id="avN">Operations</div><div style="font-size:10px;color:var(--muted)">Manager</div></div></div>
+</aside>
+<div class="main">
+  <div class="top">
+    <div><h1 id="vTitle">Command Center</h1><div class="sub" id="vSub">Real-time inventory intelligence at a glance</div></div>
+    <div class="top-r"><span class="pill" id="dateP"></span><button class="btn-ai" onclick="askAI()">✦ Ask InventoryIQ AI</button></div>
+  </div>
+  <div class="wrap">
+    <!-- COMMAND CENTER -->
+    <div class="view on" id="v-cmd">
+      <div class="kgrid" id="kpis"></div>
+      <div class="row c3">
+        <div class="card"><div class="card-h"><div class="card-t">✦ AI Inventory Brief</div><span class="tag new">NEW</span></div><div id="briefBox"></div><button class="btn-ai" style="margin-top:10px" onclick="go('ai')">View All Insights</button></div>
+        <div class="card"><div class="card-h"><div class="card-t" style="color:var(--red)">⚠ Top Risks</div></div><div class="lst" id="risksBox"></div></div>
+        <div class="card"><div class="card-h"><div class="card-t" style="color:var(--green)">💰 Top Opportunities</div></div><div class="lst" id="oppsBox"></div></div>
+      </div>
+      <div class="row c2">
+        <div class="card"><div class="card-h"><div class="card-t">📈 Inventory Trend (30 Days)</div><div style="display:flex;gap:12px"><span class="lg"><span class="dot" style="background:var(--blue)"></span>Inventory</span><span class="lg"><span class="dot" style="background:var(--green)"></span>Sales</span><span class="lg"><span class="dot" style="background:var(--red)"></span>Stockouts</span></div></div><div class="chart-box"><canvas id="trendChart"></canvas></div></div>
+        <div class="card"><div class="card-h"><div class="card-t">Risk Distribution</div></div><div class="chart-sm"><canvas id="riskChart"></canvas></div></div>
+      </div>
+    </div>
+    <!-- HEALTH -->
+    <div class="view" id="v-health">
+      <div class="card" style="margin-bottom:16px"><div class="gauge-wrap"><div id="gaugeBig"></div><div style="flex:1;min-width:200px"><div id="healthVerdict"></div></div><div style="min-width:160px"><div style="font-size:11px;color:var(--muted);font-weight:700;margin-bottom:6px">Score change (vs last)</div><div id="healthDelta" style="font-size:18px;font-weight:800"></div></div></div></div>
+      <div class="row c2">
+        <div class="card"><div class="card-h"><div class="card-t">Score Breakdown</div></div><div id="breakdownBox"></div></div>
+        <div class="card"><div class="card-h"><div class="card-t">Score History</div></div><div class="chart-sm"><canvas id="histChart"></canvas></div></div>
+      </div>
+    </div>
+    <!-- AI INSIGHTS -->
+    <div class="view" id="v-ai">
+      <div class="card"><div class="card-h"><div class="card-t">Today's AI Brief</div><span class="tag ok" id="aiHealthTag">Healthy</span></div>
+        <div class="kgrid" id="aiKpis" style="margin-bottom:14px"></div>
+        <div style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px">Key Insights</div>
+        <div id="aiInsights"></div>
+        <div style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin:14px 0 8px">Recommended Actions</div>
+        <div id="aiActions"></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)"><span style="font-size:12px;color:var(--muted)">Want a detailed LLM report?</span><button class="btn-ai" id="genBtn" onclick="generateReport()">Generate Report</button></div>
+        <div id="aiReport" style="margin-top:12px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="mnav">
+  <div class="mi on" data-v="cmd" onclick="go('cmd')"><span class="ic">▦</span>Home</div>
+  <div class="mi" data-v="health" onclick="go('health')"><span class="ic">❤</span>Health</div>
+  <div class="mi" data-v="ai" onclick="go('ai')"><span class="ic">✦</span>Insights</div>
+  <div class="mi" onclick="location.href='index.html'"><span class="ic">▤</span>Items</div>
+</div>
+
+<script>
+var AI_CFG={baseUrl:'https://api.groq.com/openai/v1',model:'llama-3.3-70b-versatile',apiKey:'',proxy:'https://inventoryiq-llm-proxy.bala-inventoryiq.workers.dev',storageKey:'inventoryiq_v8_data'};
+var DEMO=[
+ {id:1,name:'Aashirvaad Atta 5kg',ico:'🌾',stock:12,rop:30,eoq:88,demand:12,cost:285,sell:320,lead:3,cls:'A',supplier:'ITC Distributor',acc:62,history:[9,14,11,13,15,10,14,13,15,16,14,18]},
+ {id:2,name:"Lay's Chips 26g",ico:'🍟',stock:14,rop:83,eoq:423,demand:28,cost:20,sell:30,lead:2,cls:'A',supplier:'PepsiCo Dist.',acc:71,history:[22,25,28,30,26,29,32,28,31,33,30,34]},
+ {id:3,name:'Colgate Toothpaste',ico:'🪥',stock:25,rop:35,eoq:118,demand:8,cost:95,sell:125,lead:3,cls:'A',supplier:'Colgate Rep.',acc:88,history:[7,9,8,6,9,8,7,8,9,7,8,9]},
+ {id:4,name:'Lifebuoy Handwash',ico:'🧴',stock:22,rop:28,eoq:95,demand:6,cost:110,sell:145,lead:3,cls:'A',supplier:'HUL Dist.',acc:84,history:[5,7,6,5,7,6,5,6,7,6,5,7]},
+ {id:6,name:'Tata Salt 1kg',ico:'🧂',stock:55,rop:49,eoq:300,demand:18,cost:22,sell:28,lead:2,cls:'B',supplier:'Tata Consumer',acc:98,history:[15,16,17,17,18,18,19,19,20,20,21,22]},
+ {id:8,name:'Fortune Rice 1kg',ico:'🍚',stock:60,rop:66,eoq:223,demand:22,cost:65,sell:80,lead:2,cls:'A',supplier:'Adani Wilmar',acc:55,history:[18,20,22,25,28,22,19,21,24,26,22,20]},
+ {id:10,name:'Haldiram Namkeen',ico:'🥨',stock:145,rop:67,eoq:217,demand:16,cost:75,sell:100,lead:3,cls:'A',supplier:'Haldiram Dist.',acc:80,history:[15,17,14,16,18,15,16,14,17,16,15,18]},
+ {id:12,name:'Shampoo Sachet',ico:'💆',stock:320,rop:63,eoq:907,demand:45,cost:4,sell:6,lead:1,cls:'C',supplier:'Local Wholesale',acc:60,history:[36,40,45,52,58,46,38,42,48,54,46,37]}
+];
+function loadProds(){try{var r=localStorage.getItem(AI_CFG.storageKey);var a=r?JSON.parse(r):[];a=Array.isArray(a)?a:(a.data||[]);return a&&a.length?a:DEMO;}catch(e){return DEMO;}}
+function rup(n){n=Math.round(n||0);return n>=100000?'₹'+(n/100000).toFixed(2)+'L':'₹'+n.toLocaleString('en-IN');}
+function hcol(h){return h>=80?'#34D399':h>=70?'#FBBF24':h>=60?'#FB923C':'#F87171';}
+
+/* ── DECISION ENGINE (mockup weights) ── */
+function intel(){
+  var ps=loadProds();
+  var invValue=0,cogsAnnual=0,excessValue=0,revRisk=0,fillNum=0,fillDen=0,fcNum=0,fcDen=0,supNum=0,supDen=0,soNum=0,soDen=0;
+  var risks=[],opps=[],plan=[],dist={high:0,med:0,low:0};
+  ps.forEach(function(p){
+    var dd=Math.max(0.01,p.demand||0),sell=p.sell||0,cost=p.cost||0,stock=p.stock||0,rop=p.rop||0,eoq=p.eoq||0,lead=p.lead||3;
+    var acc=p.acc!=null?p.acc:(p.r2!=null?Math.round(p.r2*100):70);
+    invValue+=stock*cost;cogsAnnual+=dd*365*cost;
+    var excessU=Math.max(0,stock-(rop+eoq)),exVal=excessU*cost;excessValue+=exVal;
+    var cover=stock/dd, rev=sell*dd;
+    var so=Math.min(100,(cover/(lead*1.5))*100); soNum+=so*rev;soDen+=rev; // stockout exposure
+    fillNum+=(stock>0?Math.min(100,stock/rop*100):0)*dd;fillDen+=dd;       // service/fill
+    fcNum+=acc*dd;fcDen+=dd;
+    supNum+=Math.max(0,Math.min(100,(1-(lead-1)/13)*100))*dd;supDen+=dd;
+    var riskDays=Math.max(0,lead-cover),rr=Math.round(riskDays*dd*sell);revRisk+=rr;
+    var lvl=(stock<=rop*0.5||cover<lead)?'high':(stock<=rop)?'med':'low';dist[lvl]++;
+    if(lvl!=='low')risks.push({name:p.name,ico:p.ico||'📦',cover:Math.round(cover*10)/10,lvl:lvl,amt:rr});
+    if(exVal>0)opps.push({name:p.name,ico:p.ico||'📦',amt:Math.round(exVal),units:excessU});
+    if(stock<=rop)plan.push({name:p.name,ico:p.ico||'📦',qty:eoq||Math.max(1,rop*2-stock),cost:Math.round((eoq||1)*cost),cover:Math.round(cover*10)/10});
+  });
+  var stockout=soDen?soNum/soDen:100,service=fillDen?fillNum/fillDen:100,forecast=fcDen?fcNum/fcDen:70,supplier=supDen?supNum/supDen:80;
+  var excess=100-Math.min(100,invValue>0?excessValue/invValue*100:0);
+  var health=Math.max(0,Math.min(100,Math.round(0.30*stockout+0.25*excess+0.20*forecast+0.15*supplier+0.10*service)));
+  var grade=health>=85?'A':health>=75?'B':health>=65?'C':health>=55?'D':'E';
+  var turnover=invValue>0?cogsAnnual/invValue:0;
+  // history snapshot
+  var prev=null,hist=[];try{var raw=localStorage.getItem('iq_health_hist');hist=raw?JSON.parse(raw):[];var today=new Date().toISOString().slice(0,10);
+    if(!hist.length||hist[hist.length-1].d!==today){if(hist.length)prev=hist[hist.length-1].h;hist.push({d:today,h:health});while(hist.length>60)hist.shift();localStorage.setItem('iq_health_hist',JSON.stringify(hist));}else if(hist.length>1)prev=hist[hist.length-2].h;}catch(e){}
+  risks.sort(function(a,b){return b.amt-a.amt||a.cover-b.cover;});opps.sort(function(a,b){return b.amt-a.amt;});plan.sort(function(a,b){return a.cover-b.cover;});
+  return {health:health,grade:grade,prev:prev,hist:hist,
+    sub:[['Stockout Risk (Exposure)','🔻',30,Math.round(stockout)],['Excess Inventory','📦',25,Math.round(excess)],['Forecast Accuracy','📈',20,Math.round(forecast)],['Supplier Reliability','🚚',15,Math.round(supplier)],['Service Level','✅',10,Math.round(service)]],
+    invValue:Math.round(invValue),recoverable:Math.round(excessValue),revAtRisk:revRisk,serviceLevel:Math.round(service),forecastAcc:Math.round(forecast),turnover:Math.round(turnover*10)/10,
+    risks:risks.slice(0,4),opps:opps.slice(0,4),plan:plan.slice(0,3),dist:dist,nProds:ps.length};
+}
+
+function spark(data,col){var W=60,H=26,mn=Math.min.apply(null,data),mx=Math.max.apply(null,data),rg=mx-mn||1;var pts=data.map(function(v,i){return (i/(data.length-1)*W).toFixed(1)+','+(H-((v-mn)/rg)*(H-2)).toFixed(1);});return '<svg class="spark" viewBox="0 0 '+W+' '+H+'"><polyline points="'+pts.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2"/></svg>';}
+
+var D=null,charts={};
+function render(){
+  D=intel();
+  document.getElementById('dateP').textContent=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+  var hc=hcol(D.health);
+  var dRev=D.prev!=null?D.health-D.prev:0;
+  // KPIs
+  var kp=[
+    {l:'Inventory Health',v:D.health+' <small>/100</small>',d:(D.prev!=null?(dRev>=0?'▲ +'+dRev+' pts':'▼ '+dRev+' pts'):'baseline'),c:dRev>=0?'up':'down',col:hc,sp:spark(D.hist.slice(-10).map(function(x){return x.h;}),hc)},
+    {l:'Revenue At Risk',v:rup(D.revAtRisk),d:D.risks.length+' SKUs exposed',c:'down',col:'#F87171',sp:spark([3,4,3,5,4,6,5,7],'#F87171')},
+    {l:'Capital Locked',v:rup(D.invValue),d:rup(D.recoverable)+' recoverable',c:'flat',col:'#fff',sp:spark([5,5,6,5,6,6,6,6],'#3B82F6')},
+    {l:'Service Level',v:D.serviceLevel+'%',d:D.turnover+'× turnover',c:D.serviceLevel>=85?'up':'down',col:'#fff',sp:spark([4,5,5,6,5,6,7,7],'#34D399')}
+  ];
+  document.getElementById('kpis').innerHTML=kp.map(function(k){return '<div class="kpi">'+k.sp+'<div class="l">'+k.l+'</div><div class="v" style="color:'+k.col+'">'+k.v+'</div><div class="d '+k.c+'">'+k.d+'</div></div>';}).join('');
+  // brief
+  var bl=[];
+  bl.push('Inventory health '+(D.prev!=null&&dRev<0?'declined '+(-dRev)+' points':'at '+D.health+'/100')+' — grade '+D.grade+'.');
+  if(D.risks.length)bl.push(D.risks[0].name.split(' ').slice(0,2).join(' ')+' stockout risk ('+D.risks[0].cover+'d cover).');
+  if(D.recoverable>0)bl.push(rup(D.recoverable)+' locked in slow-moving inventory.');
+  var briefH=bl.map(function(t){return '<div class="brief-li"><span class="dt">•</span>'+t+'</div>';}).join('');
+  briefH+='<div style="font-size:11px;font-weight:800;color:var(--muted);margin:10px 0 4px">RECOMMENDED ACTIONS</div>';
+  briefH+=D.plan.map(function(p){return '<div class="act"><span class="ck">✓</span>Reorder '+p.name.split(' ').slice(0,2).join(' ')+' ('+p.qty+' units)</div>';}).join('');
+  if(D.opps.length)briefH+='<div class="act"><span class="ck">✓</span>Reduce excess '+D.opps[0].name.split(' ').slice(0,2).join(' ')+' — free '+rup(D.opps[0].amt)+'</div>';
+  document.getElementById('briefBox').innerHTML=briefH;
+  // risks/opps
+  document.getElementById('risksBox').innerHTML=D.risks.length?D.risks.map(function(r){return '<div class="li"><div><div class="li-nm">'+r.ico+' '+r.name+'</div><div class="li-sub">Stockout in '+r.cover+' days</div></div><span class="tag '+(r.lvl==='high'?'hi':'med')+'">'+(r.lvl==='high'?'High':'Medium')+'</span></div>';}).join(''):'<div class="li-sub">No risks 🎉</div>';
+  document.getElementById('oppsBox').innerHTML=D.opps.length?D.opps.map(function(o){return '<div class="li"><div><div class="li-nm">'+o.ico+' Reduce '+o.name.split(' ').slice(0,2).join(' ')+'</div><div class="li-sub">Free up '+rup(o.amt)+'</div></div></div>';}).join(''):'<div class="li-sub">None</div>';
+  // charts
+  drawCharts();
+  // health view
+  document.getElementById('gaugeBig').innerHTML=gaugeSVG(D.health,hc,150);
+  var verdict=D.health>=80?'Your inventory is healthy':D.health>=65?'Inventory needs attention':'Inventory at risk';
+  document.getElementById('healthVerdict').innerHTML='<div style="font-size:19px;font-weight:800;color:'+hc+'">'+verdict+'</div><div style="font-size:12px;color:var(--ink2);margin-top:6px;line-height:18px">Grade '+D.grade+'. Keep monitoring stockout risk and reduce excess inventory to improve your score.</div>';
+  document.getElementById('healthDelta').innerHTML=D.prev!=null?'<span class="'+(dRev>=0?'up':'down')+'">'+(dRev>=0?'+'+dRev:dRev)+' points</span>':'<span class="flat">baseline today</span>';
+  document.getElementById('breakdownBox').innerHTML=D.sub.map(function(s){var c=hcol(s[3]);return '<div class="bd-row"><div class="bd-ic">'+s[1]+'</div><div class="bd-nm">'+s[0]+'</div><div class="bd-w">'+s[2]+'%</div><div class="bd-track"><div class="bd-fill" style="width:'+s[3]+'%;background:'+c+'"></div></div><div class="bd-sc" style="color:'+c+'">'+s[3]+'/100</div></div>';}).join('');
+  // AI insights view
+  var ak=[['Inventory Health',D.health+' /100',hc],['Revenue At Risk',rup(D.revAtRisk),'#F87171'],['Stockout Risk',D.risks.filter(function(r){return r.lvl==='high';}).length+' SKUs','#FB923C'],['Capital Release',rup(D.recoverable),'#34D399']];
+  document.getElementById('aiKpis').innerHTML=ak.map(function(k){return '<div class="kpi"><div class="l">'+k[0]+'</div><div class="v" style="font-size:21px;color:'+k[2]+'">'+k[1]+'</div></div>';}).join('');
+  document.getElementById('aiHealthTag').textContent=D.health>=80?'Healthy':D.health>=65?'Watch':'At Risk';
+  document.getElementById('aiHealthTag').className='tag '+(D.health>=80?'ok':D.health>=65?'med':'hi');
+  document.getElementById('aiInsights').innerHTML=bl.map(function(t){return '<div class="brief-li"><span class="dt">•</span>'+t+'</div>';}).join('');
+  var acts=D.plan.map(function(p){return ['Reorder '+p.name.split(' ').slice(0,2).join(' ')+' ('+p.qty+' units)','hi','High Impact'];});
+  if(D.opps.length)acts.push(['Reduce excess '+D.opps[0].name.split(' ').slice(0,2).join(' ')+' — free '+rup(D.opps[0].amt),'med','Medium Impact']);
+  document.getElementById('aiActions').innerHTML=acts.map(function(a){return '<div class="li"><div class="li-nm">'+a[0]+'</div><span class="tag '+a[1]+'">'+a[2]+'</span></div>';}).join('');
+}
+
+function gaugeSVG(val,col,size){
+  var r=size/2-14,C=Math.PI*r,off=C*(1-val/100),cx=size/2,cy=size/2;
+  return '<svg width="'+size+'" height="'+(size*0.72)+'" viewBox="0 0 '+size+' '+(size*0.72)+'">'
+   +'<path d="M14 '+cy+' A '+r+' '+r+' 0 0 1 '+(size-14)+' '+cy+'" fill="none" stroke="#212A40" stroke-width="13" stroke-linecap="round"/>'
+   +'<path d="M14 '+cy+' A '+r+' '+r+' 0 0 1 '+(size-14)+' '+cy+'" fill="none" stroke="'+col+'" stroke-width="13" stroke-linecap="round" stroke-dasharray="'+C+'" stroke-dashoffset="'+off+'"/>'
+   +'<text x="'+cx+'" y="'+(cy-6)+'" text-anchor="middle" font-size="'+(size*0.27)+'" font-weight="800" fill="#F1F5FF">'+val+'</text>'
+   +'<text x="'+cx+'" y="'+(cy+14)+'" text-anchor="middle" font-size="11" font-weight="700" fill="#7E89A6">/100</text></svg>';
+}
+
+function drawCharts(){
+  Object.keys(charts).forEach(function(k){if(charts[k])charts[k].destroy();});
+  var labels30=[];for(var i=29;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);labels30.push(i%5===0?(d.getDate()+'/'+(d.getMonth()+1)):'');}
+  var base=D.invValue;var invSer=[],salSer=[],soSer=[];
+  for(var k=0;k<30;k++){var w=1+Math.sin(k*0.4)*0.12-(29-k)*0.004;invSer.push(Math.round(base*w));salSer.push(Math.round(base*0.5*(0.8+Math.sin(k*0.6)*0.2)));soSer.push(Math.max(0,Math.round(D.revAtRisk/1000*(0.6+Math.sin(k*0.7)*0.4))));}
+  var tg=document.getElementById('trendChart');
+  charts.trend=new Chart(tg,{type:'line',data:{labels:labels30,datasets:[
+    {label:'Inventory',data:invSer,borderColor:'#3B82F6',backgroundColor:'rgba(59,130,246,.08)',fill:true,tension:.35,pointRadius:0,borderWidth:2},
+    {label:'Sales',data:salSer,borderColor:'#34D399',fill:false,tension:.35,pointRadius:0,borderWidth:2},
+    {label:'Stockouts',data:soSer,borderColor:'#F87171',fill:false,tension:.35,pointRadius:0,borderWidth:2}
+  ]},options:chartOpts(true)});
+  var rg=document.getElementById('riskChart');
+  charts.risk=new Chart(rg,{type:'doughnut',data:{labels:['High','Medium','Low'],datasets:[{data:[D.dist.high,D.dist.med,D.dist.low],backgroundColor:['#F87171','#FBBF24','#34D399'],borderColor:'#141B2E',borderWidth:3}]},options:{cutout:'68%',plugins:{legend:{position:'right',labels:{color:'#C3CBDF',font:{size:11},boxWidth:10}}},maintainAspectRatio:false}});
+  if(document.getElementById('histChart')){var hl=D.hist.map(function(x){return x.d.slice(5);}),hd=D.hist.map(function(x){return x.h;});if(hd.length<2){hl=['start','now'];hd=[D.health,D.health];}
+    charts.hist=new Chart(document.getElementById('histChart'),{type:'line',data:{labels:hl,datasets:[{data:hd,borderColor:'#34D399',backgroundColor:'rgba(52,211,153,.1)',fill:true,tension:.35,pointRadius:2,borderWidth:2}]},options:chartOpts(false,0,100)});}
+}
+function chartOpts(grid,min,max){return {maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false},ticks:{color:'#7E89A6',font:{size:9},maxRotation:0,autoSkip:true}},y:{min:min,max:max,grid:{color:'rgba(42,53,80,.5)'},ticks:{color:'#7E89A6',font:{size:9}}}}};}
+
+function go(v){
+  ['cmd','health','ai'].forEach(function(x){var el=document.getElementById('v-'+x);if(el)el.classList.toggle('on',x===v);});
+  document.querySelectorAll('.nav-i[data-v],.mnav .mi[data-v]').forEach(function(n){n.classList.toggle('on',n.getAttribute('data-v')===v);});
+  var t={cmd:['Command Center','Real-time inventory intelligence at a glance'],health:['Inventory Health Score','Composite of five supply-chain factors'],ai:['AI Inventory Insights','LLM-generated brief over your live data']}[v];
+  document.getElementById('vTitle').textContent=t[0];document.getElementById('vSub').textContent=t[1];
+  if(v==='health'||v==='cmd')setTimeout(drawCharts,30);
+}
+
+/* ── LLM report (optional, via Worker proxy) ── */
+function aiPayload(){return {inventory_health:D.health,grade:D.grade,revenue_at_risk:D.revAtRisk,capital_locked:D.invValue,recoverable:D.recoverable,service_level_pct:D.serviceLevel,forecast_accuracy_pct:D.forecastAcc,sub_scores:D.sub.map(function(s){return {factor:s[0],weight:s[2],score:s[3]};}),top_risks:D.risks,opportunities:D.opps};}
+function callLLM(sys,user,cb,err){var url=AI_CFG.proxy?AI_CFG.proxy.replace(/\/$/,''):AI_CFG.baseUrl+'/chat/completions';var hd={'Content-Type':'application/json'};if(!AI_CFG.proxy)hd.Authorization='Bearer '+AI_CFG.apiKey;
+  fetch(url,{method:'POST',headers:hd,body:JSON.stringify({model:AI_CFG.model,temperature:0.4,max_tokens:700,messages:[{role:'system',content:sys},{role:'user',content:user}]})}).then(function(r){return r.text();}).then(function(t){var j=JSON.parse(t);cb((j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content||'').trim());}).catch(function(e){err(e.message);});}
+function generateReport(){var box=document.getElementById('aiReport'),b=document.getElementById('genBtn');b.disabled=true;b.textContent='Generating…';box.innerHTML='<div style="font-size:12px;color:var(--muted)">Thinking…</div>';
+  callLLM('You are InventoryIQ AI, a supply-chain analyst. Write a concise executive report (~120 words) in plain text with short labelled sections: Situation, Why, Risks, Opportunities, Actions. Cite the real numbers. No markdown.','Inventory intelligence snapshot:\n'+JSON.stringify(aiPayload(),null,2),
+   function(txt){box.innerHTML='<div style="background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:14px;font-size:13px;color:var(--ink2);line-height:20px;white-space:pre-wrap">'+txt.replace(/[<>]/g,'')+'</div>';b.disabled=false;b.textContent='Regenerate Report';},
+   function(e){box.innerHTML='<div style="font-size:12px;color:var(--red)">Could not generate: '+e+'</div>';b.disabled=false;b.textContent='Generate Report';});}
+function askAI(){go('ai');generateReport();}
+
+render();
+</script>
+</body>
+</html>

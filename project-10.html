@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Customer Review Analysis (Text Mining) — Bala Shunmugam M</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/project.css"/>
+  <link rel="stylesheet" href="css/cosmic-project.css"/>
+  <style>:root{--accent:#0891b2;--accent-light:#ecfeff;--accent-mid:#a5f3fc;--accent-dark:#155e75;}
+  .ba-fig{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:18px;margin:16px 0;}
+  .ba-fig img{width:100%;border-radius:4px;display:block;}
+  .ba-fig-cap{font-size:13px;color:var(--ink-3);margin-top:10px;font-style:italic;}
+  .ba-files{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:16px 0;}
+  .ba-file{display:flex;flex-direction:column;padding:14px;background:var(--paper-deep);border:1px solid var(--rule);border-radius:6px;text-decoration:none;color:var(--ink);transition:all .2s;}
+  .ba-file:hover{background:var(--card);border-color:var(--rule-strong);transform:translateY(-1px);}
+  .ba-file-type{font-family:var(--f-mono);font-size:10px;color:var(--oxblood);letter-spacing:0.08em;text-transform:uppercase;}
+  .ba-file-name{font-weight:500;margin-top:4px;}
+  .ba-file-desc{font-size:13px;color:var(--ink-2);margin-top:6px;line-height:1.4;}
+  .ba-blog{display:inline-flex;align-items:center;gap:8px;background:var(--oxblood);color:var(--paper);padding:10px 18px;border-radius:6px;text-decoration:none;font-weight:500;margin:8px 8px 8px 0;font-size:14px;}
+  .ba-blog:hover{background:var(--oxblood-deep);}
+  .ba-blog-secondary{background:transparent;color:var(--oxblood);border:1px solid var(--oxblood);}
+  .ba-blog-secondary:hover{background:var(--oxblood-soft);}
+  pre.r-code{background:#1a1a1a;color:#e5e5e5;padding:18px;border-radius:6px;overflow-x:auto;font-family:var(--f-mono);font-size:13px;line-height:1.55;}
+  pre.r-code .c-com{color:#888;}
+  pre.r-code .c-key{color:#c79f4f;}
+  pre.r-code .c-str{color:#7fa650;}
+  pre.r-code .c-fn{color:#71a3e3;}
+  </style>
+</head>
+<body>
+  <canvas id="cosmic-stars" aria-hidden="true"></canvas>
+<nav class="p-nav">
+  <a href="projects.html" class="p-nav-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>All Projects</a>
+  <div class="p-nav-right"><span class="p-nav-name">Bala Shunmugam M</span><span class="p-nav-num">10 / 12</span></div>
+</nav>
+
+<section class="p-hero">
+  <div class="p-eyebrow"><div class="p-eyebrow-dot"></div><span class="p-eyebrow-text">MBA Business Analytics · R · Text Mining · Trimester I</span></div>
+  <h1 class="p-title">Customer Review Analysis<br><em>using Text Mining in R</em></h1>
+  <p class="p-desc">A text-mining study of <strong>21 customer reviews</strong> of a restaurant, built in R using the <strong>tm package</strong> for the full NLP pipeline — corpus construction, cleaning, document-term matrix, cosine similarity, hierarchical clustering, and a word-cloud visualisation. Submitted as part of <strong>Introduction to Business Analytics</strong> (MBA Trimester I, Amrita School of Business, Aug 2025). Published on personal blog and rendered as a complete Quarto HTML report.</p>
+  <div class="p-tags">
+    <span class="p-tag p-tag-accent">MBA Year 1 · IBA</span>
+    <span class="p-tag">R · tm package</span>
+    <span class="p-tag">Cosine Similarity</span>
+    <span class="p-tag">Document Clustering</span>
+    <span class="p-tag">Word Cloud · wordcloud package</span>
+  </div>
+  <div style="margin-top:24px;">
+    <a href="https://mba-bala-shunmugam-m-25043.blogspot.com/2025/08/market-review-analysis.html" class="ba-blog" target="_blank" rel="noopener">📰 Read on Blog ↗</a>
+    <a href="analytics/review/Customer_Review_Analysis.pdf" class="ba-blog ba-blog-secondary" download>📄 Download PDF Report</a>
+    <a href="analytics/review/Customer_Review_Analysis.qmd" class="ba-blog ba-blog-secondary" download>📥 Download .qmd source</a>
+  </div>
+  <div class="p-impact" style="margin-top:32px;">
+    <div class="p-impact-item"><div class="p-impact-val">21 reviews</div><div class="p-impact-label">Customer feedback documents processed</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">185 terms</div><div class="p-impact-label">Unique vocabulary after cleaning</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">93%</div><div class="p-impact-label">Document-Term Matrix sparsity</div></div>
+    <div class="p-impact-item"><div class="p-impact-val">tm + slam</div><div class="p-impact-label">R text-mining packages used</div></div>
+  </div>
+</section>
+
+<div class="p-content">
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Context</div>
+    <div class="p-section-title">From raw reviews to actionable themes</div>
+    <div class="p-card-grid">
+      <div class="p-card" style="--card-color:#0891b2">
+        <div class="p-card-label">The Data</div>
+        <div class="p-card-text"><strong>reviews.csv</strong> — 21 customer reviews of an Italian restaurant. Free-form text, varied lengths, mixed sentiment, real spelling variation. The kind of unstructured data that customer-experience teams sit on without knowing what to do with.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--blue)">
+        <div class="p-card-label">The Question</div>
+        <div class="p-card-text">Can we go from <strong>raw text</strong> to <strong>structured insight</strong> — without reading every review manually? What words dominate? Which reviews are similar to which? Are there clusters of feedback (e.g., service complaints vs. food praise)?</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--green)">
+        <div class="p-card-label">My Approach</div>
+        <div class="p-card-text">Full <strong>R text-mining pipeline</strong>: build a VCorpus → clean (lowercase, remove punctuation/numbers/stopwords/whitespace) → construct a Document-Term Matrix → compute cosine similarity between reviews → cluster the documents → visualise term frequency with a word cloud.</div>
+      </div>
+      <div class="p-card" style="--card-color:var(--brass)">
+        <div class="p-card-label">What I Took Away</div>
+        <div class="p-card-text">Text mining is <strong>90% pre-processing, 10% insight</strong>. The raw vocabulary collapses dramatically after cleaning (stop words alone remove the majority). The interesting result isn't the most common word — it's the <strong>cosine-similarity matrix</strong> showing which reviews echo each other, revealing themes the eye would miss.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Step 1 — Corpus &amp; Cleaning</div>
+    <div class="p-section-title">From CSV to a clean text corpus</div>
+    <p class="p-prose">The first job of any text-mining project is to turn messy human writing into something a computer can count. R's <code>tm</code> package gives a clean abstraction: a <strong>Corpus</strong> wraps a collection of documents, and <code>tm_map</code> applies a transformation across all of them at once.</p>
+
+    <pre class="r-code"><span class="c-key">library</span>(tm)
+<span class="c-key">library</span>(slam)
+<span class="c-key">library</span>(proxy)
+<span class="c-key">library</span>(wordcloud)
+<span class="c-key">library</span>(RColorBrewer)
+
+<span class="c-com"># Load reviews and build a corpus</span>
+services &lt;- <span class="c-fn">read.csv</span>(<span class="c-str">"reviews.csv"</span>, header = <span class="c-key">TRUE</span>)
+texts    &lt;- services$Review
+corpus   &lt;- <span class="c-fn">VCorpus</span>(<span class="c-fn">VectorSource</span>(texts))
+
+<span class="c-com"># Clean the corpus — order matters</span>
+corpus &lt;- <span class="c-fn">tm_map</span>(corpus, <span class="c-fn">content_transformer</span>(tolower))
+corpus &lt;- <span class="c-fn">tm_map</span>(corpus, removePunctuation)
+corpus &lt;- <span class="c-fn">tm_map</span>(corpus, removeNumbers)
+corpus &lt;- <span class="c-fn">tm_map</span>(corpus, removeWords, <span class="c-fn">stopwords</span>(<span class="c-str">"en"</span>))
+corpus &lt;- <span class="c-fn">tm_map</span>(corpus, stripWhitespace)</pre>
+
+    <div class="p-callout">
+      <div class="p-callout-title">Why order matters</div>
+      <div class="p-callout-body">If you removed punctuation <em>after</em> stopword removal, contractions like "don't" would survive as "dont" — which isn't in the standard English stopword list and would skew term frequency. Doing punctuation first, then stopwords, gives cleaner results. Small detail; big difference.</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Step 2 — Document-Term Matrix</div>
+    <div class="p-section-title">Quantifying what each review talks about</div>
+    <p class="p-prose">The <strong>Document-Term Matrix (DTM)</strong> is the structural unit of text mining: rows are documents (reviews), columns are terms (words), cells are term frequencies. From 21 reviews and 185 unique terms, the DTM had <strong>254 non-sparse entries vs 3,631 sparse</strong> — 93% sparsity, typical for short text.</p>
+
+    <pre class="r-code">dtm &lt;- <span class="c-fn">DocumentTermMatrix</span>(corpus)
+<span class="c-fn">inspect</span>(dtm)
+
+<span class="c-com">#  &lt;&lt;DocumentTermMatrix (documents: 21, terms: 185)&gt;&gt;
+#  Non-/sparse entries: 254/3631
+#  Sparsity           : 93%
+#  Maximal term length: 11
+#  Weighting          : term frequency (tf)
+#
+#  Sample:        alfredo  best  chicken  food  great  pizza  sauce
+#    Doc 10           1     0       1     1     0       1      0
+#    Doc 12           0     1       0     1     0       2      0
+#    Doc 19           0     1       2     0     0       2      0  </span></pre>
+
+    <p class="p-prose">Each row shows how many times each term appears in that document. Doc 12 says "pizza" twice; Doc 19 says "chicken" twice and "pizza" twice. From the DTM alone, you can already see this is a restaurant where pizza dominates the conversation — but the more interesting question is <em>which reviews share themes</em>.</p>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Step 3 — Cosine Similarity</div>
+    <div class="p-section-title">Comparing reviews by the angle between their term-vectors</div>
+    <p class="p-prose">Every review is a point in 185-dimensional term space. <strong>Cosine similarity</strong> measures the angle between two such vectors — values close to 1 mean nearly identical content, close to 0 means completely different. It's the standard distance metric for text because it ignores document length (a long review and a short one can still be "about the same thing").</p>
+
+    <pre class="r-code"><span class="c-com"># Compute cosine similarity using slam (efficient for sparse matrices)</span>
+numerator   &lt;- <span class="c-fn">crossprod_simple_triplet_matrix</span>(dtm)
+denominator &lt;- <span class="c-fn">sqrt</span>(<span class="c-fn">col_sums</span>(dtm^<span class="c-key">2</span>)) %*%
+               <span class="c-fn">t</span>(<span class="c-fn">sqrt</span>(<span class="c-fn">col_sums</span>(dtm^<span class="c-key">2</span>)))
+
+cosine_similarity &lt;- numerator / denominator
+cosine_distance   &lt;- <span class="c-key">1</span> - cosine_similarity
+
+<span class="c-com"># Convert to a regular matrix for inspection</span>
+cosine_dist_matrix &lt;- <span class="c-fn">as.matrix</span>(cosine_distance)</pre>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Step 4 — Visualisation</div>
+    <div class="p-section-title">Two ways to see what 21 reviews are saying</div>
+
+    <div class="ba-fig">
+      <img src="analytics/review/wordcloud.png" alt="Word cloud showing pizza, good, food, great as dominant terms"/>
+      <div class="ba-fig-cap">Fig 1 — Word cloud (wordcloud package + RColorBrewer). Word size proportional to term frequency across all 21 reviews. <strong>"pizza"</strong> and <strong>"good"</strong> dominate, with <strong>"food"</strong>, <strong>"great"</strong>, <strong>"chicken"</strong>, <strong>"dish"</strong>, and <strong>"sauce"</strong> as secondary themes. Negative terms (<strong>"bad"</strong>, <strong>"lousy"</strong>, <strong>"slow"</strong>, <strong>"filthy"</strong>) appear but are small — sentiment skews positive.</div>
+    </div>
+
+    <div class="ba-fig">
+      <img src="analytics/review/dendrogram.png" alt="Document clustering dendrogram"/>
+      <div class="ba-fig-cap">Fig 2 — Document Clustering (Ward.D2 hierarchical clustering on the cosine-distance matrix). Reviews that share vocabulary cluster together — Doc 10 with Doc 20, Doc 17 with Doc 19, etc. This is what lets a customer-experience team go from "21 reviews" to "3-4 themes worth investigating."</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Why this matters</div>
+    <div class="p-section-title">Connecting NLP to business decisions</div>
+    <div class="p-findings">
+      <div class="p-finding"><div class="p-finding-num">01</div><div class="p-finding-text"><strong>From "we have 21 reviews" to "we have 4 themes."</strong> The document-clustering step is the value: it converts an unmanageable pile of free text into a manageable list of themes that a manager can act on.</div></div>
+      <div class="p-finding"><div class="p-finding-num">02</div><div class="p-finding-text"><strong>The same pipeline scales to 21,000 reviews.</strong> Nothing in the code changes between 21 reviews and 21,000 — only the runtime. This is what production text analytics looks like at companies that take customer feedback seriously.</div></div>
+      <div class="p-finding"><div class="p-finding-num">03</div><div class="p-finding-text"><strong>Connecting to operations.</strong> The exact same pipeline can be repurposed for <strong>plant operator log analysis</strong> — clustering shift handover notes to find recurring issues. The technique transfers directly from restaurant reviews to power-plant operations.</div></div>
+      <div class="p-finding"><div class="p-finding-num">04</div><div class="p-finding-text"><strong>Honest limits.</strong> Cosine similarity is bag-of-words — it ignores word order. "Service was good, food was bad" and "Food was good, service was bad" look identical to this model. For richer analysis, you'd move to TF-IDF weighting, n-grams, or word embeddings (next-level techniques covered in DARP coursework).</div></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section">
+    <div class="p-section-label">Files</div>
+    <div class="p-section-title">Source &amp; data — all downloadable</div>
+    <div class="ba-files">
+      <a href="analytics/review/Customer_Review_Analysis.qmd" class="ba-file" download>
+        <div class="ba-file-type">.qmd</div>
+        <div class="ba-file-name">Customer_Review_Analysis.qmd</div>
+        <div class="ba-file-desc">Full Quarto source — narrative + R code chunks.</div>
+      </a>
+      <a href="analytics/review/Customer_Review_Analysis_rendered.html" class="ba-file" target="_blank">
+        <div class="ba-file-type">.html</div>
+        <div class="ba-file-name">Rendered Quarto Report</div>
+        <div class="ba-file-desc">Full report with every chart and code chunk.</div>
+      </a>
+      <a href="analytics/review/Text_mining.R" class="ba-file" download>
+        <div class="ba-file-type">.R</div>
+        <div class="ba-file-name">Text_mining.R</div>
+        <div class="ba-file-desc">Standalone R script — pure code, no Quarto.</div>
+      </a>
+      <a href="analytics/review/reviews.csv" class="ba-file" download>
+        <div class="ba-file-type">.csv</div>
+        <div class="ba-file-name">reviews.csv</div>
+        <div class="ba-file-desc">Original 21-review dataset — Italian restaurant feedback.</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════ -->
+  <div class="p-section" style="margin-top:32px;">
+    <div class="p-callout">
+      <div class="p-callout-title">A note on this work</div>
+      <div class="p-callout-body">This was a <strong>graded MBA submission</strong> for the <em>Introduction to Business Analytics</em> course at Amrita School of Business (Trimester I, Aug 2025). The reviews dataset was provided by the instructor; the cleaning pipeline, cosine-similarity computation, clustering and word-cloud analysis are my own work. The full Quarto source and rendered report are downloadable above. The project is also <a href="https://mba-bala-shunmugam-m-25043.blogspot.com/2025/08/market-review-analysis.html" target="_blank" style="color:var(--oxblood);">published on my MBA blog</a> for direct verification.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="p-footer">
+  <span class="p-footer-name">Bala Shunmugam M · B.E. EEE + MBA Operations &amp; Business Analytics</span>
+  <div class="p-footer-links"><a href="projects.html">← All Projects</a><a href="index.html">Portfolio</a></div>
+</footer>
+  <script src="js/cosmic.js"></script>
+</body>
+</html>

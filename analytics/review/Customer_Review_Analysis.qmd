@@ -1,0 +1,174 @@
+---
+title: "Customer Review Analysis"
+author: "Bala Shunmugam M"
+format: html
+editor: visual
+---
+
+# Customer Review Analysis
+
+## 1 Introduction
+
+Customer reviews are a goldmine of insights for businesses. They reflect real user experiences, preferences, and pain points. By analyzing these reviews, companies can uncover patterns in customer satisfaction, identify areas for improvement, and even discover new opportunities for product or service innovation.
+
+In this analysis, we apply **text mining techniques** to extract meaningful insights from customer feedback. This helps transform raw opinions into actionable intelligence.
+
+## 2. Data Pre-Processing
+
+Customer reviews are typically unstructured—full of varied language, slang, and inconsistencies. To make sense of them, we first convert this raw text into a structured format. This step is crucial because it allows us to apply statistical and computational methods to extract patterns.
+
+We begin by loading the review data and preparing it for analysis.
+
+```{r}
+services<-read.csv("D:/IBA Files/Market Review Analysis (Text Mining)/reviews.csv",header = TRUE)
+```
+
+```{r echo = FALSE , warning=FALSE, message=FALSE}
+library(tm)
+library(slam)
+library(proxy)
+library(wordcloud)
+library(RColorBrewer)
+```
+
+```{r}
+texts<-services$Review
+corpus <- VCorpus(VectorSource(texts))
+```
+
+## 3. Text Cleaning and Transformation
+
+Before diving into analysis, we clean the text to remove noise. This includes:
+
+-   Converting all text to lowercase for consistency
+
+-   Removing punctuation and numbers
+
+-   Eliminating common stopwords (like "the", "and", "is") that don’t add value
+
+This process ensures that our analysis focuses on the most meaningful words and themes in the reviews.
+
+```{r}
+###  Step 3: Preprocess the Text
+
+corpus <- tm_map(corpus, content_transformer(tolower))
+corpus <- tm_map(corpus, removePunctuation)
+corpus <- tm_map(corpus, removeNumbers)
+corpus <- tm_map(corpus, removeWords, stopwords("en"))
+corpus <- tm_map(corpus, stripWhitespace)
+```
+
+## 4. Document-Term Matrix (DTM)
+
+The DTM is a key structure in text mining. It captures how often each word appears in each review. This matrix allows us to:
+
+-   Quantify the importance of specific terms
+
+-   Compare reviews based on word usage
+
+-   Prepare for similarity and clustering analysis
+
+```{r}
+###  Step 4: Create a Document-Term Matrix
+
+dtm <- DocumentTermMatrix(corpus)
+
+inspect(dtm)
+```
+
+## 5. Cosine Similarity and Distance
+
+To understand how similar different reviews are, we compute **cosine similarity**. This metric compares the angle between two text vectors, giving us a measure of how closely related the content is.
+
+High similarity might indicate repeated feedback or common themes, while low similarity could point to unique or outlier opinions.
+
+```{r}
+###  Step 5: Compute Cosine Distance (Using `slam`)
+numerator <- crossprod_simple_triplet_matrix(dtm)
+denominator <- sqrt(col_sums(dtm^2)) %*% t(sqrt(col_sums(dtm^2)))
+cosine_similarity <- numerator / denominator
+cosine_distance <- 1 - cosine_similarity
+```
+
+## 6. Distance Matrix Inspection
+
+By converting the similarity scores into a matrix, we can visually inspect how reviews relate to one another. This helps in identifying clusters of similar feedback, which may correspond to specific customer segments or recurring issues.
+
+```{r}
+### Step 6: Convert to Matrix for Inspection or Plotting
+
+cosine_dist_matrix <- as.matrix(cosine_distance)
+print(round(cosine_dist_matrix, 2))
+```
+
+## 7. Heatmap Visualization
+
+A heatmap provides an intuitive visual representation of the distance matrix. Darker shades indicate stronger similarity between reviews. This visualization helps stakeholders quickly grasp patterns in customer sentiment and feedback.
+
+```{r}
+###  Step 7: Visualize the Distance Matrix (Optional)
+
+windows()
+heatmap(cosine_dist_matrix, col = colorRampPalette(c("white", "steelblue"))(100))
+```
+
+## 8. Document Clustering
+
+Clustering groups similar reviews together. This is especially useful for:
+
+-   Segmenting customers based on feedback
+
+-   Identifying common themes or concerns
+
+-   Prioritizing areas for improvement
+
+For example, one cluster might highlight delivery issues, while another focuses on product quality.
+
+```{r}
+###  Step 8: Cluster the Documents (Optional Extension)
+library(proxy)
+dtm_matrix <- as.matrix(dtm)  # Convert sparse DTM to full matrix
+dist_obj <- proxy::dist(dtm_matrix, method = "cosine")  # Proper cosine distance
+
+hclust_obj <- hclust(dist_obj, method = "ward.D2")
+plot(hclust_obj, labels = paste("Doc", 1:nrow(dtm_matrix)), main = "Document Clustering")
+
+install.packages(c("wordcloud", "RColorBrewer"))
+library(wordcloud)
+library(RColorBrewer)
+```
+
+## 9. Word Cloud Generation
+
+A word cloud showcases the most frequently mentioned terms in the reviews. Larger words indicate higher frequency. This visual summary helps marketers and product teams quickly identify what customers talk about most—whether it's "price", "service", "quality", or "support".
+
+```{r}
+# Convert DTM to matrix and compute word frequencies
+m <- as.matrix(dtm)
+v <- sort(colSums(m), decreasing = TRUE)
+d <- data.frame(word = names(v), freq = v)
+
+
+set.seed(123)  # for reproducibility
+wordcloud(
+  words = d$word,
+  freq = d$freq,
+  min.freq = 1,
+  max.words = 100,
+  random.order = FALSE,
+  rot.per = 0.35,
+  colors = brewer.pal(8, "Dark2")
+)
+```
+
+# Conclusion
+
+This customer review analysis reveals not just what customers are saying but what truly matters to them. By applying text mining and clustering techniques, we’ve uncovered patterns that can guide strategic decisions across marketing, operations, and customer service.
+
+Customer voices are more than just feedback they’re strategic signals. By listening closely and analyzing thoughtfully, businesses can turn reviews into a roadmap for growth, loyalty, and competitive advantage.\\
+
+#### About the Author
+
+I’m a student in the MBA Program (2025–2027), currently navigating Trimester I at Amrita School of Business, Amrita Vishwa Vidyapeetham, Coimbatore. This **assignment/blog** was written as part of our coursework for **Introduction to Business Analytics.**
+
+Blog link: <https://iba-bala-shunmugam-m-25043.blogspot.com/2025/08/market-review-analysis.html>
