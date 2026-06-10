@@ -1,3 +1,4 @@
 [
+  { "date": "2026-06-10", "scope": "app", "macrostructure": "Marquee Hero (light)", "theme": "custom", "theme_axes": "light / roman-serif / cool", "vibe": "MBA daybook — butter, ink, ultramarine", "enrichment": "none (ledger graph-paper hero texture, Tier A)", "brief": "Daybook restyle at owner request: light butter/ultramarine palette, Instrument Serif/Sans, MBA-first copy, wordmark 'Bala Shunmugam. M'" },
   { "date": "2026-06-10", "scope": "app", "macrostructure": "Marquee Hero", "theme": "custom", "theme_axes": "dark-band-hero-on-light-paper / roman-serif / warm", "vibe": "operations & industrial intelligence", "enrichment": "none (blueprint-grid hero texture, Tier A)", "brief": "Home page rebuilt on the locked Foundry system (design.md) — WattsWorth flagship first; replaced the cosmic Tailwind template" }
 ]

@@ -1,39 +1,40 @@
-/* Hallmark · tokens · theme: Foundry (custom)
- * Operations & Industrial Intelligence — Bala Shunmugam M
- * paper: cool bone (light) · ink: graphite · accent: industrial ember (≤5%)
+/* Hallmark · tokens · theme: Daybook (custom)
+ * MBA Operations & Business Analytics — Bala Shunmugam. M
+ * paper: butter-cream (light) · ink: graphite-blue · accent: ultramarine (≤5%)
+ * band: deep ultramarine, gold counterpart accent · amended 2026-06-10 (was: Foundry)
  */
 :root {
   /* ── Colour ─────────────────────────────────────────── */
-  --color-paper:        oklch(96.5% 0.004 75);   /* body — cool bone */
-  --color-paper-2:      oklch(93.5% 0.005 75);   /* alt section band */
-  --color-paper-3:      oklch(90.5% 0.006 72);   /* card lift / hover */
+  --color-paper:        oklch(97% 0.02 100);     /* body — butter cream */
+  --color-paper-2:      oklch(94% 0.03 100);     /* alt section band */
+  --color-paper-3:      oklch(91% 0.035 98);     /* card lift / hover */
 
-  --color-ink:          oklch(24% 0.010 55);     /* near-black graphite */
-  --color-ink-2:        oklch(42% 0.010 55);     /* secondary text */
-  --color-ink-3:        oklch(50% 0.008 55);     /* muted / labels — ≥4.5:1 on paper */
-  --color-ink-4:        oklch(70% 0.006 60);     /* faint */
+  --color-ink:          oklch(26% 0.02 264);     /* graphite-blue ink */
+  --color-ink-2:        oklch(43% 0.02 264);     /* secondary text */
+  --color-ink-3:        oklch(50% 0.018 264);    /* muted / labels — ≥4.5:1 on paper */
+  --color-ink-4:        oklch(70% 0.012 264);    /* faint */
 
-  --color-band:         oklch(20% 0.012 60);     /* dark control-room band */
-  --color-band-2:       oklch(25% 0.012 60);     /* lifted surface on band */
-  --color-on-band:      oklch(95% 0.004 75);     /* text on band */
-  --color-on-band-2:    oklch(72% 0.008 60);     /* secondary on band */
+  --color-band:         oklch(34% 0.085 264);    /* deep ultramarine band */
+  --color-band-2:       oklch(39% 0.09 264);     /* lifted surface on band */
+  --color-on-band:      oklch(96.5% 0.02 100);   /* butter text on band */
+  --color-on-band-2:    oklch(82% 0.04 255);     /* periwinkle secondary on band */
 
-  --color-rule:         oklch(87% 0.006 70);     /* hairline (light) */
-  --color-rule-2:       oklch(80% 0.008 68);     /* stronger hairline */
-  --color-rule-band:    oklch(34% 0.012 60);     /* hairline on band */
+  --color-rule:         oklch(88% 0.025 100);    /* hairline (light) */
+  --color-rule-2:       oklch(81% 0.03 100);     /* stronger hairline */
+  --color-rule-band:    oklch(46% 0.07 264);     /* hairline on band */
 
-  --color-accent:       oklch(57% 0.15 45);      /* industrial ember */
-  --color-accent-band:  oklch(66% 0.14 50);      /* ember on dark */
-  --color-accent-soft:  oklch(93% 0.04 50);      /* ember wash */
-  --color-accent-ink:   oklch(98% 0.010 80);     /* text on ember */
-  --color-focus:        oklch(57% 0.15 45);
+  --color-accent:       oklch(46% 0.19 264);     /* ultramarine */
+  --color-accent-band:  oklch(85% 0.12 95);      /* gold on ultramarine */
+  --color-accent-soft:  oklch(92% 0.05 264);     /* periwinkle wash */
+  --color-accent-ink:   oklch(98% 0.01 100);     /* text on ultramarine fill */
+  --color-focus:        oklch(46% 0.19 264);
 
   /* ── Type ───────────────────────────────────────────── */
-  --font-display: "Fraunces", "DM Serif Display", Georgia, serif;
-  --font-body:    "Inter Tight", "Inter", system-ui, sans-serif;
+  --font-display: "Instrument Serif", Georgia, serif;
+  --font-body:    "Instrument Sans", "Inter Tight", system-ui, sans-serif;
   --font-mono:    "JetBrains Mono", "DM Mono", ui-monospace, monospace;
 
-  --text-display: clamp(3rem, 9vw, 8.5rem);
+  --text-display: clamp(3rem, 8.5vw, 8rem);
   --text-4xl:     clamp(2.4rem, 5.2vw, 4.25rem);
   --text-3xl:     clamp(1.9rem, 3.4vw, 2.85rem);
   --text-2xl:     clamp(1.5rem, 2.4vw, 2rem);
@@ -54,7 +55,8 @@
   --max-w-text: 680px;
   --nav-h:      68px;
   --gutter:     clamp(20px, 5vw, 56px);
-  --radius:     2px;
+  --radius:     12px;
+  --radius-pill: 999px;
 
   /* ── Motion ─────────────────────────────────────────── */
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
