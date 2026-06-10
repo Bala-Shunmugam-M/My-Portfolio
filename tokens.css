@@ -10,7 +10,7 @@
 
   --color-ink:          oklch(24% 0.010 55);     /* near-black graphite */
   --color-ink-2:        oklch(42% 0.010 55);     /* secondary text */
-  --color-ink-3:        oklch(58% 0.008 55);     /* muted / labels */
+  --color-ink-3:        oklch(50% 0.008 55);     /* muted / labels — ≥4.5:1 on paper */
   --color-ink-4:        oklch(70% 0.006 60);     /* faint */
 
   --color-band:         oklch(20% 0.012 60);     /* dark control-room band */

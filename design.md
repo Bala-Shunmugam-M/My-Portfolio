@@ -50,6 +50,8 @@ bands per page maximum (hero + one proof band). Accent ≤ 5% of any viewport.
 - Easings: `--ease-out` cubic-bezier(0.16,1,0.3,1); `--ease-in` cubic-bezier(0.7,0,0.84,0); `--ease-in-out` cubic-bezier(0.65,0,0.35,1).
 - Reveal: one orchestrated hero entrance; reveal-once fade + 10px rise elsewhere.
 - Signature: scroll-synced sticky project rail; in-view count-up on real metrics only.
+- Hard cap: ≤ 3 motion primitives per page (reveal-once · count-up · underline-draw).
+  No ambient infinite loops — no pulsing dots, no nudging arrows. *(Amended 2026-06-10.)*
 - Reduced motion: opacity-only, ≤ 150ms.
 
 ## Microinteractions stance
@@ -68,7 +70,10 @@ credibility asset, not a weakness.
 
 ## What pages MUST share
 Wordmark · ember accent + placement · Fraunces/Inter Tight/JetBrains Mono · CTA
-voice · section rhythm (mono kicker numeral, vertical-stacked head).
+voice · section rhythm (display head with italic emphasis; mono kicker reserved
+for genuinely ordinal moments, max 1–2 per page, always stacked above the head —
+never a tag-left/heading-right two-column head). *(Amended 2026-06-10: numbered
+kickers on every section read as templated chaptering.)*
 
 ## What pages MAY differ on
 Macrostructure within the family · hero archetype · whether a dark band is used.
