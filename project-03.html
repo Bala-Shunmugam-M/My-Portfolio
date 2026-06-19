@@ -1,238 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Sponge Iron Operations Study — Agni Steels — Bala Shunmugam M</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/project.css"/>
-  <link rel="stylesheet" href="css/cosmic-project.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sponge Iron Operations Study — Agni Steels — Bala Shunmugam. M</title>
+  <meta name="description" content="Detailed internship report: an observational operations study at Agni Steels' Sponge Iron Division — a 100 TPD coal-based DRI rotary kiln plant. Process mapping, field observations, Pareto + Fishbone analysis, and recommendations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/redesign.css" />
 </head>
 <body>
-  <canvas id="cosmic-stars" aria-hidden="true"></canvas>
-<nav class="p-nav">
-  <a href="index.html" class="p-nav-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>Portfolio</a>
-  <div class="p-nav-right"><span class="p-nav-name">Bala Shunmugam M</span><span class="p-nav-num">Flagship ★</span></div>
-</nav>
 
-<section class="p-hero">
-  <div class="p-eyebrow"><div class="p-eyebrow-dot"></div><span class="p-eyebrow-text">MBA Internship · Agni Steels · Sponge Iron Division</span></div>
-  <h1 class="p-title">Sponge Iron Operations Study<br><em>at a 100 TPD Coal-Based DRI Plant</em></h1>
-  <p class="p-desc">An observational operations study at <strong>Agni Steels' Sponge Iron Division</strong> in Perundurai, Tamil Nadu — a 100 TPD coal-based Direct Reduction (DRI) unit. Mapped the rotary kiln process flow, observed real downtime patterns from the operations team, and applied <strong>Pareto and Fishbone analysis</strong> to identify the dominant constraint: <strong>kiln accretion (ring formation)</strong>.</p>
-  <div class="p-tags">
-    <span class="p-tag p-tag-accent">MBA Internship · Operations</span>
-    <span class="p-tag">Coal-Based DRI</span>
-    <span class="p-tag">Pareto Analysis</span>
-    <span class="p-tag">Fishbone / Ishikawa</span>
-    <span class="p-tag">Process Mapping</span>
-  </div>
-  <div class="p-impact">
-    <div class="p-impact-item"><div class="p-impact-val">100 TPD</div><div class="p-impact-label">Plant capacity (≈ 36,000 TPA)</div></div>
-    <div class="p-impact-item"><div class="p-impact-val">88–93%</div><div class="p-impact-label">Metallization range observed</div></div>
-    <div class="p-impact-item"><div class="p-impact-val">~40–50%</div><div class="p-impact-label">Kiln-related share of downtime (operator estimate)</div></div>
-    <div class="p-impact-item"><div class="p-impact-val">Coal-based</div><div class="p-impact-label">Rotary kiln DRI process</div></div>
-  </div>
-</section>
+  <!-- NAV · N9 -->
+  <nav class="navbar" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Bala Shunmugam<span class="dot">.</span> M</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#field">Field</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">≡</button>
+    </div>
+  </nav>
 
-<div class="p-content">
-
-  <!-- ════════════════════════════════════════════════ -->
-  <div class="p-section">
-    <div class="p-section-label">Context</div>
-    <div class="p-section-title">The plant &amp; the study</div>
-
-    <div class="p-card-grid">
-      <div class="p-card" style="--card-color:#dc2626">
-        <div class="p-card-label">The Plant</div>
-        <div class="p-card-text">Agni Steels Sponge Iron Division at Ingur, Perundurai (Erode District, Tamil Nadu). A <strong>100 TPD coal-based rotary kiln DRI unit</strong> producing sponge iron captively for the company's billet and TMT bar operations. Vertically integrated: Sponge → SMS (Steel Melting Shop) → Rolling Mill.</div>
+  <!-- HERO -->
+  <section id="home" class="hero" style="padding-bottom: var(--space-2xl)">
+    <div class="container">
+      <div class="hero-meta rise" style="--i:0">
+        <span class="eyebrow"><a href="project-14.html" class="tlink" style="color:inherit">← Back to Agni Steels overview</a></span>
+        <span class="eyebrow">MBA operations internship · Perundurai, Tamil Nadu</span>
+        <span class="eyebrow">Sponge Iron Division · Detailed report</span>
       </div>
-      <div class="p-card" style="--card-color:var(--blue)">
-        <div class="p-card-label">My Role</div>
-        <div class="p-card-text">Operations Management intern, attached primarily to the sponge iron unit. Daily walkthroughs with the shift team, conversations with operators and the shift in-charge, time spent in the control room observing SCADA screens, and short visits to the billet casting area and rolling mill.</div>
+
+      <h1 class="hero-title rise" style="--i:1; max-width:26ch">Sponge Iron Operations Study <span style="white-space:nowrap">— Agni Steels</span></h1>
+      <p class="hero-sub rise" style="--i:2; font-family:var(--font-mono); font-size:var(--text-sm); letter-spacing:0.04em; text-transform:uppercase; color:var(--color-ink-3); max-width:none">
+        Field Study · Coal-Based DRI Rotary Kiln · 100 TPD
+      </p>
+      <p class="hero-sub rise" style="--i:3">
+        An <strong>observational operations study</strong> at Agni Steels' Sponge Iron Division in Perundurai,
+        Tamil Nadu — a 100 TPD coal-based Direct Reduction (DRI) unit. Mapped the rotary kiln process flow,
+        recorded real downtime patterns described by the operations team, and applied
+        <strong>Pareto and Fishbone analysis</strong> to identify the dominant constraint:
+        <strong>kiln accretion (ring formation)</strong>.
+      </p>
+
+      <div class="hero-actions rise" style="--i:4">
+        <a href="#context" class="btn btn-primary">Read the study <span class="arrow" aria-hidden="true">→</span></a>
+        <a href="#analysis" class="btn btn-outline">Jump to analysis <span class="arrow" aria-hidden="true">→</span></a>
       </div>
-      <div class="p-card" style="--card-color:var(--amber)">
-        <div class="p-card-label">My Approach</div>
-        <div class="p-card-text">An <strong>observational case study</strong> — not a Six Sigma project with measured data. I mapped the sponge iron process flow, recorded the problems operators repeatedly mentioned, and applied <strong>Pareto + Fishbone</strong> frameworks to rank causes by frequency/impact.</div>
-      </div>
-      <div class="p-card" style="--card-color:var(--green)">
-        <div class="p-card-label">What I Took Away</div>
-        <div class="p-card-text">In a 100 TPD coal-based DRI plant, <strong>kiln accretion (ring formation)</strong> is the dominant operational constraint. Raw material consistency is the next-most-important lever. SCADA gives visibility but doesn't predict accretion — predictive analytics (ANN/CFD) is the obvious next frontier.</div>
+
+      <div class="hero-stats rise" style="--i:5">
+        <div class="hero-stat"><div class="hero-stat-val">100 <span style="font-size:0.5em">TPD</span></div><div class="hero-stat-label">Plant capacity (≈ 36,000 TPA)</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">88–93%</div><div class="hero-stat-label">Metallization range observed</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">~40–50%</div><div class="hero-stat-label">Kiln-related share of downtime (operator estimate)</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">Coal-based</div><div class="hero-stat-label">Rotary kiln DRI process</div></div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ════════════════════════════════════════════════ -->
-  <div class="p-section">
-    <div class="p-section-label">Process Flow</div>
-    <div class="p-section-title">Coal-based DRI — the rotary kiln process</div>
-    <p class="p-prose">The actual production sequence in the sponge iron unit. Standard for a 100 TPD coal-based DRI plant, validated by what I observed on-site.</p>
-
-    <div class="p-findings">
-      <div class="p-finding">
-        <div class="p-finding-num">01</div>
-        <div class="p-finding-text"><strong>Raw material yard.</strong> Iron ore (hematite lumps, 5–18 mm, sourced from Karnataka and Kumba/South Africa) stockpiled alongside non-coking coal (premium South African and domestic). Dolomite as flux for desulphurisation. Reddish ore piles, dark coal piles, clearly separated.</div>
-      </div>
-      <div class="p-finding">
-        <div class="p-finding-num">02</div>
-        <div class="p-finding-text"><strong>Material handling &amp; preparation.</strong> Conveyor belts, crushers and sizing screens proportion the ore-coal-flux mix. Quality of sizing here directly affects bed permeability and downstream metallization.</div>
-      </div>
-      <div class="p-finding">
-        <div class="p-finding-num">03</div>
-        <div class="p-finding-text"><strong>Rotary kiln — the main reactor.</strong> A long inclined rotating furnace (~42 m × 3 m typical for 100 TPD). Material flows counter-current to combustion gases. Two thermal zones: <strong>preheating (~800–1000 °C) → reduction (~1050–1150 °C)</strong>. Reactions: C + CO₂ → 2CO, then Fe₂O₃ → FeO → Fe (metallic). Residence time 6–8 hours. Operators monitor kiln-shell temperature profile via thermocouples; >1150 °C is avoided to prevent ring formation.</div>
-      </div>
-      <div class="p-finding">
-        <div class="p-finding-num">04</div>
-        <div class="p-finding-text"><strong>Rotary cooler.</strong> Hot DRI from the kiln passes through an indirect water-cooled rotary cooler down to ~100–150 °C — low enough to prevent re-oxidation, safe enough for handling.</div>
-      </div>
-      <div class="p-finding">
-        <div class="p-finding-num">05</div>
-        <div class="p-finding-text"><strong>Product separation &amp; screening.</strong> <strong>Magnetic separators</strong> pull the metallic sponge iron from char, ash, and dolochar by-products. Vibrating screens sort by size (lumps vs. fines). Char is collected for resale or reuse.</div>
-      </div>
-      <div class="p-finding">
-        <div class="p-finding-num">06</div>
-        <div class="p-finding-text"><strong>Storage &amp; dispatch.</strong> Sponge iron lumps and fines stored in silos/bunkers, dispatched to the captive Steel Melting Shop (SMS). Separately: an <strong>Electrostatic Precipitator (ESP)</strong> handles kiln exhaust dust for emission control — this is environmental compliance, not a production stage.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════════ -->
-  <div class="p-section">
-    <div class="p-section-label">Field Observations</div>
-    <div class="p-section-title">What I actually saw &amp; heard</div>
-    <p class="p-prose">No measured downtime data was logged for this study. Observations below are from direct walkthroughs of the sponge iron unit and conversations with operators, shift in-charges and process engineers over multiple shifts.</p>
-
-    <div class="p-findings">
-      <div class="p-finding">
-        <div class="p-finding-num">01</div>
-        <div class="p-finding-text"><strong>Kiln accretion / ring formation was the recurring issue.</strong> On at least two days during my time on-site, the rotary kiln had to be slowed down or partially shut to manage accretion build-up. Operators said this reduces effective kiln volume and pulls metallization down. The shift in-charge estimated, in a casual conversation, that <strong>kiln-related issues (accretion + refractory wear + feeder jamming) account for roughly 40–50% of downtime</strong> in the sponge unit. This is an operator estimate, not a logged figure.</div>
-      </div>
-      <div class="p-finding">
-        <div class="p-finding-num">02</div>
-        <div class="p-finding-text"><strong>Metallization in the 88–93% range.</strong> Daily lab reports I was shown indicated metallization targets of 88–91%, with 92–93% on good days. An engineer demonstrated how metallization dropped when kiln speed wasn't adjusted in proportion to feed rate.</div>
-      </div>
-      <div class="p-finding">
-        <div class="p-finding-num">03</div>
-        <div class="p-finding-text"><strong>Raw material variability.</strong> Even with premium sourcing, operators mentioned that <strong>coal ash content</strong> varies batch-to-batch, and iron ore quality fluctuates enough to disturb feed-rate stability and the reducing-atmosphere chemistry.</div>
-      </div>
-      <div class="p-finding">
-        <div class="p-finding-num">04</div>
-        <div class="p-finding-text"><strong>Reduction-zone temperature excursions.</strong> SCADA screens in the control room sometimes showed reduction-zone temperatures pushing above 1150 °C — a threshold operators try to stay under to prevent ring formation.</div>
-      </div>
-      <div class="p-finding">
-        <div class="p-finding-num">05</div>
-        <div class="p-finding-text"><strong>Magnetic separator overload.</strong> On one shift, material queued at the product separation area because the magnetic separator was overloaded with char — a downstream symptom of a particular kiln run.</div>
-      </div>
-      <div class="p-finding">
-        <div class="p-finding-num">06</div>
-        <div class="p-finding-text"><strong>ESP maintenance event.</strong> The Electrostatic Precipitator was running, but one section was visibly under maintenance during my visit — confirming pollution-control upkeep is a parallel operational concern.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ════════════════════════════════════════════════ -->
-  <div class="p-section">
-    <div class="p-section-label">Analysis</div>
-    <div class="p-section-title">Pareto + Fishbone of operational issues</div>
-
-    <div class="p-tabs">
-      <div class="p-tab active" onclick="tab(this,'p3a')">Pareto Ranking</div>
-      <div class="p-tab" onclick="tab(this,'p3b')">Fishbone — Accretion Causes</div>
-      <div class="p-tab" onclick="tab(this,'p3c')">Recommendations</div>
-    </div>
-
-    <div id="p3a" class="p-panel active">
-      <p class="p-prose">Each issue ranked by how often it was mentioned by operators and shift in-charges, and by visible impact during my observation period. <strong>This is qualitative ranking — not a logged downtime study.</strong></p>
-      <div class="p-barchart">
-        <div class="p-barchart-title">Operational issues — ranked by frequency &amp; impact (qualitative)</div>
-        <div class="p-bar-row"><div class="p-bar-label">Kiln accretion / rings</div><div class="p-bar-track"><div class="p-bar-fill" style="width:95%;background:var(--oxblood)"></div></div><div class="p-bar-val">Top</div></div>
-        <div class="p-bar-row"><div class="p-bar-label">Raw material variation</div><div class="p-bar-track"><div class="p-bar-fill" style="width:78%;background:var(--oxblood)"></div></div><div class="p-bar-val">High</div></div>
-        <div class="p-bar-row"><div class="p-bar-label">Feeder jamming</div><div class="p-bar-track"><div class="p-bar-fill" style="width:55%;background:var(--slate)"></div></div><div class="p-bar-val">Mid</div></div>
-        <div class="p-bar-row"><div class="p-bar-label">Refractory wear</div><div class="p-bar-track"><div class="p-bar-fill" style="width:50%;background:var(--slate)"></div></div><div class="p-bar-val">Mid</div></div>
-        <div class="p-bar-row"><div class="p-bar-label">Magnetic separator overload</div><div class="p-bar-track"><div class="p-bar-fill" style="width:35%;background:var(--slate)"></div></div><div class="p-bar-val">Low</div></div>
-        <div class="p-bar-row"><div class="p-bar-label">ESP maintenance</div><div class="p-bar-track"><div class="p-bar-fill" style="width:28%;background:var(--slate)"></div></div><div class="p-bar-val">Low</div></div>
-      </div>
-      <div class="p-callout">
-        <div class="p-callout-title">Pareto reading</div>
-        <div class="p-callout-body"><strong>Accretion and raw material variation are the &ldquo;vital few.&rdquo;</strong> Focus engineering effort here before chasing the remaining items. The shift in-charge's casual ~40–50% estimate of kiln-related downtime aligns with what was visibly disrupting operations.</div>
-      </div>
-    </div>
-
-    <div id="p3b" class="p-panel">
-      <p class="p-prose">Fishbone (Ishikawa) breakdown of the root causes of kiln accretion, applying the 6M framework. Built from operator conversations and standard DRI process literature.</p>
-      <div class="p-card-grid">
-        <div class="p-card" style="--card-color:var(--oxblood)">
-          <div class="p-card-label">Material</div>
-          <div class="p-card-text">Ash content variability in coal — high ash + low ash-fusion temperature → low-melting eutectics inside the kiln. Iron-ore gangue chemistry (SiO₂ / Al₂O₃) drives ring composition.</div>
+  <!-- CONTEXT -->
+  <section id="context" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Context</div>
+          <h2>The plant <em>&amp; the study</em>.</h2>
         </div>
-        <div class="p-card" style="--card-color:var(--slate)">
-          <div class="p-card-label">Method</div>
-          <div class="p-card-text">Coal-to-iron ratio (FC/Fe) outside the 0.4–0.52 optimal window. Air injection profile not adjusted dynamically to feed quality changes.</div>
+        <div class="section-head-meta"><strong>Operations Management Intern</strong><br>Sponge Iron Division</div>
+      </div>
+
+      <div class="insights-grid">
+        <div class="insight reveal">
+          <div class="insight-num" style="color:var(--art-coral-ink)">01</div>
+          <h3 class="insight-title">The plant</h3>
+          <p class="insight-body">Agni Steels Sponge Iron Division at Ingur, Perundurai (Erode District, Tamil Nadu). A <strong>100 TPD coal-based rotary kiln DRI unit</strong> producing sponge iron captively for the company's billet and TMT bar operations. Vertically integrated: Sponge → SMS (Steel Melting Shop) → Rolling Mill.</p>
         </div>
-        <div class="p-card" style="--card-color:var(--brass)">
-          <div class="p-card-label">Machine</div>
-          <div class="p-card-text">Refractory wear shifts the kiln's effective inner diameter and heat transfer behaviour over time. Air-fan positions/flows degrade between maintenance windows.</div>
+        <div class="insight reveal" style="--i:1">
+          <div class="insight-num" style="color:var(--art-teal-ink)">02</div>
+          <h3 class="insight-title">My role</h3>
+          <p class="insight-body">Operations Management intern, attached primarily to the sponge iron unit. Daily walkthroughs with the shift team, conversations with operators and the shift in-charge, time spent in the control room observing SCADA screens, and short visits to the billet casting area and rolling mill.</p>
         </div>
-        <div class="p-card" style="--card-color:var(--forest)">
-          <div class="p-card-label">Measurement</div>
-          <div class="p-card-text">SCADA monitors shell temperature but cannot predict accretion. Metallization tested in lab — a lagging indicator. Gas analysis (CO/CO₂/H₂) is the closest leading indicator available.</div>
+        <div class="insight reveal" style="--i:2">
+          <div class="insight-num" style="color:var(--art-gold-ink)">03</div>
+          <h3 class="insight-title">My approach</h3>
+          <p class="insight-body">An <strong>observational case study</strong> — not a Six Sigma project with measured data. I mapped the sponge iron process flow, recorded the problems operators repeatedly mentioned, and applied <strong>Pareto + Fishbone</strong> frameworks to rank causes by frequency/impact.</p>
         </div>
-        <div class="p-card" style="--card-color:var(--oxblood-deep)">
-          <div class="p-card-label">Man (Operator)</div>
-          <div class="p-card-text">Manual setpoint adjustments depend on operator experience. Reduction-zone temperature occasionally seen above 1150 °C — the threshold for ring formation risk.</div>
-        </div>
-        <div class="p-card" style="--card-color:#594332">
-          <div class="p-card-label">Environment</div>
-          <div class="p-card-text">Ambient temperature and humidity affect combustion air density and kiln draft, which subtly shift the temperature profile over the course of a day.</div>
+        <div class="insight reveal" style="--i:3">
+          <div class="insight-num" style="color:var(--art-violet-ink)">04</div>
+          <h3 class="insight-title">What I took away</h3>
+          <p class="insight-body">In a 100 TPD coal-based DRI plant, <strong>kiln accretion (ring formation)</strong> is the dominant operational constraint. Raw material consistency is the next-most-important lever. SCADA gives visibility but doesn't predict accretion — predictive analytics (ANN/CFD) is the obvious next frontier.</p>
         </div>
       </div>
     </div>
+  </section>
 
-    <div id="p3c" class="p-panel">
-      <p class="p-prose">Improvement recommendations grouped by horizon. Numbers are framework expectations from DRI literature, not measured plant outcomes.</p>
-      <div class="p-recs">
-        <div class="p-rec"><span class="p-rec-tag">Immediate</span><div class="p-rec-text"><strong>Strengthen raw material QA at intake.</strong> Tighten coal ash and ash-fusion-temperature acceptance criteria. Even small reductions in input variability translate directly into kiln stability.</div></div>
-        <div class="p-rec"><span class="p-rec-tag">Immediate</span><div class="p-rec-text"><strong>Set a hard SCADA alarm at 1150 °C reduction-zone temperature.</strong> Currently treated as a guideline operators try to stay under — making it a hard alarm with logged occurrences would create a measurable accretion-risk indicator.</div></div>
-        <div class="p-rec"><span class="p-rec-tag">Short-term</span><div class="p-rec-text"><strong>Begin logging downtime by stage and cause-code.</strong> A simple shift-by-shift downtime register would convert the current operator estimate (~40–50% kiln-related) into a measurable Pareto baseline the team could improve against.</div></div>
-        <div class="p-rec"><span class="p-rec-tag">Medium-term</span><div class="p-rec-text"><strong>Pilot an ANN-based metallization &amp; accretion predictor.</strong> Train a multi-layer-perceptron on existing SCADA history (feed rates, multi-point temperatures, gas composition) cross-referenced with lab metallization. Literature reports R &gt; 0.95 for similar 100 TPD plants. Deploy as a soft-sensor for shift operators.</div></div>
-        <div class="p-rec"><span class="p-rec-tag">Long-term</span><div class="p-rec-text"><strong>CFD-based kiln temperature profile study</strong> — typically run with an academic partner (IIT/NIT). DRI literature on similar 100 TPD plants reports 3–5% metallization gains from optimised inclination/rotation/air-injection configuration.</div></div>
+  <!-- PROCESS FLOW -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Process flow</div>
+          <h2>Coal-based DRI — <em>the rotary kiln process</em>.</h2>
+        </div>
+        <div class="section-head-meta"><strong>100 TPD</strong><br>Standard production sequence</div>
+      </div>
+      <p class="section-desc" style="margin-bottom: var(--space-xl)">The actual production sequence in the sponge iron unit. Standard for a 100 TPD coal-based DRI plant, validated by what I observed on-site.</p>
+
+      <div class="chart-card reveal" style="max-width:880px">
+        <h4 class="chart-title">Raw material yard → storage &amp; dispatch</h4>
+        <div class="chart-sub">— Six stages, as observed on the plant floor</div>
+        <div class="flow">
+          <div class="flow-step"><span class="n">01</span><span><strong>Raw material yard.</strong> Iron ore (hematite lumps, 5–18 mm, sourced from Karnataka and Kumba/South Africa) stockpiled alongside non-coking coal (premium South African and domestic). Dolomite as flux for desulphurisation. Reddish ore piles, dark coal piles, clearly separated.</span></div>
+          <div class="flow-step"><span class="n">02</span><span><strong>Material handling &amp; preparation.</strong> Conveyor belts, crushers and sizing screens proportion the ore-coal-flux mix. Quality of sizing here directly affects bed permeability and downstream metallization.</span></div>
+          <div class="flow-step is-key"><span class="n">03</span><span><strong>Rotary kiln — the main reactor.</strong> A long inclined rotating furnace (~42 m × 3 m typical for 100 TPD). Material flows counter-current to combustion gases. Two thermal zones: preheating (~800–1000 °C) → reduction (~1050–1150 °C). Reactions: C + CO₂ → 2CO, then Fe₂O₃ → FeO → Fe (metallic). Residence time 6–8 hours. <span class="flow-key-note">· the core reaction, &gt;1150 °C avoided to prevent ring formation</span></span></div>
+          <div class="flow-step"><span class="n">04</span><span><strong>Rotary cooler.</strong> Hot DRI from the kiln passes through an indirect water-cooled rotary cooler down to ~100–150 °C — low enough to prevent re-oxidation, safe enough for handling.</span></div>
+          <div class="flow-step"><span class="n">05</span><span><strong>Product separation &amp; screening.</strong> Magnetic separators pull the metallic sponge iron from char, ash, and dolochar by-products. Vibrating screens sort by size (lumps vs. fines). Char is collected for resale or reuse.</span></div>
+          <div class="flow-step"><span class="n">06</span><span><strong>Storage &amp; dispatch.</strong> Sponge iron lumps and fines stored in silos/bunkers, dispatched to the captive Steel Melting Shop (SMS). Separately, an Electrostatic Precipitator (ESP) handles kiln exhaust dust for emission control — environmental compliance, not a production stage.</span></div>
+        </div>
+        <div class="chart-note">Operators monitor the kiln-shell temperature profile via thermocouples; the reduction
+        zone is the step everything else is built to protect — too hot, and ring-forming accretion follows.</div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ════════════════════════════════════════════════ -->
-  <div class="p-section">
-    <div class="p-section-label">Reflection</div>
-    <div class="p-section-title">What this internship taught me</div>
-    <div class="p-card-grid">
-      <div class="p-card" style="--card-color:var(--slate)">
-        <div class="p-card-label">Operations is about constraints</div>
-        <div class="p-card-text">A 100 TPD plant doesn't get bigger by improving 5 things 10% each. It gets bigger by fixing the kiln. <strong>Pareto and Theory of Constraints both point to the same answer:</strong> spend disproportionate effort on the dominant constraint, ignore the rest until that one is solved.</div>
+  <!-- PROCESS VISUALS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Process visuals</div>
+          <h2>Mapping the <em>process &amp; the plant</em>.</h2>
+        </div>
+        <div class="section-head-meta"><strong>Diagrams + plant footage</strong><br>Sponge → Billet → TMT</div>
       </div>
-      <div class="p-card" style="--card-color:var(--brass)">
-        <div class="p-card-label">SCADA shows; it doesn't predict</div>
-        <div class="p-card-text">The control-room screens display every parameter in real time, but accretion still &ldquo;sneaks up.&rdquo; The next frontier in DRI ops is <strong>predictive</strong> — ANN soft sensors + CFD-validated models. This is where MBA-trained operations managers add real value: bringing data-science thinking to a domain that has historically been operator-experience driven.</div>
-      </div>
-      <div class="p-card" style="--card-color:var(--forest)">
-        <div class="p-card-label">Operator conversations &gt; spreadsheets</div>
-        <div class="p-card-text">The ~40–50% kiln-downtime estimate didn't come from a report. It came from a shift in-charge over tea. <strong>The most valuable information in a plant lives in the heads of the people who run it.</strong> Structured downtime logging would surface this — but the first hour of any improvement project should be on the shop floor, not in the office.</div>
+      <p class="section-desc" style="margin-bottom: var(--space-xl)">Process-map diagrams I prepared for the report (illustrative schematics), alongside stills from Agni Steels' own process videos and a photo of the finished product.</p>
+
+      <figure style="margin:0 0 var(--space-xl); background:var(--color-paper-2,#fbfaf6); border:1px solid rgba(0,0,0,.08); border-radius:14px; padding:18px">
+        <img src="figures/agni_sponge_process_map.png" alt="Sponge Iron division process map" loading="lazy" style="display:block; width:100%; height:auto; border-radius:6px" />
+        <figcaption style="font-family:var(--font-mono); font-size:var(--text-sm); color:var(--color-ink-3); margin-top:12px">Process map of the Sponge Iron (DRI) division — raw materials → rotary kiln → cooler → magnetic separation → sponge iron, with the off-gas / utilities branch. Illustrative schematic.</figcaption>
+      </figure>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:var(--space-lg)">
+        <figure style="margin:0; background:var(--color-paper-2,#fbfaf6); border:1px solid rgba(0,0,0,.08); border-radius:14px; padding:16px">
+          <img src="figures/agni_kiln_schematic.png" alt="Rotary kiln longitudinal schematic" loading="lazy" style="display:block; width:100%; height:auto; border-radius:6px" />
+          <figcaption style="font-family:var(--font-mono); font-size:var(--text-sm); color:var(--color-ink-3); margin-top:10px">Rotary kiln in longitudinal section — temperature zones, counter-current gas, reduction chemistry, and the accretion-prone band. Illustrative.</figcaption>
+        </figure>
+        <figure style="margin:0; background:var(--color-paper-2,#fbfaf6); border:1px solid rgba(0,0,0,.08); border-radius:14px; padding:16px">
+          <img src="figures/agni_integrated_plant_flow.png" alt="Integrated steel value chain" loading="lazy" style="display:block; width:100%; height:auto; border-radius:6px" />
+          <figcaption style="font-family:var(--font-mono); font-size:var(--text-sm); color:var(--color-ink-3); margin-top:10px">Integrated value chain — Sponge (DRI) → Billet → TMT. The sponge unit feeds the captive steel-melting and rolling lines. Illustrative.</figcaption>
+        </figure>
+        <figure style="margin:0; background:var(--color-paper-2,#fbfaf6); border:1px solid rgba(0,0,0,.08); border-radius:14px; padding:16px">
+          <img src="figures/agni_dri_pellets.png" alt="Sponge iron / DRI pellets" loading="lazy" style="display:block; width:100%; height:auto; border-radius:6px" />
+          <figcaption style="font-family:var(--font-mono); font-size:var(--text-sm); color:var(--color-ink-3); margin-top:10px">The product — coal-based sponge iron (DRI) pellets.</figcaption>
+        </figure>
+        <figure style="margin:0; background:var(--color-paper-2,#fbfaf6); border:1px solid rgba(0,0,0,.08); border-radius:14px; padding:16px">
+          <img src="figures/agni_sponge_plant.jpg" alt="Inside the Agni Steels sponge iron plant" loading="lazy" style="display:block; width:100%; height:auto; border-radius:6px" />
+          <figcaption style="font-family:var(--font-mono); font-size:var(--text-sm); color:var(--color-ink-3); margin-top:10px">Inside the sponge iron unit. Still from an Agni Steels process video.</figcaption>
+        </figure>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="p-callout" style="margin-top:32px;">
-    <div class="p-callout-title">A note on this study's scope</div>
-    <div class="p-callout-body">This was an <strong>observational MBA internship study</strong>, not a measured Six Sigma project. The numbers presented are either standard reference values for 100 TPD coal-based DRI plants (from process literature), or estimates given to me casually by the operations team. No proprietary plant data, SCADA exports, or internal reports are reproduced here. Any specific quantitative claim is labelled with its source.</div>
-  </div>
+  <!-- FIELD OBSERVATIONS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Field observations</div>
+          <h2>What I actually <em>saw &amp; heard</em>.</h2>
+        </div>
+        <div class="section-head-meta"><strong>Multiple shifts</strong><br>Walkthroughs + operator conversations</div>
+      </div>
+      <p class="section-desc" style="margin-bottom: var(--space-xl)">No measured downtime data was logged for this study. Observations below are from direct walkthroughs of the sponge iron unit and conversations with operators, shift in-charges and process engineers over multiple shifts.</p>
 
-</div>
+      <div class="projects-grid">
+        <div class="proj proj-half reveal">
+          <span class="proj-num">01 · Recurring issue</span>
+          <div class="proj-tags"><span class="tag tag-coral">Kiln accretion</span></div>
+          <h3 class="proj-title">Kiln accretion / ring formation was the recurring issue</h3>
+          <p class="proj-desc">On at least two days during my time on-site, the rotary kiln had to be slowed down or partially shut to manage accretion build-up. Operators said this reduces effective kiln volume and pulls metallization down. The shift in-charge estimated, in a casual conversation, that <strong>kiln-related issues (accretion + refractory wear + feeder jamming) account for roughly 40–50% of downtime</strong> in the sponge unit. This is an operator estimate, not a logged figure.</p>
+        </div>
 
-<footer class="p-footer">
-  <span class="p-footer-name">Bala Shunmugam M · B.E. EEE + MBA Operations</span>
-  <div class="p-footer-links"><a href="projects.html">← All Projects</a><a href="index.html">Portfolio</a></div>
-</footer>
-<script>function tab(el,id){const w=el.closest('.p-section');w.querySelectorAll('.p-tab').forEach(t=>t.classList.remove('active'));w.querySelectorAll('.p-panel').forEach(p=>p.classList.remove('active'));el.classList.add('active');w.querySelector('#'+id).classList.add('active');}</script>
-  <script src="js/cosmic.js"></script>
+        <div class="proj proj-half reveal" style="--i:1">
+          <span class="proj-num">02 · Lab QC</span>
+          <div class="proj-tags"><span class="tag tag-teal">Metallization</span></div>
+          <h3 class="proj-title">Metallization in the 88–93% range</h3>
+          <p class="proj-desc">Daily lab reports I was shown indicated metallization targets of 88–91%, with 92–93% on good days. An engineer demonstrated how metallization dropped when kiln speed wasn't adjusted in proportion to feed rate.</p>
+        </div>
+
+        <div class="proj proj-half reveal" style="--i:2">
+          <span class="proj-num">03 · Raw materials</span>
+          <div class="proj-tags"><span class="tag tag-gold">Variability</span></div>
+          <h3 class="proj-title">Raw material variability</h3>
+          <p class="proj-desc">Even with premium sourcing, operators mentioned that <strong>coal ash content</strong> varies batch-to-batch, and iron ore quality fluctuates enough to disturb feed-rate stability and the reducing-atmosphere chemistry.</p>
+        </div>
+
+        <div class="proj proj-half reveal" style="--i:3">
+          <span class="proj-num">04 · Control room</span>
+          <div class="proj-tags"><span class="tag tag-blue">SCADA</span></div>
+          <h3 class="proj-title">Reduction-zone temperature excursions</h3>
+          <p class="proj-desc">SCADA screens in the control room sometimes showed reduction-zone temperatures pushing above 1150 °C — a threshold operators try to stay under to prevent ring formation.</p>
+        </div>
+
+        <div class="proj proj-half reveal" style="--i:4">
+          <span class="proj-num">05 · Downstream</span>
+          <div class="proj-tags"><span class="tag tag-violet">Separation</span></div>
+          <h3 class="proj-title">Magnetic separator overload</h3>
+          <p class="proj-desc">On one shift, material queued at the product separation area because the magnetic separator was overloaded with char — a downstream symptom of a particular kiln run.</p>
+        </div>
+
+        <div class="proj proj-half reveal" style="--i:5">
+          <span class="proj-num">06 · Compliance</span>
+          <div class="proj-tags"><span class="tag">ESP maintenance</span></div>
+          <h3 class="proj-title">ESP maintenance event</h3>
+          <p class="proj-desc">The Electrostatic Precipitator was running, but one section was visibly under maintenance during my visit — confirming pollution-control upkeep is a parallel operational concern.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANALYSIS — PARETO -->
+  <section id="analysis" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Analysis · Pareto ranking</div>
+          <h2>Ranking the <em>operational issues</em>.</h2>
+        </div>
+        <div class="section-head-meta"><strong>Qualitative ranking</strong><br>Not a logged downtime study</div>
+      </div>
+      <p class="section-desc" style="margin-bottom: var(--space-xl)">Each issue ranked by how often it was mentioned by operators and shift in-charges, and by visible impact during my observation period. <strong>This is qualitative ranking — not a logged downtime study.</strong></p>
+
+      <div class="chart-card reveal" style="max-width:880px">
+        <h4 class="chart-title">Operational issues — ranked by frequency &amp; impact (qualitative)</h4>
+        <div class="chart-sub">— Vital few vs. trivial many</div>
+        <div class="bar-row warn"><div class="bar-label">Kiln accretion / rings</div><div class="bar-track"><div class="bar-fill warn" style="width:95%"></div></div><div class="bar-val">Top</div></div>
+        <div class="bar-row warn"><div class="bar-label">Raw material variation</div><div class="bar-track"><div class="bar-fill warn" style="width:78%"></div></div><div class="bar-val">High</div></div>
+        <div class="bar-row"><div class="bar-label">Feeder jamming</div><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div><div class="bar-val">Mid</div></div>
+        <div class="bar-row"><div class="bar-label">Refractory wear</div><div class="bar-track"><div class="bar-fill" style="width:50%"></div></div><div class="bar-val">Mid</div></div>
+        <div class="bar-row"><div class="bar-label">Magnetic separator overload</div><div class="bar-track"><div class="bar-fill" style="width:35%"></div></div><div class="bar-val">Low</div></div>
+        <div class="bar-row"><div class="bar-label">ESP maintenance</div><div class="bar-track"><div class="bar-fill" style="width:28%"></div></div><div class="bar-val">Low</div></div>
+        <div class="chart-note"><strong>Accretion and raw material variation are the "vital few."</strong> Focus engineering effort here before chasing the remaining items. The shift in-charge's casual ~40–50% estimate of kiln-related downtime aligns with what was visibly disrupting operations.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANALYSIS — FISHBONE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Analysis · Fishbone (6M)</div>
+          <h2>Root causes of <em>kiln accretion</em>.</h2>
+        </div>
+        <div class="section-head-meta"><strong>Ishikawa breakdown</strong><br>Operator input + DRI literature</div>
+      </div>
+      <p class="section-desc" style="margin-bottom: var(--space-xl)">Fishbone (Ishikawa) breakdown of the root causes of kiln accretion, applying the 6M framework. Built from operator conversations and standard DRI process literature.</p>
+
+      <div class="insights-grid" style="grid-template-columns: repeat(3, minmax(0,1fr))">
+        <div class="insight reveal">
+          <div class="insight-num" style="color:var(--art-coral-ink)">M</div>
+          <h3 class="insight-title">Material</h3>
+          <p class="insight-body">Ash content variability in coal — high ash + low ash-fusion temperature → low-melting eutectics inside the kiln. Iron-ore gangue chemistry (SiO₂ / Al₂O₃) drives ring composition.</p>
+        </div>
+        <div class="insight reveal" style="--i:1">
+          <div class="insight-num" style="color:var(--color-ink-3)">M</div>
+          <h3 class="insight-title">Method</h3>
+          <p class="insight-body">Coal-to-iron ratio (FC/Fe) outside the 0.4–0.52 optimal window. Air injection profile not adjusted dynamically to feed quality changes.</p>
+        </div>
+        <div class="insight reveal" style="--i:2">
+          <div class="insight-num" style="color:var(--art-gold-ink)">M</div>
+          <h3 class="insight-title">Machine</h3>
+          <p class="insight-body">Refractory wear shifts the kiln's effective inner diameter and heat transfer behaviour over time. Air-fan positions/flows degrade between maintenance windows.</p>
+        </div>
+        <div class="insight reveal" style="--i:3">
+          <div class="insight-num" style="color:var(--art-teal-ink)">M</div>
+          <h3 class="insight-title">Measurement</h3>
+          <p class="insight-body">SCADA monitors shell temperature but cannot predict accretion. Metallization tested in lab — a lagging indicator. Gas analysis (CO/CO₂/H₂) is the closest leading indicator available.</p>
+        </div>
+        <div class="insight reveal" style="--i:4">
+          <div class="insight-num" style="color:var(--art-violet-ink)">M</div>
+          <h3 class="insight-title">Man (operator)</h3>
+          <p class="insight-body">Manual setpoint adjustments depend on operator experience. Reduction-zone temperature occasionally seen above 1150 °C — the threshold for ring formation risk.</p>
+        </div>
+        <div class="insight reveal" style="--i:5">
+          <div class="insight-num" style="color:var(--color-accent)">M</div>
+          <h3 class="insight-title">Environment</h3>
+          <p class="insight-body">Ambient temperature and humidity affect combustion air density and kiln draft, which subtly shift the temperature profile over the course of a day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANALYSIS — RECOMMENDATIONS -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Analysis · Recommendations</div>
+          <h2>Improvements by <em>horizon</em>.</h2>
+        </div>
+        <div class="section-head-meta"><strong>Framework expectations</strong><br>Not measured plant outcomes</div>
+      </div>
+      <p class="section-desc" style="margin-bottom: var(--space-xl)">Improvement recommendations grouped by horizon. Numbers are framework expectations from DRI literature, not measured plant outcomes.</p>
+
+      <div class="projects-grid">
+        <div class="proj proj-half reveal">
+          <span class="proj-num">Immediate</span>
+          <div class="proj-tags"><span class="tag tag-coral">Raw material QA</span></div>
+          <h3 class="proj-title">Strengthen raw material QA at intake</h3>
+          <p class="proj-desc">Tighten coal ash and ash-fusion-temperature acceptance criteria. Even small reductions in input variability translate directly into kiln stability.</p>
+        </div>
+
+        <div class="proj proj-half reveal" style="--i:1">
+          <span class="proj-num">Immediate</span>
+          <div class="proj-tags"><span class="tag tag-coral">SCADA alarm</span></div>
+          <h3 class="proj-title">Set a hard SCADA alarm at 1150 °C reduction-zone temperature</h3>
+          <p class="proj-desc">Currently treated as a guideline operators try to stay under — making it a hard alarm with logged occurrences would create a measurable accretion-risk indicator.</p>
+        </div>
+
+        <div class="proj proj-half reveal" style="--i:2">
+          <span class="proj-num">Short-term</span>
+          <div class="proj-tags"><span class="tag tag-gold">Downtime logging</span></div>
+          <h3 class="proj-title">Begin logging downtime by stage and cause-code</h3>
+          <p class="proj-desc">A simple shift-by-shift downtime register would convert the current operator estimate (~40–50% kiln-related) into a measurable Pareto baseline the team could improve against.</p>
+        </div>
+
+        <div class="proj proj-half reveal" style="--i:3">
+          <span class="proj-num">Medium-term</span>
+          <div class="proj-tags"><span class="tag tag-teal">ANN soft-sensor</span></div>
+          <h3 class="proj-title">Pilot an ANN-based metallization &amp; accretion predictor</h3>
+          <p class="proj-desc">Train a multi-layer-perceptron on existing SCADA history (feed rates, multi-point temperatures, gas composition) cross-referenced with lab metallization. Literature reports R &gt; 0.95 for similar 100 TPD plants. Deploy as a soft-sensor for shift operators.</p>
+        </div>
+
+        <div class="proj proj-half reveal" style="--i:4">
+          <span class="proj-num">Long-term</span>
+          <div class="proj-tags"><span class="tag tag-violet">CFD study</span></div>
+          <h3 class="proj-title">CFD-based kiln temperature profile study</h3>
+          <p class="proj-desc">Typically run with an academic partner (IIT/NIT). DRI literature on similar 100 TPD plants reports 3–5% metallization gains from optimised inclination/rotation/air-injection configuration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFLECTION -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Reflection</div>
+          <h2>What this internship <em>taught me</em>.</h2>
+        </div>
+      </div>
+
+      <div class="insights-grid">
+        <div class="insight reveal">
+          <div class="insight-num" style="color:var(--color-ink-3)">01</div>
+          <h3 class="insight-title">Operations is about constraints</h3>
+          <p class="insight-body">A 100 TPD plant doesn't get bigger by improving 5 things 10% each. It gets bigger by fixing the kiln. <strong>Pareto and Theory of Constraints both point to the same answer:</strong> spend disproportionate effort on the dominant constraint, ignore the rest until that one is solved.</p>
+        </div>
+        <div class="insight reveal" style="--i:1">
+          <div class="insight-num" style="color:var(--art-gold-ink)">02</div>
+          <h3 class="insight-title">SCADA shows; it doesn't predict</h3>
+          <p class="insight-body">The control-room screens display every parameter in real time, but accretion still "sneaks up." The next frontier in DRI ops is <strong>predictive</strong> — ANN soft sensors + CFD-validated models. This is where MBA-trained operations managers add real value: bringing data-science thinking to a domain that has historically been operator-experience driven.</p>
+        </div>
+        <div class="insight reveal" style="--i:2">
+          <div class="insight-num" style="color:var(--art-teal-ink)">03</div>
+          <h3 class="insight-title">Operator conversations &gt; spreadsheets</h3>
+          <p class="insight-body">The ~40–50% kiln-downtime estimate didn't come from a report. It came from a shift in-charge over tea. <strong>The most valuable information in a plant lives in the heads of the people who run it.</strong> Structured downtime logging would surface this — but the first hour of any improvement project should be on the shop floor, not in the office.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCOPE NOTE / OUTCOME -->
+  <section class="contact-band" data-band style="padding: var(--space-2xl) 0">
+    <div class="container-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--space-md)">A note on this study's scope</div>
+      <h2>Observation, <em>not measurement</em>.</h2>
+      <p>
+        This was an <strong>observational MBA internship study</strong>, not a measured Six Sigma project.
+        The numbers presented are either standard reference values for 100 TPD coal-based DRI plants
+        (from process literature), or estimates given to me casually by the operations team. No proprietary
+        plant data, SCADA exports, or internal reports are reproduced here. Any specific quantitative claim
+        is labelled with its source.
+      </p>
+      <div class="contact-methods">
+        <a class="contact-card" href="project-14.html"><span class="contact-card-ico">→</span> Back to the Agni Steels overview</a>
+        <a class="contact-card" href="projects.html"><span class="contact-card-ico">→</span> All projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER · Ft1 -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer-grid">
+        <div>
+          <div class="footer-brand">Bala Shunmugam<span class="dot">.</span> M</div>
+          <p class="footer-tag">MBA Operations &amp; Business Analytics. Plant floor to P&amp;L. Chennai, India.</p>
+        </div>
+        <div>
+          <div class="footer-h">Work</div>
+          <div class="footer-links">
+            <a href="project-13.html">WattsWorth — case study</a>
+            <a href="project-02.html">VGTPS — 187 MW study</a>
+            <a href="project-14.html">Agni Steels — overview</a>
+            <a href="projects.html">Full archive</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-h">Connect</div>
+          <div class="footer-links">
+            <a href="mailto:balashunmugamruthran@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/bala-shunmugam-m-66a546387" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="index.html#contact">Back to contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Bala Shunmugam. M</span>
+        <span>MBA Operations &amp; Business Analytics</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/redesign.js"></script>
 </body>
 </html>
