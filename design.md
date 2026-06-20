@@ -18,6 +18,21 @@ before emitting code. Do not regenerate per page — extend or amend it.
 > competency ticker marquee (hover-pause, off under reduced-motion), rise+blur reveals,
 > bar-grow charts, hover art-zoom. Section order restored from the v1 overlay layout
 > (hero+featured card → ticker → about+journey → projects → analytics → tools → field → insights → contact band).
+>
+> **Amendment 2026-06-19 (v4 — "Daybook in motion"):** at the owner's direction
+> (landonorris.com energy reference + walkthrough video), the motion ban is
+> *selectively* lifted. The site keeps the light editorial Daybook look but gains a
+> reactive layer. **Now allowed (was banned):** a restrained custom cursor + magnetic
+> buttons; subtle cursor-parallax / tilt on hero art and cards; a single signature
+> interactive hero centerpiece (Three.js WebGL, on-brand, lazy-loaded, with the
+> existing SVG as fallback); scroll-driven sequences via GSAP ScrollTrigger + Lenis
+> smooth scroll; a thin scroll-progress hairline; optional opt-in hover/click sound
+> (off by default). **Non-negotiable guardrails (unchanged):** animate transform/opacity
+> only; rAF-throttle every mousemove/scroll handler; everything renders complete &
+> static under `prefers-reduced-motion`; cursor / parallax / tilt / magnetic effects
+> disabled on touch devices; defer all scripts and never block first paint on the
+> heavy 3D asset; preserve all existing copy, links and data exactly. Accent still
+> ≤5% of any viewport; one ultramarine band per page.
 
 ## Positioning
 MBA Operations & Business Analytics portfolio. The site must communicate:
@@ -60,12 +75,12 @@ Canonical values live in `tokens.css` (see Exports below).
 - v3 set (owner-directed, motionsites.ai reference): hero stagger + ink-draw ·
   reveal-once (rise + soft blur) · count-up on real metrics · bar-grow on chart reveal ·
   one competency ticker marquee (36s linear, pauses on hover) · hover art-zoom + card lift.
-- Still banned: parallax, custom cursors, bounce easings, autoplaying media, pulsing dots.
+- Still banned: bounce easings, autoplaying media, pulsing dots, animating layout properties. (v4 lifted the parallax + custom-cursor ban, under guardrails — see Amendment 2026-06-19.)
 - Reduced motion: everything renders complete and static; the ticker becomes a scrollable strip.
 
 ## Microinteractions stance
 Silent success. Hover delay 800ms / focus delay 0ms. Accent underline draw on link hover.
-Animate transform/opacity only. No parallax, no custom cursor, no bounce.
+Animate transform/opacity only. No bounce. (v4: custom cursor + cursor-parallax now permitted under guardrails — see Amendment 2026-06-19.)
 
 ## CTA voice
 - Primary: solid ultramarine fill, pill shape (`--radius-pill`), mono uppercase label, arrow glyph.

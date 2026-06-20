@@ -1,0 +1,370 @@
+/* motion.css — Phase A foundation layer
+ * Daybook v3 · "Daybook in motion" (Amendment 2026-06-19)
+ * Scope: custom cursor · magnetic-button affordance · scroll-progress hairline
+ * Rules:
+ *   - animate transform / opacity ONLY (no layout props)
+ *   - cursor + magnetic disabled on touch and under reduced-motion
+ *   - scrollbar-progress disabled under reduced-motion
+ * Consumes tokens from tokens.css when available; every var() carries a hex/
+ * value fallback so this file is self-sufficient on pages that load the older
+ * style.css / project.css instead of tokens.css.
+ *
+ * Fallback reference (mirrors tokens.css):
+ *   --color-accent      → #1e3fa0   (ultramarine, oklch(46% 0.19 264))
+ *   --color-ink         → #292c3e   (graphite-blue, oklch(26% 0.02 264))
+ *   --color-rule-2      → #ccc9bc   (light rule, oklch(81% 0.03 100))
+ *   --dur-short         → 220ms
+ *   --dur-long          → 420ms
+ *   --ease-out          → cubic-bezier(0.16,1,0.3,1)
+ *   --space-lg          → 2rem
+ *   --space-md          → 1.5rem
+ */
+
+/* ─────────────────────────────────────────────────────────────
+   0. PAGE-LOAD FADE (Phase F)
+   Default: fully visible (no FOIC if JS fails or is slow).
+   JS adds .js-ready to <html> after DOM is live, triggering
+   the fade-in from a slight opacity+translateY starting state.
+   Disabled entirely under prefers-reduced-motion.
+   Only transform/opacity are animated.
+   ───────────────────────────────────────────────────────────── */
+
+/* The fade-in animation — runs once on page load */
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Applied by JS: .js-ready on <html> triggers the body animation.
+   duration: 320ms (within the 250–400ms spec).
+   ease-out: matches the site's --ease-out token.
+   fill-mode: backwards means the "from" state holds until the
+   animation starts, preventing a visible pre-animation flash. */
+html.js-ready body {
+  animation: page-fade-in 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Reduced-motion: no animation, always fully visible */
+@media (prefers-reduced-motion: reduce) {
+  html.js-ready body {
+    animation: none !important;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   1. SCROLL-PROGRESS HAIRLINE
+   A 2 px fixed bar pinned to the very top of the viewport.
+   scaleX is driven in JS from 0→1; transform-origin: left.
+   ───────────────────────────────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-accent, #1e3fa0);  /* ultramarine */
+  transform: scaleX(0);
+  transform-origin: left center;
+  z-index: 9999;
+  pointer-events: none;
+
+  /* GPU-composited — only transform changes in JS */
+  will-change: transform;
+}
+
+/* Under reduced-motion: hide entirely (page is already static) */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress { display: none; }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   2. CUSTOM CURSOR
+   Two layers:
+     .cursor-dot   — 8 px solid dot, instant tracking
+     .cursor-ring  — 36 px outlined ring, lerp-follows dot
+   Both are pointer-events:none so they don't block clicks.
+   ───────────────────────────────────────────────────────────── */
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  /* will-change so the compositor owns these layers */
+  will-change: transform, opacity;
+  /* start invisible; JS sets opacity:1 on first mousemove */
+  opacity: 0;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent, #1e3fa0);
+  /* Offset so the centre of the dot sits on the pointer */
+  transform: translate(-50%, -50%);
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--color-accent, #1e3fa0);
+  background: transparent;
+  transform: translate(-50%, -50%);
+  /* opacity only — the hover grow is done via transform: scale() in JS */
+  transition: opacity var(--dur-short, 220ms) var(--ease-out, cubic-bezier(0.16,1,0.3,1)); /* fallbacks already present */
+}
+
+/* Dot fill shifts slightly on hover */
+.cursor-dot.is-hover {
+  background: var(--color-ink, #292c3e);
+}
+
+/* ── Hide native cursor when custom one is active ── */
+/* Only applied if .custom-cursor class is present on <html>
+   (JS sets it after first mousemove on a non-touch, non-reduce device) */
+html.custom-cursor,
+html.custom-cursor * {
+  cursor: none !important;
+}
+
+/* ── Touch / coarse-pointer: never show custom cursor ── */
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+  html.custom-cursor,
+  html.custom-cursor * {
+    cursor: auto !important;
+  }
+}
+
+/* ── Reduced-motion: never show custom cursor ── */
+@media (prefers-reduced-motion: reduce) {
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
+  html.custom-cursor,
+  html.custom-cursor * {
+    cursor: auto !important;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   3. MAGNETIC BUTTON
+   JS nudges the element with translate() via CSS custom props.
+   We only declare the will-change hint here; the actual
+   transform is set inline by JS so it can compose with
+   any existing transform on the element.
+   The transition eases the element back to rest on mouseleave.
+   ───────────────────────────────────────────────────────────── */
+[data-magnetic],
+.btn[data-magnetic-active] {
+  will-change: transform;
+}
+
+/* The leave-ease is handled in JS via a CSS transition toggled
+   on the element; these are the values JS writes as inline style: */
+.magnetic-ease {
+  transition: transform var(--dur-long, 420ms) var(--ease-out, cubic-bezier(0.16,1,0.3,1)); /* fallbacks already present */
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   4. HERO CANVAS (Phase B)
+   The Three.js canvas injected by hero.js.
+   Sits at z-index:0, behind .hero .container (z-index:1 in
+   redesign.css), pointer-events:none so clicks pass through.
+   Scroll-settle (opacity + translateY) applied inline by JS.
+   will-change: opacity, transform — only these two are animated.
+   ───────────────────────────────────────────────────────────── */
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  will-change: opacity, transform;
+}
+
+/* Under reduced-motion: hero.js never injects the canvas,
+   but if it somehow exists (e.g. browser re-enables motion
+   mid-session), hide it so the page stays fully static. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-canvas { display: none !important; }
+}
+
+/* On touch devices hero.js also bails early, but guard here too */
+@media (hover: none), (pointer: coarse) {
+  .hero-canvas { display: none !important; }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   6. CARD TILT (Phase C)
+   .proj and .tool-card receive cursor-aware 3D tilt + art parallax
+   via js/cards.js. CSS here only adds will-change + a transform-style
+   hint so the browser compositor owns these layers.
+
+   Keys:
+   - will-change: transform   tells the GPU to promote the card
+   - overflow: visible on art containers during tilt: the SVG art child
+     is already clipped by .art (overflow:hidden in redesign.css) so
+     the art container itself does not need to clip; we leave that alone.
+   - No layout properties touched — transform only.
+   - Under reduced-motion and touch: cards.js bails, so these hints are
+     effectively no-ops (cards keep their existing CSS hover only).
+   ───────────────────────────────────────────────────────────── */
+.proj,
+.tool-card {
+  /* Promote to composited layer while JS may be animating this card.
+     JS clears the inline transform on pointerleave so the hint is
+     only "live" while the card is actively being hovered.
+     We declare it here as a base hint; the actual promotion happens
+     when the browser sees the inline transform written by JS. */
+  will-change: transform;
+  /* Ensure no ancestor clips the slight perspective pop */
+  isolation: isolate;
+}
+
+/* Art containers: will-change for the parallax translate */
+.proj .art,
+.proj .proj-mini-art,
+.tool-card .art {
+  will-change: transform;
+}
+
+/* Reduced-motion and touch guard: prevent any JS-authored inline
+   transform from being visible even if cards.js somehow runs.
+   (cards.js already gates on these media queries, but belt-and-
+   suspenders per CLAUDE.md.) */
+@media (prefers-reduced-motion: reduce) {
+  .proj,
+  .tool-card,
+  .proj .art,
+  .proj .proj-mini-art,
+  .tool-card .art {
+    transform: none !important;
+    will-change: auto;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .proj,
+  .tool-card,
+  .proj .art,
+  .proj .proj-mini-art,
+  .tool-card .art {
+    will-change: auto;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   5. UTILITY HELPERS
+   ───────────────────────────────────────────────────────────── */
+
+/* Skip Lenis on reduced-motion: ensure scroll-padding still works */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    /* redesign.css already sets scroll-behavior:auto for reduced-motion;
+       belt-and-suspenders guard */
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   7. PHASE D — ABOUT JOURNEY TIMELINE (drawing connector line)
+   .j-line is injected by about.js as first child of .journey.
+   It draws top→bottom via scaleY(0→1), driven by GSAP
+   ScrollTrigger (scrub) or by .j-line-active class (IO fallback).
+   .j-step-hidden / .j-step-in control per-step stagger.
+   ───────────────────────────────────────────────────────────── */
+
+/* The connector line — a hairline running down the left dot column.
+   Positioned to sit behind the j-dots, centred on the 40px dot column.
+   top/bottom values account for the card's padding (--space-lg = 2rem)
+   and the journey-title row (~2.5rem height). */
+.j-line {
+  position: absolute;
+  /* Centre on the 40px dot column (card padding 2rem + half dot width 17px) */
+  left: calc(var(--space-lg, 2rem) + 17px);
+  /* Start below the journey-title (mono label + margin-bottom 1.5rem) */
+  top: calc(var(--space-lg, 2rem) + 2.6rem);
+  /* End before card bottom padding */
+  bottom: var(--space-lg, 2rem);
+  width: 2px;
+  /* Use a vertical gradient: accent at top fading to soft rule at bottom */
+  background: linear-gradient(
+    to bottom,
+    var(--color-accent, #1e3fa0) 0%,
+    var(--color-rule-2, #ccc9bc) 100%
+  );
+  border-radius: 2px;
+  /* Start fully collapsed — draws from top */
+  transform: scaleY(0);
+  transform-origin: top center;
+  /* GPU layer hint */
+  will-change: transform;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* IO fallback: .j-line-active triggers the CSS transition */
+.j-line.j-line-active {
+  transform: scaleY(1);
+  transition: transform 900ms var(--ease-out, cubic-bezier(0.16,1,0.3,1)) 150ms; /* fallback already present */
+}
+
+/* Journey steps — initial hidden state (added by about.js).
+   opacity + translateY only. z-index:1 to sit above .j-line. */
+.journey-step.j-step-hidden {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* Revealed state — CSS transition from j-step-hidden to j-step-in */
+.journey-step.j-step-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity  500ms var(--ease-out, cubic-bezier(0.16,1,0.3,1)),
+    transform 500ms var(--ease-out, cubic-bezier(0.16,1,0.3,1)); /* fallbacks already present */
+}
+
+/* ── Reduced-motion overrides ──────────────────────────────── */
+/* Line is fully drawn and steps are fully visible — no animation. */
+@media (prefers-reduced-motion: reduce) {
+  .j-line {
+    transform: scaleY(1) !important;
+    transition: none !important;
+    will-change: auto;
+  }
+  .j-line.j-line-active {
+    transition: none !important;
+  }
+  /* Steps must never be hidden under reduced-motion.
+     about.js returns early (never adds j-step-hidden) under reduce,
+     but belt-and-suspenders: override both classes. */
+  .journey-step.j-step-hidden,
+  .journey-step.j-step-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
