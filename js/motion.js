@@ -20,15 +20,9 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var touch  = window.matchMedia("(hover: none), (pointer: coarse)").matches;
 
-  /* ── 0a. Page-load fade (Phase F) ─────────────────────
-   * Default state: body is fully visible (no JS = no FOIC).
-   * We add .js-ready to <html> here, which triggers the CSS
-   * @keyframes page-fade-in. This fires as early as possible
-   * after the script runs (deferred, so DOM is already parsed).
-   * Under reduced-motion the CSS rule is `animation: none` so
-   * adding the class is a safe no-op — no check needed here.
-   * ───────────────────────────────────────────────────── */
-  document.documentElement.classList.add("js-ready");
+  /* Page-load fade (Phase F) REMOVED 2026-06-20: it animated body opacity on
+     every load, which also faded the custom cursor (a body child) and made
+     navigation feel less instant. The site renders immediately now. */
 
   /* ── 1. Inject DOM nodes ──────────────────────────────── */
   // Scroll-progress hairline — one element, always present
@@ -53,39 +47,16 @@
     document.body.appendChild(cursorRing);
   }
 
-  /* ── 2. Lenis smooth scroll ───────────────────────────── */
+  /* ── 2. Scroll ─────────────────────────────────────────────
+   * Lenis smooth-scroll REMOVED 2026-06-20: its inertia read as sticky/laggy,
+   * and on the cosmic project pages it layered over a second WebGL rAF loop.
+   * We use native scroll (crisp); GSAP ScrollTrigger drives native scroll
+   * directly. `lenis` stays null so the anchor-scroll and scroll-progress
+   * code below take their native paths.
+   * ───────────────────────────────────────────────────────── */
   var lenis = null;
-
-  if (!reduce) {
-    // Guard: Lenis must be present on window
-    if (window.Lenis) {
-      lenis = new window.Lenis({
-        lerp: 0.1,          // inertia smoothing factor
-        smoothWheel: true,
-        syncTouch: false,   // don't override native touch momentum
-      });
-
-      // Wire GSAP ScrollTrigger to Lenis scroll events
-      if (window.gsap && window.ScrollTrigger) {
-        window.gsap.registerPlugin(window.ScrollTrigger);
-
-        // Keep ScrollTrigger in sync with Lenis's virtual scroll position
-        lenis.on("scroll", window.ScrollTrigger.update);
-
-        // Drive Lenis from GSAP's ticker so they share one rAF loop
-        window.gsap.ticker.add(function (time) {
-          lenis.raf(time * 1000);
-        });
-        window.gsap.ticker.lagSmoothing(0);
-      } else {
-        // No GSAP — drive Lenis with our own rAF loop
-        (function rafLoop(time) {
-          lenis.raf(time);
-          requestAnimationFrame(rafLoop);
-        })(performance.now());
-      }
-    }
-    // If Lenis is absent: native scroll is already active — nothing to do.
+  if (!reduce && window.gsap && window.ScrollTrigger) {
+    window.gsap.registerPlugin(window.ScrollTrigger);
   }
 
   /* ── 3. Anchor-link smooth scroll ────────────────────── */
@@ -179,23 +150,27 @@
       cursorRafId = requestAnimationFrame(cursorTick);
     }
 
-    // Start the loop on first mousemove
+    // Track + reveal the cursor on movement
     window.addEventListener("mousemove", function (e) {
       mouseX = e.clientX;
       mouseY = e.clientY;
 
-      // Reveal the cursor on first real move
+      // First real move: start the loop + hide the native cursor.
       if (!cursorVisible) {
         cursorVisible = true;
-        cursorDot.style.opacity  = "1";
-        cursorRing.style.opacity = "0.55";
-        // Mark <html> so CSS can hide the native cursor
         document.documentElement.classList.add("custom-cursor");
-        // Seed ring at same position to avoid a "fly in" on first move
-        ringX = mouseX;
+        ringX = mouseX;   // seed ring to avoid a fly-in
         ringY = mouseY;
-        // Start the rAF loop
         cursorRafId = requestAnimationFrame(cursorTick);
+      }
+
+      // Ensure visible on every move. Fixes the "sometimes invisible" cursor:
+      // when the pointer left the window (mouseleave → opacity 0) and re-entered
+      // via a mousemove rather than a mouseenter, it used to stay hidden while
+      // the native cursor was still suppressed. Restoring here is authoritative.
+      if (cursorDot.style.opacity !== "1") {
+        cursorDot.style.opacity  = "1";
+        cursorRing.style.opacity = cursorDot.classList.contains("is-hover") ? "0.7" : "0.55";
       }
     }, { passive: true });
 

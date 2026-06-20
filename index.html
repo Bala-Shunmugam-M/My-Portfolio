@@ -3,6 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    /* Set the theme BEFORE first paint to prevent a flash of the wrong theme.
+       Priority: saved choice > system preference > light (the default). */
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
   <title>Bala Shunmugam. M — MBA Operations &amp; Business Analytics Portfolio</title>
   <meta name="description" content="MBA Operations & Business Analytics portfolio of Bala Shunmugam. M — industrial energy analytics, real-time process stability and inventory intelligence. Working decision tools validated on real plant data, not slide decks." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -25,6 +40,10 @@
         <li><a href="#field">Field</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-cursor>
+        <svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+        <svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.3 8.3 0 1 1 10.8 3.5a6.5 6.5 0 0 0 9.7 9.7z"/></svg>
+      </button>
       <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">≡</button>
     </div>
   </nav>
@@ -535,5 +554,6 @@
   <script defer src="js/hero.js"></script>
   <script defer src="js/cards.js"></script>
   <script defer src="js/about.js"></script>
+  <script defer src="js/theme.js"></script>
 </body>
 </html>

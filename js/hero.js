@@ -232,7 +232,7 @@
       alpha:     true,    // transparent — butter page shows through
       antialias: true,
     });
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5)); // cap GPU cost (perf)
     renderer.setClearColor(0x000000, 0);  // fully transparent clear
 
     /* ─ Scene + camera ─ */
@@ -397,6 +397,14 @@
 
     var dataLine = new THREE.Line(lineGeo, lineMat);
     scene.add(dataLine);
+
+    /* Recolour on theme toggle. The field bakes CSS-token colours into its
+       materials at init; a CSS `data-theme` flip can't reach them, so theme.js
+       fires `themechange` and we re-resolve the two colours here. */
+    window.addEventListener("themechange", function () {
+      dotMat.color  = cssToThreeColor("--color-ink");
+      lineMat.color = cssToThreeColor("--color-accent");
+    });
 
     /* ─ Resize handler ─ */
     function onResize() {

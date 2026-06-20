@@ -86,7 +86,9 @@
 }
 
 /* ── Daybook Night — auto dark mode (Phase F)
- * Triggered by OS preference only — no toggle UI.
+ * Applied via :root[data-theme="dark"] — set by the navbar toggle (js/theme.js),
+ * or on first visit (no saved choice) by the inline <head> script reading
+ * prefers-color-scheme. Light is the fallback default.
  * Keeps the same hue families as the light palette:
  *   paper  → deep graphite-blue (oklch hue 264)
  *   ink    → butter-cream (oklch hue 95)
@@ -107,8 +109,7 @@
  *   --color-on-band (L 95%) on --color-band (L 30%):
  *     approx ratio ≈ 16:1  → AA ✓
  * ──────────────────────────────────────────────────────── */
-@media (prefers-color-scheme: dark) {
-  :root {
+:root[data-theme="dark"] {
     /* ── Paper (deep graphite-blue) ── */
     --color-paper:        oklch(21% 0.02 264);
     --color-paper-2:      oklch(25% 0.025 264);
@@ -149,5 +150,4 @@
     --art-teal-soft:      oklch(30% 0.06 175);
     --art-violet-soft:    oklch(31% 0.06 295);
     --art-gold-soft:      oklch(33% 0.07 90);
-  }
 }
