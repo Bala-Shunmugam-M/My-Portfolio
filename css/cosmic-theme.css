@@ -41,6 +41,126 @@
   --glow:       0 0 24px rgba(34, 211, 238, 0.35);
 }
 
+/* ════════════════════════════════════════════════════════════
+   LIGHT THEME — data-theme="light"  (2026-06-20)
+   Cosmic pages are dark by default; this is the light variant
+   the navbar toggle switches to. Every [data-theme="light"]
+   selector out-specifies the base rules, so order doesn't matter.
+   ════════════════════════════════════════════════════════════ */
+:root[data-theme="light"] {
+  --paper:        #f4f7fc;
+  --paper-deep:   #ecf1fa;
+  --paper-mute:   #e3ebf7;
+  --card:         #ffffff;
+  --card-deep:    #f1f6fd;
+
+  --ink:          #0b1220;
+  --ink-2:        #2b3552;
+  --ink-3:        #54627f;
+  --ink-4:        #8593ad;
+
+  --rule:         rgba(28, 56, 120, 0.12);
+  --rule-strong:  rgba(28, 56, 120, 0.22);
+
+  --oxblood:      #0891b2;
+  --oxblood-deep: #0e7490;
+  --oxblood-soft: rgba(8, 145, 178, 0.10);
+  --brass:        #7c3aed;
+  --brass-soft:   rgba(124, 58, 237, 0.10);
+  --forest:       #0d9488;
+  --forest-soft:  rgba(13, 148, 136, 0.10);
+  --slate:        #0284c7;
+  --slate-soft:   rgba(2, 132, 199, 0.10);
+
+  --glow:         0 0 18px rgba(8, 145, 178, 0.25);
+
+  --shadow-sm:  0 1px 2px rgba(20, 40, 90, 0.08);
+  --shadow-md:  0 6px 20px rgba(20, 40, 90, 0.10), 0 1px 3px rgba(20, 40, 90, 0.06);
+  --shadow-lg:  0 18px 50px rgba(20, 40, 90, 0.14), 0 2px 8px rgba(20, 40, 90, 0.08);
+}
+
+/* Light cosmic backdrop — soft tinted radials on near-white (no starfield) */
+html[data-theme="light"] {
+  background:
+    radial-gradient(1100px 700px at 80% -8%, rgba(8, 145, 178, 0.10), transparent 60%),
+    radial-gradient(1000px 800px at 8% 10%, rgba(124, 58, 237, 0.08), transparent 55%),
+    radial-gradient(1200px 900px at 55% 115%, rgba(13, 148, 136, 0.08), transparent 60%),
+    #f4f7fc !important;
+}
+/* Hide starfield and noise grain on light */
+:root[data-theme="light"] #cosmic-stars { opacity: 0; }
+:root[data-theme="light"] body::before { opacity: 0; }
+
+/* Light glass navbar */
+:root[data-theme="light"] .navbar {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border-bottom: 1px solid var(--rule) !important;
+}
+
+/* Drop the cyan glow on display italics in light */
+:root[data-theme="light"] .hero-title em,
+:root[data-theme="light"] .section-head h2 em,
+:root[data-theme="light"] .contact-band h2 em { text-shadow: none; }
+
+/* Cards: light surface, light border */
+:root[data-theme="light"] .proj,
+:root[data-theme="light"] .tool-card,
+:root[data-theme="light"] .chart-card,
+:root[data-theme="light"] .metric,
+:root[data-theme="light"] .insight,
+:root[data-theme="light"] .journey,
+:root[data-theme="light"] .hero-side,
+:root[data-theme="light"] .contact-card {
+  border-color: var(--rule);
+  background: var(--card);
+}
+:root[data-theme="light"] .proj:hover,
+:root[data-theme="light"] .tool-card:hover,
+:root[data-theme="light"] .contact-card:hover {
+  border-color: rgba(8, 145, 178, 0.40);
+  box-shadow: var(--shadow-lg), 0 0 24px rgba(8, 145, 178, 0.12);
+}
+
+/* Transparent + alt sections */
+:root[data-theme="light"] .section-alt { background: rgba(236, 241, 250, 0.80); }
+:root[data-theme="light"] .contact-band { background: rgba(227, 235, 247, 0.90); }
+
+/* Buttons */
+:root[data-theme="light"] .btn-primary {
+  background: linear-gradient(135deg, #0891b2 0%, #0e7490 100%);
+  color: #fff;
+  box-shadow: 0 6px 22px rgba(8, 145, 178, 0.30);
+}
+:root[data-theme="light"] .btn-outline {
+  border-color: var(--rule-strong);
+  color: var(--ink-2);
+  background: transparent;
+}
+:root[data-theme="light"] .btn-outline:hover {
+  border-color: var(--oxblood);
+  color: var(--oxblood);
+  background: var(--oxblood-soft);
+  box-shadow: none;
+}
+
+/* Progress / data bars */
+:root[data-theme="light"] .proj-bar-fill,
+:root[data-theme="light"] .bar-fill {
+  background: linear-gradient(90deg, #0891b2, #0d9488);
+  box-shadow: none;
+}
+
+/* Light selection + scrollbar */
+:root[data-theme="light"] ::selection { background: rgba(8, 145, 178, 0.22); color: #06283a; }
+:root[data-theme="light"] ::-webkit-scrollbar-track { background: #e3ebf7; }
+:root[data-theme="light"] ::-webkit-scrollbar-thumb { background: rgba(8, 145, 178, 0.30); border-radius: 6px; }
+:root[data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: rgba(8, 145, 178, 0.50); }
+
+/* ── Theme toggle, styled for the cosmic .navbar (uses cosmic vars so
+      it flips automatically between themes). Icon swap from motion.css. ── */
+.navbar .theme-toggle { color: var(--ink-2); border-color: var(--rule-strong); }
+.navbar .theme-toggle:hover { color: var(--oxblood); border-color: var(--oxblood); background: var(--oxblood-soft); }
+
 /* ── Cosmic background: deep navy → black with nebula glow ─ */
 html {
   background:
