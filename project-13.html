@@ -3,6 +3,10 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<script>
+  /* Set theme before first paint (no FOUC). saved > system > light. */
+  (function(){try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}document.documentElement.setAttribute("data-theme",t);}catch(e){document.documentElement.setAttribute("data-theme","light");}})();
+</script>
 <title>WattsWorth — Industrial Energy Performance &amp; Decarbonization Engine</title>
 <meta name="description" content="WattsWorth turns plant energy data into defensible, auditor-grade savings in rupees and CO2 — ISO 50001 baselining and IPMVP Option C M&V, validated on a real steel-plant dataset, with the statistical honesty most tools skip."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -19,6 +23,26 @@
   --r:14px; --r-lg:20px; --maxw:1180px;
   --shadow:0 18px 50px -18px rgba(0,0,0,.7);
 }
+/* ── Light theme (toggle) — 2026-06-20. Dark is the default above. ── */
+:root[data-theme="light"]{
+  --bg:#f4f7fc; --bg-2:#eef3fb; --panel:rgba(12,30,75,.04); --panel-2:rgba(12,30,75,.06);
+  --line:rgba(30,60,130,.12); --line-2:rgba(8,145,178,.35);
+  --ink:#0b1220; --ink-2:#2b3552; --ink-3:#54627f;
+  --brass:#0891b2; --brass-2:#0e7490; --brass-hi:#06b6d4;
+  --garnet:#7c3aed; --garnet-2:#6d28d9; --forest:#0d9488;
+  --shadow:0 18px 50px -18px rgba(20,40,90,.18);
+}
+/* Light overrides for the hard-coded dark rules */
+:root[data-theme="light"] body{
+  background-image:radial-gradient(900px 620px at 82% -6%,rgba(8,145,178,.08),transparent 62%),
+    radial-gradient(820px 640px at 6% 8%,rgba(124,58,237,.06),transparent 58%),
+    radial-gradient(1100px 820px at 55% 116%,rgba(13,148,136,.05),transparent 60%);
+}
+:root[data-theme="light"] .nav{ background:rgba(255,255,255,.74); }
+:root[data-theme="light"] .tbl thead th{ background:rgba(12,30,75,.04); }
+/* Theme toggle button (uses this page's vars so it flips with the theme) */
+.nav .theme-toggle{ color:var(--ink-2); border-color:var(--line-2); }
+.nav .theme-toggle:hover{ color:var(--brass); border-color:var(--brass); }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -285,6 +309,10 @@ h2.sec{font-weight:700;letter-spacing:-.02em}
       <a href="#roadmap">Roadmap</a>
     </nav>
     <a class="btn btn-pri" href="https://wattsworth-4em4jgncpi8gh2yt2rkayk.streamlit.app/" target="_blank" rel="noopener">Live demo ↗</a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-cursor>
+      <svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+      <svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.3 8.3 0 1 1 10.8 3.5a6.5 6.5 0 0 0 9.7 9.7z"/></svg>
+    </button>
   </div>
 </header>
 
@@ -667,5 +695,6 @@ wattsworth/
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script defer src="js/motion.js"></script>
+  <script defer src="js/theme.js"></script>
 </body>
 </html>
