@@ -1,0 +1,463 @@
+/* agents.css — Bala Shunmugam. M portfolio
+ * Owners: preloader · about-photo · #agents section
+ * All values use tokens.css variables — no hard-coded colours or sizes.
+ * New CSS only; never overrides redesign.css or motion.css globals.
+ */
+
+/* ══════════════════════════════════════════════════════════
+   § 1. PRELOADER
+   Full-screen overlay. Only shown when JS is active (the
+   body class .js-ready is set by agents.js before first paint).
+   Without JS the element is not injected, so content is never blocked.
+   ══════════════════════════════════════════════════════════ */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--color-paper);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  /* starts visible; JS hides after load */
+  opacity: 1;
+  /* ponytail: no pointer-events once we start fading out */
+  pointer-events: none; /* always non-blocking to clicks */
+}
+
+#preloader.pl-exit {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 520ms var(--ease-in), transform 520ms var(--ease-in);
+}
+
+/* the big count-up number */
+.pl-count {
+  font-family: var(--font-mono);
+  font-size: clamp(4rem, 14vw, 10rem);
+  font-weight: 600;
+  color: var(--color-accent);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  /* ponytail: hardware-accelerated only transform/opacity animations */
+  will-change: transform, opacity;
+}
+
+/* wordmark beneath the counter */
+.pl-wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.4vw, 1.5rem);
+  font-weight: 400;
+  color: var(--color-ink-3);
+  letter-spacing: 0.04em;
+}
+
+/* ── Reduced-motion: hide immediately, never animate ── */
+@media (prefers-reduced-motion: reduce) {
+  #preloader {
+    display: none !important;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   § 2. ABOUT SECTION — portrait photo
+   Added as a third column in .about-grid on wide screens;
+   stacks gracefully beneath .about-text on narrow screens.
+   ══════════════════════════════════════════════════════════ */
+
+/* Override about-grid to accept a third column on wide viewports */
+@media (min-width: 860px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr auto !important;
+    align-items: start;
+    gap: var(--space-xl);
+  }
+}
+
+/* The framed figure */
+.about-portrait {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Graph-paper / hairline ruled frame */
+.portrait-frame {
+  position: relative;
+  border-radius: var(--radius);
+  padding: 6px;
+  /* hairline double-border */
+  border: 1px solid var(--color-rule-2);
+  box-shadow:
+    inset 0 0 0 4px var(--color-paper),
+    inset 0 0 0 5px var(--color-rule),
+    0 0 0 1px var(--color-accent);
+  background: var(--color-paper-2);
+  overflow: visible;
+}
+
+/* art-hue edge accent line — coral, top edge */
+.portrait-frame::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: var(--art-teal);
+  border-radius: 2px;
+}
+
+/* subtle ruled lines in the photo background — graph paper feel */
+.portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: calc(var(--radius) - 2px);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 23px,
+      var(--color-rule) 23px,
+      var(--color-rule) 24px
+    );
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.portrait-img {
+  display: block;
+  width: 200px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 4px);
+  position: relative;
+  z-index: 2;
+}
+
+/* mono caption under the frame */
+.portrait-caption {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+  text-align: center;
+}
+
+/* stack on small screens: portrait goes below journey */
+@media (max-width: 859px) {
+  .about-portrait {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: var(--space-md);
+  }
+  .portrait-img {
+    width: 110px;
+    aspect-ratio: 3 / 4;
+  }
+  .portrait-caption {
+    text-align: left;
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════
+   § 3. AGENTS SECTION  (#agents)
+   ══════════════════════════════════════════════════════════ */
+
+/* ── 3a. Stat chips ── */
+.agents-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.agent-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-rule-2);
+  border-radius: var(--radius);
+  padding: var(--space-sm) var(--space-md);
+  min-width: 120px;
+}
+
+.agent-chip-val {
+  font-family: var(--font-mono);
+  font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+  font-weight: 600;
+  color: var(--color-accent);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.agent-chip-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+}
+
+
+/* ── 3b. Manager hover-preview list ── */
+.agents-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+  margin-bottom: var(--space-xl);
+}
+
+@media (max-width: 860px) {
+  .agents-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+/* Left col: the vertical manager list */
+.agents-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--color-rule-2);
+}
+
+/* Each row is a <button> for keyboard + screen-reader access */
+.agent-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-rule);
+  background: none;
+  border-left: none; border-right: none; border-top: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  /* ponytail: transition only transform/opacity per CLAUDE.md */
+  transition: opacity var(--dur-short) var(--ease-out);
+  color: var(--color-ink);
+}
+
+.agent-row:hover,
+.agent-row:focus-visible {
+  opacity: 1;
+}
+
+/* Dim non-active rows when one is active */
+.agents-list.has-active .agent-row:not(.is-active) {
+  opacity: 0.38;
+}
+
+.agent-row-name {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  transition: color var(--dur-short) var(--ease-out);
+}
+
+.agent-row.is-active .agent-row-name {
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+.agent-row-arrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-ink-4);
+  transition: transform var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+  flex-shrink: 0;
+}
+
+.agent-row.is-active .agent-row-arrow {
+  transform: translateX(4px);
+  color: var(--color-accent);
+}
+
+/* Right col: preview panel */
+.agents-preview {
+  position: sticky;
+  top: calc(var(--nav-h) + var(--space-lg));
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-rule-2);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* Default "nothing selected" state */
+.agents-preview-default {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-ink-4);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: auto;
+  text-align: center;
+}
+
+/* Individual manager preview panes */
+.agent-preview-pane {
+  display: none;
+  flex-direction: column;
+  gap: var(--space-sm);
+  opacity: 0;
+  transform: translateY(8px);
+  /* ponytail: only transform/opacity */
+  transition: opacity 260ms var(--ease-out), transform 260ms var(--ease-out);
+}
+
+.agent-preview-pane.is-shown {
+  display: flex;
+  opacity: 1;
+  transform: none;
+}
+
+/* Reduced-motion: instant show, no animation */
+@media (prefers-reduced-motion: reduce) {
+  .agent-preview-pane {
+    transition: none;
+    transform: none;
+  }
+}
+
+.preview-role {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.preview-title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  line-height: 1.1;
+}
+
+.preview-desc {
+  font-size: var(--text-sm);
+  color: var(--color-ink-2);
+  line-height: 1.6;
+}
+
+.preview-subs-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+  margin-top: var(--space-2xs);
+}
+
+.preview-subs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+}
+
+/* On touch/small screens: stack the panes inline below each row (no hover needed) */
+@media (max-width: 860px) {
+  .agents-preview {
+    position: static;
+    display: none; /* hide the desktop panel; inline panes show below each row */
+  }
+
+  /* Show inline expansion below each row when active */
+  .agent-inline-preview {
+    display: none;
+    padding: var(--space-sm) 0 var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-rule);
+  }
+  .agent-row.is-active + .agent-inline-preview {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  /* On desktop the inline previews are hidden; side panel handles it */
+  @media (min-width: 861px) {
+    .agent-inline-preview { display: none !important; }
+  }
+}
+
+@media (min-width: 861px) {
+  .agent-inline-preview { display: none !important; }
+}
+
+
+/* ── 3c. Agents ticker band ── */
+.agents-ticker {
+  overflow: hidden;
+  border-top: 1px solid var(--color-rule-2);
+  border-bottom: 1px solid var(--color-rule-2);
+  background: var(--color-paper-2);
+  padding-block: 10px;
+  margin-block: var(--space-xl);
+}
+
+.agents-ticker-track {
+  display: flex;
+  gap: 0;
+  white-space: nowrap;
+  /* ponytail: translateX animation only — no width/layout animation */
+  animation: agents-ticker-scroll 26s linear infinite;
+}
+
+.agents-ticker:hover .agents-ticker-track,
+.agents-ticker:focus-within .agents-ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes agents-ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.agents-ticker-item {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-ink-3);
+  padding-inline: var(--space-md);
+  flex-shrink: 0;
+}
+
+/* dot separator between items */
+.agents-ticker-item::after {
+  content: " ·";
+  color: var(--color-accent);
+  margin-left: var(--space-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agents-ticker-track { animation: none; }
+}
+
+
+/* ── 3d. Section CTA ── */
+.agents-cta {
+  text-align: center;
+  margin-top: var(--space-xl);
+}

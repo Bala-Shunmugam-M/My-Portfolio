@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    /* Set the theme BEFORE first paint to prevent a flash of the wrong theme.
+       Priority: saved choice > system preference > light (the default). */
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <title>The Company Brain — Agentic Operating System — Bala Shunmugam. M</title>
+  <meta name="description" content="A governance-first agentic operating system I designed: 28 AI agents structured as a real org chart, with a CEO orchestrator, 9 division managers, a 4-gate Strategic Filter, and a blocking Security gate before anything ships." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/redesign.css" />
+  <link rel="stylesheet" href="css/motion.css" />
+  <link rel="stylesheet" href="css/agents.css" />
+</head>
+<body>
+
+  <!-- NAV · N9 -->
+  <nav class="navbar" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Bala Shunmugam<span class="dot">.</span> M</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#field">Field</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-cursor>
+        <svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+        <svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.3 8.3 0 1 1 10.8 3.5a6.5 6.5 0 0 0 9.7 9.7z"/></svg>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">≡</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="hero" style="padding-bottom: var(--space-2xl)">
+    <div class="container">
+      <div class="hero-meta rise" style="--i:0">
+        <span class="eyebrow"><a href="index.html#agents" class="tlink" style="color:inherit">← Back to portfolio</a></span>
+        <span class="eyebrow">Systems design · Agentic OS</span>
+        <span class="eyebrow">Governance-first · 28 agents</span>
+      </div>
+
+      <h1 class="hero-title rise" style="--i:1; max-width:28ch">The Company Brain — <em>an agentic operating system</em></h1>
+      <p class="hero-sub rise" style="--i:2; font-family:var(--font-mono); font-size:var(--text-sm); letter-spacing:0.04em; text-transform:uppercase; color:var(--color-ink-3); max-width:none">
+        CEO Orchestrator · 9 Division Managers · 18 Sub-Agents · 4-Gate Strategic Filter · Blocking Security Gate
+      </p>
+      <p class="hero-sub rise" style="--i:3">
+        A governance-first agentic operating system I designed: an org chart of AI agents
+        that mirrors how a real holding company runs — with hard gates before anything ships,
+        a Knowledge Graph that compounds every lesson, and a human always in the loop for
+        decisions that involve money, permissions, or public output.
+      </p>
+
+      <div class="hero-actions rise" style="--i:4">
+        <a href="#governance" class="btn btn-primary">See the governance <span class="arrow" aria-hidden="true">→</span></a>
+        <a href="#org" class="btn btn-outline">The 28-agent org <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="hero-stats rise" style="--i:5">
+        <div class="hero-stat"><div class="hero-stat-val tnum">28</div><div class="hero-stat-label">Agents in the org</div></div>
+        <div class="hero-stat"><div class="hero-stat-val tnum">9</div><div class="hero-stat-label">Division managers</div></div>
+        <div class="hero-stat"><div class="hero-stat-val tnum">4</div><div class="hero-stat-label">Strategic Filter gates</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">1 CEO</div><div class="hero-stat-label">Orchestrator · never does the work</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREMISE -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Premise</div>
+          <h2>Not a chatbot. <em>An operating system.</em></h2>
+        </div>
+        <div class="section-head-meta"><strong>Systems design artifact</strong><br>Operations &amp; agentic governance</div>
+      </div>
+
+      <div class="insights-grid">
+        <div class="insight reveal">
+          <div class="insight-num" style="color:var(--art-coral-ink)">01</div>
+          <h3 class="insight-title">The design question</h3>
+          <p class="insight-body">If AI agents are to run real workflows — product, engineering, operations, security, sales — they need governance structures, not just prompts. The design question was: what does a company look like when its operating system is made of agents rather than processes and job titles?</p>
+        </div>
+        <div class="insight reveal" style="--i:1">
+          <div class="insight-num" style="color:var(--art-teal-ink)">02</div>
+          <h3 class="insight-title">The org-chart model</h3>
+          <p class="insight-body">The system mirrors a real holding-company org: a CEO orchestrator at the top that routes intent but never does the work; 9 division managers who decompose and assign; specialist sub-agents who execute. Managers never skip the chain. The CEO never writes code or copy.</p>
+        </div>
+        <div class="insight reveal" style="--i:2">
+          <div class="insight-num" style="color:var(--art-violet-ink)">03</div>
+          <h3 class="insight-title">Governance is load-bearing</h3>
+          <p class="insight-body">The interesting design work is not the agents — it is the governance: what gates every idea must pass before work starts, what a blocking Security reviewer means in an agentic context, and what "done" requires (a logged improvement, not just a shipped output).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOVERNANCE — THE STRATEGIC FILTER -->
+  <section id="governance" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Governance</div>
+          <h2>Four gates. One <em>no</em> stops everything.</h2>
+        </div>
+        <div class="section-head-meta"><strong>The Strategic Filter</strong><br>Anti-distraction mechanism</div>
+      </div>
+
+      <p class="section-desc reveal" style="margin-bottom:var(--space-xl)">
+        Before any agent starts a product, feature, experiment, or campaign, the idea must
+        pass all four gates. A single "no" halts the task and returns the reason to the
+        requester. This is the system's anti-distraction mechanism — it prevents random work.
+      </p>
+
+      <!-- 4-gate cards -->
+      <div class="insights-grid" style="margin-bottom: var(--space-xl)">
+        <div class="insight reveal" style="border-left: 3px solid var(--color-accent)">
+          <div class="insight-num" style="color:var(--color-accent); font-size:var(--text-xl)">Gate 1</div>
+          <h3 class="insight-title">Does it reduce inefficiency?</h3>
+          <p class="insight-body">No = <strong>REJECT</strong>. The system's civilisation goal is eliminating operational inefficiency. Work that doesn't reduce measurable friction fails at the first gate, before a single agent starts.</p>
+        </div>
+        <div class="insight reveal" style="--i:1; border-left: 3px solid var(--art-teal)">
+          <div class="insight-num" style="color:var(--art-teal-ink); font-size:var(--text-xl)">Gate 2</div>
+          <h3 class="insight-title">Does it increase intelligence?</h3>
+          <p class="insight-body">No = <strong>REJECT</strong>. The north star is making every operational decision measurable and explainable. If the output doesn't add to the system's intelligence — data, models, better decisions — it doesn't pass.</p>
+        </div>
+        <div class="insight reveal" style="--i:2; border-left: 3px solid var(--art-gold)">
+          <div class="insight-num" style="color:var(--art-gold-ink); font-size:var(--text-xl)">Gate 3</div>
+          <h3 class="insight-title">Does it improve decisions?</h3>
+          <p class="insight-body">No = <strong>REJECT</strong>. Work that produces data without improving the quality of a downstream decision is instrumentation noise. The system optimises for decision quality, not data volume.</p>
+        </div>
+      </div>
+      <!-- Gate 4 separate row (wider) + non-negotiables -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:var(--space-md); margin-bottom:var(--space-xl)">
+        <div class="insight reveal" style="border-left: 3px solid var(--art-violet)">
+          <div class="insight-num" style="color:var(--art-violet-ink); font-size:var(--text-xl)">Gate 4</div>
+          <h3 class="insight-title">Does it fit the long-term vision?</h3>
+          <p class="insight-body">No = <strong>REJECT</strong>. Decisions are judged on a 10-year horizon. Short-term wins that undermine the 25-year trajectory are rejected here — an explicit anti-short-termism gate.</p>
+        </div>
+        <div class="insight reveal" style="--i:1; background: var(--color-accent-soft); border: 1px solid var(--color-accent)">
+          <div style="font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.1em; text-transform:uppercase; color:var(--color-accent); margin-bottom:var(--space-sm)">Non-negotiable</div>
+          <h3 class="insight-title">Blocking Security gate + QA gate</h3>
+          <p class="insight-body">Nothing ships without passing both. The Security gate is blocking — the security manager has veto power over any release. The QA gate ensures tests pass, CI is green, and a rollback plan exists. These sit after the Strategic Filter, before every deploy.</p>
+        </div>
+        <div class="insight reveal" style="--i:2; background: var(--art-gold-soft); border: 1px solid transparent">
+          <div style="font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.1em; text-transform:uppercase; color:var(--art-gold-ink); margin-bottom:var(--space-sm)">Human in the loop</div>
+          <h3 class="insight-title">Always, for consequential actions</h3>
+          <p class="insight-body">Any action touching money, public publishing, data deletion, permissions, or credentials requires explicit human approval. Agents surface the action and wait — they never self-authorize side-effects. This is unconditional.</p>
+        </div>
+      </div>
+
+      <!-- Lifecycle flow -->
+      <div class="chart-card reveal" style="max-width:760px">
+        <h4 class="chart-title">Every initiative follows this lifecycle</h4>
+        <div class="chart-sub">— From intent to logged improvement</div>
+        <div class="flow">
+          <div class="flow-step"><span class="n">01</span><span><strong>Intent received</strong> — any new product, feature, experiment, or campaign</span></div>
+          <div class="flow-step is-key"><span class="n">02</span><span><strong>Strategic Filter</strong> — all 4 gates must pass; a single no halts and returns the reason <span class="flow-key-note">· gate point</span></span></div>
+          <div class="flow-step"><span class="n">03</span><span><strong>CEO routes → Manager decomposes → Sub-agents execute</strong> via documented SOPs</span></div>
+          <div class="flow-step is-key"><span class="n">04</span><span><strong>QA gate + Security gate (BLOCKING)</strong> — CI green, tests pass, security review signed off <span class="flow-key-note">· gate point</span></span></div>
+          <div class="flow-step"><span class="n">05</span><span><strong>Human approval</strong> — any consequential side-effect surfaces here; agents wait</span></div>
+          <div class="flow-step"><span class="n">06</span><span><strong>Ship + log to Knowledge Graph</strong> — a task is not done until its learning is recorded</span></div>
+        </div>
+        <div class="chart-note"><strong>The Knowledge Graph is the long-term moat.</strong> Every lesson, failure, and success is written into a structured store. Over years, this compounds into an enormous institutional memory — and makes onboarding any new agent instant.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE ORG — 28 AGENTS -->
+  <section id="org" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">The org</div>
+          <h2>28 agents. <em>One</em> CEO orchestrator.</h2>
+        </div>
+        <div class="section-head-meta"><strong>9 divisions</strong><br>Product · Engineering · Labs · Ops · Security · Marketing · Sales · CS</div>
+      </div>
+
+      <!-- CEO row -->
+      <div class="chart-card reveal" style="margin-bottom:var(--space-lg); border-left:4px solid var(--color-accent)">
+        <div style="display:flex; align-items:center; gap:var(--space-md); flex-wrap:wrap">
+          <div>
+            <div style="font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.1em; text-transform:uppercase; color:var(--color-accent); margin-bottom:var(--space-2xs)">Top of the org</div>
+            <h4 class="chart-title" style="margin-bottom:var(--space-xs)">CEO Orchestrator</h4>
+            <p style="font-size:var(--text-sm); color:var(--color-ink-2); max-width:70ch; line-height:1.6">
+              Routes intent → runs the Strategic Filter → picks a division → delegates to the manager → integrates results → guards the gates.
+              <strong>Never writes code or copy.</strong> Read-only access across the whole system; write access only to planning and the Knowledge Graph.
+              Resolves cross-division conflicts. Cannot skip the Security gate or ship without QA.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Division grid -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:var(--space-md)">
+
+        <div class="proj reveal" style="border-top:3px solid var(--art-coral)">
+          <span class="proj-num" style="color:var(--art-coral-ink)">Chief of Staff</span>
+          <div class="proj-tags"><span class="tag tag-coral">Strategy</span></div>
+          <h3 class="proj-title">Strategy &amp; Planning</h3>
+          <p class="proj-desc">Turns vague founder requests into structured strategy using PESTLE · Porter's Five Forces · VRIO · McKinsey 7S · Balanced Scorecard. Produces one-page strategy memos, phase plans (P1–P4 KPIs), and risk maps.</p>
+        </div>
+
+        <div class="proj reveal" style="--i:1; border-top:3px solid var(--color-accent)">
+          <span class="proj-num" style="color:var(--color-accent)">Product Manager</span>
+          <div class="proj-tags"><span class="tag tag-blue">Product</span></div>
+          <h3 class="proj-title">Product Division</h3>
+          <p class="proj-desc">Decides what gets built and why. No feature passes without a measurable value statement.</p>
+          <ul style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-ink-3); margin-top:var(--space-sm); display:grid; gap:var(--space-2xs); list-style:none; padding:0">
+            <li>→ product-researcher (discovery · JTBD)</li>
+            <li>→ product-designer (UX · specs)</li>
+            <li>→ roadmap-keeper (prioritization)</li>
+          </ul>
+        </div>
+
+        <div class="proj reveal" style="--i:2; border-top:3px solid var(--art-teal)">
+          <span class="proj-num" style="color:var(--art-teal-ink)">Engineering Manager</span>
+          <div class="proj-tags"><span class="tag tag-teal">Build · Ship</span></div>
+          <h3 class="proj-title">Engineering Division</h3>
+          <p class="proj-desc">Builds, tests, ships, monitors. Hard gates cannot be waived: code review → tests pass → CI green → monitoring wired → rollback plan exists.</p>
+          <ul style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-ink-3); margin-top:var(--space-sm); display:grid; gap:var(--space-2xs); list-style:none; padding:0">
+            <li>→ backend-engineer</li>
+            <li>→ frontend-engineer</li>
+            <li>→ devops-engineer</li>
+            <li>→ qa-engineer</li>
+          </ul>
+        </div>
+
+        <div class="proj reveal" style="--i:3; border-top:3px solid var(--art-violet)">
+          <span class="proj-num" style="color:var(--art-violet-ink)">AI Research Manager</span>
+          <div class="proj-tags"><span class="tag tag-violet">Labs · 70/20/10</span></div>
+          <h3 class="proj-title">WattsWorth Labs</h3>
+          <p class="proj-desc">Runs the 70/20/10 innovation portfolio. Builds reusable capabilities, not one-off products. Never depends on a single AI provider.</p>
+          <ul style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-ink-3); margin-top:var(--space-sm); display:grid; gap:var(--space-2xs); list-style:none; padding:0">
+            <li>→ ml-researcher (forecasting engines)</li>
+            <li>→ eval-engineer (model selection)</li>
+            <li>→ prototype-builder (moonshots)</li>
+          </ul>
+        </div>
+
+        <div class="proj reveal" style="--i:4; border-top:3px solid var(--art-gold)">
+          <span class="proj-num" style="color:var(--art-gold-ink)">Operations Manager</span>
+          <div class="proj-tags"><span class="tag tag-gold">Ops · Flywheel</span></div>
+          <h3 class="proj-title">Operations Division</h3>
+          <p class="proj-desc">Runs the data → AI → decisions flywheel. Internal tooling and the Knowledge Graph. A task is not done until its learning is logged.</p>
+          <ul style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-ink-3); margin-top:var(--space-sm); display:grid; gap:var(--space-2xs); list-style:none; padding:0">
+            <li>→ data-intelligence-agent</li>
+            <li>→ knowledge-graph-curator</li>
+          </ul>
+        </div>
+
+        <div class="proj reveal" style="--i:5; border-top:3px solid var(--art-coral); background: var(--art-coral-soft)">
+          <span class="proj-num" style="color:var(--art-coral-ink)">Security Manager · BLOCKING</span>
+          <div class="proj-tags"><span class="tag tag-coral">Blocking reviewer</span></div>
+          <h3 class="proj-title">Security Division</h3>
+          <p class="proj-desc">Nothing ships without passing here. Security by design, compliance-first architecture. The security manager has explicit veto power over any release.</p>
+          <ul style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--art-coral-ink); margin-top:var(--space-sm); display:grid; gap:var(--space-2xs); list-style:none; padding:0">
+            <li>→ appsec-reviewer</li>
+            <li>→ compliance-officer (GDPR · SOC2 · ISO27001)</li>
+          </ul>
+        </div>
+
+        <div class="proj reveal" style="--i:6; border-top:3px solid var(--art-teal)">
+          <span class="proj-num" style="color:var(--art-teal-ink)">Marketing Manager</span>
+          <div class="proj-tags"><span class="tag tag-teal">Brand · Content</span></div>
+          <h3 class="proj-title">Marketing Division</h3>
+          <p class="proj-desc">Per-product marketing sites and brand. Each product keeps its own visual identity (the Meta→Instagram pattern). No shared brand dilution.</p>
+          <ul style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-ink-3); margin-top:var(--space-sm); display:grid; gap:var(--space-2xs); list-style:none; padding:0">
+            <li>→ content-writer</li>
+            <li>→ brand-guardian</li>
+          </ul>
+        </div>
+
+        <div class="proj reveal" style="--i:7; border-top:3px solid var(--color-accent)">
+          <span class="proj-num" style="color:var(--color-accent)">Sales Manager</span>
+          <div class="proj-tags"><span class="tag tag-blue">Pipeline · Proposals</span></div>
+          <h3 class="proj-title">Sales Division</h3>
+          <p class="proj-desc">Pipeline management and enterprise proposals. Qualified leads move to the proposal-writer; closed deals hand off to customer success.</p>
+          <ul style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-ink-3); margin-top:var(--space-sm); display:grid; gap:var(--space-2xs); list-style:none; padding:0">
+            <li>→ proposal-writer</li>
+          </ul>
+        </div>
+
+        <div class="proj reveal" style="--i:8; border-top:3px solid var(--art-violet)">
+          <span class="proj-num" style="color:var(--art-violet-ink)">Customer Success Manager</span>
+          <div class="proj-tags"><span class="tag tag-violet">Outcomes · NPS</span></div>
+          <h3 class="proj-title">Customer Success Division</h3>
+          <p class="proj-desc">Onboarding, retention, NPS. Drives measurable customer outcomes — not just support tickets closed. Outcomes are the measure; features are not.</p>
+          <ul style="font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-ink-3); margin-top:var(--space-sm); display:grid; gap:var(--space-2xs); list-style:none; padding:0">
+            <li>→ support-agent</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAMING / CONTEXT -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Framing</div>
+          <h2>A systems-thinking artifact, <em>not a product launch</em>.</h2>
+        </div>
+      </div>
+
+      <div class="insights-grid">
+        <div class="insight reveal">
+          <div class="insight-num" style="color:var(--color-accent)">01</div>
+          <h3 class="insight-title">What this is</h3>
+          <p class="insight-body">A governance-first agentic OS I designed — a systems and operations artifact. The interesting design challenge was not "how do you build an AI agent" but "how do you govern a system of 28 agents so it doesn't drift, over-build, or self-authorize consequential actions."</p>
+        </div>
+        <div class="insight reveal" style="--i:1">
+          <div class="insight-num" style="color:var(--art-teal-ink)">02</div>
+          <h3 class="insight-title">What this is not</h3>
+          <p class="insight-body">This is not a deployed commercial product. It is an operating-system design — a set of governance structures, agent contracts, SOPs, and gates that define how AI agents should behave when running real company workflows. The distinction matters for honest framing.</p>
+        </div>
+        <div class="insight reveal" style="--i:2">
+          <div class="insight-num" style="color:var(--art-gold-ink)">03</div>
+          <h3 class="insight-title">Why it belongs in this portfolio</h3>
+          <p class="insight-body">An operations-and-analytics candidate who can design governance for a multi-agent system — not just use one agent — is demonstrating systems thinking at a different level. The same instinct that produces a process-improvement proposal at a rotary kiln produces a blocking Security gate in an agentic OS.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOME BAND (one ultramarine band) -->
+  <section class="contact-band" data-band style="padding: var(--space-2xl) 0">
+    <div class="container-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--space-md)">The through-line</div>
+      <h2>Every system ends in a <em>decision</em>.</h2>
+      <p>
+        Whether it is a KNN alert from a plant sensor, a monetary savings certificate from
+        WattsWorth, a process-improvement proposal from a rotary kiln floor, or a 4-gate
+        Strategic Filter that stops bad work before it starts — the goal of every system
+        I build is a better operational decision. The Company Brain is the governance layer
+        for all of them.
+      </p>
+      <div class="contact-methods">
+        <a class="contact-card" href="index.html#agents"><span class="contact-card-ico">←</span> Back to portfolio</a>
+        <a class="contact-card" href="project-13.html"><span class="contact-card-ico">→</span> WattsWorth — the energy engine</a>
+        <a class="contact-card" href="projects.html"><span class="contact-card-ico">→</span> All projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER · Ft1 -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer-grid">
+        <div>
+          <div class="footer-brand">Bala Shunmugam<span class="dot">.</span> M</div>
+          <p class="footer-tag">MBA Operations &amp; Business Analytics. Plant floor to P&amp;L. Chennai, India.</p>
+        </div>
+        <div>
+          <div class="footer-h">Work</div>
+          <div class="footer-links">
+            <a href="project-13.html">WattsWorth — case study</a>
+            <a href="project-14.html">Agni Steels — internship</a>
+            <a href="project-15.html">IoT Plant Care — KNN alerts</a>
+            <a href="projects.html">Full archive</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-h">Connect</div>
+          <div class="footer-links">
+            <a href="mailto:balashunmugamruthran@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/bala-shunmugam-m-66a546387" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="index.html#contact">Back to contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Bala Shunmugam. M</span>
+        <span>MBA Operations &amp; Business Analytics</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/redesign.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="js/motion.js"></script>
+  <script defer src="js/theme.js"></script>
+  <script defer src="js/agents.js"></script>
+</body>
+</html>

@@ -25,6 +25,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/redesign.css" />
   <link rel="stylesheet" href="css/motion.css" />
+  <link rel="stylesheet" href="css/agents.css" />
 </head>
 <body>
 
@@ -37,6 +38,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#analytics">Analytics</a></li>
         <li><a href="#tools">Tools</a></li>
+        <li><a href="#agents">Agents</a></li>
         <li><a href="#field">Field</a></li>
         <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
@@ -72,7 +74,7 @@
           </div>
 
           <div class="hero-stats rise" style="--i:4">
-            <div class="hero-stat"><div class="hero-stat-val tnum" data-count="13">13</div><div class="hero-stat-label">Projects shipped</div></div>
+            <div class="hero-stat"><div class="hero-stat-val tnum" data-count="14">14</div><div class="hero-stat-label">Projects shipped</div></div>
             <div class="hero-stat"><div class="hero-stat-val tnum" data-count="3">3</div><div class="hero-stat-label">Working tools built</div></div>
             <div class="hero-stat"><div class="hero-stat-val tnum" data-count="4">4</div><div class="hero-stat-label">Analytics projects (R + Python)</div></div>
             <div class="hero-stat"><div class="hero-stat-val tnum" data-count="2">2</div><div class="hero-stat-label">Industrial sites</div></div>
@@ -143,6 +145,21 @@
           <div class="journey-step j-4 j-step-current"><div class="j-dot">04</div><div><div class="j-title">MBA — Operations &amp; Analytics</div><div class="j-sub">Amrita School of Business · 2025–27 · <strong>now</strong></div></div></div>
           <div class="journey-step j-5"><div class="j-dot">05</div><div><div class="j-title">Operations / Analytics role</div><div class="j-sub">Targeting · Schneider · Hitachi · ABB · Siemens</div></div></div>
         </div>
+
+        <!-- Portrait photo — framed, graph-paper style -->
+        <figure class="about-portrait reveal" style="--i:2" aria-label="Portrait of Bala Shunmugam M">
+          <div class="portrait-frame">
+            <img
+              class="portrait-img"
+              src="assets/bala.jpg"
+              alt="Bala Shunmugam M — MBA candidate, Chennai"
+              width="200"
+              height="267"
+              loading="lazy"
+            />
+          </div>
+          <figcaption class="portrait-caption">Bala Shunmugam. M · Chennai</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -155,7 +172,7 @@
           <div class="eyebrow eyebrow-accent">Featured work</div>
           <h2>Real problems. <em>Measured</em> solutions.</h2>
         </div>
-        <div class="section-head-meta"><strong>13 projects</strong><br>2 industrial sites · 10+ frameworks</div>
+        <div class="section-head-meta"><strong>14 projects</strong><br>2 industrial sites · 10+ frameworks</div>
       </div>
 
       <div class="projects-grid">
@@ -255,10 +272,22 @@
           <p class="proj-desc">A working quality-engineering workspace — control charts, capability, DOE, MSA, FMEA. The statistical foundation behind ProcessPilot AI.</p>
           <span class="proj-cta">Open the workbench <span class="arrow" aria-hidden="true">→</span></span>
         </a>
+
+        <!-- P/15 · Smart Plant (new) -->
+        <a href="project-15.html" class="proj proj-third reveal" style="--i:3">
+          <span class="proj-num">P / 15</span>
+          <div class="proj-tags">
+            <span class="tag tag-coral">B.E. final year · IoT + ML</span>
+            <span class="tag">KNN · Arduino</span>
+          </div>
+          <h3 class="proj-title">IoT Smart Plant Care — KNN Anomaly Alerting</h3>
+          <p class="proj-desc">Four sensors (soil moisture, temperature, humidity, pH) on an Arduino stream over serial to a Python K-Nearest-Neighbours classifier (k=5) — labels plant condition NORMAL vs ABNORMAL on 701 readings and auto-emails an alert on abnormal.</p>
+          <span class="proj-cta">Read the build <span class="arrow" aria-hidden="true">→</span></span>
+        </a>
       </div>
 
       <div style="text-align:center; margin-top: var(--space-xl)">
-        <a href="projects.html" class="btn btn-outline">All 13 projects <span class="arrow" aria-hidden="true">→</span></a>
+        <a href="projects.html" class="btn btn-outline">All 14 projects <span class="arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -405,6 +434,320 @@
         <a href="inventoryiq-app/dashboard.html" class="btn btn-text">InventoryIQ dashboard <span class="arrow" aria-hidden="true">→</span></a>
         <a href="Walkthrough_Script.html" class="btn btn-text">Interview walkthrough <span class="arrow" aria-hidden="true">→</span></a>
       </div>
+    </div>
+  </section>
+
+  <!-- AGENTIC OS -->
+  <section id="agents" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">— Systems I build · Agentic OS</div>
+          <h2>The Company Brain — an <em>agentic</em> operating system.</h2>
+        </div>
+        <div class="section-head-meta"><strong>28 agents · 9 divisions</strong><br>Governance-first design</div>
+      </div>
+
+      <p class="section-desc" style="margin-bottom: var(--space-xl)">
+        A governance-first "company brain" I designed to orchestrate multi-product development —
+        a CEO orchestrator, 9 division managers, and specialist sub-agents, all wired through
+        a <strong>Strategic Filter</strong>, a blocking Security gate, and a <strong>Knowledge Graph</strong>
+        that logs every lesson. This is the agent org that coordinates building products like WattsWorth —
+        it is not itself a deployed commercial product.
+      </p>
+
+      <!-- Stat chips -->
+      <div class="agents-stats">
+        <div class="agent-chip reveal">
+          <div class="agent-chip-val tnum" data-count="28">28</div>
+          <div class="agent-chip-label">Total agents</div>
+        </div>
+        <div class="agent-chip reveal" style="--i:1">
+          <div class="agent-chip-val tnum" data-count="9">9</div>
+          <div class="agent-chip-label">Division managers</div>
+        </div>
+        <div class="agent-chip reveal" style="--i:2">
+          <div class="agent-chip-val tnum" data-count="4">4</div>
+          <div class="agent-chip-label">Strategic-Filter gates</div>
+        </div>
+        <div class="agent-chip reveal" style="--i:3">
+          <div class="agent-chip-val tnum" data-count="2">2</div>
+          <div class="agent-chip-label">Blocking gates (QA + Security)</div>
+        </div>
+      </div>
+
+      <!-- Manager list + preview panel -->
+      <div class="agents-layout reveal">
+
+        <!-- Left: manager rows -->
+        <div class="agents-list" role="list" aria-label="Division managers">
+
+          <!-- chief-of-staff -->
+          <button class="agent-row" data-manager-id="cos" role="listitem"
+                  aria-expanded="false" aria-controls="ap-cos" type="button">
+            <span class="agent-row-name">chief-of-staff</span>
+            <span class="agent-row-arrow" aria-hidden="true">→</span>
+          </button>
+          <div class="agent-inline-preview" data-inline-for="cos">
+            <span class="preview-role">Strategy</span>
+            <span class="preview-desc">PESTLE · Porter · VRIO · McKinsey 7S · Balanced Scorecard</span>
+            <div class="preview-subs">
+              <span class="tag">Solo manager</span>
+            </div>
+          </div>
+
+          <!-- product-manager -->
+          <button class="agent-row" data-manager-id="pm" role="listitem"
+                  aria-expanded="false" aria-controls="ap-pm" type="button">
+            <span class="agent-row-name">product-manager</span>
+            <span class="agent-row-arrow" aria-hidden="true">→</span>
+          </button>
+          <div class="agent-inline-preview" data-inline-for="pm">
+            <span class="preview-role">Product</span>
+            <span class="preview-desc">Owns what gets built and why; Portfolio Matrix gating.</span>
+            <div class="preview-subs">
+              <span class="tag tag-teal">product-researcher</span>
+              <span class="tag tag-teal">product-designer</span>
+              <span class="tag tag-teal">roadmap-keeper</span>
+            </div>
+          </div>
+
+          <!-- engineering-manager -->
+          <button class="agent-row" data-manager-id="eng" role="listitem"
+                  aria-expanded="false" aria-controls="ap-eng" type="button">
+            <span class="agent-row-name">engineering-manager</span>
+            <span class="agent-row-arrow" aria-hidden="true">→</span>
+          </button>
+          <div class="agent-inline-preview" data-inline-for="eng">
+            <span class="preview-role">Engineering</span>
+            <span class="preview-desc">Build, test, ship, monitor — all four gates required.</span>
+            <div class="preview-subs">
+              <span class="tag tag-blue">backend-engineer</span>
+              <span class="tag tag-blue">frontend-engineer</span>
+              <span class="tag tag-blue">devops-engineer</span>
+              <span class="tag tag-blue">qa-engineer</span>
+            </div>
+          </div>
+
+          <!-- ai-research-manager -->
+          <button class="agent-row" data-manager-id="ai" role="listitem"
+                  aria-expanded="false" aria-controls="ap-ai" type="button">
+            <span class="agent-row-name">ai-research-manager</span>
+            <span class="agent-row-arrow" aria-hidden="true">→</span>
+          </button>
+          <div class="agent-inline-preview" data-inline-for="ai">
+            <span class="preview-role">WattsWorth Labs · 70/20/10</span>
+            <span class="preview-desc">Builds reusable AI capabilities, multi-model routing — never single-provider.</span>
+            <div class="preview-subs">
+              <span class="tag tag-violet">ml-researcher</span>
+              <span class="tag tag-violet">eval-engineer</span>
+              <span class="tag tag-violet">prototype-builder</span>
+            </div>
+          </div>
+
+          <!-- operations-manager -->
+          <button class="agent-row" data-manager-id="ops" role="listitem"
+                  aria-expanded="false" aria-controls="ap-ops" type="button">
+            <span class="agent-row-name">operations-manager</span>
+            <span class="agent-row-arrow" aria-hidden="true">→</span>
+          </button>
+          <div class="agent-inline-preview" data-inline-for="ops">
+            <span class="preview-role">Operations &amp; Flywheel</span>
+            <span class="preview-desc">Internal tooling + the data → AI → decisions flywheel.</span>
+            <div class="preview-subs">
+              <span class="tag tag-gold">data-intelligence-agent</span>
+              <span class="tag tag-gold">knowledge-graph-curator</span>
+            </div>
+          </div>
+
+          <!-- security-manager -->
+          <button class="agent-row" data-manager-id="sec" role="listitem"
+                  aria-expanded="false" aria-controls="ap-sec" type="button">
+            <span class="agent-row-name">security-manager <em style="font-size:var(--text-xs); font-style:normal; opacity:.7;">(blocking)</em></span>
+            <span class="agent-row-arrow" aria-hidden="true">→</span>
+          </button>
+          <div class="agent-inline-preview" data-inline-for="sec">
+            <span class="preview-role">Security · Blocking Gate</span>
+            <span class="preview-desc">Nothing ships without clearing this gate. Security-by-design from day one.</span>
+            <div class="preview-subs">
+              <span class="tag tag-coral">appsec-reviewer</span>
+              <span class="tag tag-coral">compliance-officer</span>
+            </div>
+          </div>
+
+          <!-- marketing-manager -->
+          <button class="agent-row" data-manager-id="mkt" role="listitem"
+                  aria-expanded="false" aria-controls="ap-mkt" type="button">
+            <span class="agent-row-name">marketing-manager</span>
+            <span class="agent-row-arrow" aria-hidden="true">→</span>
+          </button>
+          <div class="agent-inline-preview" data-inline-for="mkt">
+            <span class="preview-role">Marketing &amp; Brand</span>
+            <span class="preview-desc">Per-product marketing sites and brand identity — each product keeps its own visual identity.</span>
+            <div class="preview-subs">
+              <span class="tag">content-writer</span>
+              <span class="tag">brand-guardian</span>
+            </div>
+          </div>
+
+          <!-- sales-manager -->
+          <button class="agent-row" data-manager-id="sales" role="listitem"
+                  aria-expanded="false" aria-controls="ap-sales" type="button">
+            <span class="agent-row-name">sales-manager</span>
+            <span class="agent-row-arrow" aria-hidden="true">→</span>
+          </button>
+          <div class="agent-inline-preview" data-inline-for="sales">
+            <span class="preview-role">Sales</span>
+            <span class="preview-desc">Pipeline, enterprise deals, proposals — evidence before pitches.</span>
+            <div class="preview-subs">
+              <span class="tag">proposal-writer</span>
+            </div>
+          </div>
+
+          <!-- customer-success-manager -->
+          <button class="agent-row" data-manager-id="cs" role="listitem"
+                  aria-expanded="false" aria-controls="ap-cs" type="button">
+            <span class="agent-row-name">customer-success-manager</span>
+            <span class="agent-row-arrow" aria-hidden="true">→</span>
+          </button>
+          <div class="agent-inline-preview" data-inline-for="cs">
+            <span class="preview-role">Customer Success</span>
+            <span class="preview-desc">Outcomes, retention, NPS — customer trust is non-negotiable.</span>
+            <div class="preview-subs">
+              <span class="tag">support-agent</span>
+            </div>
+          </div>
+
+        </div><!-- /.agents-list -->
+
+        <!-- Right: preview panel (desktop) -->
+        <div class="agents-preview" role="region" aria-live="polite" aria-label="Manager details">
+          <p class="agents-preview-default">— hover or tap a manager to see their role</p>
+
+          <div id="ap-cos" class="agent-preview-pane" data-for="cos">
+            <span class="preview-role">Strategy · Frameworks</span>
+            <h3 class="preview-title">chief-of-staff</h3>
+            <p class="preview-desc">Turns vague founder requests into structured strategy using PESTLE, Porter's Five Forces, VRIO, McKinsey 7S, and the Balanced Scorecard. Produces one-page memos, phase plans, and risk maps.</p>
+            <span class="preview-subs-label">Sub-agents</span>
+            <div class="preview-subs"><span class="tag">Solo manager</span></div>
+          </div>
+
+          <div id="ap-pm" class="agent-preview-pane" data-for="pm">
+            <span class="preview-role">Product</span>
+            <h3 class="preview-title">product-manager</h3>
+            <p class="preview-desc">Decides what gets built and why — assigns each product a role in the Portfolio Matrix (Revenue / Users / Data / Trust / Innovation). No feature passes without a measurable value statement.</p>
+            <span class="preview-subs-label">Sub-agents</span>
+            <div class="preview-subs">
+              <span class="tag tag-teal">product-researcher</span>
+              <span class="tag tag-teal">product-designer</span>
+              <span class="tag tag-teal">roadmap-keeper</span>
+            </div>
+          </div>
+
+          <div id="ap-eng" class="agent-preview-pane" data-for="eng">
+            <span class="preview-role">Engineering · Build + Ship</span>
+            <h3 class="preview-title">engineering-manager</h3>
+            <p class="preview-desc">Owns build, test, ship, and monitor. Four hard gates that cannot be waived: code review → tests pass → CI/CD green → monitoring wired → rollback plan exists.</p>
+            <span class="preview-subs-label">Sub-agents</span>
+            <div class="preview-subs">
+              <span class="tag tag-blue">backend-engineer</span>
+              <span class="tag tag-blue">frontend-engineer</span>
+              <span class="tag tag-blue">devops-engineer</span>
+              <span class="tag tag-blue">qa-engineer</span>
+            </div>
+          </div>
+
+          <div id="ap-ai" class="agent-preview-pane" data-for="ai">
+            <span class="preview-role">WattsWorth Labs · 70/20/10</span>
+            <h3 class="preview-title">ai-research-manager</h3>
+            <p class="preview-desc">Runs the 70/20/10 innovation portfolio. Builds capabilities, not products — a Forecasting Engine that spawns multiple products. Multi-model routing enforced: never depend on one provider.</p>
+            <span class="preview-subs-label">Sub-agents</span>
+            <div class="preview-subs">
+              <span class="tag tag-violet">ml-researcher</span>
+              <span class="tag tag-violet">eval-engineer</span>
+              <span class="tag tag-violet">prototype-builder</span>
+            </div>
+          </div>
+
+          <div id="ap-ops" class="agent-preview-pane" data-for="ops">
+            <span class="preview-role">Operations · Flywheel</span>
+            <h3 class="preview-title">operations-manager</h3>
+            <p class="preview-desc">Internal tooling, vendor management, and the data → AI → decisions flywheel. Turns every usage log, failure, and feedback into a compounding improvement.</p>
+            <span class="preview-subs-label">Sub-agents</span>
+            <div class="preview-subs">
+              <span class="tag tag-gold">data-intelligence-agent</span>
+              <span class="tag tag-gold">knowledge-graph-curator</span>
+            </div>
+          </div>
+
+          <div id="ap-sec" class="agent-preview-pane" data-for="sec">
+            <span class="preview-role">Security · Blocking gate</span>
+            <h3 class="preview-title">security-manager</h3>
+            <p class="preview-desc">Nothing ships without passing this gate. Security-by-design and compliance-first architecture from day one — not bolted on after. Covers OWASP Top 10, GDPR, SOC2, and AI-regulation checks.</p>
+            <span class="preview-subs-label">Sub-agents</span>
+            <div class="preview-subs">
+              <span class="tag tag-coral">appsec-reviewer</span>
+              <span class="tag tag-coral">compliance-officer</span>
+            </div>
+          </div>
+
+          <div id="ap-mkt" class="agent-preview-pane" data-for="mkt">
+            <span class="preview-role">Marketing · Brand</span>
+            <h3 class="preview-title">marketing-manager</h3>
+            <p class="preview-desc">Per-product marketing sites and brand identity — each product keeps its own visual language, like Instagram inside Meta. External-facing copy through the content-sop skill.</p>
+            <span class="preview-subs-label">Sub-agents</span>
+            <div class="preview-subs">
+              <span class="tag">content-writer</span>
+              <span class="tag">brand-guardian</span>
+            </div>
+          </div>
+
+          <div id="ap-sales" class="agent-preview-pane" data-for="sales">
+            <span class="preview-role">Sales · Pipeline</span>
+            <h3 class="preview-title">sales-manager</h3>
+            <p class="preview-desc">Pipeline and enterprise deals. Evidence before assumptions, conversations before demos, pilots before scaling — per the Customer Discovery Constitution.</p>
+            <span class="preview-subs-label">Sub-agents</span>
+            <div class="preview-subs">
+              <span class="tag">proposal-writer</span>
+            </div>
+          </div>
+
+          <div id="ap-cs" class="agent-preview-pane" data-for="cs">
+            <span class="preview-role">Customer Success · Retention</span>
+            <h3 class="preview-title">customer-success-manager</h3>
+            <p class="preview-desc">Outcomes, retention, and NPS after a deal is won. Customer trust is non-negotiable; data ownership belongs to the customer.</p>
+            <span class="preview-subs-label">Sub-agents</span>
+            <div class="preview-subs">
+              <span class="tag">support-agent</span>
+            </div>
+          </div>
+
+        </div><!-- /.agents-preview -->
+      </div><!-- /.agents-layout -->
+
+      <!-- Ticker band -->
+      <div class="agents-ticker" aria-hidden="true">
+        <div class="agents-ticker-track">
+          <span class="agents-ticker-item">Strategic Filter</span>
+          <span class="agents-ticker-item">QA Gate</span>
+          <span class="agents-ticker-item">Blocking Security</span>
+          <span class="agents-ticker-item">Human-in-the-loop</span>
+          <span class="agents-ticker-item">Knowledge Graph</span>
+          <span class="agents-ticker-item">Kaizen</span>
+          <span class="agents-ticker-item">Strategic Filter</span>
+          <span class="agents-ticker-item">QA Gate</span>
+          <span class="agents-ticker-item">Blocking Security</span>
+          <span class="agents-ticker-item">Human-in-the-loop</span>
+          <span class="agents-ticker-item">Knowledge Graph</span>
+          <span class="agents-ticker-item">Kaizen</span>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="agents-cta">
+        <a href="agents.html" class="btn btn-outline">Explore the agentic OS <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+
     </div>
   </section>
 
@@ -555,5 +898,6 @@
   <script defer src="js/cards.js"></script>
   <script defer src="js/about.js"></script>
   <script defer src="js/theme.js"></script>
+  <script defer src="js/agents.js"></script>
 </body>
 </html>

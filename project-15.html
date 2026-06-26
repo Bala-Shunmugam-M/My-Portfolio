@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    /* Set the theme BEFORE first paint to prevent a flash of the wrong theme.
+       Priority: saved choice > system preference > light (the default). */
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <title>IoT Smart Plant Care — KNN Anomaly Alerting — Bala Shunmugam. M</title>
+  <meta name="description" content="B.E. final-year IoT + ML project: 4-sensor Arduino plant monitor using K-Nearest-Neighbours classification to detect abnormal soil moisture, temperature, humidity and pH — auto-alerting the operator by email." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/redesign.css" />
+  <link rel="stylesheet" href="css/motion.css" />
+  <link rel="stylesheet" href="css/agents.css" />
+</head>
+<body>
+
+  <!-- NAV · N9 -->
+  <nav class="navbar" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Bala Shunmugam<span class="dot">.</span> M</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#field">Field</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-cursor>
+        <svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+        <svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.3 8.3 0 1 1 10.8 3.5a6.5 6.5 0 0 0 9.7 9.7z"/></svg>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">≡</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="hero" style="padding-bottom: var(--space-2xl)">
+    <div class="container">
+      <div class="hero-meta rise" style="--i:0">
+        <span class="eyebrow"><a href="projects.html" class="tlink" style="color:inherit">← All projects</a></span>
+        <span class="eyebrow">B.E. final year · IoT + ML</span>
+        <span class="eyebrow">KNN · Arduino + Python</span>
+      </div>
+
+      <h1 class="hero-title rise" style="--i:1; max-width:26ch">IoT Smart Plant Care <span style="white-space:nowrap">— KNN <em>Anomaly</em> Alerting</span></h1>
+      <p class="hero-sub rise" style="--i:2; font-family:var(--font-mono); font-size:var(--text-sm); letter-spacing:0.04em; text-transform:uppercase; color:var(--color-ink-3); max-width:none">
+        Soil Moisture · Temperature · Humidity · pH — Arduino → Python → scikit-learn → Email Alert
+      </p>
+      <p class="hero-sub rise" style="--i:3">
+        A B.E. final-year embedded-ML project that turns a four-sensor plant monitor into a
+        continuous anomaly-detection loop. When the KNN classifier flags an abnormal reading,
+        the system sends an email alert to the operator — no manual spot-checks required.
+        Engineering that ends in a decision.
+      </p>
+
+      <div class="hero-actions rise" style="--i:4">
+        <a href="#approach" class="btn btn-primary">See the pipeline <span class="arrow" aria-hidden="true">→</span></a>
+        <a href="#impact" class="btn btn-outline">Outcome &amp; framing <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+
+      <div class="hero-stats rise" style="--i:5">
+        <div class="hero-stat"><div class="hero-stat-val tnum">701</div><div class="hero-stat-label">Labelled training readings</div></div>
+        <div class="hero-stat"><div class="hero-stat-val tnum">4</div><div class="hero-stat-label">Sensor inputs (S · T · H · pH)</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">k = 5</div><div class="hero-stat-label">KNN neighbours · Euclidean</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">75 / 25</div><div class="hero-stat-label">Train / test split</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Problem</div>
+          <h2>Manual spot-checks <em>miss</em> the window.</h2>
+        </div>
+        <div class="section-head-meta"><strong>B.E. Final Year Project</strong><br>IoT + Machine Learning</div>
+      </div>
+
+      <div class="insights-grid">
+        <div class="insight reveal">
+          <div class="insight-num" style="color:var(--art-teal-ink)">01</div>
+          <h3 class="insight-title">The gap in manual monitoring</h3>
+          <p class="insight-body">Plant-health parameters — soil moisture, temperature, humidity, pH — change continuously. A human spot-check taken twice a day misses the window when soil moisture crashes or pH drifts into a harmful range. By the time the reading is taken, the damage is already happening.</p>
+        </div>
+        <div class="insight reveal" style="--i:1">
+          <div class="insight-num" style="color:var(--art-gold-ink)">02</div>
+          <h3 class="insight-title">The case for automated alerting</h3>
+          <p class="insight-body">A microcontroller reads all four sensors continuously. The question is: can the system itself decide whether the current reading is abnormal — and notify the operator immediately, rather than waiting for the next manual check? That is the decision problem this project solves.</p>
+        </div>
+        <div class="insight reveal" style="--i:2">
+          <div class="insight-num" style="color:var(--art-violet-ink)">03</div>
+          <h3 class="insight-title">Why KNN?</h3>
+          <p class="insight-body">KNN is a transparent, instance-based classifier with no strong distributional assumptions — it works well on a small labelled dataset where the decision boundary between NORMAL and ABNORMAL plant conditions is best understood by analogy to known examples. Interpretable, fast to iterate, and well-suited to the 701-sample scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH / PIPELINE -->
+  <section id="approach" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Approach</div>
+          <h2>Sensor → serial → model → <em>alert</em>.</h2>
+        </div>
+        <div class="section-head-meta"><strong>4-stage pipeline</strong><br>Embedded → Python → ML → Action</div>
+      </div>
+
+      <div class="chart-card reveal" style="max-width:760px">
+        <h4 class="chart-title">The end-to-end anomaly detection pipeline</h4>
+        <div class="chart-sub">— Each stage hands off to the next; the final output is an operational decision</div>
+        <div class="flow">
+          <div class="flow-step"><span class="n">01</span><span><strong>Hardware — 4 sensors on Arduino</strong> — soil moisture (S), temperature (T), humidity (H), pH (P) stream readings over serial (COM3, 9600 baud)</span></div>
+          <div class="flow-step is-key"><span class="n">02</span><span><strong>Python serial reader</strong> — parses the S / T / H / P byte stream, builds a feature vector per reading, feeds it to the classifier in real time <span class="flow-key-note">· the integration point</span></span></div>
+          <div class="flow-step is-key"><span class="n">03</span><span><strong>KNN classifier (scikit-learn, k = 5)</strong> — trained on 701 labelled readings (300 NORMAL · 401 ABNORMAL), Euclidean distance; predicts label 1 (NORMAL) or label 0 (ABNORMAL) for each new reading <span class="flow-key-note">· the decision point</span></span></div>
+          <div class="flow-step"><span class="n">04</span><span><strong>Email alert (smtplib)</strong> — on an ABNORMAL prediction the program auto-sends an alert to the operator; no manual polling required</span></div>
+        </div>
+        <div class="chart-note">The pipeline is continuous: readings arrive, the classifier decides, and the alert fires automatically. The operator only acts when the system says to.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I BUILT -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">What I built</div>
+          <h2>Hardware, model, <em>and</em> action layer.</h2>
+        </div>
+        <div class="section-head-meta"><strong>Three layers</strong><br>Sensor · Classifier · Alert</div>
+      </div>
+
+      <!-- Sensor input table -->
+      <div class="chart-card reveal" style="margin-bottom: var(--space-lg)">
+        <h4 class="chart-title">Sensor inputs and observed ranges</h4>
+        <div class="chart-sub">— Dataset: 701 labelled readings · 300 NORMAL (label 1) · 401 ABNORMAL (label 0)</div>
+        <div style="overflow-x:auto">
+          <table style="width:100%; border-collapse:collapse; font-size:var(--text-sm)">
+            <thead>
+              <tr style="border-bottom:2px solid var(--color-rule-2)">
+                <th style="text-align:left; padding:var(--space-xs) var(--space-sm); font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.08em; text-transform:uppercase; color:var(--color-ink-3); font-weight:500">Sensor</th>
+                <th style="text-align:left; padding:var(--space-xs) var(--space-sm); font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.08em; text-transform:uppercase; color:var(--color-ink-3); font-weight:500">Parameter</th>
+                <th style="text-align:left; padding:var(--space-xs) var(--space-sm); font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.08em; text-transform:uppercase; color:var(--color-ink-3); font-weight:500">Observed range in dataset</th>
+                <th style="text-align:left; padding:var(--space-xs) var(--space-sm); font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.08em; text-transform:uppercase; color:var(--color-ink-3); font-weight:500">Feature label</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--color-rule)">
+                <td style="padding:var(--space-xs) var(--space-sm); color:var(--color-ink); font-weight:500">Capacitive soil moisture sensor</td>
+                <td style="padding:var(--space-xs) var(--space-sm); color:var(--color-ink-2)">Soil moisture</td>
+                <td style="padding:var(--space-xs) var(--space-sm); font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-accent)">20 – 1310</td>
+                <td style="padding:var(--space-xs) var(--space-sm); font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-ink-3)">S</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-rule)">
+                <td style="padding:var(--space-xs) var(--space-sm); color:var(--color-ink); font-weight:500">DHT11 temperature</td>
+                <td style="padding:var(--space-xs) var(--space-sm); color:var(--color-ink-2)">Temperature</td>
+                <td style="padding:var(--space-xs) var(--space-sm); font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-accent)">35 – 94 °C</td>
+                <td style="padding:var(--space-xs) var(--space-sm); font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-ink-3)">T</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--color-rule)">
+                <td style="padding:var(--space-xs) var(--space-sm); color:var(--color-ink); font-weight:500">DHT11 humidity</td>
+                <td style="padding:var(--space-xs) var(--space-sm); color:var(--color-ink-2)">Relative humidity</td>
+                <td style="padding:var(--space-xs) var(--space-sm); font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-accent)">20 – 71 %</td>
+                <td style="padding:var(--space-xs) var(--space-sm); font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-ink-3)">H</td>
+              </tr>
+              <tr>
+                <td style="padding:var(--space-xs) var(--space-sm); color:var(--color-ink); font-weight:500">Analog pH sensor</td>
+                <td style="padding:var(--space-xs) var(--space-sm); color:var(--color-ink-2)">Soil pH</td>
+                <td style="padding:var(--space-xs) var(--space-sm); font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-accent)">1 – 69</td>
+                <td style="padding:var(--space-xs) var(--space-sm); font-family:var(--font-mono); font-size:var(--text-xs); color:var(--color-ink-3)">P</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="chart-note">Sensor ranges reflect raw ADC / calibrated values in the 701-sample dataset. Exact scale normalization is per the project implementation.</div>
+      </div>
+
+      <!-- Model + alert cards -->
+      <div class="projects-grid">
+        <div class="proj proj-half reveal">
+          <span class="proj-num">KNN classifier</span>
+          <div class="proj-tags">
+            <span class="tag tag-blue">scikit-learn</span>
+            <span class="tag tag-teal">k = 5</span>
+            <span class="tag tag-gold">Euclidean distance</span>
+          </div>
+          <h3 class="proj-title">K-Nearest-Neighbours model</h3>
+          <p class="proj-desc">
+            A <strong>KNeighborsClassifier (k = 5, Euclidean)</strong> trained on a 75 / 25
+            train/test split of 701 labelled readings. Each reading is a 4-feature vector
+            [S, T, H, P]. Predictions: <strong>label 1 → NORMAL</strong>,
+            <strong>label 0 → ABNORMAL</strong>. On the held-out 25% test set (176 readings)
+            it scored <strong>100% accuracy</strong> — but the dataset is small and cleanly
+            separable, so the honest headline here is the working sensor → model → alert
+            pipeline, not the score.
+          </p>
+        </div>
+
+        <div class="proj proj-half reveal" style="--i:1">
+          <span class="proj-num">Alert layer</span>
+          <div class="proj-tags">
+            <span class="tag tag-coral">smtplib</span>
+            <span class="tag tag-violet">Automated email</span>
+          </div>
+          <h3 class="proj-title">Email alert on ABNORMAL prediction</h3>
+          <p class="proj-desc">
+            When the classifier returns label 0 (ABNORMAL), the Python program
+            immediately sends an alert email to the operator via <strong>smtplib</strong>.
+            No dashboard polling, no manual check — the system surfaces the decision
+            to the human automatically. The operator acts; the system decides when to alert.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section id="impact" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Impact</div>
+          <h2>Spot-checks replaced by <em>continuous</em> alerting.</h2>
+        </div>
+      </div>
+
+      <div class="insights-grid">
+        <div class="insight reveal">
+          <div class="insight-num" style="color:var(--color-accent)">01</div>
+          <h3 class="insight-title">From manual to automated</h3>
+          <p class="insight-body">The project replaces a periodic manual spot-check with a real-time anomaly-detection loop. An operator no longer has to be physically present to notice that a parameter has drifted out of range — the system notifies them immediately.</p>
+        </div>
+        <div class="insight reveal" style="--i:1">
+          <div class="insight-num" style="color:var(--art-teal-ink)">02</div>
+          <h3 class="insight-title">A complete embedded-ML pipeline</h3>
+          <p class="insight-body">Hardware → serial comms → feature extraction → KNN inference → email action: the project spans every layer from sensor to decision. It is an end-to-end system, not a standalone model demo. Engineering that terminates in an operational decision.</p>
+        </div>
+        <div class="insight reveal" style="--i:2">
+          <div class="insight-num" style="color:var(--art-gold-ink)">03</div>
+          <h3 class="insight-title">Portfolio thread: engineering → decision</h3>
+          <p class="insight-body">The same spine runs through the whole portfolio — a measurement or analysis that ends in a clear operational action. Here it is a KNN alert; at <a href="project-13.html" class="tlink">WattsWorth</a> it is a monetary savings certificate; at <a href="project-14.html" class="tlink">Agni Steels</a> it is a process-improvement proposal. The through-line is the decision, not just the data.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIMITATIONS & NEXT STEPS -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow eyebrow-accent">Limitations &amp; next steps</div>
+          <h2>What this <em>doesn't</em> solve yet.</h2>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+        <div class="proj proj-half reveal">
+          <span class="proj-num">Current scope</span>
+          <div class="proj-tags"><span class="tag">Single-location demo</span><span class="tag">25% test set</span></div>
+          <h3 class="proj-title">Single-node prototype</h3>
+          <p class="proj-desc">The system was built and validated as a single-location lab demo. It does not yet handle multi-sensor networks, sensor dropout, or production-grade data pipelines. It reached 100% on the held-out 25% split, but that reflects a small, cleanly separable dataset — it would not survive noisier real-world sensor data, which a larger labelled set and cross-validation would stress-test next.</p>
+        </div>
+
+        <div class="proj proj-half reveal" style="--i:1">
+          <span class="proj-num">Natural extensions</span>
+          <div class="proj-tags"><span class="tag tag-teal">Threshold tuning</span><span class="tag tag-violet">Dashboard</span><span class="tag tag-gold">More sensors</span></div>
+          <h3 class="proj-title">Three clear upgrade paths</h3>
+          <p class="proj-desc">
+            <strong>Threshold tuning</strong> — calibrate the ABNORMAL boundary per species or season.
+            <strong>Additional sensors</strong> — light intensity, CO₂, EC could improve classification precision.
+            <strong>Dashboard layer</strong> — a simple web view would replace raw email alerts with a historical record and trend visibility.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUTCOME BAND -->
+  <section class="contact-band" data-band style="padding: var(--space-2xl) 0">
+    <div class="container-narrow">
+      <div class="eyebrow" style="margin-bottom: var(--space-md)">Project context</div>
+      <h2>B.E. final year — <em>engineering to decision</em>.</h2>
+      <p>
+        This project was built as a B.E. final-year IoT and machine-learning submission. It
+        demonstrates a complete embedded-ML pipeline: sensors on hardware, a trained KNN
+        classifier, and an automated action layer — the same "measurement → decision" logic
+        that runs through every project on this portfolio.
+      </p>
+      <div class="contact-methods">
+        <a class="contact-card" href="index.html#projects"><span class="contact-card-ico">←</span> Back to all projects</a>
+        <a class="contact-card" href="projects.html"><span class="contact-card-ico">→</span> Full project archive</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER · Ft1 -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer-grid">
+        <div>
+          <div class="footer-brand">Bala Shunmugam<span class="dot">.</span> M</div>
+          <p class="footer-tag">MBA Operations &amp; Business Analytics. Plant floor to P&amp;L. Chennai, India.</p>
+        </div>
+        <div>
+          <div class="footer-h">Work</div>
+          <div class="footer-links">
+            <a href="project-13.html">WattsWorth — case study</a>
+            <a href="project-14.html">Agni Steels — internship</a>
+            <a href="agents.html">Company Brain — agentic OS</a>
+            <a href="projects.html">Full archive</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-h">Connect</div>
+          <div class="footer-links">
+            <a href="mailto:balashunmugamruthran@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/bala-shunmugam-m-66a546387" target="_blank" rel="noopener">LinkedIn ↗</a>
+            <a href="index.html#contact">Back to contact</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Bala Shunmugam. M</span>
+        <span>MBA Operations &amp; Business Analytics</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/redesign.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script defer src="js/motion.js"></script>
+  <script defer src="js/theme.js"></script>
+  <script defer src="js/agents.js"></script>
+</body>
+</html>
