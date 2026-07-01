@@ -62,7 +62,7 @@
         Real problems.<br><em>Measured</em> solutions.
       </h1>
       <p class="hero-sub" style="max-width:680px;margin-bottom:40px;">
-        Nine projects across power generation, manufacturing, and applied operations research — grounded in field exposure at <strong>Valuthur Gas Turbine Power Station</strong> and <strong>Agni Steels' Sponge Iron Division</strong>. Each follows a Problem → Analysis → Solution → Impact framework, mixing measured studies with observational fieldwork.
+        Thirteen projects across power generation, manufacturing, and applied operations research — grounded in field exposure at <strong>Valuthur Gas Turbine Power Station</strong> and <strong>Agni Steels' Sponge Iron Division</strong>. Each follows a Problem → Analysis → Solution → Impact framework, mixing measured studies with observational fieldwork.
       </p>
 
       <div class="hero-stats" style="margin-bottom:24px;">
@@ -90,22 +90,41 @@
   <section class="section section-alt" style="padding-top:64px;">
     <div class="container">
 
-      <!-- Filter bar (visual only — all projects shown) -->
-      <div class="section-head" style="margin-bottom:32px;padding-bottom:18px;">
+      <!-- Filter bar -->
+      <style>
+        .proj-filter{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 40px}
+        .filter-chip{font:500 13px/1 var(--font-sans,inherit);letter-spacing:.02em;display:inline-flex;align-items:center;gap:8px;cursor:pointer;padding:10px 16px;border-radius:999px;border:1px solid rgba(128,128,128,.35);background:transparent;color:var(--color-ink-2,#333);transition:background .18s ease,border-color .18s ease,color .18s ease}
+        .filter-chip:hover{border-color:var(--oxblood,#7a1f2b);color:var(--oxblood,#7a1f2b)}
+        .filter-chip.is-active{background:var(--oxblood,#7a1f2b);border-color:var(--oxblood,#7a1f2b);color:#fff}
+        .filter-chip .chip-n{font-size:11px;opacity:.65;font-variant-numeric:tabular-nums}
+        .filter-chip.is-active .chip-n{opacity:.9}
+        .proj.is-hidden{display:none !important}
+        @media (max-width:640px){.filter-chip{padding:8px 13px;font-size:12px}}
+      </style>
+      <div class="section-head" style="margin-bottom:22px;padding-bottom:18px;">
         <div>
           <div class="eyebrow eyebrow-accent">— The archive</div>
-          <h2 style="font-size:clamp(28px,3.5vw,42px);">All <em>nine</em> projects.</h2>
+          <h2 style="font-size:clamp(28px,3.5vw,42px);"><span id="projCount">13</span> <em>projects</em>.</h2>
         </div>
         <div class="section-head-meta">
-          <strong>Sorted by impact</strong><br>
-          Featured · Field study · B.E. work
+          <strong>Filter the archive</strong><br>
+          By context &amp; discipline
         </div>
+      </div>
+
+      <div class="proj-filter" id="projFilter" role="tablist" aria-label="Filter projects by category">
+        <button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">All <span class="chip-n">13</span></button>
+        <button type="button" class="filter-chip" data-filter="vgtps" aria-pressed="false">VGTPS · Power <span class="chip-n">3</span></button>
+        <button type="button" class="filter-chip" data-filter="field" aria-pressed="false">Internship &amp; Fieldwork <span class="chip-n">3</span></button>
+        <button type="button" class="filter-chip" data-filter="be" aria-pressed="false">B.E. Engineering <span class="chip-n">3</span></button>
+        <button type="button" class="filter-chip" data-filter="analytics" aria-pressed="false">Analytics &amp; ML <span class="chip-n">5</span></button>
+        <button type="button" class="filter-chip" data-filter="frameworks" aria-pressed="false">Frameworks <span class="chip-n">3</span></button>
       </div>
 
       <div class="projects-grid">
 
         <!-- P/13 — WattsWorth — FLAGSHIP -->
-        <a href="project-13.html" class="proj proj-featured">
+        <a href="project-13.html" data-cat="analytics" class="proj proj-featured">
           <div>
             <span class="proj-num">P / 13 · Flagship ★ · Live + open source</span>
             <div class="proj-tags">
@@ -140,7 +159,7 @@
         </a>
 
         <!-- P/07 — InventoryIQ — FEATURED -->
-        <a href="project-07.html" class="proj proj-featured">
+        <a href="project-07.html" data-cat="frameworks" class="proj proj-featured">
           <div>
             <span class="proj-num">P / 07 · Live demonstrator ★ · Featured</span>
             <div class="proj-tags">
@@ -196,7 +215,7 @@
         </a>
 
         <!-- P/02 — VGTPS Operations Study -->
-        <a href="project-02.html" class="proj proj-half">
+        <a href="project-02.html" data-cat="vgtps" class="proj proj-half">
           <span class="proj-num">P / 02</span>
           <div class="proj-tags">
             <span class="tag tag-slate">Two-part study</span>
@@ -221,7 +240,7 @@
         </a>
 
         <!-- P/08 — Adaptive Relay -->
-        <a href="project-08.html" class="proj proj-half">
+        <a href="project-08.html" data-cat="vgtps field be" class="proj proj-half">
           <span class="proj-num">P / 08</span>
           <div class="proj-tags">
             <span class="tag tag-brass">B.E. Final Year · Protection Study</span>
@@ -246,7 +265,7 @@
         </a>
 
         <!-- P/15 — IoT Smart Plant Care -->
-        <a href="project-15.html" class="proj proj-third">
+        <a href="project-15.html" data-cat="be" class="proj proj-third">
           <span class="proj-num">P / 15</span>
           <div class="proj-tags">
             <span class="tag tag-coral">B.E. final year · IoT + ML</span>
@@ -265,7 +284,7 @@
         </a>
 
         <!-- P/03 — Agni Steels Sponge Iron Study -->
-        <a href="project-14.html" class="proj proj-half">
+        <a href="project-14.html" data-cat="field" class="proj proj-half">
           <span class="proj-num">P / 03</span>
           <div class="proj-tags">
             <span class="tag tag-brass">MBA Internship · DRI</span>
@@ -290,7 +309,7 @@
         </a>
 
         <!-- P/05 — Motor Energy Audit Fieldwork -->
-        <a href="project-05.html" class="proj proj-third">
+        <a href="project-05.html" data-cat="vgtps field be" class="proj proj-third">
           <span class="proj-num">P / 05</span>
           <div class="proj-tags">
             <span class="tag">B.E. EEE · In-Plant Training</span>
@@ -308,7 +327,7 @@
         </a>
 
         <!-- P/06 — Lean Waste Framework -->
-        <a href="project-06.html" class="proj proj-third">
+        <a href="project-06.html" data-cat="frameworks" class="proj proj-third">
           <span class="proj-num">P / 06</span>
           <div class="proj-tags">
             <span class="tag">MBA · Lean Framework</span>
@@ -326,7 +345,7 @@
         </a>
 
         <!-- P/04 — EOQ Model -->
-        <a href="project-04.html" class="proj proj-third">
+        <a href="project-04.html" data-cat="frameworks" class="proj proj-third">
           <span class="proj-num">P / 04</span>
           <div class="proj-tags">
             <span class="tag">MBA · Operations Framework</span>
@@ -355,7 +374,7 @@
 
         <div class="proj-grid">
           <!-- P/09 — Customer Segmentation -->
-          <a href="project-09.html" class="proj proj-third">
+          <a href="project-09.html" data-cat="analytics" class="proj proj-third">
             <span class="proj-num">P / 09</span>
             <div class="proj-tags">
               <span class="tag tag-slate">MBA · IBA</span>
@@ -378,7 +397,7 @@
           </a>
 
           <!-- P/10 — Text Mining -->
-          <a href="project-10.html" class="proj proj-third">
+          <a href="project-10.html" data-cat="analytics" class="proj proj-third">
             <span class="proj-num">P / 10</span>
             <div class="proj-tags">
               <span class="tag tag-slate">MBA · IBA</span>
@@ -401,7 +420,7 @@
           </a>
 
           <!-- P/11 — Market Basket -->
-          <a href="project-11.html" class="proj proj-third">
+          <a href="project-11.html" data-cat="analytics" class="proj proj-third">
             <span class="proj-num">P / 11</span>
             <div class="proj-tags">
               <span class="tag tag-slate">MBA · IBA</span>
@@ -424,7 +443,7 @@
           </a>
 
           <!-- P/12 — Shopping Behavior Python -->
-          <a href="project-12.html" class="proj proj-third">
+          <a href="project-12.html" data-cat="analytics" class="proj proj-third">
             <span class="proj-num">P / 12</span>
             <div class="proj-tags">
               <span class="tag tag-slate">MBA · DARP</span>
@@ -502,5 +521,33 @@
   <script defer src="js/motion.js"></script>
   <script defer src="js/theme.js"></script>
   <script defer src="js/agents.js"></script>
+  <script>
+    (function () {
+      var bar = document.getElementById('projFilter');
+      if (!bar) return;
+      var cards = [].slice.call(document.querySelectorAll('.proj[data-cat]'));
+      var count = document.getElementById('projCount');
+      function apply(f) {
+        var shown = 0;
+        cards.forEach(function (card) {
+          var cats = (card.getAttribute('data-cat') || '').split(/\s+/);
+          var match = f === 'all' || cats.indexOf(f) > -1;
+          card.classList.toggle('is-hidden', !match);
+          if (match) shown++;
+        });
+        if (count) count.textContent = shown;
+      }
+      bar.addEventListener('click', function (e) {
+        var btn = e.target.closest('.filter-chip');
+        if (!btn) return;
+        bar.querySelectorAll('.filter-chip').forEach(function (c) {
+          var on = c === btn;
+          c.classList.toggle('is-active', on);
+          c.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        apply(btn.getAttribute('data-filter'));
+      });
+    })();
+  </script>
 </body>
 </html>
