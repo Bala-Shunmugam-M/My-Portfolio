@@ -68,6 +68,10 @@
   <div class="p-section">
     <div class="p-section-label">Full Project Breakdown</div>
     <div class="p-section-title">Analysis &amp; Coordination Study</div>
+    <figure style="margin:0 0 26px; border:1px solid rgba(140,140,140,.28); border-radius:14px; padding:14px; background:rgba(140,140,140,.07)">
+      <img src="figures/vgtps_gen_oneline.png" alt="Typical generator-transformer protection installation single-line" style="display:block; width:100%; height:auto; border-radius:8px" />
+      <figcaption style="font-family:var(--font-mono,monospace); font-size:.78rem; line-height:1.5; opacity:.72; margin-top:10px">Typical generator-transformer protection layout — generator, unit/station transformers and earthing transformer. This study coordinates the differential (87G / 87T / 87B), earth-fault and back-up zones across exactly this kind of set. Source: ALSTOM / TANGEDCO protection training slides.</figcaption>
+    </figure>
     <div class="p-tabs">
       <div class="p-tab active" onclick="tab(this,'t-prob')">Problem</div>
       <div class="p-tab" onclick="tab(this,'t-sys')">Plant System</div>
@@ -122,6 +126,10 @@
     <!-- SETTINGS -->
     <div id="t-set" class="p-panel">
       <div class="p-section-label mb-4">87G — Adaptive differential (core contribution)</div>
+      <figure style="margin:0 0 22px; border:1px solid rgba(140,140,140,.28); border-radius:14px; padding:14px; background:#ffffff">
+        <img src="figures/vgtps_gen_differential.png" alt="Percentage-biased differential protection principle for a generator stator" style="display:block; width:100%; height:auto; border-radius:8px" />
+        <figcaption style="font-family:var(--font-mono,monospace); font-size:.78rem; line-height:1.5; opacity:.72; margin-top:10px; color:#444">The percentage-biased differential (87G) principle this project makes adaptive: an operate current with a restraint (bias) slope protecting the stator winding. The adaptive scheme lowers the minimum pickup (Id_min) in peak mode to catch the high-resistance neutral-end faults a fixed setting misses. Source: ALSTOM / TANGEDCO protection training slides.</figcaption>
+      </figure>
       <div class="p-table-wrap">
         <table class="p-table">
           <thead><tr><th>Group</th><th>Mode</th><th>Id_min (pu)</th><th>Slope k1</th><th>Slope k2</th><th>Active when</th></tr></thead>
