@@ -81,7 +81,7 @@ export default function Hero() {
           >
             {ROLES[roleIndex]}
           </span>{" "}
-          based in Chennai.
+          based in Madurai.
         </p>
         <p className="blur-in text-sm md:text-base text-muted max-w-xl mb-12">
           Electrical engineer turned Operations &amp; Business Analytics MBA. I quantify

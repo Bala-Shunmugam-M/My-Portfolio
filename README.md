@@ -41,7 +41,7 @@ Industrial Editorial — warm paper palette with oxblood + brass accents. Built 
 - Email: balashunmugamruthran@gmail.com
 - Phone: +91 70104 69326
 - LinkedIn: [bala-shunmugam-m](https://www.linkedin.com/in/bala-shunmugam-m-66a546387)
-- Location: Chennai, Tamil Nadu, India
+- Location: Madurai, Tamil Nadu, India
 
 ---
 

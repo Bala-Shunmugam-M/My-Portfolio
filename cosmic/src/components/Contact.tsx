@@ -108,7 +108,7 @@ export default function Contact() {
             </a>
           ))}
         </div>
-        <p className="text-xs text-muted">© 2026 Bala Shunmugam M · Chennai, India</p>
+        <p className="text-xs text-muted">© 2026 Bala Shunmugam M · Madurai, India</p>
       </div>
     </section>
   );
