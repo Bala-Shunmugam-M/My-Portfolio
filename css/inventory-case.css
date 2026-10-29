@@ -1,0 +1,30 @@
+/* InventoryIQ story additions; current app screenshots stay unmodified. */
+.inventory-phone .software-shot-frame { display:flex;justify-content:center;background:linear-gradient(135deg,var(--art-teal-soft),var(--art-violet-soft)); }
+.inventory-phone .shot-original { width:min(100%,330px); }
+.inventory-calculator { padding:var(--space-lg);border:1px solid var(--color-rule);border-radius:var(--radius);--bg:var(--color-card);--bg-subtle:var(--color-paper-2);--tx:var(--color-ink);--tx-2:var(--color-ink-2);--tx-3:var(--color-ink-3);--bd:var(--color-rule);--bd-strong:var(--color-rule-2);--f-mono:var(--font-mono);--f-body:var(--font-body);--border:var(--color-rule);--border-strong:var(--color-rule-2);--accent:var(--color-accent);--accent-light:var(--color-accent-soft);--accent-mid:var(--color-rule-2);--s-red-bg:var(--art-coral-soft);--s-red:var(--art-coral-ink);--s-amber-bg:var(--art-gold-soft);--s-amber:var(--color-ink);--s-green-bg:var(--art-teal-soft);--s-green:var(--art-teal-ink); }
+.inventory-calculator summary { cursor:pointer;font-size:var(--text-lg);font-weight:600; }
+.inventory-calculator>p { margin-block:var(--space-md); }
+    .sku-table{width:100%;border-collapse:collapse;font-size:12px;}
+    .sku-table th{background:var(--bg-subtle);color:var(--tx-3);font-family:var(--f-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding:10px 14px;text-align:left;border-bottom:1px solid var(--bd);font-weight:700;}
+    .sku-table td{padding:9px 14px;border-bottom:1px solid var(--bd);color:var(--tx-2);vertical-align:middle;}
+    .sku-table tr:last-child td{border-bottom:none;}
+    .sku-table tbody tr:hover td{background:var(--bg-subtle);}
+    .sku-table input[type=number]{width:76px;padding:5px 8px;font-size:12px;border:1px solid var(--bd-strong);border-radius:var(--r-sm);background:var(--bg);color:var(--tx);font-family:var(--f-mono);text-align:right;}
+    .sku-table input[type=number]:focus{outline:none;border-color:var(--accent);}
+    .sku-table input[type=text]{padding:5px 8px;font-size:12px;border:1px solid var(--bd-strong);border-radius:var(--r-sm);background:var(--bg);color:var(--tx);font-family:var(--f-body);}
+    .sku-table input[type=text]:focus{outline:none;border-color:var(--accent);}
+    .sku-result{font-family:var(--f-mono);font-size:12px;color:var(--accent);font-weight:700;}
+    .abc-a{display:inline-block;background:var(--s-red-bg);color:var(--s-red);font-family:var(--f-mono);font-size:10px;padding:3px 8px;border-radius:var(--r-xs);font-weight:700;border:1px solid var(--s-red-bd);}
+    .abc-b{display:inline-block;background:var(--s-amber-bg);color:var(--s-amber);font-family:var(--f-mono);font-size:10px;padding:3px 8px;border-radius:var(--r-xs);font-weight:700;border:1px solid var(--s-amber-bd);}
+    .abc-c{display:inline-block;background:var(--s-green-bg);color:var(--s-green);font-family:var(--f-mono);font-size:10px;padding:3px 8px;border-radius:var(--r-xs);font-weight:700;border:1px solid var(--s-green-bd);}
+    .summary-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px;}
+    .sum-box{background:var(--bg-subtle);border:1px solid var(--bd);border-radius:var(--r-lg);padding:16px;text-align:center;box-shadow:var(--sh-1);}
+    .sum-val{font-family:var(--f-mono);font-size:22px;font-weight:600;color:var(--accent);margin-bottom:4px;letter-spacing:-0.01em;}
+    .sum-label{font-size:10px;color:var(--tx-3);text-transform:uppercase;letter-spacing:.08em;font-weight:600;}
+    .add-btn,.del-btn{font-size:11px;font-family:var(--f-mono);padding:5px 12px;border-radius:var(--r-sm);cursor:pointer;transition:all .15s;font-weight:600;}
+    .add-btn{background:var(--accent-light);color:var(--accent);border:1px solid var(--accent-mid);}
+    .add-btn:hover{background:#ede9fe;border-color:var(--accent);}
+    .del-btn{background:var(--s-red-bg);color:var(--s-red);border:1px solid var(--s-red-bd);}
+    .del-btn:hover{background:#fde8e8;}
+
+@media(max-width:600px){.summary-strip{grid-template-columns:repeat(2,minmax(0,1fr));}.inventory-calculator{padding:var(--space-sm);}.sum-val{font-size:18px;}}

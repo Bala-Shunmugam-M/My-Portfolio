@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="studio-theme">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,60 +19,76 @@
     })();
   </script>
   <title>All Projects — Bala Shunmugam M</title>
-  <meta name="description" content="The complete archive — 8 projects across power generation, manufacturing, and applied operations research." />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/cosmic-theme.css" />
+  <meta name="description" content="The complete archive — 17 projects across MLOps, business data management, operations and engineering." />
+  <link rel="stylesheet" href="css/redesign.css" />
   <link rel="stylesheet" href="css/motion.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/agents.css" />
+  <link rel="stylesheet" href="css/enhancements.css" />
+  <link rel="stylesheet" href="css/interactive.css" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <noscript><style>
+    .portfolio-enhanced .navbar { position: relative; height: auto; }
+    .portfolio-enhanced .nav-inner { flex-wrap: wrap; padding-block: var(--space-sm); }
+    .portfolio-enhanced .nav-links { display: flex; position: static; flex-wrap: wrap; transform: none; width: 100%; padding: 0; border: 0; }
+    .portfolio-enhanced .theme-toggle, .portfolio-enhanced .menu-toggle { display: none; }
+    .portfolio-enhanced .hero { padding-top: var(--space-xl); }
+  </style></noscript>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="css/studio.css" />
+  <script defer src="js/studio.js"></script>
+  <link rel="stylesheet" href="css/atlas.css" />
+  <link rel="stylesheet" href="css/software.css" />
 </head>
-<body>
-  <canvas id="cosmic-stars" aria-hidden="true"></canvas>
+<body class="portfolio-enhanced archive-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
   <!-- NAVBAR -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Primary">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">Bala Shunmugam<span class="dot">.</span></a>
-      <ul class="nav-links">
+      <a href="index.html" class="nav-logo"><span class="brand-mark" aria-hidden="true">BS</span><span>Bala Shunmugam<span class="dot">.</span> M</span></a>
+      <ul class="nav-links" id="navLinks">
         <li><a href="index.html#about">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
         <li><a href="index.html#tools">Tools</a></li>
-        <li><a href="index.html#dashboard">Dashboard</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
         <li><a href="index.html#insights">Insights</a></li>
         <li><a href="index.html#contact" class="nav-cta">Get in touch</a></li>
       </ul>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">≡</button>
+      <button class="quick-trigger" id="quickNavigation" type="button" aria-label="Quick navigation" title="Quick navigation (Ctrl/Cmd + K)" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg></button>
       <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-cursor>
         <svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
         <svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.3 8.3 0 1 1 10.8 3.5a6.5 6.5 0 0 0 9.7 9.7z"/></svg>
       </button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span aria-hidden="true">≡</span></button>
     </div>
   </nav>
 
+  <main id="main-content" tabindex="-1">
   <!-- HEADER -->
-  <section class="hero" style="padding:64px 0 32px;">
+  <section class="hero">
     <div class="container">
       <div class="hero-meta">
         <span class="eyebrow">— Project archive · 2024–2026</span>
         <span class="eyebrow"><a href="index.html" style="color:var(--oxblood);">← Back to portfolio</a></span>
       </div>
-      <h1 class="hero-title" style="font-size:clamp(40px,5.5vw,72px);margin-bottom:24px;">
-        Real problems.<br><em>Measured</em> solutions.
+      <h1 class="hero-title">
+        A collection of<br><em>practical thinking.</em>
       </h1>
-      <p class="hero-sub" style="max-width:680px;margin-bottom:40px;">
-        Thirteen projects across power generation, manufacturing, and applied operations research — grounded in field exposure at <strong>Valuthur Gas Turbine Power Station</strong> and <strong>Agni Steels' Sponge Iron Division</strong>. Each follows a Problem → Analysis → Solution → Impact framework, mixing measured studies with observational fieldwork.
+      <p class="hero-sub">
+        Seventeen projects spanning MLOps, business data management, operations and engineering. Explore working software through real application screenshots, alongside field studies from <strong>Valuthur Gas Turbine Power Station</strong> and <strong>Agni Steels' Sponge Iron Division</strong>.
       </p>
 
-      <div class="hero-stats" style="margin-bottom:24px;">
+      <div class="hero-stats">
         <div class="hero-stat">
-          <div class="hero-stat-val">13</div>
+          <div class="hero-stat-val">17</div>
           <div class="hero-stat-label">Total projects</div>
         </div>
         <div class="hero-stat">
           <div class="hero-stat-val">3</div>
-          <div class="hero-stat-label">Working tools</div>
+          <div class="hero-stat-label">Browser-based tools</div>
         </div>
         <div class="hero-stat">
           <div class="hero-stat-val">2</div>
@@ -87,24 +103,14 @@
   </section>
 
   <!-- PROJECTS GRID -->
-  <section class="section section-alt" style="padding-top:64px;">
+  <section class="section section-alt">
     <div class="container">
 
       <!-- Filter bar -->
-      <style>
-        .proj-filter{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 40px}
-        .filter-chip{font:500 13px/1 var(--font-sans,inherit);letter-spacing:.02em;display:inline-flex;align-items:center;gap:8px;cursor:pointer;padding:10px 16px;border-radius:999px;border:1px solid rgba(128,128,128,.35);background:transparent;color:var(--color-ink-2,#333);transition:background .18s ease,border-color .18s ease,color .18s ease}
-        .filter-chip:hover{border-color:var(--oxblood,#7a1f2b);color:var(--oxblood,#7a1f2b)}
-        .filter-chip.is-active{background:var(--oxblood,#7a1f2b);border-color:var(--oxblood,#7a1f2b);color:#fff}
-        .filter-chip .chip-n{font-size:11px;opacity:.65;font-variant-numeric:tabular-nums}
-        .filter-chip.is-active .chip-n{opacity:.9}
-        .proj.is-hidden{display:none !important}
-        @media (max-width:640px){.filter-chip{padding:8px 13px;font-size:12px}}
-      </style>
       <div class="section-head" style="margin-bottom:22px;padding-bottom:18px;">
         <div>
           <div class="eyebrow eyebrow-accent">— The archive</div>
-          <h2 style="font-size:clamp(28px,3.5vw,42px);"><span id="projCount">13</span> <em>projects</em>.</h2>
+          <h2 style="font-size:clamp(28px,3.5vw,42px);"><span id="projCount">17</span> <em>projects</em>.</h2>
         </div>
         <div class="section-head-meta">
           <strong>Filter the archive</strong><br>
@@ -112,16 +118,40 @@
         </div>
       </div>
 
-      <div class="proj-filter" id="projFilter" role="tablist" aria-label="Filter projects by category">
-        <button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">All <span class="chip-n">13</span></button>
-        <button type="button" class="filter-chip" data-filter="vgtps" aria-pressed="false">VGTPS · Power <span class="chip-n">3</span></button>
+      <div class="archive-toolbar" id="archiveToolbar" hidden>
+        <label class="archive-search-label" for="projectSearch">Find your next case study</label>
+        <div class="archive-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>
+          <input id="projectSearch" type="search" aria-label="Search projects" placeholder="Search projects, skills or tools…" autocomplete="off" />
+        </div>
+      <div class="proj-filter" id="projFilter" role="group" aria-label="Filter projects by category">
+        <button type="button" class="filter-chip is-active" data-filter="all" aria-pressed="true">All <span class="chip-n">17</span></button>
+        <button type="button" class="filter-chip" data-filter="mlops" aria-pressed="false">MLOps &amp; Platforms <span class="chip-n">2</span></button><button type="button" class="filter-chip" data-filter="data" aria-pressed="false">Data Management <span class="chip-n">1</span></button><button type="button" class="filter-chip" data-filter="operations" aria-pressed="false">Operations Systems <span class="chip-n">1</span></button>
+<button type="button" class="filter-chip" data-filter="vgtps" aria-pressed="false">VGTPS · Power <span class="chip-n">3</span></button>
         <button type="button" class="filter-chip" data-filter="field" aria-pressed="false">Internship &amp; Fieldwork <span class="chip-n">3</span></button>
         <button type="button" class="filter-chip" data-filter="be" aria-pressed="false">B.E. Engineering <span class="chip-n">3</span></button>
         <button type="button" class="filter-chip" data-filter="analytics" aria-pressed="false">Analytics &amp; ML <span class="chip-n">5</span></button>
         <button type="button" class="filter-chip" data-filter="frameworks" aria-pressed="false">Frameworks <span class="chip-n">3</span></button>
       </div>
+        <div class="archive-extra">
+          <label class="saved-toggle"><input id="savedOnly" type="checkbox" /> Saved only <span id="savedCount">0</span></label>
+          <span class="saved-note" id="savedNote">Saved in this browser</span>
+          <button class="share-search" id="shareSearch" type="button">Share this search ↗</button>
+          <div class="share-fallback" id="shareFallback" hidden><label for="shareUrl">Link to this search</label><input id="shareUrl" type="url" readonly /></div>
+          <p class="archive-feedback" id="archiveFeedback" role="status" aria-live="polite"></p>
+        </div>
+        <div class="archive-result-row">
+          <p id="projectStatus" role="status" aria-live="polite" aria-atomic="true">Showing 17 of 17 projects</p>
+          <button class="archive-reset" id="resetFilters" type="button" hidden>Reset filters</button>
+        </div>
+      </div>
+      <div class="archive-empty" id="projectEmpty" hidden>
+        <h3>No matching projects</h3>
+        <p>Try another skill or keyword, choose a different category, or reset the filters.</p>
+      </div>
 
-      <div class="projects-grid">
+      <div class="projects-grid" data-project-group>
+<a href="project-16.html" data-cat="mlops" class="proj proj-half software-archive-card"><div class="software-archive-image"><img src="assets/shots/workbench/01-dashboard.png" alt="AI Data Science Workbench application preview" loading="lazy" width="1600" height="1100" /></div><span class="proj-num">P / 16 · MLOps / Reproducible ML</span><div class="proj-tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Next.js</span><span class="tag">Model evaluation</span><span class="tag">Data lineage</span></div><h3 class="proj-title">AI Data Science Workbench — From a dataset to a decision you can inspect.</h3><p class="proj-desc">A machine-learning workbench connecting data preparation, model comparison, evaluation, explainability and governance evidence through a shared Python workflow and a web console.</p><div class="proj-impact"><div class="proj-impact-item"><div class="proj-impact-val">12 stages</div><div class="proj-impact-label">Engine workflow</div></div><div class="proj-impact-item"><div class="proj-impact-val">0.667 R²</div><div class="proj-impact-label">Saved benchmark result</div></div><div class="proj-impact-item"><div class="proj-impact-val">3 views</div><div class="proj-impact-label">Captured locally</div></div></div><span class="proj-cta">Read the case study &amp; screenshot walkthrough →</span></a><a href="project-17.html" data-cat="mlops" class="proj proj-half software-archive-card"><div class="software-archive-image"><img src="assets/shots/kernel/02-asset-history.png" alt="KERNEL-OPS application preview" loading="lazy" width="1600" height="1100" /></div><span class="proj-num">P / 17 · MLOps / Maintenance intelligence</span><div class="proj-tags"><span class="tag">Python</span><span class="tag">Next.js</span><span class="tag">DuckDB</span><span class="tag">Telemetry</span><span class="tag">Decision policies</span></div><h3 class="proj-title">KERNEL-OPS — Connect a maintenance decision to its evidence.</h3><p class="proj-desc">An operations-focused MLOps console for exploring telemetry, recorded model decisions and inspection capacity, paired with a companion site explaining the shadow-pilot workflow.</p><div class="proj-impact"><div class="proj-impact-item"><div class="proj-impact-val">30 runs</div><div class="proj-impact-label">Saved demo activity</div></div><div class="proj-impact-item"><div class="proj-impact-val">6 channels</div><div class="proj-impact-label">Telemetry view</div></div><div class="proj-impact-item"><div class="proj-impact-val">Read-only</div><div class="proj-impact-label">Shadow demonstration</div></div></div><span class="proj-cta">Read the case study &amp; screenshot walkthrough →</span></a><a href="project-18.html" data-cat="data" class="proj proj-half software-archive-card"><div class="software-archive-image"><img src="assets/shots/campus/campus-dashboard.png" alt="CampusPulse application preview" loading="lazy" width="1600" height="1100" /></div><span class="proj-num">P / 18 · Business Data Management</span><div class="proj-tags"><span class="tag">PostgreSQL</span><span class="tag">SQL</span><span class="tag">Prisma</span><span class="tag">Next.js</span><span class="tag">Data modelling</span></div><h3 class="proj-title">CampusPulse — Turn scattered reports into accountable records.</h3><p class="proj-desc">A relational data-management project with a campus incident platform and a compliance web application: structured reporting, institution-scoped case workflows, policy records and operational dashboards.</p><div class="proj-impact"><div class="proj-impact-item"><div class="proj-impact-val">2 schemas</div><div class="proj-impact-label">Separate data ownership</div></div><div class="proj-impact-item"><div class="proj-impact-val">3 institutions</div><div class="proj-impact-label">Fictional demo setup</div></div><div class="proj-impact-item"><div class="proj-impact-val">3 views</div><div class="proj-impact-label">Captured locally</div></div></div><span class="proj-cta">Read the case study &amp; screenshot walkthrough →</span></a><a href="project-19.html" data-cat="operations" class="proj proj-half software-archive-card"><div class="software-archive-image"><img src="assets/shots/aether/inventory.png" alt="AetherForge Ops application preview" loading="lazy" width="1600" height="1100" /></div><span class="proj-num">P / 19 · Operations / Decision systems</span><div class="proj-tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Inventory economics</span><span class="tag">SPC / OEE</span><span class="tag">Forecasting</span></div><h3 class="proj-title">AetherForge Ops — Price the trade-off. Understand the process.</h3><p class="proj-desc">An operations decision prototype linking inventory economics, plant performance and demand forecasting. Its working cockpit exposes the assumptions and trade-offs behind recommendations.</p><div class="proj-impact"><div class="proj-impact-item"><div class="proj-impact-val">280 SKUs</div><div class="proj-impact-label">Generated catalogue</div></div><div class="proj-impact-item"><div class="proj-impact-val">8 assets</div><div class="proj-impact-label">Synthetic plant</div></div><div class="proj-impact-item"><div class="proj-impact-val">3 views</div><div class="proj-impact-label">Running cockpit</div></div></div><span class="proj-cta">Read the case study &amp; screenshot walkthrough →</span></a>
 
         <!-- P/13 — WattsWorth — FLAGSHIP -->
         <a href="project-13.html" data-cat="analytics" class="proj proj-featured">
@@ -159,7 +189,7 @@
         </a>
 
         <!-- P/07 — InventoryIQ — FEATURED -->
-        <a href="project-07.html" data-cat="frameworks" class="proj proj-featured">
+        <a href="project-07.html" data-cat="frameworks" class="proj proj-featured"><div class="studio-cover"><img src="assets/shots/inventory/01-dashboard.png" alt="InventoryIQ interface preview" loading="lazy" /></div>
           <div>
             <span class="proj-num">P / 07 · Live demonstrator ★ · Featured</span>
             <div class="proj-tags">
@@ -168,9 +198,9 @@
               <span class="tag">EOQ · ROP · ABC</span>
               <span class="tag">Mobile-first</span>
             </div>
-            <h3 class="proj-title">Inventory Control System for Small Retail — EOQ + ROP + Safety Stock + ABC</h3>
+            <h3 class="proj-title">InventoryIQ — Retail Decisions, Forecasts &amp; Order Tracking</h3>
             <p class="proj-desc">
-              A working browser-based decision engine integrating four classical inventory frameworks into a single mobile-first tool. Demonstrated with 12 realistic SKUs modelled on a typical Madurai grocery shop. I designed the concept, framework integration and UX; implementation was AI-accelerated.
+              A merchant app and manager dashboard for reorder decisions, incoming stock, delivery receipts, demand forecasts and scenario planning. Five running-app screenshots and a verified sample order cycle. Operations concept, framework integration and UX with AI-assisted implementation.
             </p>
             <div class="proj-impact">
               <div class="proj-impact-item">
@@ -179,20 +209,20 @@
               </div>
               <div class="proj-impact-item">
                 <div class="proj-impact-val">12 SKUs</div>
-                <div class="proj-impact-label">Realistic basket (editable)</div>
+                <div class="proj-impact-label">Built-in demo basket</div>
               </div>
               <div class="proj-impact-item">
                 <div class="proj-impact-val accent">Live</div>
-                <div class="proj-impact-label">In-browser, no server</div>
+                <div class="proj-impact-label">Local browser workflow</div>
               </div>
             </div>
-            <span class="proj-cta">Read the case study + try the live demonstrator <span class="arrow">→</span></span>
+            <span class="proj-cta">Explore the screenshots, workflow &amp; current app <span class="arrow">→</span></span>
           </div>
           <div class="proj-visual">
             <div>
-              <div class="proj-visual-label">— Realistic SKU basket</div>
+              <div class="proj-visual-label">— Built-in retail demo</div>
               <div class="proj-visual-headline">12 SKUs</div>
-              <div class="proj-visual-detail">Rice · Cooking Oil · Sugar · Toor Dal · Wheat Flour · Detergent · Biscuits · Tea · Salt · Coconut Oil · Pulses · Soaps</div>
+              <div class="proj-visual-detail">Stock → suggested purchase → incoming order → delivery receipt. Explore the full workflow with sample retail products.</div>
             </div>
             <div class="proj-visual-bars">
               <div class="proj-bar-row">
@@ -240,7 +270,7 @@
         </a>
 
         <!-- P/08 — Adaptive Relay -->
-        <a href="project-08.html" data-cat="vgtps field be" class="proj proj-half">
+        <a href="project-08.html" data-cat="vgtps field be" class="proj proj-half"><div class="studio-cover"><img src="figures/fig2_87G_dual_slope.png" alt="Differential relay characteristic from the case study" loading="lazy" /></div>
           <span class="proj-num">P / 08</span>
           <div class="proj-tags">
             <span class="tag tag-brass">B.E. Final Year · Protection Study</span>
@@ -284,7 +314,7 @@
         </a>
 
         <!-- P/03 — Agni Steels Sponge Iron Study -->
-        <a href="project-14.html" data-cat="field" class="proj proj-half">
+        <a href="project-14.html" data-cat="field" class="proj proj-half"><div class="studio-cover"><img src="figures/agni_sponge_plant.jpg" alt="Agni Steels case-study image" loading="lazy" /></div>
           <span class="proj-num">P / 03</span>
           <div class="proj-tags">
             <span class="tag tag-brass">MBA Internship · DRI</span>
@@ -365,7 +395,7 @@
       </div>
 
       <!-- ═══ MBA BUSINESS ANALYTICS ═══ -->
-      <div style="margin-top:64px;padding-top:48px;border-top:2px solid var(--rule);">
+      <div data-project-group style="margin-top:64px;padding-top:48px;border-top:2px solid var(--rule);">
         <div style="margin-bottom:32px;">
           <p style="font-family:var(--f-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--oxblood);margin-bottom:8px;">— MBA Year 1 · Amrita School of Business · 2025</p>
           <h2 style="font-family:var(--f-display);font-size:clamp(28px,3.5vw,44px);font-weight:400;margin:0 0 12px;">Business Analytics Projects</h2>
@@ -468,7 +498,7 @@
       </div>
 
       <div style="text-align:center;margin-top:48px;padding-top:32px;border-top:1px solid var(--rule);">
-        <p style="font-family:var(--f-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:20px;">— End of archive · 14 of 14 projects</p>
+        <p style="font-family:var(--f-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:20px;">— End of archive · 17 of 17 projects</p>
         <a href="index.html#contact" class="btn btn-primary">Get in touch <span class="arrow">→</span></a>
         <a href="index.html" class="btn btn-text">← Back to portfolio</a>
       </div>
@@ -476,13 +506,15 @@
     </div>
   </section>
 
+  </main>
+
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
       <div class="site-footer-grid">
         <div>
           <div class="footer-brand">Bala Shunmugam M<span style="color:var(--oxblood)">.</span></div>
-          <p class="footer-tag">Electrical Engineer pursuing MBA Operations &amp; Business Analytics. Plant floor to P&amp;L. Madurai, India.</p>
+          <p class="footer-tag">Electrical Engineer pursuing MBA Operations &amp; Business Analytics. Plant floor to P&amp;L. Coimbatore, India.</p>
         </div>
         <div>
           <div class="footer-h">Sitemap</div>
@@ -502,6 +534,7 @@
             <a href="dashboard.html">InventoryIQ (desktop)</a>
             <a href="six-sigma-workbench.html">Six Sigma Workbench</a>
             <a href="Walkthrough_Script.html">Walkthrough script</a>
+            <a href="https://github.com/Bala-Shunmugam-M" target="_blank" rel="noopener">GitHub ↗</a>
             <a href="Bala_Shunmugam_resume.pdf">Résumé (PDF)</a>
           </div>
         </div>
@@ -513,41 +546,31 @@
     </div>
   </footer>
 
-  <script src="js/script.js"></script>
-  <script src="js/cosmic.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script defer src="js/motion.js"></script>
+
+  <aside class="compare-tray" id="compareTray" aria-label="Selected projects" hidden>
+    <p><span id="compareCount" role="status">0 projects selected</span><small>Choose 2–3 to compare</small></p>
+    <button class="compare-open" id="openComparison" type="button" aria-label="Compare selected projects" aria-haspopup="dialog" disabled>Compare →</button>
+    <button class="compare-clear" id="clearComparison" type="button" aria-label="Clear comparison">Clear</button>
+  </aside>
+  <dialog class="portfolio-dialog compare-dialog" id="compareDialog" aria-labelledby="compareTitle">
+    <div class="dialog-heading"><h2 id="compareTitle">The work, side by side.</h2><button class="dialog-close" id="closeComparison" type="button" aria-label="Close comparison">×</button></div>
+    <p class="compare-intro">Compare the approach and evidence. Figures describe different studies; open each case study for context and limitations.</p>
+    <div class="compare-scroll" tabindex="0" role="region" aria-label="Project comparison table"><table class="comparison-table" id="comparisonTable"></table></div>
+  </dialog>
+
+  <dialog class="portfolio-dialog" id="commandDialog" aria-labelledby="commandTitle">
+    <div class="dialog-heading"><h2 id="commandTitle">Where would you like to go?</h2><button class="dialog-close" id="closeCommands" type="button" aria-label="Close quick navigation">×</button></div>
+    <div class="command-search-wrap"><label for="commandSearch">Search pages, projects and skills</label><input id="commandSearch" type="search" aria-label="Search pages and projects" placeholder="Try energy, Python, résumé…" autocomplete="off" /></div>
+    <ul class="command-results" id="commandResults" aria-label="Matching destinations"></ul>
+    <p class="command-empty" id="commandEmpty" hidden>No matching pages. Try a project name or skill.</p>
+    <div class="dialog-foot"><span id="commandStatus" role="status"></span><span>↑ ↓ to move · Enter to open · Esc to close</span></div>
+  </dialog>
+
+  <script defer src="js/redesign.js"></script>
+  <script defer src="js/project-catalog.js"></script>
+  <script defer src="js/interactive.js"></script>
+  <script defer src="js/projects.js"></script>
   <script defer src="js/theme.js"></script>
   <script defer src="js/agents.js"></script>
-  <script>
-    (function () {
-      var bar = document.getElementById('projFilter');
-      if (!bar) return;
-      var cards = [].slice.call(document.querySelectorAll('.proj[data-cat]'));
-      var count = document.getElementById('projCount');
-      function apply(f) {
-        var shown = 0;
-        cards.forEach(function (card) {
-          var cats = (card.getAttribute('data-cat') || '').split(/\s+/);
-          var match = f === 'all' || cats.indexOf(f) > -1;
-          card.classList.toggle('is-hidden', !match);
-          if (match) shown++;
-        });
-        if (count) count.textContent = shown;
-      }
-      bar.addEventListener('click', function (e) {
-        var btn = e.target.closest('.filter-chip');
-        if (!btn) return;
-        bar.querySelectorAll('.filter-chip').forEach(function (c) {
-          var on = c === btn;
-          c.classList.toggle('is-active', on);
-          c.setAttribute('aria-pressed', on ? 'true' : 'false');
-        });
-        apply(btn.getAttribute('data-filter'));
-      });
-    })();
-  </script>
 </body>
 </html>

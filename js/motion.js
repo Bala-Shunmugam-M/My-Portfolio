@@ -63,6 +63,7 @@
   // redesign.js does NOT handle anchor scroll; we own it here.
   // lenis.scrollTo is used when Lenis is live; native scrollIntoView otherwise.
   document.addEventListener("click", function (e) {
+    if (document.body.classList.contains("portfolio-enhanced")) return;
     var anchor = e.target.closest("a[href^='#']");
     if (!anchor) return;
 

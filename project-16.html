@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" class="studio-theme">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    /* Set the theme BEFORE first paint to prevent a flash of the wrong theme.
+       Priority: saved choice > system preference > light (the default). */
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <title>AI Data Science Workbench — Bala Shunmugam M</title>
+  <meta name="description" content="A machine-learning workbench connecting data preparation, model comparison, evaluation, explainability and governance evidence through a shared Python workflow and a web console." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/redesign.css" />
+  <link rel="stylesheet" href="css/motion.css" />
+  <link rel="stylesheet" href="css/agents.css" />
+  <link rel="stylesheet" href="css/enhancements.css" />
+  <link rel="stylesheet" href="css/interactive.css" />
+  <link rel="stylesheet" href="css/career.css" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <noscript><style>
+    .portfolio-enhanced .navbar { position: relative; height: auto; }
+    .portfolio-enhanced .nav-inner { flex-wrap: wrap; padding-block: var(--space-sm); }
+    .portfolio-enhanced .nav-links { display: flex; position: static; flex-wrap: wrap; transform: none; width: 100%; padding: 0; border: 0; }
+    .portfolio-enhanced .theme-toggle, .portfolio-enhanced .menu-toggle { display: none; }
+    .portfolio-enhanced .hero { padding-top: var(--space-xl); }
+  </style></noscript>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="css/studio.css" />
+  <script defer src="js/studio.js"></script>
+  <link rel="stylesheet" href="css/atlas.css" />
+<link rel="stylesheet" href="css/software.css" /></head>
+<body class="portfolio-enhanced software-case"><a class="skip-link" href="#main-content">Skip to content</a><nav class="navbar" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="index.html#home" class="nav-logo"><span class="brand-mark" aria-hidden="true">BS</span><span>Bala Shunmugam<span class="dot">.</span> M</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#analytics">Analytics</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><a href="index.html#career">Career</a></li>
+        <li><a href="index.html#field">Field</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="quick-trigger" id="quickNavigation" type="button" aria-label="Quick navigation" title="Quick navigation (Ctrl/Cmd + K)" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg></button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-cursor>
+        <svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+        <svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.3 8.3 0 1 1 10.8 3.5a6.5 6.5 0 0 0 9.7 9.7z"/></svg>
+      </button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span aria-hidden="true">≡</span></button>
+    </div>
+  </nav>
+<main id="main-content" tabindex="-1">
+<section class="software-hero" data-tone="violet"><div class="container"><div class="software-breadcrumb"><a href="projects.html">← Project archive</a><span>MLOps / Reproducible ML</span></div><div class="software-hero-grid"><div><span class="eyebrow">P / 16 · Application case study</span><h1>AI Data Science Workbench</h1><p class="software-tagline">From a dataset to a decision you can inspect.</p><p class="software-summary">A machine-learning workbench connecting data preparation, model comparison, evaluation, explainability and governance evidence through a shared Python workflow and a web console.</p><div class="software-tags"><span>Python</span><span>scikit-learn</span><span>Next.js</span><span>Model evaluation</span><span>Data lineage</span></div><div class="software-actions"><a class="btn btn-primary" href="#screenshots">See the app in action ↓</a><a class="btn btn-outline" href="https://github.com/Bala-Shunmugam-M/ai-data-science-workbench" target="_blank" rel="noopener">Source repository ↗</a><a class="btn btn-outline" href="https://bala-shunmugam-m.github.io/ai-data-science-workbench/" target="_blank" rel="noopener">Published report site ↗</a></div></div><figure class="software-hero-preview"><img src="assets/shots/workbench/01-dashboard.png" alt="AI Data Science Workbench application screenshot" width="1600" height="1100" fetchpriority="high" /><figcaption>Captured from the running local application · October 2026</figcaption></figure></div><div class="software-facts"><div><strong>12 stages</strong><span>Engine workflow</span></div><div><strong>0.667 R²</strong><span>Saved benchmark result</span></div><div><strong>3 views</strong><span>Captured locally</span></div></div></div></section>
+<div class="container software-body"><nav class="software-jump" aria-label="Case study sections"><a href="#approach">Problem &amp; approach</a><a href="#architecture">Architecture</a><a href="#screenshots">Screenshot walkthrough</a><a href="#scope">Evidence &amp; limits</a></nav>
+<section id="approach" class="software-section"><div class="software-two"><div><span class="eyebrow">The problem</span><h2>Why this exists.</h2><p>A model score is useful only when its inputs, preparation and evaluation can be traced. Scattered notebooks and exported charts make it difficult to understand which model was selected, what data it saw and where its weaknesses are.</p></div><div><span class="eyebrow">The approach</span><h2>How it responds.</h2><p>The workbench gives each stage a place in the workflow and stores its outputs as inspectable artifacts. The web console brings those records together so evaluation, explanations and trust checks can be reviewed alongside the model rather than as disconnected files.</p></div></div><ol class="software-steps"><li><span>01</span><h3>Prepare</h3><p>Ingest, preprocess and profile the dataset; construct features and train-fitted transformations.</p></li><li><span>02</span><h3>Compare</h3><p>Train and compare candidates using explicit train, validation and test partitions.</p></li><li><span>03</span><h3>Inspect</h3><p>Review residuals, subgroup error, permutation importance and applicability of each check.</p></li><li><span>04</span><h3>Record</h3><p>Retain model/feature approval records, audit events, reports and hashed artifact lineage.</p></li></ol></section>
+<section id="architecture" class="software-section"><span class="eyebrow">Inside the system</span><h2>From inputs to insight.</h2><dl class="software-architecture"><div><dt>Interface</dt><dd>Next.js / React console and a separate Streamlit dashboard.</dd></div><div><dt>Application bridge</dt><dd>Next.js route handlers call a local Python JSON bridge.</dd></div><div><dt>ML workflow</dt><dd>Python, pandas and scikit-learn implement preparation, modelling and evaluation.</dd></div><div><dt>Evidence</dt><dd>Dataset descriptors, model versions, charts, JSON reports and lineage artifacts.</dd></div></dl><p class="software-source-note">Architecture summarized from the project source. Runtime verification is described below.</p></section>
+<section id="screenshots" class="software-section"><div class="section-head"><div><span class="eyebrow">A closer look</span><h2>The working experience.</h2></div><p class="section-head-meta">Real app captures.<br>Open any screen to inspect it.</p></div><div class="software-gallery"><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/workbench/01-dashboard.png" target="_blank" rel="noopener"><img src="assets/shots/workbench/01-dashboard.png" alt="AI Data Science Workbench — The analysis at a glance" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/workbench/01-dashboard.png" data-caption="The analysis at a glance — The California Housing dashboard identifies Ridge v001 as the saved champion and displays held-out test metrics alongside recorded pipeline status. This connects a headline result with the workflow that produced it." aria-label="Enlarge The analysis at a glance" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 01 / Running application</span><h3>The analysis at a glance</h3><p>The California Housing dashboard identifies Ridge v001 as the saved champion and displays held-out test metrics alongside recorded pipeline status. This connects a headline result with the workflow that produced it.</p></figcaption></figure><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/workbench/02-evaluation.png" target="_blank" rel="noopener"><img src="assets/shots/workbench/02-evaluation.png" alt="AI Data Science Workbench — Look beyond the headline score" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/workbench/02-evaluation.png" data-caption="Look beyond the headline score — The evaluation view exposes predicted-versus-actual and residual diagnostics from the saved run. These plots help identify systematic error and variation that one average metric can conceal." aria-label="Enlarge Look beyond the headline score" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 02 / Running application</span><h3>Look beyond the headline score</h3><p>The evaluation view exposes predicted-versus-actual and residual diagnostics from the saved run. These plots help identify systematic error and variation that one average metric can conceal.</p></figcaption></figure><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/workbench/03-trust.png" target="_blank" rel="noopener"><img src="assets/shots/workbench/03-trust.png" alt="AI Data Science Workbench — Make model weaknesses visible" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/workbench/03-trust.png" data-caption="Make model weaknesses visible — Subgroup errors and permutation importance provide another lens on reliability. Calibration is explicitly marked not applicable for this regression model rather than displayed as a meaningless score." aria-label="Enlarge Make model weaknesses visible" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 03 / Running application</span><h3>Make model weaknesses visible</h3><p>Subgroup errors and permutation importance provide another lens on reliability. Calibration is explicitly marked not applicable for this regression model rather than displayed as a meaningless score.</p></figcaption></figure></div></section>
+<section id="scope" class="software-section"><span class="eyebrow">What the evidence supports</span><h2>Demonstrated, with context.</h2><p id="evidenceNote" class="software-evidence-note">These screenshots were taken from the running local Next.js console using existing public California Housing artifacts. Ridge v001 records test R² 0.6665, RMSE 66,681 and MAE 48,731. They are saved benchmark results; this portfolio capture did not retrain the model. The pictured console is distinct from the separate Streamlit interface.</p><div class="software-two"><div><h3>Scope &amp; limitations</h3><ul class="software-limitations"><li>The capture verified dashboard, evaluation and trust views. Upload training and the complete pipeline were inspected in source, not executed in this preview.</li><li>The evaluation table contains six model-version entries across Ridge, Lasso and LinearRegression; it does not represent six distinct algorithms.</li><li>Approval records and guards exist, but generic upload workflows can auto-approve records. Audit logs are append-mode records, not cryptographically tamper-proof logs.</li><li>This demonstration does not establish production model serving, regulatory compliance or performance on another dataset.</li></ul></div><div class="software-career"><span class="eyebrow">Career connection</span><h3>Why it belongs in my portfolio.</h3><p>Connects business analytics with reproducible technical work: defining the question, comparing alternatives and explaining the evidence behind a recommendation.</p><a href="profile.html">View my recruiter profile ↗</a></div></div></section>
+<div class="software-next"><a href="projects.html">← All 17 projects</a><a href="project-17.html">Next: KERNEL-OPS →</a></div></div></main>
+<footer class="site-footer"><div class="container"><div class="footer-brand">Bala Shunmugam. M</div><p>Engineering · Operations · Analytics</p><a href="index.html#contact">Start a conversation ↗</a></div></footer>
+<dialog class="portfolio-dialog image-dialog" id="imageDialog" aria-labelledby="imageCaption"><div class="dialog-heading"><span class="eyebrow">Application screenshot</span><button class="dialog-close" id="closeImage" type="button" aria-label="Close image preview">×</button></div><figure><img id="previewImage" alt="" /><figcaption id="imageCaption"></figcaption></figure></dialog>
+<dialog class="portfolio-dialog" id="commandDialog" aria-labelledby="commandTitle">
+    <div class="dialog-heading"><h2 id="commandTitle">Where would you like to go?</h2><button class="dialog-close" id="closeCommands" type="button" aria-label="Close quick navigation">×</button></div>
+    <div class="command-search-wrap"><label for="commandSearch">Search pages, projects and skills</label><input id="commandSearch" type="search" aria-label="Search pages and projects" placeholder="Try energy, Python, résumé…" autocomplete="off" /></div>
+    <ul class="command-results" id="commandResults" aria-label="Matching destinations"></ul>
+    <p class="command-empty" id="commandEmpty" hidden>No matching pages. Try a project name or skill.</p>
+    <div class="dialog-foot"><span id="commandStatus" role="status"></span><span>↑ ↓ to move · Enter to open · Esc to close</span></div>
+  </dialog>
+<script defer src="js/redesign.js"></script><script defer src="js/theme.js"></script><script defer src="js/project-catalog.js"></script><script defer src="js/interactive.js"></script><script defer src="js/career.js"></script>
+</body></html>

@@ -18,7 +18,7 @@
     ).matches;
 
     /* Under reduced-motion: never show the preloader at all */
-    if (prefersReduced) return;
+    if (prefersReduced || document.body.classList.contains("portfolio-enhanced")) return;
 
     /* Show once per browser session — internal navigation between pages
        must not re-fire the count-up. */
@@ -224,6 +224,7 @@
           var dur = 700;
 
           function tick(ts) {
+            if(document.documentElement.dataset.motion==='off'){el.textContent=target;return;}
             if (!start) start = ts;
             var p = Math.min((ts - start) / dur, 1);
             /* ease-out */

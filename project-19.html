@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" class="studio-theme">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    /* Set the theme BEFORE first paint to prevent a flash of the wrong theme.
+       Priority: saved choice > system preference > light (the default). */
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <title>AetherForge Ops — Bala Shunmugam M</title>
+  <meta name="description" content="An operations decision prototype linking inventory economics, plant performance and demand forecasting. Its working cockpit exposes the assumptions and trade-offs behind recommendations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/redesign.css" />
+  <link rel="stylesheet" href="css/motion.css" />
+  <link rel="stylesheet" href="css/agents.css" />
+  <link rel="stylesheet" href="css/enhancements.css" />
+  <link rel="stylesheet" href="css/interactive.css" />
+  <link rel="stylesheet" href="css/career.css" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <noscript><style>
+    .portfolio-enhanced .navbar { position: relative; height: auto; }
+    .portfolio-enhanced .nav-inner { flex-wrap: wrap; padding-block: var(--space-sm); }
+    .portfolio-enhanced .nav-links { display: flex; position: static; flex-wrap: wrap; transform: none; width: 100%; padding: 0; border: 0; }
+    .portfolio-enhanced .theme-toggle, .portfolio-enhanced .menu-toggle { display: none; }
+    .portfolio-enhanced .hero { padding-top: var(--space-xl); }
+  </style></noscript>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="css/studio.css" />
+  <script defer src="js/studio.js"></script>
+  <link rel="stylesheet" href="css/atlas.css" />
+<link rel="stylesheet" href="css/software.css" /></head>
+<body class="portfolio-enhanced software-case"><a class="skip-link" href="#main-content">Skip to content</a><nav class="navbar" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="index.html#home" class="nav-logo"><span class="brand-mark" aria-hidden="true">BS</span><span>Bala Shunmugam<span class="dot">.</span> M</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#analytics">Analytics</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><a href="index.html#career">Career</a></li>
+        <li><a href="index.html#field">Field</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="quick-trigger" id="quickNavigation" type="button" aria-label="Quick navigation" title="Quick navigation (Ctrl/Cmd + K)" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg></button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-cursor>
+        <svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+        <svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.3 8.3 0 1 1 10.8 3.5a6.5 6.5 0 0 0 9.7 9.7z"/></svg>
+      </button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span aria-hidden="true">≡</span></button>
+    </div>
+  </nav>
+<main id="main-content" tabindex="-1">
+<section class="software-hero" data-tone="mint"><div class="container"><div class="software-breadcrumb"><a href="projects.html">← Project archive</a><span>Operations / Decision systems</span></div><div class="software-hero-grid"><div><span class="eyebrow">P / 19 · Application case study</span><h1>AetherForge Ops</h1><p class="software-tagline">Price the trade-off. Understand the process.</p><p class="software-summary">An operations decision prototype linking inventory economics, plant performance and demand forecasting. Its working cockpit exposes the assumptions and trade-offs behind recommendations.</p><div class="software-tags"><span>Python</span><span>FastAPI</span><span>Inventory economics</span><span>SPC / OEE</span><span>Forecasting</span></div><div class="software-actions"><a class="btn btn-primary" href="#screenshots">See the app in action ↓</a></div></div><figure class="software-hero-preview"><img src="assets/shots/aether/inventory.png" alt="AetherForge Ops application screenshot" width="1600" height="1100" fetchpriority="high" /><figcaption>Captured from the running local application · October 2026</figcaption></figure></div><div class="software-facts"><div><strong>280 SKUs</strong><span>Generated catalogue</span></div><div><strong>8 assets</strong><span>Synthetic plant</span></div><div><strong>3 views</strong><span>Running cockpit</span></div></div></div></section>
+<div class="container software-body"><nav class="software-jump" aria-label="Case study sections"><a href="#approach">Problem &amp; approach</a><a href="#architecture">Architecture</a><a href="#screenshots">Screenshot walkthrough</a><a href="#scope">Evidence &amp; limits</a></nav>
+<section id="approach" class="software-section"><div class="software-two"><div><span class="eyebrow">The problem</span><h2>Why this exists.</h2><p>A single service-level target hides differences between items, and a single plant-performance score hides differences between losses. Operations decisions improve when the cost, uncertainty and failure mechanism are visible together.</p></div><div><span class="eyebrow">The approach</span><h2>How it responds.</h2><p>AetherForge puts a transparent numerical engine behind a thin API and an interactive cockpit. It compares inventory policies, separates plant losses and evaluates forecasts against held-out periods before translating their errors into safety-stock implications.</p></div></div><ol class="software-steps"><li><span>01</span><h3>Price</h3><p>Compare ordering, holding and shortage costs for each inventory policy.</p></li><li><span>02</span><h3>Segment</h3><p>Use ABC / XYZ / FSN / VED views to distinguish value, variability and criticality.</p></li><li><span>03</span><h3>Diagnose</h3><p>Inspect OEE / TEEP, loss categories, control charts and capability measures.</p></li><li><span>04</span><h3>Forecast</h3><p>Run rolling-origin comparisons and connect measured forecast error to buffer requirements.</p></li></ol></section>
+<section id="architecture" class="software-section"><span class="eyebrow">Inside the system</span><h2>From inputs to insight.</h2><dl class="software-architecture"><div><dt>Numerical core</dt><dd>A standard-library Python engine separates formulas and domain validation from I/O.</dd></div><div><dt>API</dt><dd>FastAPI exposes catalogue analysis, plant studies, forecasts and calculators.</dd></div><div><dt>Cockpit</dt><dd>A standalone HTML / JavaScript interface renders results from the local API.</dd></div><div><dt>Demo inputs</dt><dd>A generated catalogue covers 280 SKUs; plant data covers eight assets and 30 days.</dd></div></dl><p class="software-source-note">Architecture summarized from the project source. Runtime verification is described below.</p></section>
+<section id="screenshots" class="software-section"><div class="section-head"><div><span class="eyebrow">A closer look</span><h2>The working experience.</h2></div><p class="section-head-meta">Real app captures.<br>Open any screen to inspect it.</p></div><div class="software-gallery"><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/aether/inventory.png" target="_blank" rel="noopener"><img src="assets/shots/aether/inventory.png" alt="AetherForge Ops — Understand where policy cost comes from" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/aether/inventory.png" data-caption="Understand where policy cost comes from — Ordering, cycle stock, safety stock and shortage are compared on one scale. A ranked item view shows why one service target cannot fit every item. Financial figures here are synthetic scenario outputs." aria-label="Enlarge Understand where policy cost comes from" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 01 / Running application</span><h3>Understand where policy cost comes from</h3><p>Ordering, cycle stock, safety stock and shortage are compared on one scale. A ranked item view shows why one service target cannot fit every item. Financial figures here are synthetic scenario outputs.</p></figcaption></figure><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/aether/plant.png" target="_blank" rel="noopener"><img src="assets/shots/aether/plant.png" alt="AetherForge Ops — Separate the losses that matter" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/aether/plant.png" data-caption="Separate the losses that matter — The plant view compares OEE with TEEP and ranks assets alongside their dominant loss categories. It connects an overall percentage to the mechanism that an improvement effort would address." aria-label="Enlarge Separate the losses that matter" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 02 / Running application</span><h3>Separate the losses that matter</h3><p>The plant view compares OEE with TEEP and ranks assets alongside their dominant loss categories. It connects an overall percentage to the mechanism that an improvement effort would address.</p></figcaption></figure><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/aether/forecast.png" target="_blank" rel="noopener"><img src="assets/shots/aether/forecast.png" alt="AetherForge Ops — Let uncertainty change the recommendation" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/aether/forecast.png" data-caption="Let uncertainty change the recommendation — The forecasting view reports backtested model choices and the effect of measured forecast error on safety stock. It shows where a forecast lowers the buffer and where it calls for more cover." aria-label="Enlarge Let uncertainty change the recommendation" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 03 / Running application</span><h3>Let uncertainty change the recommendation</h3><p>The forecasting view reports backtested model choices and the effect of measured forecast error on safety stock. It shows where a forecast lowers the buffer and where it calls for more cover.</p></figcaption></figure></div></section>
+<section id="scope" class="software-section"><span class="eyebrow">What the evidence supports</span><h2>Demonstrated, with context.</h2><p id="evidenceNote" class="software-evidence-note">The standalone cockpit and FastAPI service were run locally. Inventory economics, plant OEE / SPC and demand forecasting views loaded successfully without browser errors. The API explicitly identifies its data as a generated demo catalogue. Dollar opportunities, service levels and plant metrics shown in the screenshots are model outputs on synthetic inputs, not achieved savings or real production outcomes.</p><div class="software-two"><div><h3>Scope &amp; limitations</h3><ul class="software-limitations"><li>This capture uses the standalone cockpit. The separate Next.js entry experience, authentication and persistent database paths were not exercised.</li><li>The forecasting screen exposes both buffer reductions and increases; a model can require more stock when measured error exceeds the original assumption.</li><li>The current system should be described as an operations prototype. A full discrete-event supply-network digital twin and real-world deployment are not established by these views.</li><li>No public repository or stable hosted demo was established from the local project metadata; the case study therefore provides captured evidence rather than an invented live link.</li></ul></div><div class="software-career"><span class="eyebrow">Career connection</span><h3>Why it belongs in my portfolio.</h3><p>Chosen as the additional project because it directly connects MBA operations concepts with engineering judgment: inventory costs, service, plant losses and evidence-based planning.</p><a href="profile.html">View my recruiter profile ↗</a></div></div></section>
+<div class="software-next"><a href="projects.html">← All 17 projects</a><a href="project-16.html">Next: AI Data Science Workbench →</a></div></div></main>
+<footer class="site-footer"><div class="container"><div class="footer-brand">Bala Shunmugam. M</div><p>Engineering · Operations · Analytics</p><a href="index.html#contact">Start a conversation ↗</a></div></footer>
+<dialog class="portfolio-dialog image-dialog" id="imageDialog" aria-labelledby="imageCaption"><div class="dialog-heading"><span class="eyebrow">Application screenshot</span><button class="dialog-close" id="closeImage" type="button" aria-label="Close image preview">×</button></div><figure><img id="previewImage" alt="" /><figcaption id="imageCaption"></figcaption></figure></dialog>
+<dialog class="portfolio-dialog" id="commandDialog" aria-labelledby="commandTitle">
+    <div class="dialog-heading"><h2 id="commandTitle">Where would you like to go?</h2><button class="dialog-close" id="closeCommands" type="button" aria-label="Close quick navigation">×</button></div>
+    <div class="command-search-wrap"><label for="commandSearch">Search pages, projects and skills</label><input id="commandSearch" type="search" aria-label="Search pages and projects" placeholder="Try energy, Python, résumé…" autocomplete="off" /></div>
+    <ul class="command-results" id="commandResults" aria-label="Matching destinations"></ul>
+    <p class="command-empty" id="commandEmpty" hidden>No matching pages. Try a project name or skill.</p>
+    <div class="dialog-foot"><span id="commandStatus" role="status"></span><span>↑ ↓ to move · Enter to open · Esc to close</span></div>
+  </dialog>
+<script defer src="js/redesign.js"></script><script defer src="js/theme.js"></script><script defer src="js/project-catalog.js"></script><script defer src="js/interactive.js"></script><script defer src="js/career.js"></script>
+</body></html>

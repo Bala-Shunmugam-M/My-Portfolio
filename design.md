@@ -1,5 +1,11 @@
 # Design — Bala Shunmugam. M · MBA Operations & Business Analytics
 
+> **Atlas extension, 2026-10-29:** the owner requested established GitHub references and further professional visual/interactivity improvements. Extend Studio with a violet/mint/coral atmosphere, restrained grid, translucent portrait frame, career evidence panels, an optional guided introduction and a printable recruiter profile. Source research is in `DESIGN-REFERENCES.md`; original implementation is in `css/atlas.css` and `js/atlas.js`. Keep static hosting, authentic imagery, factual career claims, accessible controls and the shared motion preference.
+
+> **Studio transformation, 2026-10-28:** the owner's further request for a full colorful, animated aesthetic supersedes the earlier accent-area limits and layout lock. Studio tokens are scoped in `tokens.css`; `css/studio.css` and `css/studio-case.css` unify the homepage, archive and 13 case studies. Use actual local imagery, retain career facts and project data, and use `js/studio.js` as the shared motion layer. Motion remains optional, reduced-motion aware and limited to transform/opacity. Standalone working tools are retained.
+
+> **Amendment 2026-10-28 — Career showcase:** the owner requested a résumé update, GitHub links, more career-focused interactions and richer imagery. The supplied résumé supersedes stale homepage education dates, current location and internship summary. Retain Daybook tokens and static architecture; use the existing portrait and project imagery, an expandable career journey and an illustrative inventory decision example. The homepage portrait replaces its decorative WebGL hero; the original flagship copy moves into selected projects. New presentation lives in `css/career.css` and `js/career.js`. Existing case studies remain unchanged.
+
 A locked design system for this portfolio. Every page redesign reads this file
 before emitting code. Do not regenerate per page — extend or amend it.
 

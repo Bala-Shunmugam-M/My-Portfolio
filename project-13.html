@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="studio-theme">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
@@ -295,8 +295,13 @@ h2.sec{font-weight:700;letter-spacing:-.02em}
 .callout.warn{border-color:rgba(240,183,94,.3);border-left-color:#f0b75e;background:linear-gradient(180deg,rgba(240,183,94,.07),rgba(240,183,94,.02))}
 </style>
 <link rel="stylesheet" href="css/motion.css" />
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="css/studio.css" />
+  <link rel="stylesheet" href="css/studio-case.css" />
+  <script defer src="js/studio.js"></script>
+  <link rel="stylesheet" href="css/atlas.css" />
 </head>
-<body>
+<body class="studio-case portfolio-enhanced">
 <div class="grid-bg" aria-hidden="true"></div>
 
 <header class="nav">
@@ -584,6 +589,7 @@ wattsworth/
     if(reduce){ el.textContent = group? target.toLocaleString() : target; return; }
     var dur = 1100, start = null;
     function step(ts){
+      if(document.documentElement.dataset.motion==='off'){el.textContent=group?target.toLocaleString():target;return;}
       if(!start) start = ts;
       var p = Math.min((ts-start)/dur,1);
       var eased = 1-Math.pow(1-p,3);
@@ -692,10 +698,6 @@ wattsworth/
   renderRdemo("clean");
 })();
 </script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script defer src="js/motion.js"></script>
   <script defer src="js/theme.js"></script>
   <script defer src="js/agents.js"></script>
 </body>

@@ -151,3 +151,25 @@
     --art-violet-soft:    oklch(31% 0.06 295);
     --art-gold-soft:      oklch(33% 0.07 90);
 }
+
+/* Studio edition — owner-requested colorful portfolio transformation, Oct 2026. */
+:root.studio-theme {
+  --color-paper:#f7f8fa;--color-paper-2:#eef1f5;--color-paper-3:#e2e7ef;--color-card:#ffffff;
+  --color-ink:#18283e;--color-ink-2:#425269;--color-ink-3:#5c697a;--color-ink-4:#8190a3;
+  --color-rule:#dce2eb;--color-rule-2:#c3ccd9;--color-accent:#3d50b5;--color-accent-soft:#e8e6ff;--color-focus:#3d50b5;
+  --color-band:#18283e;--color-band-2:#253853;--color-on-band:#f7f8fa;--color-on-band-2:#d1dcec;--color-accent-band:#c8e7d7;
+  --art-coral-soft:#fae3dd;--art-coral-ink:#973f2d;--art-teal-soft:#e0f0e8;--art-teal-ink:#1d6551;--art-violet-soft:#eeebff;--art-violet-ink:#5e489c;
+  --studio-ink:#18283e;--studio-white:#ffffff;--studio-coral:#f4b5a4;--studio-coral-ink:#a84f36;--studio-lilac:#ddd7fa;--studio-mint:#c8e7d7;
+  --atlas-violet:#c5b2fb;--atlas-mint:#a9e2d1;--atlas-coral:#fac7a9;
+  --radius:16px;--shadow-card:0 8px 30px rgba(24,40,62,.06);--shadow-card-lift:0 24px 55px rgba(24,40,62,.12);
+}
+:root.studio-theme[data-theme=dark] {
+  --color-paper:#111c2a;--color-paper-2:#192739;--color-paper-3:#26374e;--color-card:#1b2b40;
+  --color-ink:#f1f4f9;--color-ink-2:#ced9e8;--color-ink-3:#abbcd1;--color-ink-4:#91a5bf;
+  --color-rule:#34455d;--color-rule-2:#52637a;--color-accent:#b9afff;--color-accent-soft:#353655;--color-focus:#b9afff;
+  --color-band:#0c1725;--color-on-band:#f1f4f9;--color-on-band-2:#ced9e8;
+  --art-coral-soft:#463432;--art-coral-ink:#f4b5a4;--art-teal-soft:#203f3c;--art-teal-ink:#a9dac5;--art-violet-soft:#30314c;--art-violet-ink:#d5c9fc;
+  --shadow-card:0 8px 30px rgba(0,0,0,.16);--shadow-card-lift:0 24px 55px rgba(0,0,0,.25);
+  --atlas-violet:#52457e;--atlas-mint:#23584f;--atlas-coral:#6c423e;
+}
+

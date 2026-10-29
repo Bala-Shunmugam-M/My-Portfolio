@@ -1,0 +1,108 @@
+/* Career edition: photography, field notes and practical decisions. */
+.career-edition .hero { background:radial-gradient(ellipse at 85% 20%,var(--art-teal-soft),transparent 40%),var(--color-paper); }
+.career-edition .hero::before { background-image:linear-gradient(var(--color-rule) 1px,transparent 1px),linear-gradient(90deg,var(--color-rule) 1px,transparent 1px);background-size:44px 44px;opacity:.25; }
+.career-edition .hero-grid { grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:center;gap:var(--space-2xl); }
+.career-edition .hero-title { font-size:clamp(3rem,5.6vw,5.3rem); }
+.career-edition .hero-meta { padding-bottom:var(--space-md);margin-bottom:var(--space-lg);border-bottom:1px solid var(--color-rule); }
+.career-edition .hero-meta .eyebrow { font-size:10px; }
+.career-edition .hero-sub { max-width:50ch;line-height:1.75; }
+.career-edition .hero-signature { margin-bottom:var(--space-lg); }
+.career-edition .hero-stats { display:grid;grid-template-columns:repeat(4,minmax(0,1fr)); }
+.career-edition .hero-stat-label { font-size:10px; }
+.career-portrait { isolation:isolate;position:relative;border:1px solid var(--color-rule-2);border-radius:var(--radius);padding:var(--space-sm);background:var(--color-card);box-shadow:var(--shadow-card);transform:rotate(1deg); }
+.portrait-topline { display:flex;justify-content:space-between;gap:var(--space-xs);padding:var(--space-2xs) var(--space-2xs) var(--space-sm);font:10px/1.5 var(--font-mono);text-transform:uppercase;letter-spacing:.07em;color:var(--color-ink-3); }
+.portrait-stage { position:relative;height:390px;overflow:hidden;border-radius:calc(var(--radius) / 2);background:var(--art-teal-soft); }
+.portrait-stage::before { content:"";position:absolute;inset:0;background-image:linear-gradient(var(--color-rule-2) 1px,transparent 1px),linear-gradient(90deg,var(--color-rule-2) 1px,transparent 1px);background-size:32px 32px;opacity:.45; }
+.portrait-stage img { position:absolute;bottom:0;left:50%;transform:translateX(-50%);height:94%;width:auto;max-width:86%;object-fit:cover;object-position:top;border-radius:46% 46% 0 0; }
+.portrait-orbit { position:absolute;width:330px;height:330px;border:1px solid var(--art-teal-ink);border-radius:50%;left:50%;top:50%;transform:translate(-50%,-50%);opacity:.4; }
+.portrait-orbit::after { content:"";position:absolute;inset:-24px;border:1px dashed var(--art-teal-ink);border-radius:50%; }
+.portrait-stamp { position:absolute;right:var(--space-sm);bottom:var(--space-md);display:flex;gap:var(--space-xs);align-items:center;padding:var(--space-xs);background:var(--color-card);border:1px solid var(--color-rule-2);border-radius:var(--radius);box-shadow:var(--shadow-card); }
+.portrait-stamp strong { font:500 var(--text-xl)/1 var(--font-display); }
+.portrait-stamp span { font:10px/1.5 var(--font-mono);color:var(--color-ink-2); }
+.portrait-caption-row { display:flex;justify-content:space-between;align-items:center;gap:var(--space-xs);padding:var(--space-sm) var(--space-2xs) var(--space-2xs); }
+.portrait-caption-row strong { display:block;font:500 var(--text-xl)/1.3 var(--font-display); }
+.portrait-caption-row small { display:block;font-size:11px;color:var(--color-ink-3);margin-top:var(--space-3xs); }
+.portrait-caption-row a { width:44px;height:44px;display:grid;place-items:center;border:1px solid var(--color-rule-2);border-radius:50%; }
+.career-edition .career-flagship { display:grid;grid-template-columns:220px 1fr;margin:0 0 var(--space-2xl); }
+.career-edition .career-flagship .hero-side-art { height:100%;min-height:230px; }
+.career-edition .career-flagship .hero-side-body { display:grid;grid-template-columns:1fr auto;gap:var(--space-xs) var(--space-lg); }
+.career-flagship .hero-side-label,.career-flagship h3,.career-flagship .hero-side-link { grid-column:1/-1; }
+.career-edition .career-flagship .hero-side-figures { margin:0;min-width:180px;border:0;padding:0; }
+.career-edition .career-flagship h3 { font-size:var(--text-2xl); }
+.career-edition #about .about-grid { grid-template-columns:1fr 1fr; }
+.career-edition #about .about-portrait { display:none; } /* The portrait is now the hero centerpiece. */
+.career-journey { scroll-margin-top:calc(var(--nav-h) + var(--space-lg));padding:var(--space-md);background:var(--color-card);border:1px solid var(--color-rule);border-radius:var(--radius); }
+.career-chapter { border-top:1px solid var(--color-rule); }
+.career-chapter summary { position:relative;display:grid;gap:var(--space-2xs);list-style:none;padding:var(--space-md) var(--space-lg) var(--space-md) 0;cursor:pointer; }
+.career-chapter summary::-webkit-details-marker { display:none; }
+.chapter-year { font:10px/1.5 var(--font-mono);text-transform:uppercase;color:var(--color-ink-3); }
+.career-chapter strong { font-size:var(--text-md);font-weight:500; }
+.chapter-plus { position:absolute;right:0;top:50%;transform:translateY(-50%);color:var(--color-accent);font-size:var(--text-xl); }
+.career-chapter[open] .chapter-plus { transform:translateY(-50%) rotate(45deg); }
+.chapter-body { padding:0 var(--space-sm) var(--space-md) 0;font-size:var(--text-sm);color:var(--color-ink-2);line-height:1.7; }
+.chapter-body p+p { margin-top:var(--space-xs); }
+.chapter-body a { display:inline-block;margin-top:var(--space-sm);color:var(--color-accent);text-decoration:underline;text-underline-offset:4px; }
+.work-gallery { background:var(--color-paper-2); }
+.gallery-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-md); }
+.gallery-card { margin:0;border:1px solid var(--color-rule-2);background:var(--color-card);border-radius:var(--radius);overflow:hidden; }
+.gallery-image { position:relative;aspect-ratio:1.4;overflow:hidden;border-bottom:1px solid var(--color-rule);background:var(--color-paper-3); }
+.gallery-image img { width:100%;height:100%;object-fit:cover;object-position:left top;transition:transform var(--dur-long) var(--ease-out); }
+.gallery-card:first-child .gallery-image img,.gallery-card:nth-child(2) .gallery-image img { object-fit:contain;object-position:center; }
+.gallery-image button { position:absolute;bottom:var(--space-xs);right:var(--space-xs);padding:var(--space-xs) var(--space-sm);background:var(--color-card);border:1px solid var(--color-rule-2);border-radius:var(--radius-pill);font-size:var(--text-xs);min-height:44px;box-shadow:var(--shadow-card); }
+.gallery-card figcaption { padding:var(--space-md); }
+.gallery-card .eyebrow { font-size:10px;color:var(--color-ink-3); }
+.gallery-card h3 { font:500 var(--text-2xl)/1.2 var(--font-display);margin-block:var(--space-sm); }
+.gallery-card p { font-size:var(--text-sm);line-height:1.7;color:var(--color-ink-2); }
+.gallery-card a { display:inline-block;margin-top:var(--space-md);font-size:var(--text-sm);color:var(--color-accent); }
+.image-dialog { width:min(1200px,calc(100% - 2rem)); }
+.image-dialog figure { margin:0;padding:var(--space-sm); }
+.image-dialog img { display:block;width:100%;max-height:70dvh;object-fit:contain; }
+.image-dialog figcaption { padding:var(--space-sm);font-size:var(--text-sm);color:var(--color-ink-2); }
+.lab-grid { display:grid;grid-template-columns:1fr 1.3fr;gap:var(--space-lg); }
+.lab-inputs,.lab-output { padding:var(--space-lg);border:1px solid var(--color-rule-2);border-radius:var(--radius);background:var(--color-card); }
+.lab-inputs { display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);align-content:start; }
+.lab-card-top { grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:var(--space-sm); }
+.lab-card-top .eyebrow,.lab-output>.eyebrow { font-size:10px; }
+.lab-card-top button { font-size:var(--text-xs);text-decoration:underline;min-height:44px; }
+.lab-inputs label { display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-xs);font-size:var(--text-sm);line-height:1.5; }
+.lab-inputs input,.resume-notes input { width:100%;min-width:0;padding:var(--space-xs);border:1px solid var(--color-rule-2);border-radius:calc(var(--radius) / 2);background:var(--color-paper);color:var(--color-ink);font:500 var(--text-lg)/1.5 var(--font-body); }
+.lab-assumptions { grid-column:1/-1;color:var(--color-ink-3);font-size:var(--text-xs);line-height:1.8;border-top:1px solid var(--color-rule);padding-top:var(--space-md); }
+.lab-metrics { display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);margin-top:var(--space-lg); }
+.lab-metrics span,.lab-metrics small { display:block;font-size:var(--text-xs);color:var(--color-ink-2); }
+.lab-metrics strong { display:block;font:500 clamp(1.45rem,3.6vw,3.5rem)/1.3 var(--font-display);font-variant-numeric:tabular-nums; }
+.lab-metrics>div+div { border-left:1px solid var(--color-rule);padding-left:var(--space-md); }
+.inventory-chart { width:100%;margin-top:var(--space-md); }
+.chart-rule { fill:none;stroke:var(--color-rule-2); }
+.chart-area { fill:var(--art-teal-soft); }
+.chart-line { fill:none;stroke:var(--art-teal-ink);stroke-width:2; }
+.inventory-chart text { font:10px var(--font-mono);fill:var(--color-ink-3); }
+#labInterpretation { font-size:var(--text-sm);line-height:1.7;color:var(--color-ink-2);margin:var(--space-sm) 0 var(--space-md); }
+#labStatus:not(:empty) { margin-top:var(--space-md);font-size:var(--text-sm);color:var(--color-ink); }
+.lab-formulas { margin-top:var(--space-md);border-top:1px solid var(--color-rule);padding-top:var(--space-md);font-size:var(--text-xs);line-height:1.8;color:var(--color-ink-2); }
+.lab-formulas summary { cursor:pointer;font-size:var(--text-sm); }
+.lab-formulas p { margin-top:var(--space-xs); }
+.resume-section { background:var(--color-paper-2); }
+.resume-layout { display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2xl); }
+.resume-layout h2 { font:500 var(--text-3xl)/1.15 var(--font-display);margin:var(--space-sm) 0 var(--space-md); }
+.resume-layout h2 em { color:var(--color-accent); }
+.resume-layout p { line-height:1.8;color:var(--color-ink-2);font-size:var(--text-sm); }
+.resume-actions,.profile-links { display:flex;flex-wrap:wrap;gap:var(--space-sm);margin-top:var(--space-lg); }
+.profile-links a { color:var(--color-accent);font-size:var(--text-sm);padding-block:var(--space-xs); }
+.resume-notes { padding:var(--space-lg);background:var(--color-card);border:1px solid var(--color-rule);border-radius:var(--radius); }
+.resume-notes>div+div { border-top:1px solid var(--color-rule);margin-top:var(--space-md);padding-top:var(--space-md); }
+.resume-notes .eyebrow { font-size:10px;margin-bottom:var(--space-xs); }
+#copyEmail { margin-top:var(--space-md);min-height:44px;color:var(--color-accent);font-size:var(--text-sm);text-decoration:underline; }
+.resume-notes input { font-size:var(--text-sm);margin-top:var(--space-2xs); }
+.resume-notes label { display:block;font-size:var(--text-xs); }
+.career-edition .contact-methods { flex-wrap:wrap; }
+@media (hover:hover) and (pointer:fine) { .gallery-card:hover .gallery-image img { transform:scale(1.025); } }
+@media (max-width:1000px) { .career-edition .hero-grid { gap:var(--space-lg); }.portrait-stage { height:350px; }.gallery-grid { gap:var(--space-sm); }.lab-grid { grid-template-columns:1fr 1fr; }.lab-inputs { grid-template-columns:1fr; }.resume-layout { gap:var(--space-lg); } }
+@media (max-width:760px) {
+ .career-edition .hero-grid,.career-edition #about .about-grid,.gallery-grid,.lab-grid,.resume-layout { grid-template-columns:1fr; }
+ .career-edition .hero-meta { gap:var(--space-xs); }.career-edition .hero-title { font-size:clamp(2.7rem,11vw,4rem); }
+ .career-portrait { max-width:480px;width:100%;margin:var(--space-sm) auto 0;transform:none; }.portrait-stage { height:340px; }
+ .career-edition .career-flagship { grid-template-columns:1fr; }.career-edition .career-flagship .hero-side-art { height:110px;min-height:0; }.career-edition .career-flagship .hero-side-body { grid-template-columns:1fr; }
+ .career-edition .hero-stats { gap:var(--space-xs); }.career-edition .hero-stat+.hero-stat { padding-left:var(--space-xs); }
+ .gallery-image { aspect-ratio:1.7; }.lab-inputs,.lab-output,.resume-notes { padding:var(--space-md); }.lab-inputs { grid-template-columns:1fr 1fr; }.lab-inputs label { font-size:var(--text-xs); }
+}
+@media (prefers-reduced-motion:reduce) { .career-edition * { scroll-behavior:auto!important; }.gallery-image img { transition:none; }.career-portrait { transform:none; } }

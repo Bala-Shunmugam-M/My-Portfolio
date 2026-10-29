@@ -1,8 +1,8 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="studio-theme">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>
     /* Set the theme BEFORE first paint to prevent a flash of the wrong theme.
        Priority: saved choice > system preference > light (the default). */
@@ -18,86 +18,58 @@
       }
     })();
   </script>
-  <title>Inventory Control System — Full Tool — Bala Shunmugam M</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/project.css"/>
-  <link rel="stylesheet" href="css/cosmic-project.css"/>
+  <title>InventoryIQ — Retail Decision Intelligence · Bala Shunmugam M</title>
+  <meta name="description" content="InventoryIQ: a retail inventory app with reorder decisions, order tracking, demand forecasts and scenario planning. Five real app screenshots and a verified sample workflow." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/redesign.css" />
   <link rel="stylesheet" href="css/motion.css" />
   <link rel="stylesheet" href="css/agents.css" />
-  <style>
-    :root{--accent:#4c1d95;--accent-light:#f5f3ff;--accent-mid:#c4b5fd;--accent-dark:#3b1578;}
-    .sku-table{width:100%;border-collapse:collapse;font-size:12px;}
-    .sku-table th{background:var(--bg-subtle);color:var(--tx-3);font-family:var(--f-mono);font-size:10px;text-transform:uppercase;letter-spacing:.08em;padding:10px 14px;text-align:left;border-bottom:1px solid var(--bd);font-weight:700;}
-    .sku-table td{padding:9px 14px;border-bottom:1px solid var(--bd);color:var(--tx-2);vertical-align:middle;}
-    .sku-table tr:last-child td{border-bottom:none;}
-    .sku-table tbody tr:hover td{background:var(--bg-subtle);}
-    .sku-table input[type=number]{width:76px;padding:5px 8px;font-size:12px;border:1px solid var(--bd-strong);border-radius:var(--r-sm);background:var(--bg);color:var(--tx);font-family:var(--f-mono);text-align:right;}
-    .sku-table input[type=number]:focus{outline:none;border-color:var(--accent);}
-    .sku-table input[type=text]{padding:5px 8px;font-size:12px;border:1px solid var(--bd-strong);border-radius:var(--r-sm);background:var(--bg);color:var(--tx);font-family:var(--f-body);}
-    .sku-table input[type=text]:focus{outline:none;border-color:var(--accent);}
-    .sku-result{font-family:var(--f-mono);font-size:12px;color:var(--accent);font-weight:700;}
-    .abc-a{display:inline-block;background:var(--s-red-bg);color:var(--s-red);font-family:var(--f-mono);font-size:10px;padding:3px 8px;border-radius:var(--r-xs);font-weight:700;border:1px solid var(--s-red-bd);}
-    .abc-b{display:inline-block;background:var(--s-amber-bg);color:var(--s-amber);font-family:var(--f-mono);font-size:10px;padding:3px 8px;border-radius:var(--r-xs);font-weight:700;border:1px solid var(--s-amber-bd);}
-    .abc-c{display:inline-block;background:var(--s-green-bg);color:var(--s-green);font-family:var(--f-mono);font-size:10px;padding:3px 8px;border-radius:var(--r-xs);font-weight:700;border:1px solid var(--s-green-bd);}
-    .summary-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px;}
-    .sum-box{background:var(--bg-subtle);border:1px solid var(--bd);border-radius:var(--r-lg);padding:16px;text-align:center;box-shadow:var(--sh-1);}
-    .sum-val{font-family:var(--f-mono);font-size:22px;font-weight:600;color:var(--accent);margin-bottom:4px;letter-spacing:-0.01em;}
-    .sum-label{font-size:10px;color:var(--tx-3);text-transform:uppercase;letter-spacing:.08em;font-weight:600;}
-    .add-btn,.del-btn{font-size:11px;font-family:var(--f-mono);padding:5px 12px;border-radius:var(--r-sm);cursor:pointer;transition:all .15s;font-weight:600;}
-    .add-btn{background:var(--accent-light);color:var(--accent);border:1px solid var(--accent-mid);}
-    .add-btn:hover{background:#ede9fe;border-color:var(--accent);}
-    .del-btn{background:var(--s-red-bg);color:var(--s-red);border:1px solid var(--s-red-bd);}
-    .del-btn:hover{background:#fde8e8;}
-  </style>
-</head>
-<body>
-  <canvas id="cosmic-stars" aria-hidden="true"></canvas>
-<nav class="p-nav">
-  <a href="projects.html" class="p-nav-back"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>All Projects</a>
-  <div class="p-nav-right"><span class="p-nav-name">Bala Shunmugam M</span><span class="p-nav-num">07 / 08</span>
-    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-cursor>
-      <svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
-      <svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.3 8.3 0 1 1 10.8 3.5a6.5 6.5 0 0 0 9.7 9.7z"/></svg>
-    </button></div>
-</nav>
-
-<section class="p-hero">
-  <div class="p-eyebrow"><div class="p-eyebrow-dot"></div><span class="p-eyebrow-text">MBA · Supply Chain · Applied Concept · Live Demonstrator</span></div>
-  <h1 class="p-title">Inventory Control System<br><em>for Small Retail</em></h1>
-  <p class="p-desc">A working browser-based decision engine that integrates four classical inventory frameworks — <strong>EOQ, Reorder Point, Safety Stock, and ABC</strong> — into a single mobile-first tool designed for unorganised small retail. Demonstrated with 12 realistic SKUs modelled on a typical Madurai grocery shop. Edit any cell to see all four models update live.</p>
-  <div class="p-tags">
-    <span class="p-tag p-tag-accent">MBA · Supply Chain</span>
-    <span class="p-tag">EOQ + ROP + Safety Stock</span>
-    <span class="p-tag">ABC Analysis</span>
-    <span class="p-tag">Mobile-first UX</span>
-    <span class="p-tag">Live Tool</span>
-  </div>
-  <div class="p-impact">
-    <div class="p-impact-item"><div class="p-impact-val">4</div><div class="p-impact-label">Frameworks integrated into one engine</div></div>
-    <div class="p-impact-item"><div class="p-impact-val">12 SKUs</div><div class="p-impact-label">Realistic Madurai grocery basket</div></div>
-    <div class="p-impact-item"><div class="p-impact-val">In-browser</div><div class="p-impact-label">All formulas run client-side, no server</div></div>
-    <div class="p-impact-item"><div class="p-impact-val">Mobile-first</div><div class="p-impact-label">Designed for a phone in an apron pocket</div></div>
-  </div>
-</section>
-
-<div class="p-content">
-  <div class="p-section">
-    <div class="p-section-label">The Story</div>
-    <div class="p-section-title">From an Observation to a Working Demonstrator</div>
-    <div class="p-card-grid" style="margin-bottom:32px;">
-      <div class="p-card" style="--card-color:#dc2626"><div class="p-card-label">The Problem</div><div class="p-card-text">Small retail shops in unorganised markets manage inventory <strong>purely on intuition</strong> — ordering when shelves look low. The result, observed across multiple Madurai grocery outlets: <strong>simultaneous overstock of slow-moving items and stockouts of fast-moving ones.</strong> Working capital tied up in the wrong SKUs, lost sales on the right ones.</div></div>
-      <div class="p-card" style="--card-color:var(--blue)"><div class="p-card-label">My Approach</div><div class="p-card-text">Built a 12-SKU example basket reflecting a typical Madurai grocery shop (rice, oil, sugar, pulses, soaps&hellip;). Integrated four classical inventory frameworks — <strong>EOQ, Reorder Point, Safety Stock, and ABC analysis</strong> — into a single decision engine that gives the shop owner one answer: <em>"Order N units now."</em></div></div>
-      <div class="p-card" style="--card-color:#7c3aed"><div class="p-card-label">What I Built</div><div class="p-card-text">Not a report. A <strong>working demonstrator tool</strong> with desktop dashboard + mobile UI. I designed the spec, the framework integration, and the UX. Implementation used AI as a code accelerator — a 2026 reality I'm comfortable being transparent about. All formulas run in-browser, no server required.</div></div>
-      <div class="p-card" style="--card-color:var(--green)"><div class="p-card-label">Expected Outcomes</div><div class="p-card-text">Inventory literature on EOQ/ROP vs. ad-hoc reordering in small retail consistently reports <strong>30–45% inventory value reduction</strong> and <strong>large stockout-frequency drops</strong>. The tool's value isn't in proving those numbers — it's in <strong>making the textbook math one-tap accessible</strong> to a shop owner who has never opened Excel.</div></div>
+  <link rel="stylesheet" href="css/enhancements.css" />
+  <link rel="stylesheet" href="css/interactive.css" />
+  <link rel="stylesheet" href="css/career.css" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <noscript><style>
+    .portfolio-enhanced .navbar { position: relative; height: auto; }
+    .portfolio-enhanced .nav-inner { flex-wrap: wrap; padding-block: var(--space-sm); }
+    .portfolio-enhanced .nav-links { display: flex; position: static; flex-wrap: wrap; transform: none; width: 100%; padding: 0; border: 0; }
+    .portfolio-enhanced .theme-toggle, .portfolio-enhanced .menu-toggle { display: none; }
+    .portfolio-enhanced .hero { padding-top: var(--space-xl); }
+  </style></noscript>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="css/studio.css" />
+  <script defer src="js/studio.js"></script>
+  <link rel="stylesheet" href="css/atlas.css" />
+<link rel="stylesheet" href="css/software.css" /><link rel="stylesheet" href="css/inventory-case.css" /></head>
+<body class="portfolio-enhanced software-case"><a class="skip-link" href="#main-content">Skip to content</a><nav class="navbar" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="index.html#home" class="nav-logo"><span class="brand-mark" aria-hidden="true">BS</span><span>Bala Shunmugam<span class="dot">.</span> M</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#analytics">Analytics</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><a href="index.html#career">Career</a></li>
+        <li><a href="index.html#field">Field</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="quick-trigger" id="quickNavigation" type="button" aria-label="Quick navigation" title="Quick navigation (Ctrl/Cmd + K)" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg></button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-cursor>
+        <svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+        <svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.3 8.3 0 1 1 10.8 3.5a6.5 6.5 0 0 0 9.7 9.7z"/></svg>
+      </button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span aria-hidden="true">≡</span></button>
     </div>
-
-    <div class="p-section-label">Try the Live Demonstrator</div>
-    <div class="p-section-title">Inventory Control Calculator</div>
-    <div class="p-prose">Edit any cell — EOQ, ROP, Safety Stock, and ABC classification update automatically. Add or remove SKUs as needed. All formulas visible in the column headers. The 12 default SKUs are <strong>realistic examples</strong> reflecting a typical Madurai grocery basket — not collected from a single specific shop.</div>
-
-    <div class="summary-strip" id="summary-strip">
+  </nav>
+<main id="main-content" tabindex="-1">
+<section class="software-hero" data-tone="mint"><div class="container"><div class="software-breadcrumb"><a href="projects.html">← Project archive</a><span>Operations / Retail analytics</span></div><div class="software-hero-grid"><div><span class="eyebrow">P / 07 · Application case study</span><h1>InventoryIQ</h1><p class="software-tagline">From a shelf running low to a clear next action.</p><p class="software-summary">An inventory decision assistant for small retailers: know what to buy, record what is on order, receive deliveries and explore how demand changes affect working capital.</p><div class="software-tags"><span>Supply chain</span><span>EOQ · ROP · ABC</span><span>JavaScript</span><span>Demand forecasting</span><span>Mobile web</span></div><div class="software-actions"><a class="btn btn-primary" href="#screenshots">Explore five app screens ↓</a><a class="btn btn-outline" href="https://bala-shunmugam-m.github.io/Inventory_IQ_app/" target="_blank" rel="noopener">Open current web app ↗</a><a class="btn btn-outline" href="https://github.com/Bala-Shunmugam-M/Inventory_IQ_app" target="_blank" rel="noopener">GitHub source ↗</a></div></div><figure class="software-hero-preview"><img src="assets/shots/inventory/01-dashboard.png" alt="InventoryIQ manager dashboard running with twelve sample retail products" width="1600" height="1100" fetchpriority="high" /><figcaption>Running local application · built-in sample data · 30 October 2026</figcaption></figure></div><div class="software-facts"><div><strong>12 products</strong><span>Built-in sample basket</span></div><div><strong>2 web views</strong><span>Merchant + manager</span></div><div><strong>5 captures</strong><span>Actual running screens</span></div></div></div></section>
+<div class="container software-body"><nav class="software-jump" aria-label="Case study sections"><a href="#approach">Problem &amp; workflow</a><a href="#architecture">How it works</a><a href="#screenshots">Screenshot walkthrough</a><a href="#scope">Evidence &amp; limits</a><a href="#calculator">Original calculator</a></nav>
+<section id="approach" class="software-section"><div class="software-two"><div><span class="eyebrow">The problem</span><h2>A stock figure is only the beginning.</h2><p>A retailer needs to balance availability with cash tied up on shelves. A useful tool must connect demand, supplier lead time and stock already on order to a purchase decision the merchant can act on.</p></div><div><span class="eyebrow">The approach</span><h2>Keep the next action visible.</h2><p>InventoryIQ combines familiar inventory methods with a practical order-and-receive workflow. The phone view prioritises daily tasks; the manager dashboard adds ABC analysis, forecasting and scenario comparisons. My focus is the operations concept, framework integration and user experience; implementation is AI-assisted.</p></div></div><ol class="software-steps"><li><span>01</span><h3>Observe</h3><p>Maintain products, stock, prices and lead times; record daily sales.</p></li><li><span>02</span><h3>Prioritise</h3><p>Use demand, safety stock and ABC class to calculate reorder points and purchase quantities.</p></li><li><span>03</span><h3>Record</h3><p>Confirm a purchase already placed with a supplier. Incoming stock reduces repeat prompts.</p></li><li><span>04</span><h3>Receive &amp; review</h3><p>Move the delivery into stock, then review forecasts and what-if scenarios.</p></li></ol></section>
+<section id="architecture" class="software-section"><span class="eyebrow">From business rules to a usable product</span><h2>One shared web calculation engine.</h2><dl class="software-architecture"><div><dt>Decision logic · JavaScript</dt><dd>The web views share iq-core.js. EOQ balances ordering and holding costs. Reorder points account for lead time plus a one-day review period and class-based safety stock. ABC ranks cumulative annual revenue.</dd></div><div><dt>Demand &amp; scenarios</dt><dd>Recent logged sales inform planning demand. Forecasts blend a linear trend with a seven-day moving average. Scenario controls vary demand, lead time and price to explore modeled inventory exposure.</dd></div><div><dt>Web experience &amp; storage</dt><dd>A mobile web interface and desktop dashboard use browser localStorage. A manifest and service worker provide a PWA shell. This capture verified browser persistence; offline installation was not tested.</dd></div><div><dt>Optional services &amp; native source</dt><dd>The repository includes a Cloudflare Worker/D1 sync backend, an AI proxy and React Native/Expo source. Cloud operation, LLM answers and the Android build were not exercised during this capture.</dd></div></dl><p class="software-source-note"><a href="https://bala-shunmugam-m.github.io/Inventory_IQ_app/dashboard.html" target="_blank" rel="noopener">Open the current manager dashboard ↗</a> · <a href="inventoryiq-app/index.html">Earlier embedded demo →</a></p></section>
+<section id="screenshots" class="software-section"><div class="section-head"><div><span class="eyebrow">A closer look</span><h2>See the working experience.</h2></div><p class="section-head-meta">Real captures, with context.<br>Open any screen to inspect it.</p></div><div class="software-gallery"><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/inventory/01-dashboard.png" target="_blank" rel="noopener"><img src="assets/shots/inventory/01-dashboard.png" alt="InventoryIQ — Start with the decisions that matter" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/inventory/01-dashboard.png" data-caption="Start with the decisions that matter — The manager dashboard brings stock value, ABC distribution and purchasing priorities together. The revenue and profit figures shown are estimates from the built-in demo products; the empty activity log confirms that this capture does not contain recorded shop sales." aria-label="Enlarge Start with the decisions that matter" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 01 / Running app · sample data</span><h3>Start with the decisions that matter</h3><p>The manager dashboard brings stock value, ABC distribution and purchasing priorities together. The revenue and profit figures shown are estimates from the built-in demo products; the empty activity log confirms that this capture does not contain recorded shop sales.</p></figcaption></figure><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/inventory/02-orders.png" target="_blank" rel="noopener"><img src="assets/shots/inventory/02-orders.png" alt="InventoryIQ — Close the ordering loop" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/inventory/02-orders.png" data-caption="Close the ordering loop — Suggested quantities sit beside stock, reorder points and supplier details. “I placed this order” records incoming stock after the merchant orders externally. Receiving the delivery moves those units into stock. The app does not send a purchase order to a supplier." aria-label="Enlarge Close the ordering loop" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 02 / Running app · sample data</span><h3>Close the ordering loop</h3><p>Suggested quantities sit beside stock, reorder points and supplier details. “I placed this order” records incoming stock after the merchant orders externally. Receiving the delivery moves those units into stock. The app does not send a purchase order to a supplier.</p></figcaption></figure><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/inventory/03-forecast.png" target="_blank" rel="noopener"><img src="assets/shots/inventory/03-forecast.png" alt="InventoryIQ — Read demand before placing an order" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/inventory/03-forecast.png" data-caption="Read demand before placing an order — The forecast view combines a trend line with a seven-day moving average and shows a typical error band. These are estimates from sample product histories, not evidence of forecast accuracy at a real retailer." aria-label="Enlarge Read demand before placing an order" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 03 / Running app · sample data</span><h3>Read demand before placing an order</h3><p>The forecast view combines a trend line with a seven-day moving average and shows a typical error band. These are estimates from sample product histories, not evidence of forecast accuracy at a real retailer.</p></figcaption></figure><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/inventory/04-scenario.png" target="_blank" rel="noopener"><img src="assets/shots/inventory/04-scenario.png" alt="InventoryIQ — Explore a demand shock before it happens" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/inventory/04-scenario.png" data-caption="Explore a demand shock before it happens — This run uses demand +20%, with lead time and price unchanged. The app recalculates stockout exposure, capital requirements and SKU-level reorder points. Its “AI Recommendation” here is a locally generated explanation of the scenario, not an LLM response." aria-label="Enlarge Explore a demand shock before it happens" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 04 / Running app · sample data</span><h3>Explore a demand shock before it happens</h3><p>This run uses demand +20%, with lead time and price unchanged. The app recalculates stockout exposure, capital requirements and SKU-level reorder points. Its “AI Recommendation” here is a locally generated explanation of the scenario, not an LLM response.</p></figcaption></figure><figure class="software-shot inventory-phone"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/inventory/05-mobile.png" target="_blank" rel="noopener"><img src="assets/shots/inventory/05-mobile.png" alt="InventoryIQ — Make it usable on the shop floor" loading="lazy" width="430" height="932" /></a><button type="button" data-preview="assets/shots/inventory/05-mobile.png" data-caption="Make it usable on the shop floor — The phone interface puts three everyday actions first: enter sales, check stock and receive a delivery. Product cards translate inventory calculations into a suggested purchase quantity. Captured at a 430-pixel phone viewport using the same sample basket." aria-label="Enlarge Make it usable on the shop floor" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 05 / Running app · sample data</span><h3>Make it usable on the shop floor</h3><p>The phone interface puts three everyday actions first: enter sales, check stock and receive a delivery. Product cards translate inventory calculations into a suggested purchase quantity. Captured at a 430-pixel phone viewport using the same sample basket.</p></figcaption></figure></div></section>
+<section id="scope" class="software-section"><span class="eyebrow">What was verified</span><h2>A complete sample order cycle.</h2><p id="evidenceNote" class="software-evidence-note">In an isolated demo store, Colgate Toothpaste started with 25 units. Recording the suggested order added 140 incoming units and cleared its reorder action. Receiving the delivery produced 165 units on hand and zero incoming. The 165-unit balance persisted after a reload. These are sample workflow checks, not measured business results.</p><div class="software-two"><div><h3>Scope &amp; limitations</h3><ul class="software-limitations"><li>All five screenshots come from the supplied application running locally with its built-in 12-product demo. Dashboard revenue, profit, risk and scenario figures are modeled estimates.</li><li>The shared-core and sync test suites passed locally. Cloud tests use simulated dependencies; no live store sync or AI service was called.</li><li>Service-level and capital figures in the scenario planner are model outputs, not achieved service performance or validated savings.</li><li>The app explicitly lists differential sync, vector-clock conflict resolution, EnergyGuard, FieldLock and SHA-256 integrity as planned features.</li><li>The earlier embedded demo and teaching calculator below are retained separately. Their calculations and interface differ from the current application shown here.</li></ul></div><div class="software-career"><span class="eyebrow">Career connection</span><h3>Operations thinking, made tangible.</h3><p>This project connects my MBA focus in operations and business analytics with product design: translating inventory theory into everyday decisions, exposing assumptions and closing the loop between a recommendation and a received delivery.</p><a href="profile.html">View my recruiter profile ↗</a></div></div></section>
+<section id="calculator" class="software-section"><details class="inventory-calculator"><summary>Explore the original teaching calculator</summary><p>This earlier 12-SKU exercise is a separate, simplified model. It uses annual demand, a fixed variability assumption and rank-based ABC groups. It does not reproduce the current app’s sales-based engine. Values reset when the page reloads.</p>    <div class="summary-strip" id="summary-strip">
       <div class="sum-box"><div class="sum-val" id="s-skus">12</div><div class="sum-label">Total SKUs</div></div>
       <div class="sum-box"><div class="sum-val" id="s-inv">₹0</div><div class="sum-label">Optimal inventory value</div></div>
       <div class="sum-box"><div class="sum-val" id="s-orders">0</div><div class="sum-label">Total orders/year</div></div>
@@ -125,23 +97,7 @@
       </table>
     </div>
     <button class="add-btn" onclick="addSKU()">+ Add SKU</button>
-  </div>
-
-  <div class="p-section">
-    <div class="p-section-label">A Note on Scope</div>
-    <div class="p-callout">
-      <div class="p-callout-title">What this is — and what it isn't</div>
-      <div class="p-callout-body"><strong>This is a working concept demonstrator, not a deployed shop-floor study.</strong> The 12 default SKUs are realistic examples reflecting a typical Madurai grocery basket — assembled from observation of local outlets, not collected as 30 days of measured sales from one specific shop. The "expected outcomes" cited (30–45% inventory reduction, large stockout drops) come from <strong>established inventory-management literature</strong> on EOQ/ROP versus ad-hoc reordering — not from a measured before/after study I conducted. The tool's value is in <strong>making the textbook math accessible</strong> through a mobile-first UX. Implementation was AI-accelerated; the concept, framework integration, and UX decisions are mine.</div>
-    </div>
-  </div>
-</div>
-
-<footer class="p-footer">
-  <span class="p-footer-name">Bala Shunmugam M · B.E. EEE + MBA Operations</span>
-  <div class="p-footer-links"><a href="projects.html">← All Projects</a><a href="index.html">Portfolio</a><a href="agents.html">Company Brain — agents</a></div>
-</footer>
-
-<script>
+</details></section><div class="software-next"><a href="projects.html">← All 17 projects</a><a href="project-19.html">Next: AetherForgeOps →</a></div></div></main><script>
 const DEFAULTS = [
   {name:'Rice (25kg bag)',    D:520,  S:80,  H:12,  P:1200, LT:3},
   {name:'Cooking Oil (5L)',   D:780,  S:60,  H:8,   P:650,  LT:2},
@@ -185,7 +141,7 @@ function render(){
     totalC+=tc;
     const tr=document.createElement('tr');
     tr.innerHTML=`
-      <td><input type="text" style="width:130px;padding:4px 7px;font-size:12px;border:1px solid var(--border-strong);border-radius:var(--r-sm);font-family:var(--font-body);" value="${s.name}" oninput="skus[${i}].name=this.value"/></td>
+      <td><input type="text" style="width:130px;padding:4px 7px;font-size:12px;border:1px solid var(--border-strong);border-radius:var(--r-sm);font-family:var(--font-body);" value="${String(s.name).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;')}" oninput="skus[${i}].name=this.value"/></td>
       <td><input type="number" value="${s.D}" oninput="skus[${i}].D=+this.value;render()"/></td>
       <td><input type="number" value="${s.S}" oninput="skus[${i}].S=+this.value;render()"/></td>
       <td><input type="number" value="${s.H}" oninput="skus[${i}].H=+this.value;render()"/></td>
@@ -206,11 +162,14 @@ function render(){
 function addSKU(){skus.push({name:'New SKU',D:500,S:50,H:5,P:100,LT:2});render();}
 render();
 </script>
-  <script src="js/cosmic.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script defer src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
-  <script defer src="js/motion.js"></script>
-  <script defer src="js/theme.js"></script>
-  <script defer src="js/agents.js"></script></body>
-</html>
+<footer class="site-footer"><div class="container"><div class="footer-brand">Bala Shunmugam. M</div><p>Engineering · Operations · Analytics</p><a href="index.html#contact">Start a conversation ↗</a></div></footer>
+<dialog class="portfolio-dialog image-dialog" id="imageDialog" aria-labelledby="imageCaption"><div class="dialog-heading"><span class="eyebrow">Application screenshot</span><button class="dialog-close" id="closeImage" type="button" aria-label="Close image preview">×</button></div><figure><img id="previewImage" alt="" /><figcaption id="imageCaption"></figcaption></figure></dialog>
+<dialog class="portfolio-dialog" id="commandDialog" aria-labelledby="commandTitle">
+    <div class="dialog-heading"><h2 id="commandTitle">Where would you like to go?</h2><button class="dialog-close" id="closeCommands" type="button" aria-label="Close quick navigation">×</button></div>
+    <div class="command-search-wrap"><label for="commandSearch">Search pages, projects and skills</label><input id="commandSearch" type="search" aria-label="Search pages and projects" placeholder="Try energy, Python, résumé…" autocomplete="off" /></div>
+    <ul class="command-results" id="commandResults" aria-label="Matching destinations"></ul>
+    <p class="command-empty" id="commandEmpty" hidden>No matching pages. Try a project name or skill.</p>
+    <div class="dialog-foot"><span id="commandStatus" role="status"></span><span>↑ ↓ to move · Enter to open · Esc to close</span></div>
+  </dialog>
+<script defer src="js/redesign.js"></script><script defer src="js/theme.js"></script><script defer src="js/project-catalog.js"></script><script defer src="js/interactive.js"></script><script defer src="js/career.js"></script>
+</body></html>

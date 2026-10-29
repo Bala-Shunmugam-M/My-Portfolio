@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" class="studio-theme">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    /* Set the theme BEFORE first paint to prevent a flash of the wrong theme.
+       Priority: saved choice > system preference > light (the default). */
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <title>KERNEL-OPS — Bala Shunmugam M</title>
+  <meta name="description" content="An operations-focused MLOps console for exploring telemetry, recorded model decisions and inspection capacity, paired with a companion site explaining the shadow-pilot workflow." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/redesign.css" />
+  <link rel="stylesheet" href="css/motion.css" />
+  <link rel="stylesheet" href="css/agents.css" />
+  <link rel="stylesheet" href="css/enhancements.css" />
+  <link rel="stylesheet" href="css/interactive.css" />
+  <link rel="stylesheet" href="css/career.css" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <noscript><style>
+    .portfolio-enhanced .navbar { position: relative; height: auto; }
+    .portfolio-enhanced .nav-inner { flex-wrap: wrap; padding-block: var(--space-sm); }
+    .portfolio-enhanced .nav-links { display: flex; position: static; flex-wrap: wrap; transform: none; width: 100%; padding: 0; border: 0; }
+    .portfolio-enhanced .theme-toggle, .portfolio-enhanced .menu-toggle { display: none; }
+    .portfolio-enhanced .hero { padding-top: var(--space-xl); }
+  </style></noscript>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="css/studio.css" />
+  <script defer src="js/studio.js"></script>
+  <link rel="stylesheet" href="css/atlas.css" />
+<link rel="stylesheet" href="css/software.css" /></head>
+<body class="portfolio-enhanced software-case"><a class="skip-link" href="#main-content">Skip to content</a><nav class="navbar" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="index.html#home" class="nav-logo"><span class="brand-mark" aria-hidden="true">BS</span><span>Bala Shunmugam<span class="dot">.</span> M</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#analytics">Analytics</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><a href="index.html#career">Career</a></li>
+        <li><a href="index.html#field">Field</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="quick-trigger" id="quickNavigation" type="button" aria-label="Quick navigation" title="Quick navigation (Ctrl/Cmd + K)" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg></button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-cursor>
+        <svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+        <svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.3 8.3 0 1 1 10.8 3.5a6.5 6.5 0 0 0 9.7 9.7z"/></svg>
+      </button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span aria-hidden="true">≡</span></button>
+    </div>
+  </nav>
+<main id="main-content" tabindex="-1">
+<section class="software-hero" data-tone="mint"><div class="container"><div class="software-breadcrumb"><a href="projects.html">← Project archive</a><span>MLOps / Maintenance intelligence</span></div><div class="software-hero-grid"><div><span class="eyebrow">P / 17 · Application case study</span><h1>KERNEL-OPS</h1><p class="software-tagline">Connect a maintenance decision to its evidence.</p><p class="software-summary">An operations-focused MLOps console for exploring telemetry, recorded model decisions and inspection capacity, paired with a companion site explaining the shadow-pilot workflow.</p><div class="software-tags"><span>Python</span><span>Next.js</span><span>DuckDB</span><span>Telemetry</span><span>Decision policies</span></div><div class="software-actions"><a class="btn btn-primary" href="#screenshots">See the app in action ↓</a><a class="btn btn-outline" href="https://bala-shunmugam-m.github.io/kernel-ops-site/" target="_blank" rel="noopener">Companion project site ↗</a><a class="btn btn-outline" href="https://github.com/Bala-Shunmugam-M/kernel-ops-site" target="_blank" rel="noopener">Companion site source ↗</a></div></div><figure class="software-hero-preview"><img src="assets/shots/kernel/02-asset-history.png" alt="KERNEL-OPS application screenshot" width="1600" height="1100" fetchpriority="high" /><figcaption>Captured from the running local application · October 2026</figcaption></figure></div><div class="software-facts"><div><strong>30 runs</strong><span>Saved demo activity</span></div><div><strong>6 channels</strong><span>Telemetry view</span></div><div><strong>Read-only</strong><span>Shadow demonstration</span></div></div></div></section>
+<div class="container software-body"><nav class="software-jump" aria-label="Case study sections"><a href="#approach">Problem &amp; approach</a><a href="#architecture">Architecture</a><a href="#screenshots">Screenshot walkthrough</a><a href="#scope">Evidence &amp; limits</a></nav>
+<section id="approach" class="software-section"><div class="software-two"><div><span class="eyebrow">The problem</span><h2>Why this exists.</h2><p>A maintenance score alone does not tell an operations team what to inspect. A useful workflow must connect the signal to available evidence, equipment history and the capacity of the team that would act on it.</p></div><div><span class="eyebrow">The approach</span><h2>How it responds.</h2><p>KERNEL-OPS separates observation, scoring and operational decisions. Its console exposes recorded activity and the evidence behind it while the public demo stays read-only. The companion site explains how a shadow pilot would evaluate the approach before any operational reliance.</p></div></div><ol class="software-steps"><li><span>01</span><h3>Observe</h3><p>Organize telemetry and maintenance history around assets and event time.</p></li><li><span>02</span><h3>Score</h3><p>Retain scoring runs, model references and point-in-time decision context.</p></li><li><span>03</span><h3>Prioritize</h3><p>Connect proposed inspections with capacity-aware decision policies.</p></li><li><span>04</span><h3>Review</h3><p>Inspect sensor history, saved verdicts and evidence before considering action.</p></li></ol></section>
+<section id="architecture" class="software-section"><span class="eyebrow">Inside the system</span><h2>From inputs to insight.</h2><dl class="software-architecture"><div><dt>Console</dt><dd>Next.js, React and TypeScript present status, asset history and review workflows.</dd></div><div><dt>Local bridge</dt><dd>A server-side Python JSON bridge calls existing backend functions.</dd></div><div><dt>Data &amp; models</dt><dd>Python, pandas, PyArrow, DuckDB and scikit-learn support event processing and model workflows.</dd></div><div><dt>Public demonstration</dt><dd>A fixed demo site rejects writes and AI requests; the companion website is static HTML.</dd></div></dl><p class="software-source-note">Architecture summarized from the project source. Runtime verification is described below.</p></section>
+<section id="screenshots" class="software-section"><div class="section-head"><div><span class="eyebrow">A closer look</span><h2>The working experience.</h2></div><p class="section-head-meta">Real app captures.<br>Open any screen to inspect it.</p></div><div class="software-gallery"><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/kernel/01-overview.png" target="_blank" rel="noopener"><img src="assets/shots/kernel/01-overview.png" alt="KERNEL-OPS — Operational context before action" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/kernel/01-overview.png" data-caption="Operational context before action — The running console displays saved scoring activity, the inspection queue and weekly capacity. The visible shadow-mode and public-demo notices make the boundary between inspection proposals and actual operations explicit." aria-label="Enlarge Operational context before action" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 01 / Running application</span><h3>Operational context before action</h3><p>The running console displays saved scoring activity, the inspection queue and weekly capacity. The visible shadow-mode and public-demo notices make the boundary between inspection proposals and actual operations explicit.</p></figcaption></figure><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/kernel/02-asset-history.png" target="_blank" rel="noopener"><img src="assets/shots/kernel/02-asset-history.png" alt="KERNEL-OPS — Follow the asset&#x27;s history" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/kernel/02-asset-history.png" data-caption="Follow the asset&#x27;s history — Six telemetry charts sit above the saved decisions for a selected asset. An investigator can relate a proposed decision to recorded measurements and model references rather than rely on an isolated alert." aria-label="Enlarge Follow the asset&#x27;s history" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 02 / Running application</span><h3>Follow the asset&#x27;s history</h3><p>Six telemetry charts sit above the saved decisions for a selected asset. An investigator can relate a proposed decision to recorded measurements and model references rather than rely on an isolated alert.</p></figcaption></figure><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/kernel/03-showcase-site.png" target="_blank" rel="noopener"><img src="assets/shots/kernel/03-showcase-site.png" alt="KERNEL-OPS — Explain the pilot, including its limits" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/kernel/03-showcase-site.png" data-caption="Explain the pilot, including its limits — The companion website communicates the inspection-planning proposition and evaluation approach. It is presented as part of the same project, with the project&#x27;s evidence limits preserved." aria-label="Enlarge Explain the pilot, including its limits" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 03 / Running application</span><h3>Explain the pilot, including its limits</h3><p>The companion website communicates the inspection-planning proposition and evaluation approach. It is presented as part of the same project, with the project&#x27;s evidence limits preserved.</p></figcaption></figure></div><p class="software-attribution">Telemetry source: CARE to Compare, wind farm A — Fraunhofer IEE, doi:10.3390/data9120138, CC BY-SA 4.0. Records are used as stand-in operational data. Data-derived charts in these captures retain that attribution and share-alike license. <a href="https://doi.org/10.3390/data9120138" target="_blank" rel="noopener">Dataset publication ↗</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">License ↗</a></p></section>
+<section id="scope" class="software-section"><span class="eyebrow">What the evidence supports</span><h2>Demonstrated, with context.</h2><p id="evidenceNote" class="software-evidence-note">The console was run locally in public, read-only mode. Its stand-in wind-farm records show 30 saved scoring runs, one inspection job and 295,435 available events. The asset view displays six recorded telemetry channels and a saved decision trail. These are replayed activity records, not a live sensor feed. Predictive value on real equipment is not established.</p><div class="software-two"><div><h3>Scope &amp; limitations</h3><ul class="software-limitations"><li>The project explicitly states that predictive value is not established; the companion site reports that its fixed recipe did not confirm on unseen compressor data.</li><li>No crew was dispatched, work order created or production system connected. Training, drift alerts, retraining and deployment bundles were not executed during capture.</li><li>The main repository is described as private. The public companion site and its source are linked below; a stable public console endpoint is not claimed.</li><li>Telemetry plots use individual scales. They show sensor history, not a calibrated comparison of sensor magnitude or model accuracy.</li></ul></div><div class="software-career"><span class="eyebrow">Career connection</span><h3>Why it belongs in my portfolio.</h3><p>Brings electrical-system thinking into operational analytics: trace a signal, understand uncertainty and consider the practical constraints on acting on a model output.</p><a href="profile.html">View my recruiter profile ↗</a></div></div></section>
+<div class="software-next"><a href="projects.html">← All 17 projects</a><a href="project-18.html">Next: CampusPulse →</a></div></div></main>
+<footer class="site-footer"><div class="container"><div class="footer-brand">Bala Shunmugam. M</div><p>Engineering · Operations · Analytics</p><a href="index.html#contact">Start a conversation ↗</a></div></footer>
+<dialog class="portfolio-dialog image-dialog" id="imageDialog" aria-labelledby="imageCaption"><div class="dialog-heading"><span class="eyebrow">Application screenshot</span><button class="dialog-close" id="closeImage" type="button" aria-label="Close image preview">×</button></div><figure><img id="previewImage" alt="" /><figcaption id="imageCaption"></figcaption></figure></dialog>
+<dialog class="portfolio-dialog" id="commandDialog" aria-labelledby="commandTitle">
+    <div class="dialog-heading"><h2 id="commandTitle">Where would you like to go?</h2><button class="dialog-close" id="closeCommands" type="button" aria-label="Close quick navigation">×</button></div>
+    <div class="command-search-wrap"><label for="commandSearch">Search pages, projects and skills</label><input id="commandSearch" type="search" aria-label="Search pages and projects" placeholder="Try energy, Python, résumé…" autocomplete="off" /></div>
+    <ul class="command-results" id="commandResults" aria-label="Matching destinations"></ul>
+    <p class="command-empty" id="commandEmpty" hidden>No matching pages. Try a project name or skill.</p>
+    <div class="dialog-foot"><span id="commandStatus" role="status"></span><span>↑ ↓ to move · Enter to open · Esc to close</span></div>
+  </dialog>
+<script defer src="js/redesign.js"></script><script defer src="js/theme.js"></script><script defer src="js/project-catalog.js"></script><script defer src="js/interactive.js"></script><script defer src="js/career.js"></script>
+</body></html>

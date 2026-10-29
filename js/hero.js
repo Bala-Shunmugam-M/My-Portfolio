@@ -63,6 +63,9 @@
   var camera     = null;
   var rafId      = null;
   var threeLoaded = false;
+  var threeLoading = false;
+  var heroInView = false;
+  var renderLoop = null;
 
   /* Pointer — updated on mousemove, consumed in rAF */
   var ptrNDC = { x: 0, y: 0 };          // normalised device coords (–1..1)
@@ -121,7 +124,7 @@
   }
 
   /* ── 5. Pause / resume rAF ──────────────────────────── */
-  var isPaused = false;
+  var isPaused = true;
 
   function pauseLoop() {
     isPaused = true;
@@ -129,7 +132,7 @@
   }
 
   function resumeLoop() {
-    if (!isPaused || !threeLoaded) return;
+    if (!isPaused || !threeLoaded || !heroInView || document.hidden) return;
     isPaused = false;
     rafId = requestAnimationFrame(renderLoop);
   }
@@ -142,6 +145,7 @@
   /* ── 6. IntersectionObserver — lazy init + pause/resume ── */
   var heroObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
+      heroInView = entry.isIntersecting;
       if (entry.isIntersecting) {
         if (!threeLoaded) {
           initThree(); // first intersection → load + build scene
@@ -158,6 +162,8 @@
 
   /* ── 7. Lazy-load Three.js, then build the scene ──── */
   function initThree() {
+    if (threeLoading || threeLoaded) return;
+    threeLoading = true;
     /* Use requestIdleCallback when available so we don't compete with
        the critical rendering path; fall back to a short setTimeout. */
     var schedule = window.requestIdleCallback
@@ -170,6 +176,7 @@
           buildScene(THREE);
         })
         .catch(function () {
+          threeLoading = false;
           /* CDN load failed — leave hero as-is, no error thrown */
         });
     });
@@ -465,7 +472,7 @@
     var dotDispX = new Float32Array(DOT_COUNT);
     var dotDispY = new Float32Array(DOT_COUNT);
 
-    function renderLoop() {
+    renderLoop = function () {
       rafId = requestAnimationFrame(renderLoop);
 
       /* ── Smooth pointer ── */
@@ -528,9 +535,10 @@
       dotPosAttr.needsUpdate = true;
 
       renderer.render(scene, camera);
-    }
+    };
 
-    rafId = requestAnimationFrame(renderLoop);
+    threeLoading = false;
+    resumeLoop();
   }
 
 }());

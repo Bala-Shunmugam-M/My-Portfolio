@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" class="studio-theme">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    /* Set the theme BEFORE first paint to prevent a flash of the wrong theme.
+       Priority: saved choice > system preference > light (the default). */
+    (function () {
+      try {
+        var t = localStorage.getItem("theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+  <title>CampusPulse — Bala Shunmugam M</title>
+  <meta name="description" content="A relational data-management project with a campus incident platform and a compliance web application: structured reporting, institution-scoped case workflows, policy records and operational dashboards." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/redesign.css" />
+  <link rel="stylesheet" href="css/motion.css" />
+  <link rel="stylesheet" href="css/agents.css" />
+  <link rel="stylesheet" href="css/enhancements.css" />
+  <link rel="stylesheet" href="css/interactive.css" />
+  <link rel="stylesheet" href="css/career.css" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <noscript><style>
+    .portfolio-enhanced .navbar { position: relative; height: auto; }
+    .portfolio-enhanced .nav-inner { flex-wrap: wrap; padding-block: var(--space-sm); }
+    .portfolio-enhanced .nav-links { display: flex; position: static; flex-wrap: wrap; transform: none; width: 100%; padding: 0; border: 0; }
+    .portfolio-enhanced .theme-toggle, .portfolio-enhanced .menu-toggle { display: none; }
+    .portfolio-enhanced .hero { padding-top: var(--space-xl); }
+  </style></noscript>
+  <link rel="stylesheet" href="tokens.css" />
+  <link rel="stylesheet" href="css/studio.css" />
+  <script defer src="js/studio.js"></script>
+  <link rel="stylesheet" href="css/atlas.css" />
+<link rel="stylesheet" href="css/software.css" /></head>
+<body class="portfolio-enhanced software-case"><a class="skip-link" href="#main-content">Skip to content</a><nav class="navbar" aria-label="Primary">
+    <div class="nav-inner">
+      <a href="index.html#home" class="nav-logo"><span class="brand-mark" aria-hidden="true">BS</span><span>Bala Shunmugam<span class="dot">.</span> M</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="index.html#analytics">Analytics</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><a href="index.html#career">Career</a></li>
+        <li><a href="index.html#field">Field</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="quick-trigger" id="quickNavigation" type="button" aria-label="Quick navigation" title="Quick navigation (Ctrl/Cmd + K)" aria-haspopup="dialog" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg></button>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" data-cursor>
+        <svg class="ico sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M4.6 4.6l1.7 1.7M17.7 17.7l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.6 19.4l1.7-1.7M17.7 6.3l1.7-1.7"/></svg>
+        <svg class="ico moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 13.2A8.3 8.3 0 1 1 10.8 3.5a6.5 6.5 0 0 0 9.7 9.7z"/></svg>
+      </button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span aria-hidden="true">≡</span></button>
+    </div>
+  </nav>
+<main id="main-content" tabindex="-1">
+<section class="software-hero" data-tone="coral"><div class="container"><div class="software-breadcrumb"><a href="projects.html">← Project archive</a><span>Business Data Management</span></div><div class="software-hero-grid"><div><span class="eyebrow">P / 18 · Application case study</span><h1>CampusPulse</h1><p class="software-tagline">Turn scattered reports into accountable records.</p><p class="software-summary">A relational data-management project with a campus incident platform and a compliance web application: structured reporting, institution-scoped case workflows, policy records and operational dashboards.</p><div class="software-tags"><span>PostgreSQL</span><span>SQL</span><span>Prisma</span><span>Next.js</span><span>Data modelling</span></div><div class="software-actions"><a class="btn btn-primary" href="#screenshots">See the app in action ↓</a><a class="btn btn-outline" href="https://github.com/Bala-Shunmugam-M/campuspulse-capstone" target="_blank" rel="noopener">Source repository ↗</a></div></div><figure class="software-hero-preview"><img src="assets/shots/campus/campus-dashboard.png" alt="CampusPulse application screenshot" width="1600" height="1100" fetchpriority="high" /><figcaption>Captured from the running local application · October 2026</figcaption></figure></div><div class="software-facts"><div><strong>2 schemas</strong><span>Separate data ownership</span></div><div><strong>3 institutions</strong><span>Fictional demo setup</span></div><div><strong>3 views</strong><span>Captured locally</span></div></div></div></section>
+<div class="container software-body"><nav class="software-jump" aria-label="Case study sections"><a href="#approach">Problem &amp; approach</a><a href="#architecture">Architecture</a><a href="#screenshots">Screenshot walkthrough</a><a href="#scope">Evidence &amp; limits</a></nav>
+<section id="approach" class="software-section"><div class="software-two"><div><span class="eyebrow">The problem</span><h2>Why this exists.</h2><p>Campus reports can be duplicated, lose their history or arrive without a clear owner and deadline. The underlying business problem is how to model reports, incidents, people and actions so the organization can answer what happened and what should happen next.</p></div><div><span class="eyebrow">The approach</span><h2>How it responds.</h2><p>CampusPulse divides the data platform from the compliance application. The campus directory and facility data live in one schema; case-management records live in another. The application turns reports into a visible case workflow with tenant context, deadlines and an audit trail.</p></div></div><ol class="software-steps"><li><span>01</span><h3>Model</h3><p>Define institutions, users, locations, assets, reports, incidents and their relationships.</p></li><li><span>02</span><h3>Constrain</h3><p>Use relational keys and business rules to preserve identity, tenancy and lifecycle integrity.</p></li><li><span>03</span><h3>Work</h3><p>Take a report through case handling with roles, status transitions and recorded actions.</p></li><li><span>04</span><h3>Analyze</h3><p>Use SQL and dashboards to inspect intake, case distribution and response measures.</p></li></ol></section>
+<section id="architecture" class="software-section"><span class="eyebrow">Inside the system</span><h2>From inputs to insight.</h2><dl class="software-architecture"><div><dt>Data platform</dt><dd>Python / psycopg2 scripts, PostgreSQL schema, synthetic-data generation and analytical SQL.</dd></div><div><dt>Schema boundary</dt><dd>The web application reads the campuspulse directory schema and owns the compliance schema.</dd></div><div><dt>Application</dt><dd>Next.js, React, TypeScript, Prisma and Auth.js implement the reporting and staff interfaces.</dd></div><div><dt>Workflow controls</dt><dd>Source implements institution-scoped access, report anonymity rules, transactional audit records and permitted case transitions.</dd></div></dl><p class="software-source-note">Architecture summarized from the project source. Runtime verification is described below.</p></section>
+<section id="screenshots" class="software-section"><div class="section-head"><div><span class="eyebrow">A closer look</span><h2>The working experience.</h2></div><p class="section-head-meta">Real app captures.<br>Open any screen to inspect it.</p></div><div class="software-gallery"><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/campus/campus-reporting.png" target="_blank" rel="noopener"><img src="assets/shots/campus/campus-reporting.png" alt="CampusPulse — A clear entry point for a report" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/campus/campus-reporting.png" data-caption="A clear entry point for a report — The public interface explains reporting, review and follow-up, including the anonymous path. It makes the business workflow understandable before a person enters the system." aria-label="Enlarge A clear entry point for a report" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 01 / Running application</span><h3>A clear entry point for a report</h3><p>The public interface explains reporting, review and follow-up, including the anonymous path. It makes the business workflow understandable before a person enters the system.</p></figcaption></figure><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/campus/campus-dashboard.png" target="_blank" rel="noopener"><img src="assets/shots/campus/campus-dashboard.png" alt="CampusPulse — Make the workload visible" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/campus/campus-dashboard.png" data-caption="Make the workload visible — The staff overview brings case status, weekly report intake and response measures together for a fictional institution. Every displayed figure comes from the isolated sample database." aria-label="Enlarge Make the workload visible" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 02 / Running application</span><h3>Make the workload visible</h3><p>The staff overview brings case status, weekly report intake and response measures together for a fictional institution. Every displayed figure comes from the isolated sample database.</p></figcaption></figure><figure class="software-shot"><div class="software-shot-frame"><a class="shot-original" href="assets/shots/campus/campus-cases.png" target="_blank" rel="noopener"><img src="assets/shots/campus/campus-cases.png" alt="CampusPulse — Move from summary to the record" loading="lazy" width="1600" height="1100" /></a><button type="button" data-preview="assets/shots/campus/campus-cases.png" data-caption="Move from summary to the record — The case queue supports filtering by status, severity, assignee and deadline. The synthetic case records illustrate how an aggregate dashboard connects back to individual records." aria-label="Enlarge Move from summary to the record" hidden>Enlarge ↗</button></div><figcaption><span class="eyebrow">Screen 03 / Running application</span><h3>Move from summary to the record</h3><p>The case queue supports filtering by status, severity, assignee and deadline. The synthetic case records illustrate how an aggregate dashboard connects back to individual records.</p></figcaption></figure></div></section>
+<section id="scope" class="software-section"><span class="eyebrow">What the evidence supports</span><h2>Demonstrated, with context.</h2><p id="evidenceNote" class="software-evidence-note">These views were captured from the running local application against a newly initialized PostgreSQL demo database. The seeded institutions and accounts are fictional. The captured institution shows ten synthetic reports and nine cases in several workflow states; dashboard response-time and case metrics describe that sample only. The original project database and its records were not used for these screenshots.</p><div class="software-two"><div><h3>Scope &amp; limitations</h3><ul class="software-limitations"><li>The web-application screenshots show a small seeded workflow. They are separate from the much larger synthetic facility dataset documented by the original data-platform README.</li><li>Schema separation, role controls and audit behavior are described from source. This portfolio run is not a fresh security audit or a certification of tenant isolation.</li><li>The public report entry screen, staff overview and case queue were captured. No real student reports or sensitive incident details are displayed.</li><li>Optional AI drafting and hosted deployment were not exercised. A working local prototype is not evidence of live institutional adoption.</li></ul></div><div class="software-career"><span class="eyebrow">Career connection</span><h3>Why it belongs in my portfolio.</h3><p>Shows Business Data Management as an operational capability: model a process, maintain trustworthy records and give people a useful view of workload and accountability.</p><a href="profile.html">View my recruiter profile ↗</a></div></div></section>
+<div class="software-next"><a href="projects.html">← All 17 projects</a><a href="project-19.html">Next: AetherForge Ops →</a></div></div></main>
+<footer class="site-footer"><div class="container"><div class="footer-brand">Bala Shunmugam. M</div><p>Engineering · Operations · Analytics</p><a href="index.html#contact">Start a conversation ↗</a></div></footer>
+<dialog class="portfolio-dialog image-dialog" id="imageDialog" aria-labelledby="imageCaption"><div class="dialog-heading"><span class="eyebrow">Application screenshot</span><button class="dialog-close" id="closeImage" type="button" aria-label="Close image preview">×</button></div><figure><img id="previewImage" alt="" /><figcaption id="imageCaption"></figcaption></figure></dialog>
+<dialog class="portfolio-dialog" id="commandDialog" aria-labelledby="commandTitle">
+    <div class="dialog-heading"><h2 id="commandTitle">Where would you like to go?</h2><button class="dialog-close" id="closeCommands" type="button" aria-label="Close quick navigation">×</button></div>
+    <div class="command-search-wrap"><label for="commandSearch">Search pages, projects and skills</label><input id="commandSearch" type="search" aria-label="Search pages and projects" placeholder="Try energy, Python, résumé…" autocomplete="off" /></div>
+    <ul class="command-results" id="commandResults" aria-label="Matching destinations"></ul>
+    <p class="command-empty" id="commandEmpty" hidden>No matching pages. Try a project name or skill.</p>
+    <div class="dialog-foot"><span id="commandStatus" role="status"></span><span>↑ ↓ to move · Enter to open · Esc to close</span></div>
+  </dialog>
+<script defer src="js/redesign.js"></script><script defer src="js/theme.js"></script><script defer src="js/project-catalog.js"></script><script defer src="js/interactive.js"></script><script defer src="js/career.js"></script>
+</body></html>
